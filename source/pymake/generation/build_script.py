@@ -20,7 +20,7 @@ class BuildScript:
     """
     Represents a CMakeLists.txt or .cmake file to be generated.
     """
-    def __init__(self, filename: str, rel_path: str, root_path: str) -> None:
+    def __init__(self, filename: str, rel_path: Path, root_path: Path) -> None:
         """
         Initializes the object.
         @param filename Name of the file that should be generated. Should either
@@ -62,6 +62,6 @@ class BuildScript:
           file.
         """
         source_tree_path = source_tree_path.resolve()
-        return "\n".join([
+        return "\n\n".join([
             g.generate(source_tree_path) for g in self._generators
         ])

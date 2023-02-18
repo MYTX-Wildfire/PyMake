@@ -1,13 +1,20 @@
 from pathlib import Path
 from pymake.common.cmake_version import ECMakeVersion
-from pymake.helpers.caller_info import CallerInfo
+from pymake.common.project_language import EProjectLanguage
+from pymake.core.project import Project
 from pymake.generation.basic_generator import BasicGenerator
 from pymake.generation.build_script import BuildScript
+from pymake.helpers.caller_info import CallerInfo
+from pymake.helpers.path_statics import shorten_path
+from typing import Iterable
 
 class CMake:
     """
     Primary class used to generate CMake build scripts.
     """
+    # Name used for build scripts that are the equivalent of CMakeLists.txt.
+    PRIMARY_BUILD_SCRIPT_NAME = "make.py"
+
     def __init__(self,
         min_version: ECMakeVersion,
         generated_tree_path: str = "./.pymake"):
@@ -28,10 +35,9 @@ class CMake:
         # Use the folder containing the script constructing this object as the
         #   base path for the project. All other paths will be processed as
         #   paths relative to this path.
-        if Path(generated_tree_path).is_absolute():
-            generated_tree_abs_path = generated_tree_path
-        else:
-            generated_tree_abs_path = Path.joinpath(
+        self._generated_tree_path = Path(generated_tree_path)
+        if not self._generated_tree_path.is_absolute():
+            self._generated_tree_path = Path.joinpath(
                 self._source_tree_path,
                 Path(generated_tree_path)
             ).resolve()
@@ -39,8 +45,8 @@ class CMake:
         # Build script for the top-level CMakeLists.txt
         top_level_build_script = BuildScript(
             "CMakeLists.txt",
-            "",
-            str(generated_tree_abs_path)
+            Path(""),
+            self._generated_tree_path
         )
         top_level_build_script.add_generator(BasicGenerator(
             f"cmake_minimum_required(VERSION {min_version.to_version_string()})",
@@ -50,8 +56,24 @@ class CMake:
         # Store all build script instances, indexed by the relative path of the
         #   file the build script instance is for
         self._build_scripts = {
-            "": top_level_build_script
+            Path(""): top_level_build_script
         }
+
+    def add_project(self,
+        project_name: str,
+        project_languages: EProjectLanguage | Iterable[EProjectLanguage]) -> Project:
+        """
+        Adds a new CMake project scope.
+        @param project_name Name to assign to the project. Must not be an empty
+          string or all whitespace.
+        @param project_languages Languages used by the project.
+        @throws ValueError thrown if any parameter is invalid.
+        """
+        return Project(
+            self._get_or_add_build_script(),
+            project_name,
+            project_languages
+        )
 
     def build(self, generate_first: bool = True) -> None:
         """
@@ -79,3 +101,41 @@ class CMake:
             print(build_script.generate_file_contents(self._source_tree_path))
             print("========================================")
             print()
+
+    def _get_or_add_build_script(self, caller_offset: int = 1):
+        """
+        Gets the build script instance assigned to the current PyMake script.
+        """
+        caller_info = CallerInfo(2 + caller_offset)
+        build_script_rel_path = shorten_path(
+            caller_info.file_path.parent,
+            self._source_tree_path
+        )
+
+        # If the PyMake script already has a build script instance associated
+        #   with it, return it. Otherwise, create a new build script instance
+        #   for the PyMake script.
+        if build_script_rel_path in self._build_scripts:
+            return self._build_scripts[build_script_rel_path]
+        else:
+            build_script = BuildScript(
+                self._get_target_build_script_name(caller_info.file_path.name),
+                build_script_rel_path,
+                self._generated_tree_path
+            )
+            self._build_scripts[build_script_rel_path] = build_script
+            return build_script
+
+    def _get_target_build_script_name(self, script_name: str) -> str:
+        """
+        Determines the name of the CMake build script to generate for the script.
+        @param script_name Name of the PyMake build script that a CMake build
+          script should be generated for. This must contain only the file name
+          of the PyMake build script and should not contain any path information.
+        @returns The name of the CMake file to generate for the build script.
+          This will be a file name only and will not contain path information.
+        """
+        if script_name == CMake.PRIMARY_BUILD_SCRIPT_NAME:
+            return "CMakeLists.txt"
+        else:
+            return script_name.replace(".py", ".cmake")

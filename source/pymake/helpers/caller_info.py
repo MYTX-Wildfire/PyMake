@@ -1,4 +1,5 @@
 import inspect
+from pathlib import Path
 
 class CallerInfo:
     """
@@ -31,18 +32,18 @@ class CallerInfo:
         #   Attempting to do so will return values correct at the point that
         #   the frame's values are accessed, not the time when the frame was
         #   constructed.
-        self._file_path = frame.f_code.co_filename
+        self._file_path = Path(frame.f_code.co_filename).absolute().resolve()
         self._line_number = frame.f_lineno
 
     @property
-    def file_path(self):
+    def file_path(self) -> Path:
         """
         Gets the file path of the caller's code.
         """
         return self._file_path
 
     @property
-    def line_number(self):
+    def line_number(self) -> int:
         """
         Gets the line number of the caller's code.
         """

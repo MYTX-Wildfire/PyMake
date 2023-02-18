@@ -1,6 +1,7 @@
 from pathlib import Path
 from pymake.generation.code_generator import ICodeGenerator
 from pymake.helpers.caller_info import CallerInfo
+from pymake.helpers.path_statics import shorten_path
 
 class BasicGenerator(ICodeGenerator):
     """
@@ -32,7 +33,7 @@ class BasicGenerator(ICodeGenerator):
           consist of multiple lines.
         """
         # Get the path that should be written to the generated file
-        source_path = ICodeGenerator.shorten_path(
+        source_path = shorten_path(
             self._caller_info.file_path,
             source_tree_path
         )

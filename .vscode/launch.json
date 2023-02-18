@@ -1,0 +1,12 @@
+{
+	"configurations": [
+		{
+			"name": "Hello World",
+			"type": "python",
+			"request": "launch",
+			"program": "${workspaceFolder}/samples/1-hello-world/make.py",
+			"console": "integratedTerminal",
+			"justMyCode": true
+		}
+	]
+}
