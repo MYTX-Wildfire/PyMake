@@ -1,6 +1,6 @@
 from pymake.common.project_language import EProjectLanguage
+from pymake.core.project_state import ProjectState
 from pymake.generation.basic_generator import BasicGenerator
-from pymake.generation.build_script import BuildScript
 from pymake.helpers.caller_info import CallerInfo
 from typing import Iterable
 
@@ -9,17 +9,20 @@ class Project:
     Represents a CMake project scope.
     """
     def __init__(self,
-        build_script: BuildScript,
+        project_state: ProjectState,
         project_name: str,
         project_languages: EProjectLanguage | Iterable[EProjectLanguage],
         caller_offset: int):
         """
         Initializes the object.
-        @param build_script Build script to write CMake code to.
+        @param project_state State object for the CMake project this object is
+          part of.
         @param project_name Name to assign to the project. Must not be an empty
           string or all whitespace.
         @param project_languages Languages used by the project. At least one
           language must be specified.
+        @param caller_offset Number of stack frames to traverse to get to
+          the stack frame of the pymake build script.
         @throws ValueError thrown if any parameter is invalid.
         """
         # Validate method arguments
@@ -33,6 +36,7 @@ class Project:
 
         # Initialize member variables
         self._project_name = project_name
+        self._project_state = project_state
         # Add 1 to the provided caller offset to account for this constructor's
         #   stack frame
         self._call_site = CallerInfo(caller_offset + 1)
@@ -48,10 +52,8 @@ class Project:
             code += f"\t\t{language.to_cmake_language()}\n"
         code += ")"
 
+        build_script = project_state.get_or_add_build_script(caller_offset + 1)
         build_script.add_generator(BasicGenerator(
             code,
-            # This class is always instantiated via a `CMake` object, so the
-            #   PyMake build script's stack frame will be two levels up from
-            #   the current stack frame
-            caller_offset=2
+            caller_offset + 1
         ))
