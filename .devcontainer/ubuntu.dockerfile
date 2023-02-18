@@ -27,7 +27,10 @@ RUN python3 -m pip install \
 	mkdocs-git-revision-date-localized-plugin \
 	pygments \
 	# Packages for enabling plantuml support
-	plantuml-markdown
+	plantuml-markdown \
+	# Other
+	autopep8 \
+	pytest
 
 # Create the user
 RUN groupadd --gid $USER_GID $USERNAME && \
