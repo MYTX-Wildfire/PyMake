@@ -1,19 +1,6 @@
 from pathlib import Path
 from pymake.generation.code_generator import ICodeGenerator
-from pymake.helpers.caller_info import CallerInfo
-from typing import List, NamedTuple
-
-class GeneratedCode(NamedTuple):
-    """
-    Represents one or more lines of CMake code that was generated.
-    """
-    # The CMake code that was generated
-    code: str
-
-    # The caller info for the build script code that resulted in the CMake code
-    #   getting generated
-    caller_info: CallerInfo
-
+from typing import List
 
 class BuildScript:
     """
