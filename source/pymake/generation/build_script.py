@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from pymake.generation.code_generator import ICodeGenerator
 from pymake.helpers.caller_info import CallerInfo
 from typing import List, NamedTuple
 
@@ -33,8 +34,8 @@ class BuildScript:
         self._rel_path = rel_path
         self._root_path = root_path
 
-        # Lines to write into the target file
-        self._lines: List[GeneratedCode] = []
+        # Generators to invoke when generating the build script
+        self._generators: List[ICodeGenerator] = []
 
     @property
     def target_path(self) -> str:
@@ -44,34 +45,13 @@ class BuildScript:
         return os.path.join(self._root_path, self._rel_path, self._filename)
 
 
-    def append(self,
-        cmake_code: str,
-        caller_offset: int) -> None:
+    def add_generator(self, generator: ICodeGenerator) -> None:
         """
-        Adds a string containing CMake code to the script.
-        This method will not append any characters to the provided CMake code.
-        @param cmake_code CMake code to append.
-        @param caller_offset Extra offset to apply to account for the stack
-          frame of PyMake methods invoking this method when retrieving the stack
-          frame from a build script.
+        Adds a generator to invoke to create CMake code for the generated file.
+        @param generator Code generator to invoke when adding code into the
+          generated file.
         """
-        self._lines.append(GeneratedCode(
-            code=cmake_code,
-            caller_info=CallerInfo(2 + caller_offset)
-        ))
-
-    def append_line(self,
-        cmake_code: str,
-        caller_offset: int) -> None:
-        """
-        Adds a string containing CMake code to the script.
-        This method will append a newline character to the provided string.
-        @param cmake_code CMake code to append.
-        @param caller_offset Extra offset to apply to account for the stack
-          frame of PyMake methods invoking this method when retrieving the stack
-          frame from a build script.
-        """
-        self.append(cmake_code + '\n', caller_offset + 1)
+        self._generators.append(generator)
 
     def generate_file_contents(self,
         source_tree_path: Path) -> str:
@@ -81,28 +61,7 @@ class BuildScript:
         @returns A string containing the CMake build script code to write to the
           file.
         """
-        contents = ""
         source_tree_path = source_tree_path.resolve()
-
-        # Generate the file and add comments indicating where each line
-        #   originated from
-        for c in self._lines:
-            file_path = c.caller_info.file_path
-            line = c.caller_info.line_number
-
-            # If possible, print the build script's path as a relative path
-            try:
-                build_script_path = Path(file_path).resolve()
-                file_path = build_script_path.relative_to(source_tree_path)
-            except ValueError:
-                # The build script is not located in the source tree. Use the
-                #   full path to the file instead.
-                pass
-
-            # If the file is in the source tree, write its relative path to
-            #   the file instead of the full path
-            contents += f"# {file_path}:{line}\n"
-            contents += c.code
-
-        return contents
-
+        return "\n".join([
+            g.generate(source_tree_path) for g in self._generators
+        ])

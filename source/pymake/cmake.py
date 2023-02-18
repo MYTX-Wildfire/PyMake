@@ -1,6 +1,7 @@
 from pathlib import Path
 from pymake.common.cmake_version import ECMakeVersion
 from pymake.helpers.caller_info import CallerInfo
+from pymake.generation.basic_generator import BasicGenerator
 from pymake.generation.build_script import BuildScript
 
 class CMake:
@@ -41,10 +42,10 @@ class CMake:
             "",
             str(generated_tree_abs_path)
         )
-        top_level_build_script.append_line(
+        top_level_build_script.add_generator(BasicGenerator(
             f"cmake_minimum_required(VERSION {min_version.to_version_string()})",
             caller_offset=1
-        )
+        ))
 
         # Store all build script instances, indexed by the relative path of the
         #   file the build script instance is for
