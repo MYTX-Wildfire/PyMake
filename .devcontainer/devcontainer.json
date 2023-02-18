@@ -13,6 +13,9 @@
 			]
 		}
 	},
+	"containerEnv": {
+		"PYTHONPATH": "/workspaces/PyMake/source"
+	},
 	"forwardPorts": [
 		8000
 	]
