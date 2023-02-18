@@ -1,0 +1,55 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = tab
+insert_final_newline = true
+max_line_length = 80
+trim_trailing_whitespace = true
+
+
+[*.md]
+# Force the usage of spaces in markdown docs because GitHub uses 8 wide tabs
+#	by default
+indent_style = space
+max_line_length = off
+
+# This must be disabled for Markdown files as using two spaces at the end of a
+#   line is syntactically significant in Markdown
+trim_trailing_whitespace = false
+
+
+# Make sure shell scripts use the system specific line endings
+[*.sh]
+end_of_line = lf
+
+[*.bat]
+end_of_line = crlf
+
+
+[*.py]
+# If a python script is executed directly by bash (e.g. `foo.py` instead of
+#   `python foo.py`), the script must use LF as its line endings or else the
+#   CRLF line endings will cause bash to mis-parse the file.
+end_of_line = lf
+
+# Use PEP-8 styling
+indent_style = space
+
+
+[*.{json,code-workspace,csproj,props,}]
+indent_size = 2
+
+
+[*.{yml,yaml}]
+# YAML requires spaces to be used
+indent_style = space
+indent_size = 2
+
+
+[Jenkinsfile]
+# Jenkinsfiles use a high level of indentation; use an indent size of 2 to make
+#   Jenkinsfiles more readable
+indent_size = 2
