@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 from pymake.generation.code_generator import ICodeGenerator
 from pymake.helpers.caller_info import CallerInfo
@@ -33,17 +32,21 @@ class BuildScript:
         self._filename = filename
         self._rel_path = rel_path
         self._root_path = root_path
+        self._target_path = Path.joinpath(
+            self._root_path,
+            self._rel_path,
+            self._filename
+        ).absolute().resolve()
 
         # Generators to invoke when generating the build script
         self._generators: List[ICodeGenerator] = []
 
     @property
-    def target_path(self) -> str:
+    def target_path(self) -> Path:
         """
         Returns the absolute path that the generated file should be written to.
         """
-        return os.path.join(self._root_path, self._rel_path, self._filename)
-
+        return self._target_path
 
     def add_generator(self, generator: ICodeGenerator) -> None:
         """
