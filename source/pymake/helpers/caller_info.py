@@ -45,3 +45,26 @@ class CallerInfo:
         Gets the line number of the caller's code.
         """
         return self._line_number
+
+    def __hash__(self) -> int:
+        """
+        Generates the hash of the object.
+        @returns The hash of the object.
+        """
+        return hash((self._file_path, self._line_number))
+
+    def __eq__(self, other: object) -> bool:
+        """
+        Checks if the other object is equal to this object.
+        @param other Object to compare to this object.
+        @returns True if the two objects are equal.
+        """
+        if isinstance(other, CallerInfo):
+            return (
+                self._file_path,
+                self._line_number
+            ) == (
+                other.file_path,
+                other.line_number
+            )
+        return False

@@ -10,7 +10,8 @@ class ECMakeVersion(IntEnum):
     def to_version_string(self) -> str:
         """
         Converts the enum to a version string.
-        The returned version string will be suitable for use with
+        @returns A string containing the CMake version number represented by the
+          enum value. The returned version string will be suitable for use with
           `cmake_minimum_required()`.
         """
         if self == ECMakeVersion.V3_25:

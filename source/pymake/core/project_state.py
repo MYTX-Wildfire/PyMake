@@ -2,7 +2,7 @@ from pathlib import Path
 from pymake.generation.build_script import BuildScript
 from pymake.helpers.caller_info import CallerInfo
 from pymake.helpers.path_statics import shorten_path
-from typing import Dict
+from typing import Dict, Optional
 
 class ProjectState:
     """
@@ -32,6 +32,14 @@ class ProjectState:
         #   the source tree. Build scripts located outside the source tree will
         #   be indexed under their absolute path instead.
         self._build_scripts: Dict[Path, BuildScript] = {}
+
+        # Dictionary of all targets (regardless of type) and where they were
+        #   added from.
+        # This is used to check for conflicts in target names when a new target
+        #   is added. If the new target's name conflicts with a previously added
+        #   target, PyMake will provide the developer with the file path and
+        #   line number where the original target was defined.
+        self._targets: Dict[str, CallerInfo] = {}
 
     @property
     def build_scripts(self) -> Dict[Path, BuildScript]:
@@ -88,6 +96,28 @@ class ProjectState:
             )
             self._build_scripts[build_script_rel_path] = build_script
             return build_script
+
+    def register_target(self, target_name: str, call_site: CallerInfo) -> None:
+        """
+        Registers a target with the project.
+        @param target_name Name of the target that was added. Must not be the
+          name of a target that was previously added.
+        @param call_site Location in the project's PyMake build scripts where
+          the target was defined.
+        """
+        assert target_name not in self._targets
+        self._targets[target_name] = call_site
+
+    def try_get_target(self, target_name: str) -> Optional[CallerInfo]:
+        """
+        Checks for and retrieves target information if the target exists.
+        @param target_name Name of the target to retrieve info for.
+        @returns If the target has been previously added, returns the location
+          where the target was added at in the PyMake build scripts. If the
+          target does not exist, returns None.
+        """
+        return self._targets.get(target_name)
+
 
     def _get_target_build_script_name(self, script_name: str) -> str:
         """

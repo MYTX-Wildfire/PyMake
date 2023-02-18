@@ -1,8 +1,11 @@
 from pymake.common.project_language import EProjectLanguage
+from pymake.core.executable_target import ExecutableTarget
 from pymake.core.project_state import ProjectState
+from pymake.core.target import Target
 from pymake.generation.basic_generator import BasicGenerator
 from pymake.helpers.caller_info import CallerInfo
-from typing import Iterable
+import sys
+from typing import Iterable, Dict
 
 class Project:
     """
@@ -37,6 +40,8 @@ class Project:
         # Initialize member variables
         self._project_name = project_name
         self._project_state = project_state
+        # Dictionary of targets in the project, indexed by target name
+        self._targets: Dict[str, Target] = {}
         # Add 1 to the provided caller offset to account for this constructor's
         #   stack frame
         self._call_site = CallerInfo(caller_offset + 1)
@@ -57,3 +62,36 @@ class Project:
             code,
             caller_offset + 1
         ))
+
+    def add_executable(self, target_name: str) -> ExecutableTarget:
+        """
+        Adds an executable target to the project.
+        @param target_name Name of the target to create.
+        @throws ValueError Thrown if a target already exists with the given name.
+        """
+        # Validate the target name
+        call_site = CallerInfo(1)
+        prev_call_site = self._project_state.try_get_target(target_name)
+        if prev_call_site:
+            print(f"Cannot add target '{target_name}' defined at " +
+                f"'{call_site.file_path}:{call_site.line_number}'",
+                file=sys.stderr
+            )
+            print(f"A target with the same name was previously added at " +
+                f"'{prev_call_site.file_path}:{prev_call_site.line_number}'",
+                file=sys.stderr
+            )
+            raise ValueError(
+                f"A target with the name '{target_name}' was already added."
+            )
+
+        # Create the target
+        target = ExecutableTarget(
+            self._project_state,
+            target_name,
+            caller_offset=1
+        )
+        self._targets[target_name] = target
+        self._project_state.register_target(target_name, call_site)
+
+        return target
