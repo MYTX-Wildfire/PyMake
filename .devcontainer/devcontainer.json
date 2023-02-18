@@ -1,0 +1,19 @@
+{
+	"build": {
+		"dockerfile": "ubuntu.dockerfile"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"EditorConfig.EditorConfig",
+				"FordLabs.copyrighter",
+				"ms-python.python",
+				"streetsidesoftware.code-spell-checker",
+				"yzhang.markdown-all-in-one"
+			]
+		}
+	},
+	"forwardPorts": [
+		8000
+	]
+}
