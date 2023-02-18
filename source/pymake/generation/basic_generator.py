@@ -22,7 +22,8 @@ class BasicGenerator(ICodeGenerator):
           external build script.
         """
         self._code = code
-        self._caller_info = CallerInfo(2 + caller_offset)
+        # Add 1 to account for this constructor's stack frame
+        self._caller_info = CallerInfo(caller_offset + 1)
 
     def generate(self, source_tree_path: Path) -> str:
         """

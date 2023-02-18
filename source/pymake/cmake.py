@@ -27,7 +27,7 @@ class CMake:
           invoking this method.
         """
         self._min_version = min_version
-        self._call_site = CallerInfo()
+        self._call_site = CallerInfo(1)
 
         # Path to the top level folder for the project
         self._source_tree_path = Path(self._call_site.file_path).parent
@@ -70,9 +70,10 @@ class CMake:
         @throws ValueError thrown if any parameter is invalid.
         """
         return Project(
-            self._get_or_add_build_script(),
+            self.get_or_add_build_script(1),
             project_name,
-            project_languages
+            project_languages,
+            caller_offset=1
         )
 
     def build(self, generate_first: bool = True) -> None:
@@ -102,11 +103,11 @@ class CMake:
             print("========================================")
             print()
 
-    def _get_or_add_build_script(self, caller_offset: int = 1):
+    def get_or_add_build_script(self, caller_offset: int):
         """
         Gets the build script instance assigned to the current PyMake script.
         """
-        caller_info = CallerInfo(2 + caller_offset)
+        caller_info = CallerInfo(caller_offset + 1)
         build_script_rel_path = shorten_path(
             caller_info.file_path.parent,
             self._source_tree_path
