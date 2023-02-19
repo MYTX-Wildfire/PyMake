@@ -10,6 +10,7 @@ ARG PYTHON_VERSION=3.11
 RUN apt-get update -y && \
 	apt-get install -y \
 		git \
+		ninja-build \
 		python${PYTHON_VERSION} \
 		python3-pip \
 		ssh \
