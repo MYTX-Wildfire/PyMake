@@ -3,10 +3,11 @@ from pathlib import Path
 from pymake.common.scope import EScope
 from pymake.common.target_type import ETargetType
 from pymake.core.project_state import ProjectState
-from pymake.helpers.caller_info import CallerInfo
-from pymake.helpers.path_statics import to_abs_path
 from pymake.generation.basic_generator import BasicGenerator
-from typing import Dict, Iterable
+from pymake.helpers.caller_info import CallerInfo
+from pymake.helpers.code_generator import CodeGenerator
+from pymake.helpers.path_statics import to_abs_path
+from typing import Dict, Iterable, Optional
 
 class Target(ABC):
     """
@@ -84,5 +85,35 @@ class Target(ABC):
         build_script = self._project_state.get_or_add_build_script(1)
         build_script.add_generator(BasicGenerator(
             code,
+            caller_offset=1
+        ))
+
+    def install(self, path: Optional[str] = None) -> None:
+        """
+        Generates an install command for the target.
+        @param path Path to install the target to. If this is a relative path,
+          it will be interpreted relative to CMake's install prefix. If this is
+          not provided, the default location for the target type will be used.
+        """
+        if not path:
+            path = self._target_type.get_default_install_path()
+
+        # Generate the CMake code
+        generator = CodeGenerator()
+        generator.open_method("install")
+        generator.write_method_parameter(
+            "TARGETS",
+            self._target_name
+        )
+        generator.write_method_parameter(
+            "DESTINATION",
+            path
+        )
+        generator.close_method()
+
+        # Add the code to the build script
+        build_script = self._project_state.get_or_add_build_script(1)
+        build_script.add_generator(BasicGenerator(
+            generator.code,
             caller_offset=1
         ))
