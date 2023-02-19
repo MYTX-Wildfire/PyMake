@@ -9,8 +9,9 @@ from pymake.generation.disk_file_writer import DiskFileWriter
 from pymake.generation.file_writer import IFileWriter
 from pymake.helpers.caller_info import CallerInfo
 from pymake.helpers.code_generator import CodeGenerator
+import subprocess
 import sys
-from typing import Iterable
+from typing import List, Iterable
 
 class CMake:
     """
@@ -46,11 +47,13 @@ class CMake:
                 source_tree_path,
                 Path(generated_tree_path)
             ).resolve()
-
         self._project_state = ProjectState(
             source_tree_path,
             generated_tree_abs_path
         )
+
+        # List of presets to apply by default
+        self._default_presets: List[Preset] = []
 
         # Generate code for the project
         generator = CodeGenerator()
@@ -78,8 +81,8 @@ class CMake:
         """
         # Validate the preset name
         call_site = CallerInfo(1)
-        prev_call_site = self._project_state.try_get_preset(preset_name)
-        if prev_call_site:
+        if preset_name in self._project_state.presets:
+            prev_call_site = self._project_state.presets[preset_name].call_site
             print(f"Cannot add preset '{preset_name}' defined at " +
                 f"'{call_site.file_path}:{call_site.line_number}'",
                 file=sys.stderr
@@ -99,7 +102,7 @@ class CMake:
             generated_dir=self._project_state.generated_tree_path,
             caller_offset=1
         )
-        self._project_state.register_preset(preset)
+        self._project_state.presets[preset.preset_name] = preset
         return preset
 
     def add_project(self,
@@ -133,6 +136,72 @@ class CMake:
         if generate_first:
             self.generate()
 
+        # Process command line arguments to determine which preset(s) should
+        #   be used
+        selected_presets: List[Preset] = []
+        for name in sys.argv[1:]:
+            if name in self._project_state.presets:
+                selected_presets.append(self._project_state.presets[name])
+            else:
+                error_str = f"Error: Unrecognized preset: '{name}'"
+                print(error_str, file=sys.stderr)
+                raise RuntimeError(error_str)
+
+        if not selected_presets:
+            selected_presets = self._default_presets
+
+        if not selected_presets:
+            error_str = ("Error: No preset was specified and no default " +
+                "preset(s) were set.")
+            print(error_str, file=sys.stderr)
+            raise RuntimeError(error_str)
+
+        # Get the values to use
+        preset_state = selected_presets[0].preset_state
+        for preset in selected_presets[1:]:
+            preset_state.apply(preset.preset_state)
+
+        # TODO: If the minimum CMake version is at least v3.19, generate a
+        #   `CMakePresets.json` file instead.
+        if preset_state.binary_dir:
+            build_dir = str(preset_state.binary_dir)
+        else:
+            build_dir = "build"
+        if preset_state.install_dir:
+            install_dir = preset_state.install_dir
+        else:
+            install_dir = "_out"
+
+        # Run CMake's configure step
+        cmake_configure_cmd = [
+            "cmake",
+            "-S",
+            str(preset_state.generated_dir),
+            "-B",
+            build_dir,
+            # TODO: Remove this if using a preset
+            f"-DCMAKE_INSTALL_PREFIX='{install_dir}'"
+        ]
+        print("Running command: " + ' '.join(cmake_configure_cmd))
+        subprocess.run(
+            cmake_configure_cmd,
+            check=True
+        )
+
+        # Run CMake's build step
+        cmake_build_cmd = [
+            "cmake",
+            "--build",
+            build_dir,
+            "--target",
+            "install"
+        ]
+        print("Running command: " + ' '.join(cmake_configure_cmd))
+        subprocess.run(
+            cmake_build_cmd,
+            check=True
+        )
+
     def generate(self) -> None:
         """
         Generates the build scripts for the project.
@@ -142,3 +211,12 @@ class CMake:
                 build_script,
                 self._project_state.source_tree_path
             )
+
+    def set_default_presets(self, presets: Preset | Iterable[Preset]) -> None:
+        """
+        Sets the default preset(s) to use if none are specified.
+        @param presets Presets to use as the default presets.
+        """
+        if isinstance(presets, Preset):
+            presets = [presets]
+        self._default_presets = list(presets)

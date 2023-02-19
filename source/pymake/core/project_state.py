@@ -58,6 +58,13 @@ class ProjectState:
         return self._build_scripts
 
     @property
+    def presets(self) -> Dict[str, Preset]:
+        """
+        Gets all presets that have been added to the project.
+        """
+        return self._presets
+
+    @property
     def generated_tree_path(self) -> Path:
         """
         Gets the path to the generated tree for the PyMake project.
@@ -101,15 +108,6 @@ class ProjectState:
             self._build_scripts[build_script_rel_path] = build_script
             return build_script
 
-    def register_preset(self, preset: Preset) -> None:
-        """
-        Registers a preset with the project.
-        @param preset Preset to register. Must not have the same name as a
-          previously registered preset.
-        """
-        assert preset.preset_name not in self._presets
-        self._presets[preset.preset_name] = preset
-
     def register_target(self, target_name: str, call_site: CallerInfo) -> None:
         """
         Registers a target with the project.
@@ -120,17 +118,6 @@ class ProjectState:
         """
         assert target_name not in self._targets
         self._targets[target_name] = call_site
-
-    def try_get_preset(self, preset_name: str) -> Optional[CallerInfo]:
-        """
-        Checks for and retrieves preset information if the preset exists.
-        @param preset_name Name of the preset to retrieve info for.
-        @returns If the preset has been previously added, returns the location
-          where the preset was added at in the PyMake build scripts. If the
-          preset does not exist, returns None.
-        """
-        return (self._presets[preset_name].call_site
-            if preset_name in self._presets else None)
 
     def try_get_target(self, target_name: str) -> Optional[CallerInfo]:
         """

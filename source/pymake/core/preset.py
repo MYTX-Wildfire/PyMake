@@ -95,64 +95,53 @@ class Preset:
         state = state.apply(self._state)
         return state
 
-    def set_build_dir(self, path: str | Path) -> Preset:
+    def set_build_dir(self, path: str | Path) -> None:
         """
         Sets the path that CMake should use as the build/binary directory.
         @param path Path of the build directory to use. If this is a relative
           path, the path will be interpreted relative to the source tree's root.
-        @returns `self`
         """
         build_dir = to_abs_path(
             Path(path),
             self._state.source_dir
         )
-        self._state = PresetState(
-            binary_dir=build_dir,
-            **self._state._asdict()
+        self._state = self._state._replace(
+            binary_dir=build_dir
         )
-        return self
 
-    def set_env_variable(self, env_var: str, value: object) -> Preset:
+    def set_env_variable(self, env_var: str, value: object) -> None:
         """
         Sets an environment variable to set when invoking CMake via the preset.
         @param env_var Name of the environment variable to set.
         @param value Value to pass as the value of the environment variable.
-        @returns `self`
         """
         self._state.env_variables[env_var] = str(value)
-        return self
 
-    def set_generator(self, generator: str) -> Preset:
+    def set_generator(self, generator: str) -> None:
         """
         Sets the generator that should be used.
         @param generator Name of the generator to use. This must be a value that
           is recognized by CMake.
-        @returns `self`
         """
-        self._state = PresetState(
-            generator=generator,
-            **self._state._asdict()
+        self._state = self._state._replace(
+            generator=generator
         )
-        return self
 
-    def set_install_dir(self, path: str | Path) -> Preset:
+    def set_install_dir(self, path: str | Path) -> None:
         """
         Sets the path that CMake should use as the install directory.
         @param path Path of the install directory to use. If this is a relative
           path, the path will be interpreted relative to the source tree's root.
-        @returns `self`
         """
         install_dir = to_abs_path(
             Path(path),
             self._state.source_dir
         )
-        self._state = PresetState(
-            install_dir=install_dir,
-            **self._state._asdict()
+        self._state = self._state._replace(
+            install_dir=install_dir
         )
-        return self
 
-    def set_variable(self, cmake_var: str, value: object) -> Preset:
+    def set_variable(self, cmake_var: str, value: object) -> None:
         """
         Sets a CMake variable to pass to CMake when using the preset.
         @param cmake_var Name of the CMake variable to set.
@@ -160,17 +149,14 @@ class Preset:
         @returns `self`
         """
         self._state.variables[cmake_var] = str(value)
-        return self
 
-    def inherit_from(self, preset: Preset) -> Preset:
+    def inherit_from(self, preset: Preset) -> None:
         """
         Configures the preset to inherit all values from the given preset.
         @warning PyMake presets use **late-binding**. This means that if you
           call this method and then modify the base preset, the derived preset
           will still reflect those changes.
         @param preset Preset to inherit from.
-        @returns `self`
         """
         self._base_presets[preset.preset_name] = preset
         self._base_preset_order.append(preset)
-        return self
