@@ -8,6 +8,7 @@ from pymake.generation.basic_generator import BasicGenerator
 from pymake.generation.disk_file_writer import DiskFileWriter
 from pymake.generation.file_writer import IFileWriter
 from pymake.tracing.caller_info import CallerInfo
+from pymake.tracing.traced_set import TracedSet
 from pymake.helpers.code_generator import CodeGenerator
 import subprocess
 import sys
@@ -34,6 +35,7 @@ class CMake:
         self._min_version = min_version
         self._writer = writer
         self._call_site = CallerInfo(1)
+        self._projects: TracedSet[Project] = TracedSet()
 
         # Path to the top level folder for the project
         source_tree_path = Path(self._call_site.file_path).parent
@@ -111,11 +113,13 @@ class CMake:
         @param project_languages Languages used by the project.
         @throws ValueError thrown if any parameter is invalid.
         """
-        return Project(
+        project = Project(
             self._project_state,
             project_name,
             project_languages
         )
+        self._projects.add(project)
+        return project
 
     def build(self, generate_first: bool = True) -> None:
         """
@@ -214,6 +218,10 @@ class CMake:
                 preset,
                 self._project_state.generated_tree_path
             )
+
+        # Generate debugging files for project values
+        for project in self._projects:
+            project.value.write_targets(self._writer)
 
     def set_default_presets(self, presets: Preset | Iterable[Preset]) -> None:
         """

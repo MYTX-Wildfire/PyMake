@@ -3,6 +3,7 @@ from pymake.core.executable_target import ExecutableTarget
 from pymake.core.project_state import ProjectState
 from pymake.core.target import Target
 from pymake.generation.basic_generator import BasicGenerator
+from pymake.generation.file_writer import IFileWriter
 from pymake.tracing.caller_info import CallerInfo
 from pymake.helpers.code_generator import CodeGenerator
 import sys
@@ -94,3 +95,11 @@ class Project:
         self._project_state.register_target(target_name, call_site)
 
         return target
+
+    def write_targets(self, writer: IFileWriter) -> None:
+        """
+        Writes target information out via the file writer.
+        @param writer Writer to use to write out target information.
+        """
+        for target in self._targets.values():
+            writer.write_target(target, self._project_state.generated_tree_path)

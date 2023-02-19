@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from pymake.core.preset import Preset
+from pymake.core.target import Target
 from pymake.generation.file_writer import IFileWriter
 from pymake.generation.build_script import BuildScript
 
@@ -42,3 +43,18 @@ class DiskFileWriter(IFileWriter):
         )
         with open(output_file, mode="w") as f:
             f.write(preset_state.to_yaml())
+
+    def write_target(self,
+        target: Target,
+        generated_tree_path: Path) -> None:
+        """
+        Writes the target out in a human readable form for debugging.
+        @param target Target to generate a file for.
+        @param generated_tree_path Path to the directory where all generated
+          files should be placed.
+        """
+        output_file = generated_tree_path.joinpath(
+            target.target_name + ".target.yaml"
+        )
+        with open(output_file, mode="w") as f:
+            f.write(target.to_yaml())

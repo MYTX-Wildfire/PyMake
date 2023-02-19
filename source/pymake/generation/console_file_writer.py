@@ -1,5 +1,6 @@
 from pathlib import Path
 from pymake.core.preset import Preset
+from pymake.core.target import Target
 from pymake.generation.file_writer import IFileWriter
 from pymake.generation.build_script import BuildScript
 
@@ -31,4 +32,17 @@ class ConsoleFileWriter(IFileWriter):
         """
         print("========================================")
         print(preset.preset_state.to_yaml())
+        print("========================================")
+
+    def write_target(self,
+        target: Target,
+        generated_tree_path: Path) -> None:
+        """
+        Writes the target out in a human readable form for debugging.
+        @param target Target to generate a file for.
+        @param generated_tree_path Path to the directory where all generated
+          files should be placed.
+        """
+        print("========================================")
+        print(target.to_yaml())
         print("========================================")

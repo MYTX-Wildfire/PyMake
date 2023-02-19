@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from pathlib import Path
 from pymake.core.preset import Preset
+from pymake.core.target import Target
 from pymake.generation.build_script import BuildScript
 
 class IFileWriter(ABC):
@@ -25,6 +26,18 @@ class IFileWriter(ABC):
         """
         Writes the preset out in a human readable form for debugging.
         @param preset Preset to generate a file for.
+        @param generated_tree_path Path to the directory where all generated
+          files should be placed.
+        """
+        raise NotImplementedError()
+
+    @abstractmethod
+    def write_target(self,
+        target: Target,
+        generated_tree_path: Path) -> None:
+        """
+        Writes the target out in a human readable form for debugging.
+        @param target Target to generate a file for.
         @param generated_tree_path Path to the directory where all generated
           files should be placed.
         """

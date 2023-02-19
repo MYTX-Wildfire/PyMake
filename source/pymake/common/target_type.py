@@ -27,3 +27,18 @@ class ETargetType(IntEnum):
             return "lib"
         else:
             raise NotImplementedError()
+
+    def to_string(self) -> str:
+        """
+        Converts the target type to its string form.
+        """
+        if self == ETargetType.EXECUTABLE:
+            return "Executable"
+        elif self == ETargetType.STATIC:
+            return "Static"
+        elif self == ETargetType.SHARED:
+            return "Shared"
+        elif self == ETargetType.INTERFACE:
+            return "Interface"
+        else:
+            raise NotImplementedError()
