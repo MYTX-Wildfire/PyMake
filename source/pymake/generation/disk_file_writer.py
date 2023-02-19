@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from pymake.core.preset import Preset
 from pymake.generation.file_writer import IFileWriter
 from pymake.generation.build_script import BuildScript
 
@@ -25,3 +26,19 @@ class DiskFileWriter(IFileWriter):
         # Generate the file
         with open(script_path, mode="w") as f:
             f.write(build_script.generate_file_contents(source_tree_path))
+
+    def write_preset(self,
+        preset: Preset,
+        generated_tree_path: Path) -> None:
+        """
+        Writes the preset out in a human readable form for debugging.
+        @param preset Preset to generate a file for.
+        @param generated_tree_path Path to the directory where all generated
+          files should be placed.
+        """
+        preset_state = preset.preset_state
+        output_file = generated_tree_path.joinpath(
+            preset_state.preset_name + ".preset.yaml"
+        )
+        with open(output_file, mode="w") as f:
+            f.write(preset_state.to_yaml())

@@ -94,6 +94,17 @@ class Preset:
         state = state.apply(self._state)
         return state
 
+    def inherit_from(self, preset: Preset) -> None:
+        """
+        Configures the preset to inherit all values from the given preset.
+        @warning PyMake presets use **late-binding**. This means that if you
+          call this method and then modify the base preset, the derived preset
+          will still reflect those changes.
+        @param preset Preset to inherit from.
+        """
+        self._base_presets[preset.preset_name] = preset
+        self._base_preset_order.append(preset)
+
     def set_build_dir(self, path: str | Path) -> None:
         """
         Sets the path that CMake should use as the build/binary directory.
@@ -148,14 +159,3 @@ class Preset:
         @returns `self`
         """
         self._state.variables[cmake_var] = str(value)
-
-    def inherit_from(self, preset: Preset) -> None:
-        """
-        Configures the preset to inherit all values from the given preset.
-        @warning PyMake presets use **late-binding**. This means that if you
-          call this method and then modify the base preset, the derived preset
-          will still reflect those changes.
-        @param preset Preset to inherit from.
-        """
-        self._base_presets[preset.preset_name] = preset
-        self._base_preset_order.append(preset)

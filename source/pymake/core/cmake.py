@@ -201,10 +201,18 @@ class CMake:
         """
         Generates the build scripts for the project.
         """
+        # Generate the CMake build scripts
         for build_script in self._project_state.build_scripts.values():
             self._writer.write_script(
                 build_script,
                 self._project_state.source_tree_path
+            )
+
+        # Generate debugging files for each CMake construct added by the project
+        for preset in self._project_state.presets.values():
+            self._writer.write_preset(
+                preset,
+                self._project_state.generated_tree_path
             )
 
     def set_default_presets(self, presets: Preset | Iterable[Preset]) -> None:

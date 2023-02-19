@@ -1,5 +1,6 @@
 from __future__ import annotations
 from pathlib import Path
+from pymake.helpers.yaml_generator import YamlGenerator
 from typing import Dict, NamedTuple, Optional
 
 class PresetState(NamedTuple):
@@ -78,3 +79,66 @@ class PresetState(NamedTuple):
             variables=vars,
             env_variables=env_vars
         )
+
+    def to_yaml(self) -> str:
+        """
+        Converts the preset into a YAML file.
+        @returns A string containing the contents of the YAML file.
+        """
+        # Generate values to be printed for optional fields
+        if self.binary_dir:
+            build_dir = self.binary_dir
+        else:
+            build_dir = "<cmake_default>"
+        build_dir = f"\"{build_dir}\""
+
+        if self.install_dir:
+            install_dir = self.install_dir
+        else:
+            install_dir = "<cmake_default>"
+        install_dir = f"\"{install_dir}\""
+
+        # Generate the string to return
+        generator = YamlGenerator()
+        generator.open_block(self.preset_name)
+
+        # Add paths
+        generator.write_block_pair(
+            "Source directory",
+            f"\"{self.source_dir}\""
+        )
+        generator.write_block_pair(
+            "Generated directory",
+            f"\"{self.generated_dir}\""
+        )
+        generator.write_block_pair(
+            "Build directory",
+            build_dir
+        )
+        generator.write_block_pair(
+            "Install directory",
+            install_dir
+        )
+
+        # Add CMake variables
+        cmake_vars = "CMake variables"
+        if self.variables:
+            generator.open_block(cmake_vars)
+            for k, v in self.variables.items():
+                generator.write_block_pair(k, v)
+            generator.close_block()
+        else:
+            generator.write_block_pair(cmake_vars, "{}")
+
+        # Add environment variables
+        env_vars = "Environment variables"
+        if self.env_variables:
+            generator.open_block(env_vars)
+            for k, v in self.env_variables.items():
+                generator.write_block_pair(k, v)
+            generator.close_block()
+        else:
+            generator.write_block_pair(env_vars, "{}")
+
+        generator.close_block()
+        return generator.text
