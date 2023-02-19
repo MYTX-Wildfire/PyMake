@@ -2,6 +2,7 @@ from pymake.common.target_type import ETargetType
 from pymake.core.project_state import ProjectState
 from pymake.core.target import Target
 from pymake.generation.basic_generator import BasicGenerator
+from pymake.helpers.code_generator import CodeGenerator
 
 class ExecutableTarget(Target):
     """
@@ -27,9 +28,13 @@ class ExecutableTarget(Target):
             caller_offset + 1
         )
 
-        # Add the equivalent CMake code
+        # Generate the CMake code for adding the target
+        generator = CodeGenerator()
+        generator.append_line(f"add_executable({target_name})")
+
+        # Add the generated CMake code
         build_script = project_state.get_or_add_build_script(caller_offset + 1)
         build_script.add_generator(BasicGenerator(
-            f"add_executable({target_name})",
+            generator.code,
             caller_offset + 1
         ))

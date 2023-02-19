@@ -52,6 +52,6 @@ class BuildScript:
           file.
         """
         source_tree_path = source_tree_path.resolve()
-        return "\n\n".join([
+        return "\n".join([
             g.generate(source_tree_path) for g in self._generators
         ])

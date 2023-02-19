@@ -4,6 +4,7 @@ from pymake.core.project_state import ProjectState
 from pymake.core.target import Target
 from pymake.generation.basic_generator import BasicGenerator
 from pymake.helpers.caller_info import CallerInfo
+from pymake.helpers.code_generator import CodeGenerator
 import sys
 from typing import Iterable, Dict
 
@@ -50,16 +51,20 @@ class Project:
         else:
             self._project_languages = list(project_languages)
 
-        # Add the equivalent CMake code
-        code = f"project({project_name}\n"
-        code += "\tLANGUAGES\n"
-        for language in self._project_languages:
-            code += f"\t\t{language.to_cmake_language()}\n"
-        code += ")"
+        # Generate the CMake code for adding the project
+        generator = CodeGenerator()
+        generator.open_method("project")
+        generator.write_method_parameter(None, project_name)
+        generator.write_method_parameter(
+            "LANGUAGES",
+            [x.to_cmake_language() for x in self._project_languages]
+        )
+        generator.close_method()
 
+        # Add the generated code to the build script
         build_script = project_state.get_or_add_build_script(caller_offset + 1)
         build_script.add_generator(BasicGenerator(
-            code,
+            generator.code,
             caller_offset + 1
         ))
 

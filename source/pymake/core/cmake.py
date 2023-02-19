@@ -7,6 +7,7 @@ from pymake.generation.basic_generator import BasicGenerator
 from pymake.generation.disk_file_writer import DiskFileWriter
 from pymake.generation.file_writer import IFileWriter
 from pymake.helpers.caller_info import CallerInfo
+from pymake.helpers.code_generator import CodeGenerator
 from typing import Iterable
 
 class CMake:
@@ -49,12 +50,21 @@ class CMake:
             generated_tree_abs_path
         )
 
+        # Generate code for the project
+        generator = CodeGenerator()
+        generator.open_method("cmake_minimum_required")
+        generator.write_method_parameter(
+            "VERSION",
+            self._min_version.to_version_string()
+        )
+        generator.close_method()
+
         # Build script for the top-level CMakeLists.txt
         top_level_build_script = self._project_state.get_or_add_build_script(
             caller_offset=1
         )
         top_level_build_script.add_generator(BasicGenerator(
-            f"cmake_minimum_required(VERSION {min_version.to_version_string()})",
+            generator.code,
             caller_offset=1
         ))
 

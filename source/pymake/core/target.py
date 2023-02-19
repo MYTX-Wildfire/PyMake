@@ -75,16 +75,19 @@ class Target(ABC):
             self._sources[p] = call_site
 
         # Generate the CMake code for adding the source(s) to the target
-        code = "target_sources(\n"
-        code += "\t" + self._target_name + "\n"
-        code += "\t" + scope.to_cmake_string() + "\n"
-        for p in source_paths:
-            code += f"\t\t{p}\n"
-        code += ")"
+        generator = CodeGenerator()
+        generator.open_method("target_sources")
+        generator.write_method_parameter(None, self._target_name)
+        generator.write_method_parameter(
+            scope.to_cmake_string(),
+            [str(p) for p in source_paths]
+        )
+        generator.close_method()
 
+        # Add the generated CMake code
         build_script = self._project_state.get_or_add_build_script(1)
         build_script.add_generator(BasicGenerator(
-            code,
+            generator.code,
             caller_offset=1
         ))
 
