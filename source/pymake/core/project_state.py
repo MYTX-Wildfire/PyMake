@@ -1,4 +1,5 @@
 from pathlib import Path
+from pymake.core.preset import Preset
 from pymake.generation.build_script import BuildScript
 from pymake.helpers.caller_info import CallerInfo
 from pymake.helpers.path_statics import shorten_path
@@ -32,6 +33,9 @@ class ProjectState:
         #   the source tree. Build scripts located outside the source tree will
         #   be indexed under their absolute path instead.
         self._build_scripts: Dict[Path, BuildScript] = {}
+
+        # Dictionary of all presets, indexed by the preset's name
+        self._presets: Dict[str, Preset] = {}
 
         # Dictionary of all targets (regardless of type) and where they were
         #   added from.
@@ -97,6 +101,15 @@ class ProjectState:
             self._build_scripts[build_script_rel_path] = build_script
             return build_script
 
+    def register_preset(self, preset: Preset) -> None:
+        """
+        Registers a preset with the project.
+        @param preset Preset to register. Must not have the same name as a
+          previously registered preset.
+        """
+        assert preset.preset_name not in self._presets
+        self._presets[preset.preset_name] = preset
+
     def register_target(self, target_name: str, call_site: CallerInfo) -> None:
         """
         Registers a target with the project.
@@ -108,6 +121,17 @@ class ProjectState:
         assert target_name not in self._targets
         self._targets[target_name] = call_site
 
+    def try_get_preset(self, preset_name: str) -> Optional[CallerInfo]:
+        """
+        Checks for and retrieves preset information if the preset exists.
+        @param preset_name Name of the preset to retrieve info for.
+        @returns If the preset has been previously added, returns the location
+          where the preset was added at in the PyMake build scripts. If the
+          preset does not exist, returns None.
+        """
+        return (self._presets[preset_name].call_site
+            if preset_name in self._presets else None)
+
     def try_get_target(self, target_name: str) -> Optional[CallerInfo]:
         """
         Checks for and retrieves target information if the target exists.
@@ -117,7 +141,6 @@ class ProjectState:
           target does not exist, returns None.
         """
         return self._targets.get(target_name)
-
 
     def _get_target_build_script_name(self, script_name: str) -> str:
         """

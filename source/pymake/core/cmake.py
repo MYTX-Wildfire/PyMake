@@ -1,6 +1,7 @@
 from pathlib import Path
 from pymake.common.cmake_version import ECMakeVersion
 from pymake.common.project_language import EProjectLanguage
+from pymake.core.preset import Preset
 from pymake.core.project import Project
 from pymake.core.project_state import ProjectState
 from pymake.generation.basic_generator import BasicGenerator
@@ -8,6 +9,7 @@ from pymake.generation.disk_file_writer import DiskFileWriter
 from pymake.generation.file_writer import IFileWriter
 from pymake.helpers.caller_info import CallerInfo
 from pymake.helpers.code_generator import CodeGenerator
+import sys
 from typing import Iterable
 
 class CMake:
@@ -67,6 +69,38 @@ class CMake:
             generator.code,
             caller_offset=1
         ))
+
+    def add_preset(self, preset_name: str) -> Preset:
+        """
+        Adds a new CMake preset.
+        @param preset_name Name of the new preset.
+        @throws ValueError Thrown if a preset already exists with the given name.
+        """
+        # Validate the preset name
+        call_site = CallerInfo(1)
+        prev_call_site = self._project_state.try_get_preset(preset_name)
+        if prev_call_site:
+            print(f"Cannot add preset '{preset_name}' defined at " +
+                f"'{call_site.file_path}:{call_site.line_number}'",
+                file=sys.stderr
+            )
+            print(f"A preset with the same name was previously added at " +
+                f"'{prev_call_site.file_path}:{prev_call_site.line_number}'",
+                file=sys.stderr
+            )
+            raise ValueError(
+                f"A preset with the name '{preset_name}' was already added."
+            )
+
+        # Create the preset
+        preset = Preset(
+            preset_name,
+            source_dir=self._project_state.source_tree_path,
+            generated_dir=self._project_state.generated_tree_path,
+            caller_offset=1
+        )
+        self._project_state.register_preset(preset)
+        return preset
 
     def add_project(self,
         project_name: str,
