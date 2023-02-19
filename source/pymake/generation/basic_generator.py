@@ -1,6 +1,6 @@
 from pathlib import Path
 from pymake.generation.code_generator import ICodeGenerator
-from pymake.helpers.caller_info import CallerInfo
+from pymake.tracing.caller_info import CallerInfo
 from pymake.helpers.path_statics import shorten_path
 
 class BasicGenerator(ICodeGenerator):
@@ -12,18 +12,13 @@ class BasicGenerator(ICodeGenerator):
       different code generator implementation.
     """
 
-    def __init__(self, code: str, caller_offset: int):
+    def __init__(self, code: str):
         """
         Initializes the generator.
         @param code CMake code to return when the generator is invoked.
-        @param caller_offset Offset in number of stack frames to apply to get
-          the stack frame of the build script using PyMake. This value should
-          only account for the PyMake stack frames between this method and the
-          external build script.
-        """
+       """
         self._code = code
-        # Add 1 to account for this constructor's stack frame
-        self._caller_info = CallerInfo(caller_offset + 1)
+        self._caller_info = CallerInfo.closest_external_frame()
 
     def generate(self, source_tree_path: Path) -> str:
         """

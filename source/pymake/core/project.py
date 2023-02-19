@@ -3,7 +3,7 @@ from pymake.core.executable_target import ExecutableTarget
 from pymake.core.project_state import ProjectState
 from pymake.core.target import Target
 from pymake.generation.basic_generator import BasicGenerator
-from pymake.helpers.caller_info import CallerInfo
+from pymake.tracing.caller_info import CallerInfo
 from pymake.helpers.code_generator import CodeGenerator
 import sys
 from typing import Iterable, Dict
@@ -15,8 +15,7 @@ class Project:
     def __init__(self,
         project_state: ProjectState,
         project_name: str,
-        project_languages: EProjectLanguage | Iterable[EProjectLanguage],
-        caller_offset: int):
+        project_languages: EProjectLanguage | Iterable[EProjectLanguage]):
         """
         Initializes the object.
         @param project_state State object for the CMake project this object is
@@ -25,8 +24,6 @@ class Project:
           string or all whitespace.
         @param project_languages Languages used by the project. At least one
           language must be specified.
-        @param caller_offset Number of stack frames to traverse to get to
-          the stack frame of the pymake build script.
         @throws ValueError thrown if any parameter is invalid.
         """
         # Validate method arguments
@@ -43,9 +40,7 @@ class Project:
         self._project_state = project_state
         # Dictionary of targets in the project, indexed by target name
         self._targets: Dict[str, Target] = {}
-        # Add 1 to the provided caller offset to account for this constructor's
-        #   stack frame
-        self._call_site = CallerInfo(caller_offset + 1)
+        self._call_site = CallerInfo.closest_external_frame()
         if isinstance(project_languages, EProjectLanguage):
             self._project_languages = [project_languages]
         else:
@@ -62,10 +57,9 @@ class Project:
         generator.close_method()
 
         # Add the generated code to the build script
-        build_script = project_state.get_or_add_build_script(caller_offset + 1)
+        build_script = project_state.get_or_add_build_script()
         build_script.add_generator(BasicGenerator(
-            generator.code,
-            caller_offset + 1
+            generator.code
         ))
 
     def add_executable(self, target_name: str) -> ExecutableTarget:

@@ -7,7 +7,7 @@ from pymake.core.project_state import ProjectState
 from pymake.generation.basic_generator import BasicGenerator
 from pymake.generation.disk_file_writer import DiskFileWriter
 from pymake.generation.file_writer import IFileWriter
-from pymake.helpers.caller_info import CallerInfo
+from pymake.tracing.caller_info import CallerInfo
 from pymake.helpers.code_generator import CodeGenerator
 import subprocess
 import sys
@@ -65,12 +65,9 @@ class CMake:
         generator.close_method()
 
         # Build script for the top-level CMakeLists.txt
-        top_level_build_script = self._project_state.get_or_add_build_script(
-            caller_offset=1
-        )
+        top_level_build_script = self._project_state.get_or_add_build_script()
         top_level_build_script.add_generator(BasicGenerator(
-            generator.code,
-            caller_offset=1
+            generator.code
         ))
 
     def add_preset(self, preset_name: str) -> Preset:
@@ -99,8 +96,7 @@ class CMake:
         preset = Preset(
             preset_name,
             source_dir=self._project_state.source_tree_path,
-            generated_dir=self._project_state.generated_tree_path,
-            caller_offset=1
+            generated_dir=self._project_state.generated_tree_path
         )
         self._project_state.presets[preset.preset_name] = preset
         return preset
@@ -118,8 +114,7 @@ class CMake:
         return Project(
             self._project_state,
             project_name,
-            project_languages,
-            caller_offset=1
+            project_languages
         )
 
     def build(self, generate_first: bool = True) -> None:

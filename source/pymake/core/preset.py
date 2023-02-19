@@ -1,7 +1,7 @@
 from __future__ import annotations
 from pathlib import Path
 from pymake.core.preset_state import PresetState
-from pymake.helpers.caller_info import CallerInfo
+from pymake.tracing.caller_info import CallerInfo
 from pymake.helpers.path_statics import to_abs_path
 from typing import Dict, List
 
@@ -21,8 +21,7 @@ class Preset:
     def __init__(self,
         preset_name: str,
         source_dir: Path,
-        generated_dir: Path,
-        caller_offset: int):
+        generated_dir: Path):
         """
         Initializes the object.
         @param preset_name Name given to the preset. Must be unique within a
@@ -51,7 +50,7 @@ class Preset:
             variables={},
             env_variables={}
         )
-        self._call_site = CallerInfo(caller_offset + 1)
+        self._call_site = CallerInfo.closest_external_frame()
 
         # Dictionary of presets that this preset inherits from.
         # Each preset is indexed by its name.

@@ -24,8 +24,7 @@ class ExecutableTarget(Target):
         super().__init__(
             project_state,
             target_name,
-            ETargetType.EXECUTABLE,
-            caller_offset + 1
+            ETargetType.EXECUTABLE
         )
 
         # Generate the CMake code for adding the target
@@ -33,8 +32,7 @@ class ExecutableTarget(Target):
         generator.append_line(f"add_executable({target_name})")
 
         # Add the generated CMake code
-        build_script = project_state.get_or_add_build_script(caller_offset + 1)
+        build_script = project_state.get_or_add_build_script()
         build_script.add_generator(BasicGenerator(
-            generator.code,
-            caller_offset + 1
+            generator.code
         ))

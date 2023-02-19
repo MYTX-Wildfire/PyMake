@@ -4,7 +4,7 @@ from pymake.common.scope import EScope
 from pymake.common.target_type import ETargetType
 from pymake.core.project_state import ProjectState
 from pymake.generation.basic_generator import BasicGenerator
-from pymake.helpers.caller_info import CallerInfo
+from pymake.tracing.caller_info import CallerInfo
 from pymake.helpers.code_generator import CodeGenerator
 from pymake.helpers.path_statics import to_abs_path
 from typing import Dict, Iterable, Optional
@@ -16,16 +16,13 @@ class Target(ABC):
     def __init__(self,
         project_state: ProjectState,
         target_name: str,
-        target_type: ETargetType,
-        caller_offset: int):
+        target_type: ETargetType):
         """
         Initializes the target.
         @param project_state State information for the PyMake project that the
           target is part of.
         @param target_name Name of the target.
         @param target_type Type of the target.
-        @param caller_offset Number of stack frames to traverse to get to
-          the stack frame of the pymake build script.
         @throws ValueError Thrown if any parameter is invalid.
         """
         # Validate method arguments
@@ -37,7 +34,7 @@ class Target(ABC):
         self._project_state = project_state
         self._target_name = target_name
         self._target_type = target_type
-        self._call_site = CallerInfo(caller_offset + 1)
+        self._call_site = CallerInfo.closest_external_frame()
 
         # Keep track of where each source was added from
         # This is used to improve debugging when stepping through PyMake build
@@ -85,10 +82,9 @@ class Target(ABC):
         generator.close_method()
 
         # Add the generated CMake code
-        build_script = self._project_state.get_or_add_build_script(1)
+        build_script = self._project_state.get_or_add_build_script()
         build_script.add_generator(BasicGenerator(
-            generator.code,
-            caller_offset=1
+            generator.code
         ))
 
     def install(self, path: Optional[str] = None) -> None:
@@ -115,8 +111,7 @@ class Target(ABC):
         generator.close_method()
 
         # Add the code to the build script
-        build_script = self._project_state.get_or_add_build_script(1)
+        build_script = self._project_state.get_or_add_build_script()
         build_script.add_generator(BasicGenerator(
-            generator.code,
-            caller_offset=1
+            generator.code
         ))

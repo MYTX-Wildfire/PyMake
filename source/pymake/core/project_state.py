@@ -1,7 +1,7 @@
 from pathlib import Path
 from pymake.core.preset import Preset
 from pymake.generation.build_script import BuildScript
-from pymake.helpers.caller_info import CallerInfo
+from pymake.tracing.caller_info import CallerInfo
 from pymake.helpers.path_statics import shorten_path
 from typing import Dict, Optional
 
@@ -82,13 +82,11 @@ class ProjectState:
         """
         return self._source_tree_path
 
-    def get_or_add_build_script(self, caller_offset: int):
+    def get_or_add_build_script(self):
         """
         Gets the build script instance assigned to the current PyMake script.
-        @param caller_offset Number of stack frames to traverse to get to
-          the stack frame of the pymake build script's stack frame.
         """
-        caller_info = CallerInfo(caller_offset + 1)
+        caller_info = CallerInfo.closest_external_frame()
         build_script_rel_path = shorten_path(
             caller_info.file_path.parent,
             self._source_tree_path

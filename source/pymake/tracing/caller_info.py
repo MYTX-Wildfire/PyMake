@@ -1,4 +1,6 @@
+from __future__ import annotations
 import inspect
+import os
 from pathlib import Path
 
 class CallerInfo:
@@ -31,6 +33,19 @@ class CallerInfo:
         #   constructed.
         self._file_path = Path(frame.f_code.co_filename).absolute().resolve()
         self._line_number = frame.f_lineno
+
+    @staticmethod
+    def closest_external_frame() -> CallerInfo:
+        """
+        Creates a `CallerInfo` instance for the closest non-pymake stack frame.
+        """
+        i = 1
+        caller_info = CallerInfo(i)
+        sep = os.path.sep
+        while f"{sep}pymake{sep}" in str(caller_info.file_path):
+            i += 1
+            caller_info = CallerInfo(i)
+        return caller_info
 
     @property
     def file_path(self) -> Path:
