@@ -159,11 +159,11 @@ class CMake:
         # TODO: If the minimum CMake version is at least v3.19, generate a
         #   `CMakePresets.json` file instead.
         if preset_state.binary_dir:
-            build_dir = str(preset_state.binary_dir)
+            build_dir = str(preset_state.binary_dir.value)
         else:
             build_dir = "build"
         if preset_state.install_dir:
-            install_dir = preset_state.install_dir
+            install_dir = preset_state.install_dir.value
         else:
             install_dir = "_out"
 

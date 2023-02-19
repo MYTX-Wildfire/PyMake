@@ -1,6 +1,7 @@
 from __future__ import annotations
 from pathlib import Path
 from pymake.helpers.yaml_generator import YamlGenerator
+from pymake.tracing.traced import Traced
 from typing import Dict, NamedTuple, Optional
 
 class PresetState(NamedTuple):
@@ -12,11 +13,11 @@ class PresetState(NamedTuple):
 
     # Path to the directory to use as the build directory.
     # @invariant This will always be an absolute path.
-    binary_dir: Optional[Path]
+    binary_dir: Optional[Traced[Path]]
 
     # Path to the directory to use as the install directory.
     # @invariant This will always be an absolute path.
-    install_dir: Optional[Path]
+    install_dir: Optional[Traced[Path]]
 
     # Path to the directory containing the generated CMake build scripts.
     # @invariant This will always be an absolute path.
@@ -33,17 +34,17 @@ class PresetState(NamedTuple):
     # Generator that CMake should use.
     # @warning This must be a value recognized by CMake. PyMake will not attempt
     #   to validate this value.
-    generator: Optional[str]
+    generator: Optional[Traced[str]]
 
     # Dictionary of variables to pass to CMake.
     # Each entry in this dictionary will be a variable name and the value to
     #   assign to the variable.
-    variables: Dict[str, str]
+    variables: Dict[str, Traced[str]]
 
     # Dictionary of environment variables to use when invoking CMake.
     # Each entry in this dictionary will be a variable name and the value to
     #   assign to the variable.
-    env_variables: Dict[str, str]
+    env_variables: Dict[str, Traced[str]]
 
     def apply(self, other: PresetState) -> PresetState:
         """
@@ -105,40 +106,48 @@ class PresetState(NamedTuple):
         # Add paths
         generator.write_block_pair(
             "Source directory",
-            f"\"{self.source_dir}\""
+            str(self.source_dir)
         )
         generator.write_block_pair(
             "Generated directory",
-            f"\"{self.generated_dir}\""
+            str(self.generated_dir)
         )
-        generator.write_block_pair(
-            "Build directory",
-            build_dir
-        )
-        generator.write_block_pair(
-            "Install directory",
-            install_dir
-        )
+        if self.binary_dir:
+            generator.write_traced("Build directory", self.binary_dir)
+        else:
+            generator.write_block_pair(
+                "Build directory",
+                "<cmake_default>",
+                add_quotes=False
+            )
+        if self.install_dir:
+            generator.write_traced("Install directory", self.install_dir)
+        else:
+            generator.write_block_pair(
+                "Install directory",
+                "<cmake_default>",
+                add_quotes=False
+            )
 
         # Add CMake variables
         cmake_vars = "CMake variables"
         if self.variables:
             generator.open_block(cmake_vars)
             for k, v in self.variables.items():
-                generator.write_block_pair(k, v)
+                generator.write_traced(k, v)
             generator.close_block()
         else:
-            generator.write_block_pair(cmake_vars, "{}")
+            generator.write_empty_dict(cmake_vars)
 
         # Add environment variables
         env_vars = "Environment variables"
         if self.env_variables:
             generator.open_block(env_vars)
             for k, v in self.env_variables.items():
-                generator.write_block_pair(k, v)
+                generator.write_traced(k, v)
             generator.close_block()
         else:
-            generator.write_block_pair(env_vars, "{}")
+            generator.write_empty_dict(env_vars)
 
         generator.close_block()
         return generator.text

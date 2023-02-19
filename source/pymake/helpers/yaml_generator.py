@@ -1,3 +1,6 @@
+from pymake.tracing.traced import Traced
+from typing import Any
+
 class YamlGenerator:
     """
     Helper type used to write values out in YAML format.
@@ -98,19 +101,58 @@ class YamlGenerator:
         self.append_line(block_name + ":")
         self.increase_indentation_level()
 
-    def write_block_pair(self, key: str, value: str) -> None:
+    def write_block_pair(self,
+        key: str,
+        value: str,
+        add_quotes: bool = True) -> None:
         """
         Writes a key-value pair to the current block.
         @param key Key that the value is associated with.
         @param value Value to write.
+        @param add_quotes Whether to add quotation marks around the value when
+          writing it.
         """
-        self.append_line(f"{key}: {value}")
+        if add_quotes:
+            self.append_line(f"{key}: \"{value}\"")
+        else:
+            self.append_line(f"{key}: {value}")
 
-    def write_block_value(self, value: str) -> None:
+    def write_block_value(self, value: str, add_quotes: bool = True) -> None:
         """
         Writes a value to the current block.
         @param value Value to write.
+        @param add_quotes Whether to add quotation marks around the value when
+          writing it.
         """
-        self.append_line(f"- {value}")
+        if add_quotes:
+            self.append_line(f"- \"{value}\"")
+        else:
+            self.append_line(f"- {value}")
 
+    def write_empty_dict(self, key: str) -> None:
+        """
+        Writes an empty dictionary to the current block.
+        @param key Key to use for the dictionary.
+        """
+        self.append_line(f"{key}: {{}}")
+
+    def write_traced(self,
+        key: str,
+        value: Traced[Any],
+        add_quotes: bool = True) -> None:
+        """
+        Writes a traced value as a YAML dictionary.
+        @param key Key to use as the name of the dictionary.
+        @param value Traced value containing the value to write and the tracing
+          information to add.
+        @param add_quotes Whether to add quotation marks around the values being
+          written out.
+        """
+        self.open_block(key)
+        self.write_block_pair("value", value.value, add_quotes)
+        self.write_block_pair(
+            "origin",
+            f"{value.call_site.file_path}:{value.call_site.line_number}",
+        )
+        self.close_block()
 

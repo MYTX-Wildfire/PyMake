@@ -1,7 +1,7 @@
 from pymake.tracing.caller_info import CallerInfo
 from typing import Generic, TypeVar
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 class Traced(Generic[T]):
     """

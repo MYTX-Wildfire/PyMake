@@ -1,8 +1,9 @@
 from __future__ import annotations
 from pathlib import Path
 from pymake.core.preset_state import PresetState
-from pymake.tracing.caller_info import CallerInfo
 from pymake.helpers.path_statics import to_abs_path
+from pymake.tracing.caller_info import CallerInfo
+from pymake.tracing.traced import Traced
 from typing import Dict, List
 
 class Preset:
@@ -111,10 +112,10 @@ class Preset:
         @param path Path of the build directory to use. If this is a relative
           path, the path will be interpreted relative to the source tree's root.
         """
-        build_dir = to_abs_path(
+        build_dir = Traced(to_abs_path(
             Path(path),
             self._state.source_dir
-        )
+        ))
         self._state = self._state._replace(
             binary_dir=build_dir
         )
@@ -125,7 +126,7 @@ class Preset:
         @param env_var Name of the environment variable to set.
         @param value Value to pass as the value of the environment variable.
         """
-        self._state.env_variables[env_var] = str(value)
+        self._state.env_variables[env_var] = Traced(str(value))
 
     def set_generator(self, generator: str) -> None:
         """
@@ -143,10 +144,10 @@ class Preset:
         @param path Path of the install directory to use. If this is a relative
           path, the path will be interpreted relative to the source tree's root.
         """
-        install_dir = to_abs_path(
+        install_dir = Traced(to_abs_path(
             Path(path),
             self._state.source_dir
-        )
+        ))
         self._state = self._state._replace(
             install_dir=install_dir
         )
@@ -158,4 +159,4 @@ class Preset:
         @param value Value to pass to CMake as the value of the variable.
         @returns `self`
         """
-        self._state.variables[cmake_var] = str(value)
+        self._state.variables[cmake_var] = Traced(str(value))
