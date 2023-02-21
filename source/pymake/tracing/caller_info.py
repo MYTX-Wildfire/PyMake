@@ -38,6 +38,8 @@ class CallerInfo:
     def closest_external_frame() -> CallerInfo:
         """
         Creates a `CallerInfo` instance for the closest non-pymake stack frame.
+        @returns A `CallerInfo` instance that captures the data for the closest
+          non-pymake stack frame.
         """
         i = 1
         caller_info = CallerInfo(i)
@@ -51,6 +53,7 @@ class CallerInfo:
     def file_path(self) -> Path:
         """
         Gets the file path of the caller's code.
+        @invariant This will always be an absolute path.
         """
         return self._file_path
 
