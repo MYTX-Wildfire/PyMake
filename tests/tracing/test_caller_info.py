@@ -18,7 +18,7 @@ def test_from_stack_frame():
     """
     caller_info = CallerInfo.from_stack_frame(0)
     assert str(caller_info.file_path) == __file__
-    assert caller_info.line_number == 18
+    assert caller_info.line_number == 19
 
 
 def test_hash_and_equality():
