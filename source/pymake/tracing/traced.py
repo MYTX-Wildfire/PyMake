@@ -20,13 +20,17 @@ class Traced(Generic[T]):
     """
     Wrapper used to add tracing information to a value.
     """
-    def __init__(self, value: T):
+    def __init__(self, value: T, call_site: CallerInfo | None = None):
         """
         Initializes the object.
         @param value Value to wrap.
+        @param call_site Call site where the value was provided from. If not
+          provided, the call site will be determined automatically by capturing
+          the first external frame.
         """
         self._value = value
-        self._call_site = CallerInfo.closest_external_frame()
+        self._call_site = (call_site if call_site
+            else CallerInfo.closest_external_frame())
 
     @property
     def call_site(self) -> CallerInfo:

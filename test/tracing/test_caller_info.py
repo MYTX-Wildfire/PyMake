@@ -20,15 +20,15 @@ def test_from_stack_frame():
     assert caller_info.line_number == 18
 
 def test_hash_and_equality():
-    caller_info1 = CallerInfo(Path("foo.py"), 1)
-    caller_info2 = CallerInfo(Path("foo.py"), 1)
+    caller_info1 = CallerInfo(Path("/foo.py"), 1)
+    caller_info2 = CallerInfo(Path("/foo.py"), 1)
     assert caller_info1 == caller_info2
     assert hash(caller_info1) == hash(caller_info2)
 
-    caller_info3 = CallerInfo(Path("bar.py"), 1)
+    caller_info3 = CallerInfo(Path("/bar.py"), 1)
     assert caller_info1 != caller_info3
     assert hash(caller_info1) != hash(caller_info3)
 
-    caller_info4 = CallerInfo(Path("foo.py"), 2)
+    caller_info4 = CallerInfo(Path("/foo.py"), 2)
     assert caller_info1 != caller_info4
     assert hash(caller_info1) != hash(caller_info4)

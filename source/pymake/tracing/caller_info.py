@@ -7,13 +7,19 @@ class CallerInfo:
     """
     Helper class that captures caller information for a method.
     """
-    def __init__(self, file_path: Path, line_number: int):
+    def __init__(self, file_path: Path | str, line_number: int):
         """
         Initializes the object.
         @param file_path Absolute path to the file that the stack frame is from.
         @param line_number Line number of the executing code whose stack frame
           is captured.
+        @throws ValueError Thrown if `file_path` is not an absolute path.
         """
+        if isinstance(file_path, str):
+            file_path = Path(file_path)
+        if not file_path.is_absolute():
+            raise ValueError("file_path must be an absolute path.")
+
         self._file_path = file_path
         self._line_number = line_number
 
