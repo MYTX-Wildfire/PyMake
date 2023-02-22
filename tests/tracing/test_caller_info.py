@@ -1,6 +1,6 @@
-import pytest
 from pathlib import Path
 from pymake.tracing.caller_info import CallerInfo
+import pytest
 
 def test_closest_external_frame():
     """

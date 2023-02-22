@@ -3,6 +3,7 @@ from pathlib import Path
 from pymake.tracing.caller_info import CallerInfo
 from pymake.tracing.shortened_caller_info_formatter import ShortenedCallerInfoFormatter
 from pymake.tracing.traced import Traced
+import pytest
 
 def test_shortened_caller_info_formatter_on_caller_info_full_path():
     """
@@ -106,3 +107,8 @@ def test_shortened_caller_info_formatter_on_traced_class_shortened_path():
     assert __file__ not in output
     assert curr_file_name in output
     assert str(line_num) in output
+
+
+def test_ctor_throws_if_base_path_not_absolute():
+    with pytest.raises(ValueError):
+        ShortenedCallerInfoFormatter("foo")
