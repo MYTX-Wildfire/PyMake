@@ -138,5 +138,5 @@ class TextGenerator:
         """
         index = self._text.rfind(text)
         if index >= 0:
-            self._text = self._text[:index]
+            self._text = self._text[:index] + self._text[index + len(text):]
         return index >= 0

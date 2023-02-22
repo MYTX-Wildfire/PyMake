@@ -1,7 +1,7 @@
-from dummy_traced import DummyTraced
 from pymake.tracing.caller_info import CallerInfo
 from pymake.tracing.full_caller_info_formatter import FullCallerInfoFormatter
 from pymake.tracing.traced import Traced
+from tests.tracing.dummy_traced import DummyTraced
 
 def test_full_caller_info_formatter_on_caller_info():
     """

@@ -102,6 +102,14 @@ def test_remove_last_instance_of_existing_string_with_multiple_instances():
     assert generator.text == "foobar"
 
 
+def test_remove_last_instance_of_existing_string_not_at_end():
+    generator = TextGenerator()
+    generator.append("foo ")
+    generator.append("bar")
+    generator.remove_last_instance_of(" ")
+    assert generator.text == "foobar"
+
+
 def test_increase_indentation_level():
     generator = TextGenerator()
     generator.append_line("foo")
