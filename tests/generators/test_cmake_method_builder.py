@@ -9,7 +9,7 @@ def test_generate_empty_method():
     generator = CMakeGenerator(NullCallerInfoFormatter())
     with generator.open_method_block("foo") as _:
         pass
-    assert generator.generate() == "foo()\n"
+    assert generator.generate() == "foo()\n\n"
 
 
 def test_tracing_information():
@@ -30,6 +30,7 @@ def test_generate_method_with_single_argument():
         "foo(",
         "\tbar",
         ")",
+        ""
     ]
     assert expected_tokens == tokens
 
@@ -46,6 +47,7 @@ def test_generate_method_with_arguments():
         "\tbar",
         "\tbaz",
         ")",
+        ""
     ]
     assert expected_tokens == tokens
 
@@ -62,6 +64,7 @@ def test_generate_method_with_single_keyword_argument():
         "\tKEYWORD",
         "\t\tbar",
         ")",
+        ""
     ]
     assert expected_tokens == tokens
 
@@ -79,5 +82,6 @@ def test_generate_method_with_keyword_arguments():
         "\t\tbar",
         "\t\tbaz",
         ")",
+        ""
     ]
     assert expected_tokens == tokens

@@ -94,4 +94,6 @@ class CMakeMethodBuilder:
             self._generator.finish_line()
             self._generator.decrease_indentation_level()
 
-        self._generator.append_line(")")
+        # Finish the line with the parenthesis and add a new line afterwards
+        #   to separate this method call from the next line of code
+        self._generator.append_line(")\n")
