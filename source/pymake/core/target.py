@@ -5,8 +5,8 @@ from pymake.common.scope import EScope
 from pymake.common.target_type import ETargetType
 from pymake.core.scoped_sets import ScopedSets
 from pymake.tracing.caller_info import CallerInfo
-from pymake.tracing.traced import ITraced
-from typing import Iterable
+from pymake.tracing.traced import ITraced, Traced
+from typing import Iterable, Optional
 
 class ITarget(ABC, ITraced):
     """
@@ -31,6 +31,29 @@ class ITarget(ABC, ITraced):
         #   instance with all values, use the `get_full_target()` method.
         self._sources: ScopedSets[Path] = ScopedSets()
 
+        # Whether the target will be installed
+        # If `_is_installed` is `True` but `_install_path` is `None`, the path
+        #   that the target will be installed to will be CMake's default path
+        #   for the target type.
+        self._is_installed = False
+        self._install_path: Optional[Traced[str]] = None
+
+
+    @property
+    def is_installed(self) -> bool:
+        """
+        Gets whether the target will be installed.
+        """
+        return self._is_installed
+
+
+    @property
+    def install_path(self) -> Optional[Traced[str]]:
+        """
+        Gets the path that the target will be installed to.
+        """
+        return self._install_path
+
 
     @property
     def is_full_target(self) -> bool:
@@ -46,6 +69,14 @@ class ITarget(ABC, ITraced):
         Gets the name of the target.
         """
         return self._target_name
+
+
+    @property
+    def target_type(self) -> ETargetType:
+        """
+        Gets the type of the target.
+        """
+        return self._target_type
 
 
     def add_sources(self,
@@ -86,3 +117,16 @@ class ITarget(ABC, ITraced):
           this target links to.
         """
         raise NotImplementedError()
+
+
+    def install(self,
+        install_path: Optional[str] = None) -> None:
+        """
+        Installs the target.
+        @param install_path Path to install the target to. If this is `None`,
+          the path that the target will be installed to will be CMake's default
+          path for the target type.
+        """
+        self._is_installed = True
+        if install_path:
+            self._install_path = Traced(install_path)

@@ -27,6 +27,6 @@ cmake.set_default_presets(release_preset)
 # Set up the target for the Hello World binary
 exe_target = project.add_executable("HelloWorld")
 exe_target.add_sources("source.cpp")
-# exe_target.install()
+exe_target.install()
 
 # cmake.build()
