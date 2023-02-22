@@ -4,6 +4,7 @@ from pymake.common.cmake_version import ECMakeVersion
 from pymake.core.cmake import ICMake
 from pymake.core.preset import Preset
 from pymake.core.pymake_args import PyMakeArgs
+import subprocess
 from typing import Dict, List
 
 class CMake325(ICMake):
@@ -76,3 +77,43 @@ class CMake325(ICMake):
         """
         # In the dev container, CMake is in the /usr/bin directory
         cmake = "cmake3.25"
+
+        # Generate the configure command
+        cmake_configure_cmd = [
+            cmake
+        ]
+        for preset in presets:
+            cmake_configure_cmd.extend([
+                "--preset",
+                preset.preset_name
+            ])
+
+        # Run the configure command
+        print(f"Running command: {' '.join(cmake_configure_cmd)}")
+        configure_process = subprocess.run(
+            cmake_configure_cmd,
+            shell=False,
+            cwd=self._generated_dir
+        )
+        if configure_process.returncode != 0:
+            return configure_process.returncode
+
+        # Generate the build command
+        cmake_build_cmd = [
+            cmake,
+            "--build"
+        ]
+        for preset in presets:
+            cmake_build_cmd.extend([
+                "--preset",
+                preset.preset_name
+            ])
+
+        # Run the build step
+        print(f"Running command: {' '.join(cmake_build_cmd)}")
+        build_process = subprocess.run(
+            cmake_build_cmd,
+            shell=False,
+            cwd=self._generated_dir
+        )
+        return build_process.returncode
