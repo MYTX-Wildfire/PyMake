@@ -14,11 +14,13 @@ class TracedSet(Generic[T]):
         """
         self._values: Dict[T, Traced[T]] = {}
 
+
     def __bool__(self) -> bool:
         """
         Checks whether the set is not empty.
         """
         return bool(self._values)
+
 
     def __contains__(self, value: T) -> bool:
         """
@@ -26,11 +28,13 @@ class TracedSet(Generic[T]):
         """
         return value in self._values
 
+
     def __iter__(self) -> Iterator[Traced[T]]:
         """
         Allows each traced value in the set to be iterated over.
         """
         return (v for v in self._values.values())
+
 
     def add(self, value: T) -> None:
         """

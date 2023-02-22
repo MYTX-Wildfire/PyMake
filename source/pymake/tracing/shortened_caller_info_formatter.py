@@ -28,6 +28,7 @@ class ShortenedCallerInfoFormatter(ICallerInfoFormatter):
 
         self._base_path = base_path.resolve()
 
+
     def format(self, x: CallerInfo | ITraced | Traced[Any]) -> str:
         """
         Converts the caller info data into a formatted string.

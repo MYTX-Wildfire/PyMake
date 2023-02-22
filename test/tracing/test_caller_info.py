@@ -10,6 +10,7 @@ def test_closest_external_frame():
     assert str(caller_info.file_path) == __file__
     assert caller_info.line_number == 9
 
+
 def test_from_stack_frame():
     """
     Verifies that this method's stack frame can be captured using
@@ -18,6 +19,7 @@ def test_from_stack_frame():
     caller_info = CallerInfo.from_stack_frame(0)
     assert str(caller_info.file_path) == __file__
     assert caller_info.line_number == 18
+
 
 def test_hash_and_equality():
     caller_info1 = CallerInfo(Path("/foo.py"), 1)

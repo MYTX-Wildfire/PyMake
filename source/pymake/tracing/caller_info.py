@@ -23,6 +23,7 @@ class CallerInfo:
         self._file_path = file_path
         self._line_number = line_number
 
+
     @staticmethod
     def closest_external_frame() -> CallerInfo:
         """
@@ -37,6 +38,7 @@ class CallerInfo:
             i += 1
             caller_info = CallerInfo.from_stack_frame(i)
         return caller_info
+
 
     @staticmethod
     def from_stack_frame(offset: int) -> CallerInfo:
@@ -66,6 +68,7 @@ class CallerInfo:
         line_number = frame.f_lineno
         return CallerInfo(file_path, line_number)
 
+
     @property
     def file_path(self) -> Path:
         """
@@ -74,6 +77,7 @@ class CallerInfo:
         """
         return self._file_path
 
+
     @property
     def line_number(self) -> int:
         """
@@ -81,12 +85,14 @@ class CallerInfo:
         """
         return self._line_number
 
+
     def __hash__(self) -> int:
         """
         Generates the hash of the object.
         @returns The hash of the object.
         """
         return hash((self._file_path, self._line_number))
+
 
     def __eq__(self, other: object) -> bool:
         """

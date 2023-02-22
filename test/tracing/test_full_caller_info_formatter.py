@@ -16,6 +16,7 @@ def test_full_caller_info_formatter_on_caller_info():
     assert __file__ in output
     assert str(line_num) in output
 
+
 def test_full_caller_info_formatter_on_traced():
     """
     Verifies the formatter's output when `format()` is called with a `Traced`
@@ -30,6 +31,7 @@ def test_full_caller_info_formatter_on_traced():
     assert __file__ in output
     assert str(line_num) in output
 
+
 def test_full_caller_info_formatter_on_traced_class():
     """
     Verifies the formatter's output when `format()` is called with an `ITraced`
@@ -43,4 +45,3 @@ def test_full_caller_info_formatter_on_traced_class():
     output = formatter.format(traced)
     assert __file__ in output
     assert str(line_num) in output
-

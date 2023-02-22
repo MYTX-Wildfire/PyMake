@@ -16,6 +16,7 @@ class ITraced(ABC):
         """
         raise NotImplementedError()
 
+
 class Traced(Generic[T]):
     """
     Wrapper used to add tracing information to a value.
@@ -32,12 +33,14 @@ class Traced(Generic[T]):
         self._call_site = (call_site if call_site
             else CallerInfo.closest_external_frame())
 
+
     @property
     def call_site(self) -> CallerInfo:
         """
         Returns the call site where the value was provided from.
         """
         return self._call_site
+
 
     @property
     def value(self) -> T:
