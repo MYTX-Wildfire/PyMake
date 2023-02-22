@@ -1,3 +1,4 @@
+import pytest
 from pathlib import Path
 from pymake.tracing.caller_info import CallerInfo
 
@@ -8,7 +9,7 @@ def test_closest_external_frame():
     """
     caller_info = CallerInfo.closest_external_frame()
     assert str(caller_info.file_path) == __file__
-    assert caller_info.line_number == 9
+    assert caller_info.line_number == 10
 
 
 def test_from_stack_frame():
@@ -18,7 +19,7 @@ def test_from_stack_frame():
     """
     caller_info = CallerInfo.from_stack_frame(0)
     assert str(caller_info.file_path) == __file__
-    assert caller_info.line_number == 19
+    assert caller_info.line_number == 20
 
 
 def test_hash_and_equality():
@@ -34,3 +35,12 @@ def test_hash_and_equality():
     caller_info4 = CallerInfo(Path("/foo.py"), 2)
     assert caller_info1 != caller_info4
     assert hash(caller_info1) != hash(caller_info4)
+
+    assert caller_info1 != 1
+    assert caller_info1 != "foo"
+    assert caller_info1 != None
+
+
+def test_ctor_throws_if_path_not_absolute():
+    with pytest.raises(ValueError):
+        CallerInfo("foo.py", 1)
