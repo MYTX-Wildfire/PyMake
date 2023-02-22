@@ -1,31 +1,14 @@
-from enum import IntEnum
+from enum import Enum
 
-class EScope(IntEnum):
+class EScope(Enum):
     """
     Defines values for each valid CMake scope value.
     """
     # Value for CMake's private visibility scope
-    PRIVATE = 0
+    PRIVATE = "PRIVATE"
 
     # Value for CMake's interface visibility scope
-    INTERFACE = 1
+    INTERFACE = "INTERFACE"
 
     # Value for CMake's public visibility scope
-    PUBLIC = 2
-
-    def to_cmake_string(self) -> str:
-        """
-        Converts the enum to the equivalent CMake string.
-        @returns A string containing the equivalent CMake text. This string is
-           suitable for use in methods such as `target_link_libraries()`,
-           `target_sources()`, etc.
-        """
-        if self == EScope.PUBLIC:
-            return "PUBLIC"
-        elif self == EScope.INTERFACE:
-            return "INTERFACE"
-        elif self == EScope.PRIVATE:
-            return "PRIVATE"
-        else:
-            raise RuntimeError("Unknown value.")
-
+    PUBLIC = "PUBLIC"
