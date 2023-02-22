@@ -18,6 +18,6 @@ class FullCallerInfoFormatter(ICallerInfoFormatter):
         elif isinstance(x, ITraced):
             caller_info = x.origin
         else:
-            caller_info = x.call_site
+            caller_info = x.origin
 
         return f"{caller_info.file_path}:{caller_info.line_number}"

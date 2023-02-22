@@ -39,7 +39,7 @@ class ShortenedCallerInfoFormatter(ICallerInfoFormatter):
         elif isinstance(x, ITraced):
             caller_info = x.origin
         else:
-            caller_info = x.call_site
+            caller_info = x.origin
 
         # Check if the caller's file path should be shortened
         common_prefix = os.path.commonpath([

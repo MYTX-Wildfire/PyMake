@@ -43,7 +43,7 @@ class TracedSet(Generic[T]):
         @throws ValueError Thrown if the set already contains the value.
         """
         if value in self._values:
-            call_site = self._values[value].call_site
+            call_site = self._values[value].origin
             raise ValueError(
                 "Value already exists in the set: '{value}'.\n" +
                 "Note - value was previously added at " +

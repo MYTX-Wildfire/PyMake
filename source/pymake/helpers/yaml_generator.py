@@ -152,7 +152,6 @@ class YamlGenerator:
         self.write_block_pair("value", value.value, add_quotes)
         self.write_block_pair(
             "origin",
-            f"{value.call_site.file_path}:{value.call_site.line_number}",
+            f"{value.origin.file_path}:{value.origin.line_number}",
         )
         self.close_block()
-

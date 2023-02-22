@@ -30,16 +30,16 @@ class Traced(Generic[T]):
           the first external frame.
         """
         self._value = value
-        self._call_site = (call_site if call_site
+        self._origin = (call_site if call_site
             else CallerInfo.closest_external_frame())
 
 
     @property
-    def call_site(self) -> CallerInfo:
+    def origin(self) -> CallerInfo:
         """
         Returns the call site where the value was provided from.
         """
-        return self._call_site
+        return self._origin
 
 
     @property
