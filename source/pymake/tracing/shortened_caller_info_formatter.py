@@ -41,9 +41,18 @@ class ShortenedCallerInfoFormatter(ICallerInfoFormatter):
             caller_info = x.call_site
 
         # Check if the caller's file path should be shortened
-        file_path = os.path.commonprefix([
-            caller_info.file_path,
-            self._base_path
+        common_prefix = os.path.commonpath([
+            self._base_path,
+            caller_info.file_path
         ])
-        return f"{file_path}:{caller_info.line_number}"
 
+        if common_prefix == str(self._base_path):
+            # The caller's file path is descended from the base path, so
+            #   shorten it
+            file_path = Path(caller_info.file_path).relative_to(self._base_path)
+        else:
+            # The caller's file path is not descended from the base path, so
+            #   don't shorten it
+            file_path = caller_info.file_path
+
+        return f"{file_path}:{caller_info.line_number}"
