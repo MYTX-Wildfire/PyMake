@@ -5,9 +5,10 @@ from pymake.common.scope import EScope
 from pymake.common.target_type import ETargetType
 from pymake.core.scoped_sets import ScopedSets
 from pymake.tracing.caller_info import CallerInfo
+from pymake.tracing.traced import ITraced
 from typing import Iterable
 
-class ITarget(ABC):
+class ITarget(ABC, ITraced):
     """
     Represents a single CMake target.
     """
@@ -19,6 +20,7 @@ class ITarget(ABC):
         @param target_name Name of the target.
         @param target_type Type of the target.
         """
+        super().__init__()
         self._target_name = target_name
         self._target_type = target_type
         self._is_full_target = False

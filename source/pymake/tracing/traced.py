@@ -1,20 +1,25 @@
-from abc import ABC, abstractmethod
 from pymake.tracing.caller_info import CallerInfo
 from typing import Generic, TypeVar
 
 T = TypeVar("T")
 
-class ITraced(ABC):
+class ITraced:
     """
     Interface implemented by classes that provide tracing data for themselves.
     """
+    def __init__(self):
+        """
+        Initializes the object.
+        """
+        self._origin = CallerInfo.closest_external_frame()
+
+
     @property
-    @abstractmethod
     def origin(self) -> CallerInfo:
         """
         Gets the location that constructed the object.
         """
-        raise NotImplementedError()
+        return self._origin
 
 
 class Traced(Generic[T]):

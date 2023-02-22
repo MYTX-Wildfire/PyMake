@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-from pymake import CMake, ECMakeVersion, EProjectLanguage
+from pymake import CMake314, CMake325, EProjectLanguage
 
-cmake = CMake(min_version=ECMakeVersion.V3_25)
+cmake = CMake325()
 project = cmake.add_project("HelloWorld", EProjectLanguage.Cpp)
 
 # Set up presets
+"""
 base_preset = cmake.add_preset("base")
 base_preset.set_build_dir("_build")
 base_preset.set_install_dir("_out")
@@ -21,10 +22,11 @@ release_preset.set_variable("CMAKE_BUILD_TYPE", "Release")
 release_preset.set_install_dir("_out/release")
 
 cmake.set_default_presets(release_preset)
+"""
 
 # Set up the target for the Hello World binary
 exe_target = project.add_executable("HelloWorld")
 exe_target.add_sources("source.cpp")
-exe_target.install()
+# exe_target.install()
 
-cmake.build()
+# cmake.build()

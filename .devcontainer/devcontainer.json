@@ -10,6 +10,7 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
+				"eamodio.gitlens",
 				"EditorConfig.EditorConfig",
 				"ms-python.python",
 				"ms-vscode.cmake-tools",
