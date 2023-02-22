@@ -7,6 +7,13 @@
 			"program": "${workspaceFolder}/samples/1-hello-world/make.py",
 			"console": "integratedTerminal",
 			"justMyCode": true
+		},
+		{
+			"name": "Run tests",
+			"type": "python",
+			"request": "launch",
+			"module": "pytest",
+			"cwd": "${workspaceFolder}/test"
 		}
 	]
 }
