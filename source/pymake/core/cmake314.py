@@ -23,3 +23,8 @@ class CMake314(ICMake):
             source_directory,
             generated_directory
         )
+
+        # Generate the initial CMake code
+        generator = self._build_scripts.get_or_add_build_script().generator
+        with generator.open_method_block("cmake_minimum_required") as b:
+            b.add_keyword_arguments("VERSION", str(self._minimum_version))

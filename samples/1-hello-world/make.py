@@ -28,4 +28,4 @@ exe_target = project.add_executable("HelloWorld")
 exe_target.add_sources("source.cpp")
 exe_target.install()
 
-# cmake.build()
+cmake.build()

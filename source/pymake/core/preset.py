@@ -109,7 +109,12 @@ class Preset(ITraced):
         """
         Sets the name of the CMake generator.
         """
-        self._generator = str(value)
+        if value is None:
+            self._generator = None
+        elif isinstance(value, ECMakeGenerator):
+            self._generator = value.value
+        else:
+            self._generator = str(value)
 
 
     @property
@@ -169,6 +174,8 @@ class Preset(ITraced):
         """
         if value is None and Preset.CMAKE_BUILD_TYPE_VAR in self._cache_variables:
             del self._cache_variables[Preset.CMAKE_BUILD_TYPE_VAR]
+        elif isinstance(value, ECMakeBuildType):
+            self._cache_variables[Preset.CMAKE_BUILD_TYPE_VAR] = value.value
         else:
             self._cache_variables[Preset.CMAKE_BUILD_TYPE_VAR] = str(value)
 
@@ -244,14 +251,6 @@ class Preset(ITraced):
         @param value Value of the environment variable.
         """
         self._env_variables[name] = value
-
-
-    def set_cmake_build_type(self, build_type: str | ECMakeBuildType) -> None:
-        """
-        Sets the CMake build type.
-        @param build_type CMake build type.
-        """
-        self.set_cache_variable("CMAKE_BUILD_TYPE", str(build_type))
 
 
     def _as_full_preset(self) -> Preset:

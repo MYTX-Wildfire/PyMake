@@ -3,24 +3,28 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 from pymake.common.scope import EScope
 from pymake.common.target_type import ETargetType
+from pymake.core.build_script_set import BuildScriptSet
 from pymake.core.scoped_sets import ScopedSets
 from pymake.tracing.caller_info import CallerInfo
 from pymake.tracing.traced import ITraced, Traced
-from typing import Iterable, Optional
+from typing import List, Iterable, Optional
 
 class ITarget(ABC, ITraced):
     """
     Represents a single CMake target.
     """
     def __init__(self,
+        build_scripts: BuildScriptSet,
         target_name: str,
         target_type: ETargetType):
         """
         Initializes the target.
+        @param build_scripts Set of build scripts that the project will generate.
         @param target_name Name of the target.
         @param target_type Type of the target.
         """
         super().__init__()
+        self._build_scripts = build_scripts
         self._target_name = target_name
         self._target_type = target_type
         self._is_full_target = False
@@ -97,6 +101,7 @@ class ITarget(ABC, ITraced):
         caller_info = CallerInfo.closest_external_frame()
         caller_path = Path(caller_info.file_path).parent
 
+        source_abs_paths: List[str] = []
         for source in sources:
             # Convert all paths to absolute paths if they aren't already
             path = Path(source)
@@ -104,6 +109,16 @@ class ITarget(ABC, ITraced):
                 path = caller_path / path
 
             self._sources.select_set(scope).add(path)
+            source_abs_paths.append(str(path))
+
+        # Generate the CMake code
+        generator = self._build_scripts.get_or_add_build_script().generator
+        with generator.open_method_block("target_sources") as b:
+            b.add_arguments(self._target_name)
+            b.add_keyword_arguments(
+                scope.value,
+                source_abs_paths
+            )
 
 
     @abstractmethod
@@ -130,3 +145,16 @@ class ITarget(ABC, ITraced):
         self._is_installed = True
         if install_path:
             self._install_path = Traced(install_path)
+
+        # Generate the CMake code
+        generator = self._build_scripts.get_or_add_build_script().generator
+        with generator.open_method_block("install") as b:
+            b.add_keyword_arguments(
+                "TARGETS",
+                self._target_name
+            )
+            if self._install_path:
+                b.add_keyword_arguments(
+                    "DESTINATION",
+                    self._install_path.value
+                )

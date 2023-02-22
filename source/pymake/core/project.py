@@ -1,4 +1,5 @@
 from pymake.common.project_language import EProjectLanguage
+from pymake.core.build_script_set import BuildScriptSet
 from pymake.core.executable_target import ExecutableTarget
 from pymake.core.target import ITarget
 from pymake.tracing.traced import ITraced
@@ -9,16 +10,19 @@ class Project(ITraced):
     Represents a single project scope in a PyMake project.
     """
     def __init__(self,
+        build_scripts: BuildScriptSet,
         project_name: str,
         project_languages: EProjectLanguage | Iterable[EProjectLanguage]):
         """
         Initializes the project.
+        @param build_scripts Set of build scripts that the project will generate.
         @param project_name Name of the project.
         @param project_languages Languages used in the project.
         """
         super().__init__()
+        self._build_scripts = build_scripts
         self._project_name = project_name
-        self._project_languages = project_languages if isinstance(
+        self._project_languages = list(project_languages) if isinstance(
             project_languages, Iterable) else [project_languages]
 
         # Callback that will be invoked when a target is added
@@ -33,6 +37,15 @@ class Project(ITraced):
         # These values are stored as-is instead of in `Traced` objects since
         #   each instance manages its own tracing information
         self._targets: Dict[str, ITarget] = {}
+
+        # Generate the CMake code
+        generator = self._build_scripts.get_or_add_build_script().generator
+        with generator.open_method_block("project") as b:
+            b.add_arguments(self._project_name)
+            b.add_keyword_arguments(
+                "LANGUAGES",
+                [l.value for l in self._project_languages]
+            )
 
 
     @property
@@ -51,7 +64,10 @@ class Project(ITraced):
         @throws ValueError Thrown if a target with the given name already exists.
         @returns The target instance.
         """
-        target = ExecutableTarget(target_name)
+        target = ExecutableTarget(
+            self._build_scripts,
+            target_name
+        )
 
         # Check if a target with the given name already exists
         prev_target = self._on_target_added(target)

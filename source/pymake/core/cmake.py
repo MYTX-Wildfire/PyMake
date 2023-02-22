@@ -2,9 +2,13 @@ from abc import ABC
 from pathlib import Path
 from pymake.common.cmake_version import ECMakeVersion
 from pymake.common.project_language import EProjectLanguage
+from pymake.core.build_script_set import BuildScriptSet
 from pymake.core.preset import Preset
 from pymake.core.project import Project
 from pymake.tracing.caller_info import CallerInfo
+from pymake.tracing.caller_info_formatter import ICallerInfoFormatter
+from pymake.tracing.shortened_caller_info_formatter \
+    import ShortenedCallerInfoFormatter
 from typing import Dict, Iterable, List
 
 class ICMake(ABC):
@@ -46,6 +50,10 @@ class ICMake(ABC):
         self._source_dir = source_directory
         self._generated_dir = generated_directory
 
+        # Formatter that should be used when printing tracing info
+        self._formatter: ICallerInfoFormatter = \
+            ShortenedCallerInfoFormatter(self._source_dir)
+
         # Project scopes added to the project, indexed by project name
         self._projects: Dict[str, Project] = {}
 
@@ -54,6 +62,13 @@ class ICMake(ABC):
 
         # Presets to use if none are specified
         self._default_presets: List[Preset] = []
+
+        # Build script set to write CMake code to
+        self._build_scripts = BuildScriptSet(
+            self._source_dir,
+            self._generated_dir,
+            self._formatter
+        )
 
 
     def add_project(self,
@@ -77,7 +92,11 @@ class ICMake(ABC):
             raise ValueError(error_str)
 
         # Add the project
-        project = Project(project_name, project_languages)
+        project = Project(
+            self._build_scripts,
+            project_name,
+            project_languages
+        )
         self._projects[project_name] = project
         return project
 
@@ -102,6 +121,24 @@ class ICMake(ABC):
         preset = Preset(preset_name)
         self._presets[preset_name] = preset
         return preset
+
+
+    def build(self, generate_first: bool = True) -> None:
+        """
+        Builds the CMake project.
+        @param generate_first If True, the CMake build scripts will be
+          generated before building the project.
+        """
+        if generate_first:
+            self.generate()
+
+
+    def generate(self) -> None:
+        """
+        Generates the CMake build scripts.
+        """
+        # Write the CMakeLists.txt file
+        self._build_scripts.generate()
 
 
     def set_default_presets(self, presets: Preset | Iterable[Preset]):
