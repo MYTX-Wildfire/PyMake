@@ -2,7 +2,7 @@
 from pymake import CMake314, CMake325, ECMakeBuildType, ECMakeGenerator, \
     EProjectLanguage
 
-cmake = CMake325()
+cmake = CMake314()
 project = cmake.add_project("HelloWorld", EProjectLanguage.Cpp)
 
 # Set up presets

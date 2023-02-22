@@ -5,6 +5,9 @@
 			"type": "python",
 			"request": "launch",
 			"program": "${workspaceFolder}/samples/1-hello-world/make.py",
+			"args": [
+				"debug"
+			],
 			"console": "integratedTerminal",
 			"justMyCode": true
 		},

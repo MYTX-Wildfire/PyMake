@@ -2,6 +2,8 @@ import json
 from pathlib import Path
 from pymake.common.cmake_version import ECMakeVersion
 from pymake.core.cmake import ICMake
+from pymake.core.preset import Preset
+from pymake.core.pymake_args import PyMakeArgs
 from typing import Dict, List
 
 class CMake325(ICMake):
@@ -62,3 +64,15 @@ class CMake325(ICMake):
         # Write the presets file
         with open(output_path, "w") as f:
             json.dump(presets_file, f, indent=2)
+
+
+    def _run_cmake(self, args: PyMakeArgs, presets: List[Preset]) -> int:
+        """
+        Runs CMake to build the project.
+        @param args Arguments that were passed to PyMake.
+        @param presets Presets that should be used when building the project.
+          Will always contain at least one value.
+        @returns The exit code of the CMake process.
+        """
+        # In the dev container, CMake is in the /usr/bin directory
+        cmake = "cmake3.25"

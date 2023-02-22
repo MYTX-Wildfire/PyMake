@@ -36,16 +36,20 @@ RUN python3 -m pip install \
 	pytest-cov
 
 # Add CMake 3.14
-RUN mkdir -p /tmp/cmake && \
-	wget -O /tmp/cmake/cmake.tar.gz https://github.com/Kitware/CMake/releases/download/v3.14.5/cmake-3.14.5-Linux-x86_64.tar.gz && \
+RUN mkdir -p /tmp/${USERNAME} && \
+	wget -O /tmp/${USERNAME}/cmake.tar.gz https://github.com/Kitware/CMake/releases/download/v3.14.5/cmake-3.14.5-linux-x86_64.tar.gz && \
 	# Extract the files from the tarball to a temporary directory
 	# This is done because the resulting directory structure after extracting
-	#   the tarball will look like `/tmp/cmake/cmake3.14/cmake-3.14.5-Linux-etc/...`
-	mkdir -p /tmp/cmake/cmake3.14 && \
-	tar -xvf /tmp/cmake/cmake.tar.gz -C /tmp/cmake/cmake3.14 && \
+	#   the tarball will look like `/tmp/mythix/cmake/cmake-3.21.3-linux-etc/...`
+	mkdir -p /tmp/${USERNAME}/cmake && \
+	tar -xvf /tmp/${USERNAME}/cmake.tar.gz -C /tmp/${USERNAME}/cmake && \
 	# Move the CMake files into the Tools folder
 	mkdir -p /tools/cmake && \
-	mv /tmp/cmake/cmake3.14/cmake-3.14.5-Linux-x86_64 /tools/cmake/3.14.5 && \
+	# Note that 3.14 used "Linux" instead of "linux" in the archive filename
+	mv /tmp/${USERNAME}/cmake/cmake-3.14.5-Linux-x86_64 /tools/cmake/3.14.5 && \
+	ln -s /tools/cmake/3.14.5/bin/cmake /usr/bin/cmake3.14 && \
+	ln -s /tools/cmake/3.14.5/bin/cpack /usr/bin/cpack3.14 && \
+	ln -s /tools/cmake/3.14.5/bin/ctest /usr/bin/ctest3.14 && \
 	# Remove unnecessary files to keep container image size down
 	rm -r /tools/cmake/3.14.5/doc && \
 	rm -r /tools/cmake/3.14.5/man && \
@@ -55,19 +59,22 @@ RUN mkdir -p /tmp/cmake && \
 		--slave /usr/bin/cpack cpack /tools/cmake/3.14.5/bin/cpack \
 		--slave /usr/bin/ctest ctest /tools/cmake/3.14.5/bin/ctest && \
 	# Clean up temporary files
-	rm -rf /tmp/cmake
+	rm -rf /tmp/${USERNAME}
 
 # Add CMake 3.25
-RUN mkdir -p /tmp/cmake && \
-	wget -O /tmp/cmake/cmake.tar.gz https://github.com/Kitware/CMake/releases/download/v3.25.2/cmake-3.25.2-linux-x86_64.tar.gz && \
+RUN mkdir -p /tmp/${USERNAME} && \
+	wget -O /tmp/${USERNAME}/cmake.tar.gz https://github.com/Kitware/CMake/releases/download/v3.25.2/cmake-3.25.2-linux-x86_64.tar.gz && \
 	# Extract the files from the tarball to a temporary directory
 	# This is done because the resulting directory structure after extracting
-	#   the tarball will look like `/tmp/cmake/cmake3.25/cmake-3.25.2-linux-etc/...`
-	mkdir -p /tmp/cmake/cmake3.25 && \
-	tar -xvf /tmp/cmake/cmake.tar.gz -C /tmp/cmake/cmake3.25 && \
+	#   the tarball will look like `/tmp/mythix/cmake/cmake-3.21.3-linux-etc/...`
+	mkdir -p /tmp/${USERNAME}/cmake && \
+	tar -xvf /tmp/${USERNAME}/cmake.tar.gz -C /tmp/${USERNAME}/cmake && \
 	# Move the CMake files into the Tools folder
 	mkdir -p /tools/cmake && \
-	mv /tmp/cmake/cmake3.25/cmake-3.25.2-linux-x86_64 /tools/cmake/3.25.2 && \
+	mv /tmp/${USERNAME}/cmake/cmake-3.25.2-linux-x86_64 /tools/cmake/3.25.2 && \
+	ln -s /tools/cmake/3.25.2/bin/cmake /usr/bin/cmake3.25 && \
+	ln -s /tools/cmake/3.25.2/bin/cpack /usr/bin/cpack3.25 && \
+	ln -s /tools/cmake/3.25.2/bin/ctest /usr/bin/ctest3.25 && \
 	# Remove unnecessary files to keep container image size down
 	rm -r /tools/cmake/3.25.2/doc && \
 	rm -r /tools/cmake/3.25.2/man && \
@@ -77,7 +84,7 @@ RUN mkdir -p /tmp/cmake && \
 		--slave /usr/bin/cpack cpack /tools/cmake/3.25.2/bin/cpack \
 		--slave /usr/bin/ctest ctest /tools/cmake/3.25.2/bin/ctest && \
 	# Clean up temporary files
-	rm -rf /tmp/cmake
+	rm -rf /tmp/${USERNAME}
 
 # Create the user
 RUN groupadd --gid $USER_GID $USERNAME && \

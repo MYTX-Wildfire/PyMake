@@ -1,15 +1,18 @@
 from abc import ABC, abstractmethod
+import argparse
 from pathlib import Path
 from pymake.common.cmake_version import ECMakeVersion
 from pymake.common.project_language import EProjectLanguage
 from pymake.core.build_script_set import BuildScriptSet
 from pymake.core.preset import Preset
 from pymake.core.project import Project
+from pymake.core.pymake_args import PyMakeArgs
 from pymake.tracing.caller_info import CallerInfo
 from pymake.tracing.caller_info_formatter import ICallerInfoFormatter
 from pymake.tracing.shortened_caller_info_formatter \
     import ShortenedCallerInfoFormatter
-from typing import Dict, Iterable, List
+import sys
+from typing import Dict, Iterable, List, Optional, Sequence
 
 class ICMake(ABC):
     """
@@ -123,14 +126,54 @@ class ICMake(ABC):
         return preset
 
 
-    def build(self, generate_first: bool = True) -> None:
+    def build(self,
+        generate_first: bool = True,
+        args: Optional[Sequence[str]] = None) -> None:
         """
         Builds the CMake project.
         @param generate_first If True, the CMake build scripts will be
           generated before building the project.
+        @param args Arguments to process to determine how the build should be
+          run. If not supplied, the arguments will be read from sys.argv.
         """
         if generate_first:
             self.generate()
+
+        # Process command line arguments
+        parser = argparse.ArgumentParser()
+        parser.add_argument(
+            "-v",
+            "--verbose",
+            action="store_true",
+            help="Enables verbose output from CMake."
+        )
+        parser.add_argument(
+            "presets",
+            nargs="*",
+            help="PyMake preset(s) to use when building the project."
+        )
+        if not args:
+            args = sys.argv[1:]
+        cli_args = parser.parse_args(args, namespace=PyMakeArgs(
+            verbose=False,
+            presets=[]
+        ))
+
+        # Get the presets to use
+        selected_presets: List[Preset] = []
+        for preset_name in cli_args.presets:
+            if preset_name not in self._presets:
+                raise ValueError(f"Error: Unknown preset '{preset_name}'")
+            selected_presets.append(self._presets[preset_name])
+        if not selected_presets:
+            selected_presets = self._default_presets
+        if not selected_presets:
+            raise ValueError("Error: No presets were specified")
+
+        # Run CMake
+        exit_code = self._run_cmake(cli_args, selected_presets)
+        if exit_code != 0:
+            raise RuntimeError(f"CMake failed with exit code {exit_code}")
 
 
     def generate(self) -> None:
@@ -156,5 +199,19 @@ class ICMake(ABC):
         Generates the CMakePresets.json file (if supported).
         @param output_path Path where the CMakePresets.json file should be
           written.
+        """
+        raise NotImplementedError()
+
+
+    @abstractmethod
+    def _run_cmake(self,
+        args: PyMakeArgs,
+        presets: List[Preset]) -> int:
+        """
+        Runs CMake to build the project.
+        @param args Arguments that were passed to PyMake.
+        @param presets Presets that should be used when building the project.
+          Will always contain at least one value.
+        @returns The exit code of the CMake process.
         """
         raise NotImplementedError()
