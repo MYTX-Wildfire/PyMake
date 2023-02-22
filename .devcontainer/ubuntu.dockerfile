@@ -31,6 +31,7 @@ RUN python3 -m pip install \
 	plantuml-markdown \
 	# Other
 	autopep8 \
+	coverage \
 	pytest \
 	pytest-cov
 

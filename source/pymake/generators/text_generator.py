@@ -21,11 +21,43 @@ class TextGenerator:
             self._indent = "\t"
 
     @property
+    def at_start_of_line(self) -> bool:
+        """
+        Gets whether the generator is at the start of a new line.
+        """
+        return len(self._text) == 0 or self._text[-1] == "\n"
+
+
+    @property
+    def indentation_level(self) -> int:
+        """
+        Gets the current indentation level.
+        """
+        return self._indent_level
+
+
+    @indentation_level.setter
+    def indentation_level(self, value: int) -> None:
+        """
+        Sets the current indentation level.
+        @param value New indentation level.
+        @throws ValueError Thrown if the indentation level is negative.
+        """
+        if value < 0:
+            raise ValueError(
+                "Indentation level must be greater than or equal to 0."
+            )
+
+        self._indent_level = value
+
+
+    @property
     def text(self) -> str:
         """
         Gets the string containing the generated text.
         """
         return self._text
+
 
     def append(self, text: str) -> None:
         """
@@ -40,13 +72,17 @@ class TextGenerator:
 
         self._text += text
 
+
     def append_line(self, text: str) -> None:
         """
         Adds text to the generator.
         This method will append a newline character to the added text.
         @param text Text to add.
         """
+        if self.at_start_of_line:
+            self.apply_indentation()
         self.append(text + "\n")
+
 
     def apply_indentation(self) -> None:
         """
@@ -54,12 +90,6 @@ class TextGenerator:
         """
         self._text += self._indent * self._indent_level
 
-    def close_block(self) -> None:
-        """
-        Closes the currently open block.
-        @pre A method block is currently open.
-        """
-        self.decrease_indentation_level()
 
     def decrease_indentation_level(self, delta: int = 1) -> None:
         """
@@ -70,6 +100,15 @@ class TextGenerator:
         assert delta >= 0
         self.modify_indentation_level(-delta)
 
+
+    def finish_line(self) -> None:
+        """
+        Finishes the current line if not currently on a new line.
+        """
+        if not self.at_start_of_line:
+            self.append_line("")
+
+
     def increase_indentation_level(self, delta: int = 1) -> None:
         """
         Increases the indentation level by the specified amount.
@@ -79,34 +118,25 @@ class TextGenerator:
         assert delta >= 0
         self.modify_indentation_level(delta)
 
+
     def modify_indentation_level(self, delta: int) -> None:
         """
         Modifies the current indentation level by the specified amount.
         @param delta Amount to increase or decrease the indentation level by.
+          If this is negative and the resulting indentation level is less than
+          zero, the indentation level will be clamped to zero.
         """
         self._indent_level += delta
         self._indent_level = max(self._indent_level, 0)
 
-    def open_block(self, block_name: str) -> None:
-        """
-        Opens a new block.
-        @param block_name Name of the block to open.
-        """
-        self.append_line(block_name + ":")
-        self.increase_indentation_level()
 
-    def write_block_pair(self, key: str, value: str) -> None:
+    def remove_last_instance_of(self, text: str) -> bool:
         """
-        Writes a key-value pair to the current block.
-        @param key Key that the value is associated with.
-        @param value Value to write.
+        Removes the last instance of the specified text from the generator.
+        @param text Text to remove.
+        @returns True if the text was found and removed; otherwise, false.
         """
-        self.append_line(f"{key}: {value}")
-
-    def write_block_value(self, value: str) -> None:
-        """
-        Writes a value to the current block.
-        @param value Value to write.
-        """
-        self.append_line(f"- {value}")
-
+        index = self._text.rfind(text)
+        if index >= 0:
+            self._text = self._text[:index]
+        return index >= 0
