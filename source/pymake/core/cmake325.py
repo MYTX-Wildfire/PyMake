@@ -53,13 +53,19 @@ class CMake325(ICMake):
         # Add the presets as configure presets
         configure_presets: List[Dict[str, object]] = []
         for preset in self._presets.values():
-            configure_presets.append(preset.as_configure_preset())
+            configure_presets.append(preset.as_configure_preset(
+                self._source_dir,
+                self._generated_dir
+            ))
         presets_file["configurePresets"] = configure_presets
 
         # Add the presets as build presets
         build_presets: List[Dict[str, object]] = []
         for preset in self._presets.values():
-            build_presets.append(preset.as_build_preset())
+            build_presets.append(preset.as_build_preset(
+                self._source_dir,
+                self._generated_dir
+            ))
         presets_file["buildPresets"] = build_presets
 
         # Write the presets file

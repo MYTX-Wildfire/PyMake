@@ -1,5 +1,5 @@
 from pymake.tracing.caller_info import CallerInfo
-from typing import Generic, TypeVar
+from typing import Dict, Generic, TypeVar
 
 T = TypeVar("T")
 
@@ -37,6 +37,16 @@ class Traced(Generic[T]):
         self._value = value
         self._origin = (call_site if call_site
             else CallerInfo.closest_external_frame())
+
+
+    def to_dict(self) -> Dict[str, object]:
+        """
+        Converts the object to a dictionary that can be written to a trace file.
+        """
+        return {
+            "value": self._value,
+            "origin": self._origin
+        }
 
 
     @property

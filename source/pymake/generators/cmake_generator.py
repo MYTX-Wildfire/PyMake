@@ -48,5 +48,10 @@ class CMakeGenerator:
         Writes the generated CMake file to the specified path.
         @param output_path Path to write the generated CMake file to.
         """
+        # Create the path to the output file if it doesn't exist
+        output_dir = Path(output_path).parent
+        if not output_dir.exists():
+            output_dir.mkdir(parents=True)
+
         with open(output_path, "w") as f:
             f.write(self.generate())

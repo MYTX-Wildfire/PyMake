@@ -1,7 +1,7 @@
 from __future__ import annotations
 from pymake.common.scope import EScope
 from pymake.tracing.traced_set import TracedSet
-from typing import Generic, Optional, TypeVar
+from typing import Dict, Generic, Optional, TypeVar
 
 T = TypeVar("T")
 
@@ -25,6 +25,17 @@ class ScopedSets(Generic[T]):
         self._public: TracedSet[T] = public if public else TracedSet()
         self._interface: TracedSet[T] = interface if interface else TracedSet()
         self._private: TracedSet[T] = private if private else TracedSet()
+
+
+    def to_trace_dict(self) -> Dict[str, object]:
+        """
+        Converts the set to a dictionary that can be written to a trace file.
+        """
+        return {
+            "public": [t.to_dict() for t in self._public],
+            "interface": [t.to_dict() for t in self._interface],
+            "private": [t.to_dict() for t in self._private]
+        }
 
 
     def select_set(self, scope: EScope) -> TracedSet[T]:

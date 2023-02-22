@@ -80,6 +80,7 @@ class BuildScriptSet:
         Generates all build scripts.
         """
         for build_script in self._build_scripts.values():
+            print(f"Generating '{build_script.target_path}'...")
             build_script.generator.write_file(build_script.target_path)
 
 

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from pathlib import Path
 from pymake.common.cmake_build_type import ECMakeBuildType
 from pymake.common.cmake_generator import ECMakeGenerator
 from pymake.tracing.traced import ITraced
@@ -193,9 +194,14 @@ class Preset(ITraced):
         return self._env_variables
 
 
-    def as_build_preset(self) -> Dict[str, object]:
+    def as_build_preset(self,
+        source_dir: Path,
+        generated_dir: Path) -> Dict[str, object]:
         """
         Converts the preset to a CMake build preset.
+        @param source_dir Path to the root of the PyMake project.
+        @param generated_dir Path to the directory where PyMake will generate
+          CMake files.
         @return A dictionary representing the preset as a CMake build preset.
           This dictionary can be serialized to JSON and written to the
           "buildPresets" section of a CMakePresets.json file.
@@ -212,13 +218,33 @@ class Preset(ITraced):
         return preset
 
 
-    def as_configure_preset(self) -> Dict[str, object]:
+    def as_configure_preset(self,
+        source_dir: Path,
+        generated_dir: Path) -> Dict[str, object]:
         """
         Converts the preset to a CMake configure preset.
+        @param source_dir Path to the root of the PyMake project.
+        @param generated_dir Path to the directory where PyMake will generate
+          CMake files.
         @return A dictionary representing the preset as a CMake configure
           preset. This dictionary can be serialized to JSON and written to the
           "configurePresets" section of a CMakePresets.json file.
         """
+        # Resolve paths into absolute paths
+        if self._binary_dir and not Path(self._binary_dir).is_absolute():
+            binary_dir = str(source_dir / self._binary_dir)
+        elif self._binary_dir:
+            binary_dir = self._binary_dir
+        else:
+            binary_dir = None
+
+        if self._install_dir and not Path(self._install_dir).is_absolute():
+            install_dir = str(source_dir / self._install_dir)
+        elif self._install_dir:
+            install_dir = self._install_dir
+        else:
+            install_dir = None
+
         preset: Dict[str, object] = {}
         preset["name"] = self._name
         if self._description is not None:
@@ -227,10 +253,10 @@ class Preset(ITraced):
             preset["hidden"] = True
         if self._generator is not None:
             preset["generator"] = self._generator
-        if self._binary_dir is not None:
-            preset["binaryDir"] = self._binary_dir
-        if self._install_dir is not None:
-            preset["installDir"] = self._install_dir
+        if binary_dir is not None:
+            preset["binaryDir"] = binary_dir
+        if install_dir is not None:
+            preset["installDir"] = install_dir
         if self._cache_variables:
             preset["cacheVariables"] = self._cache_variables
         if self._env_variables:

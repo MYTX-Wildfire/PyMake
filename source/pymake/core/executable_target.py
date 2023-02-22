@@ -36,4 +36,6 @@ class ExecutableTarget(ITarget):
         @returns A target instance that includes all values from targets that
           this target links to.
         """
-        raise NotImplementedError()
+        # Nothing needs to be done yet since target linking hasn't been
+        #   implemented yet
+        return self

@@ -7,6 +7,8 @@ from pymake.core.build_script_set import BuildScriptSet
 from pymake.core.preset import Preset
 from pymake.core.project import Project
 from pymake.core.pymake_args import PyMakeArgs
+from pymake.core.target import ITarget
+from pymake.generators.yaml_file_generator import YamlFileGenerator
 from pymake.tracing.caller_info import CallerInfo
 from pymake.tracing.caller_info_formatter import ICallerInfoFormatter
 from pymake.tracing.shortened_caller_info_formatter \
@@ -72,6 +74,9 @@ class ICMake(ABC):
             self._generated_dir,
             self._formatter
         )
+
+        # Targets that have been added by any project
+        self._targets: Dict[str, ITarget] = {}
 
 
     def add_project(self,
@@ -176,12 +181,24 @@ class ICMake(ABC):
             raise RuntimeError(f"CMake failed with exit code {exit_code}")
 
 
-    def generate(self) -> None:
+    def generate(self, generate_trace_files: bool = True) -> None:
         """
         Generates the CMake build scripts.
+        @param generate_trace_files Whether to also generate trace files.
         """
         self._build_scripts.generate()
         self._generate_presets(self._generated_dir / "CMakePresets.json")
+
+        if generate_trace_files:
+            # Generate trace files for each target
+            for _, t in self._targets.items():
+                trace_file_path = self._generated_dir.joinpath(
+                    f"{t.target_name}.target.yaml")
+                print(f"Generating '{trace_file_path}'...")
+                t.generate_trace_file(
+                    trace_file_path,
+                    YamlFileGenerator()
+                )
 
 
     def set_default_presets(self, presets: Preset | Iterable[Preset]):
@@ -215,3 +232,15 @@ class ICMake(ABC):
         @returns The exit code of the CMake process.
         """
         raise NotImplementedError()
+
+
+    def _on_target_added(self, target: ITarget) -> Optional[ITarget]:
+        """
+        Called when a target is added to the project.
+        @param target Target that was added.
+        @returns If a target with the same name already exists, the existing
+          target will be returned. Otherwise, returns None.
+        """
+        if target.target_name in self._targets:
+            return self._targets[target.target_name]
+        self._targets[target.target_name] = target

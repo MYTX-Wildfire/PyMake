@@ -5,9 +5,10 @@ from pymake.common.scope import EScope
 from pymake.common.target_type import ETargetType
 from pymake.core.build_script_set import BuildScriptSet
 from pymake.core.scoped_sets import ScopedSets
+from pymake.generators.trace_file_generator import ITraceFileGenerator
 from pymake.tracing.caller_info import CallerInfo
 from pymake.tracing.traced import ITraced, Traced
-from typing import List, Iterable, Optional
+from typing import Dict, List, Iterable, Optional
 
 class ITarget(ABC, ITraced):
     """
@@ -119,6 +120,24 @@ class ITarget(ABC, ITraced):
                 scope.value,
                 source_abs_paths
             )
+
+
+    def generate_trace_file(self,
+        output_path: Path,
+        generator: ITraceFileGenerator):
+        """
+        Generates a trace file for the target.
+        @param output_path Path to the output file.
+        @param generator Generator to create the trace file using.
+        """
+        # Generate a dictionary containing the properties to write to the trace
+        #   file
+        full_target = self.get_full_target()
+        props: Dict[str, object] = {}
+        props["name"] = full_target._target_name
+        props["type"] = full_target._target_type.value
+        props["sources"] = full_target._sources.to_trace_dict()
+        generator.write_file(props, output_path)
 
 
     @abstractmethod
