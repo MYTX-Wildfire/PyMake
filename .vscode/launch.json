@@ -13,7 +13,11 @@
 			"type": "python",
 			"request": "launch",
 			"module": "pytest",
-			"cwd": "${workspaceFolder}/tests"
+			"cwd": "${workspaceFolder}/tests",
+			"args": [
+				"--cov=pymake",
+				"--cov-report=xml"
+			]
 		}
 	]
 }
