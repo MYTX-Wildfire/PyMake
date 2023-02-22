@@ -27,4 +27,13 @@ class CMake314(ICMake):
         # Generate the initial CMake code
         generator = self._build_scripts.get_or_add_build_script().generator
         with generator.open_method_block("cmake_minimum_required") as b:
-            b.add_keyword_arguments("VERSION", str(self._minimum_version))
+            b.add_keyword_arguments("VERSION", self._minimum_version.value)
+
+
+    def _generate_presets(self, output_path: Path) -> None:
+        """
+        Generates the CMakePresets.json file (if supported).
+        @param output_path Path where the CMakePresets.json file should be
+          written.
+        """
+        # Do nothing - presets are not supported in CMake v3.14

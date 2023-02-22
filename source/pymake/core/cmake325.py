@@ -1,6 +1,8 @@
+import json
 from pathlib import Path
 from pymake.common.cmake_version import ECMakeVersion
 from pymake.core.cmake import ICMake
+from typing import Dict, List
 
 class CMake325(ICMake):
     """
@@ -27,4 +29,36 @@ class CMake325(ICMake):
         # Generate the initial CMake code
         generator = self._build_scripts.get_or_add_build_script().generator
         with generator.open_method_block("cmake_minimum_required") as b:
-            b.add_keyword_arguments("VERSION", str(self._minimum_version))
+            b.add_keyword_arguments("VERSION", self._minimum_version.value)
+
+
+    def _generate_presets(self, output_path: Path) -> None:
+        """
+        Generates the CMakePresets.json file (if supported).
+        @param output_path Path where the CMakePresets.json file should be
+          written.
+        """
+        # Generate the dictionary to convert to a JSON object
+        presets_file: Dict[str, object] = {}
+        presets_file["version"] = 6
+        presets_file["cmakeMinimumRequired"] = {
+            "major": 3,
+            "minor": 25,
+            "patch": 0
+        }
+
+        # Add the presets as configure presets
+        configure_presets: List[Dict[str, object]] = []
+        for preset in self._presets.values():
+            configure_presets.append(preset.as_configure_preset())
+        presets_file["configurePresets"] = configure_presets
+
+        # Add the presets as build presets
+        build_presets: List[Dict[str, object]] = []
+        for preset in self._presets.values():
+            build_presets.append(preset.as_build_preset())
+        presets_file["buildPresets"] = build_presets
+
+        # Write the presets file
+        with open(output_path, "w") as f:
+            json.dump(presets_file, f, indent=2)

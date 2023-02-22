@@ -1,4 +1,4 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 from pathlib import Path
 from pymake.common.cmake_version import ECMakeVersion
 from pymake.common.project_language import EProjectLanguage
@@ -137,8 +137,8 @@ class ICMake(ABC):
         """
         Generates the CMake build scripts.
         """
-        # Write the CMakeLists.txt file
         self._build_scripts.generate()
+        self._generate_presets(self._generated_dir / "CMakePresets.json")
 
 
     def set_default_presets(self, presets: Preset | Iterable[Preset]):
@@ -148,3 +148,13 @@ class ICMake(ABC):
         """
         self._default_presets = list(presets) \
             if isinstance(presets, Iterable) else [presets]
+
+
+    @abstractmethod
+    def _generate_presets(self, output_path: Path) -> None:
+        """
+        Generates the CMakePresets.json file (if supported).
+        @param output_path Path where the CMakePresets.json file should be
+          written.
+        """
+        raise NotImplementedError()

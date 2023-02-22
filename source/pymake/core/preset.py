@@ -13,30 +13,30 @@ class Preset(ITraced):
 
     def __init__(self,
         name: str,
-        description: Optional[str] = None,
-        hidden: bool = False,
-        generator: Optional[str] = None,
-        binary_dir: Optional[str] = None,
-        install_dir: Optional[str] = None,
-        cache_variables: Dict[str, str] = {},
-        env_variables: Dict[str, str] = {},
-        inherits: Preset | Iterable[Preset] = [],
+        desc: Optional[str] = None,
+        is_hidden: bool = False,
+        cmake_generator: Optional[str] = None,
+        binary_path: Optional[str] = None,
+        install_path: Optional[str] = None,
+        cache_vars: Optional[Dict[str, str]] = None,
+        env_vars: Optional[Dict[str, str]] = None,
+        inherits: Optional[Preset] | Iterable[Preset] = None,
         is_full_preset: bool = False):
         """
         Initializes the preset.
         @param name Name of the preset.
-        @param description Description of the preset.
-        @param hidden Whether the preset should be hidden. Hidden presets are
+        @param desc Description of the preset.
+        @param is_hidden Whether the preset should be hidden. Hidden presets are
           not selectable when invoking PyMake.
-        @param generator Name of the CMake generator.
-        @param binary_dir Path to the directory where CMake will generate the
+        @param cmake_generator Name of the CMake generator.
+        @param binary_path Path to the directory where CMake will generate the
           build files. If this is a relative path, it will be interpreted
           relative to the PyMake project's source directory.
-        @param install_dir Path to the directory where CMake will install built
+        @param install_path Path to the directory where CMake will install built
           targets. If this is a relative path, it will be interpreted relative
           to the PyMake project's source directory.
-        @param cache_variables Dictionary of cache variables to set.
-        @param env_variables Dictionary of environment variables to set.
+        @param cache_vars Dictionary of cache variables to set.
+        @param env_vars Dictionary of environment variables to set.
         @param inherits Presets that this preset inherits from.
         @param is_full_preset Whether the preset includes all values from
           presets that it inherits from.
@@ -44,15 +44,19 @@ class Preset(ITraced):
         super().__init__()
 
         self._name = name
-        self._description = description
-        self._hidden = hidden
-        self._generator = generator
-        self._binary_dir = binary_dir
-        self._install_dir = install_dir
-        self._cache_variables = cache_variables
-        self._env_variables = env_variables
-        self._base_presets = list(inherits) if isinstance(inherits, Iterable) \
-            else [inherits]
+        self._description = desc
+        self._hidden = is_hidden
+        self._generator = cmake_generator
+        self._binary_dir = binary_path
+        self._install_dir = install_path
+        self._cache_variables = cache_vars if cache_vars else {}
+        self._env_variables = env_vars if env_vars else {}
+        if inherits is None:
+            self._base_presets = []
+        elif isinstance(inherits, Preset):
+            self._base_presets = [inherits]
+        else:
+            self._base_presets = list(inherits)
         self._is_full_preset = is_full_preset
 
 
@@ -172,12 +176,13 @@ class Preset(ITraced):
         """
         Sets the CMake build type.
         """
-        if value is None and Preset.CMAKE_BUILD_TYPE_VAR in self._cache_variables:
-            del self._cache_variables[Preset.CMAKE_BUILD_TYPE_VAR]
+        if value is None:
+            if Preset.CMAKE_BUILD_TYPE_VAR in self._cache_variables:
+                del self._cache_variables[Preset.CMAKE_BUILD_TYPE_VAR]
         elif isinstance(value, ECMakeBuildType):
             self._cache_variables[Preset.CMAKE_BUILD_TYPE_VAR] = value.value
         else:
-            self._cache_variables[Preset.CMAKE_BUILD_TYPE_VAR] = str(value)
+            self._cache_variables[Preset.CMAKE_BUILD_TYPE_VAR] = value
 
 
     def as_build_preset(self) -> Dict[str, object]:
@@ -264,8 +269,8 @@ class Preset(ITraced):
         # Start with a preset that has values not modified by `_merge` set to
         #   this preset's values
         preset = Preset(
-            name = self._name,
-            description = self._description,
+            name=self._name,
+            desc=self._description,
             inherits=self._base_presets,
             is_full_preset=True
         )
