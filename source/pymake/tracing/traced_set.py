@@ -1,6 +1,7 @@
+from __future__ import annotations
 from collections.abc import Iterator
 from pymake.tracing.traced import Traced
-from typing import Dict, Generic, TypeVar
+from typing import Dict, Generic, Optional, TypeVar
 
 T = TypeVar("T")
 
@@ -8,11 +9,13 @@ class TracedSet(Generic[T]):
     """
     A set that automatically captures tracing information for added values.
     """
-    def __init__(self):
+    def __init__(self,
+        values: Optional[Dict[T, Traced[T]]] = None):
         """
         Initializes the set.
+        @param values Dictionary of values to add to the set.
         """
-        self._values: Dict[T, Traced[T]] = {}
+        self._values = values if values else {}
 
 
     def __bool__(self) -> bool:
@@ -50,3 +53,11 @@ class TracedSet(Generic[T]):
                 f"'{call_site.file_path}':'{call_site.line_number}'"
             )
         self._values[value] = Traced(value)
+
+
+    def clone(self) -> TracedSet[T]:
+        """
+        Creates a clone of the set.
+        @returns A clone of the set.
+        """
+        return TracedSet(self._values.copy())
