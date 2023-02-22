@@ -106,6 +106,7 @@ class ICMake(ABC):
             project_languages
         )
         self._projects[project_name] = project
+        project.on_target_added = self._on_target_added
         return project
 
 
@@ -196,6 +197,16 @@ class ICMake(ABC):
                     f"{t.target_name}.target.yaml")
                 print(f"Generating '{trace_file_path}'...")
                 t.generate_trace_file(
+                    trace_file_path,
+                    YamlFileGenerator()
+                )
+
+            # Generate trace files for each preset
+            for _, p in self._presets.items():
+                trace_file_path = self._generated_dir.joinpath(
+                    f"{p.preset_name}.preset.yaml")
+                print(f"Generating '{trace_file_path}'...")
+                p.generate_trace_file(
                     trace_file_path,
                     YamlFileGenerator()
                 )

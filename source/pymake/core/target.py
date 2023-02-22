@@ -134,10 +134,11 @@ class ITarget(ABC, ITraced):
         #   file
         full_target = self.get_full_target()
         props: Dict[str, object] = {}
-        props["name"] = full_target._target_name
         props["type"] = full_target._target_type.value
         props["sources"] = full_target._sources.to_trace_dict()
-        generator.write_file(props, output_path)
+        generator.write_file({
+            self.target_name: props
+        }, output_path)
 
 
     @abstractmethod

@@ -2,6 +2,7 @@ from __future__ import annotations
 from pathlib import Path
 from pymake.common.cmake_build_type import ECMakeBuildType
 from pymake.common.cmake_generator import ECMakeGenerator
+from pymake.generators.trace_file_generator import ITraceFileGenerator
 from pymake.tracing.traced import ITraced
 from typing import Dict, Iterable, Optional
 
@@ -287,6 +288,31 @@ class Preset(ITraced):
         preset.merge(self)
 
         return preset
+
+
+    def generate_trace_file(self,
+        output_path: Path,
+        generator: ITraceFileGenerator):
+        """
+        Generates a trace file for the target.
+        @param output_path Path to the output file.
+        @param generator Generator to create the trace file using.
+        """
+        # Generate a dictionary containing the properties to write to the trace
+        #   file
+        full_preset = self.as_full_preset()
+        props: Dict[str, object] = {}
+        props["description"] = full_preset._description
+        props["hidden"] = full_preset._hidden
+        props["generator"] = full_preset._generator
+        props["binaryDir"] = full_preset._binary_dir
+        props["installDir"] = full_preset._install_dir
+        props["cacheVariables"] = full_preset._cache_variables
+        props["environment"] = full_preset._env_variables
+        props["inherits"] = [p._name for p in full_preset._base_presets]
+        generator.write_file({
+            full_preset.preset_name: props
+        }, output_path)
 
 
     def inherit_from(self, preset: Preset) -> None:

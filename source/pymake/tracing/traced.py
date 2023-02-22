@@ -44,8 +44,11 @@ class Traced(Generic[T]):
         Converts the object to a dictionary that can be written to a trace file.
         """
         return {
-            "value": self._value,
-            "origin": self._origin
+            "value": str(self._value),
+            "origin": {
+                "file": str(self._origin.file_path),
+                "line": self._origin.line_number
+            }
         }
 
 
