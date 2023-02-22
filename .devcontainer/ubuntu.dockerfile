@@ -31,7 +31,8 @@ RUN python3 -m pip install \
 	plantuml-markdown \
 	# Other
 	autopep8 \
-	pytest
+	pytest \
+	pytest-cov
 
 # Add CMake 3.14
 RUN mkdir -p /tmp/cmake && \
