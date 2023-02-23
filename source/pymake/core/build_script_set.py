@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from pymake.core.build_script import BuildScript
 from pymake.generators.cmake_generator import CMakeGenerator
@@ -9,6 +10,10 @@ class BuildScriptSet:
     """
     Stores all build script instances that must be generated.
     """
+    # Path for external build scripts' generated files
+    # This path is relative to the generated directory's path.
+    EXTERNAL_GENERATED_DIR = ".external"
+
     def __init__(self,
         source_directory: Path,
         generated_directory: Path,
@@ -27,12 +32,28 @@ class BuildScriptSet:
 
         self._source_dir = source_directory
         self._generated_dir = generated_directory
+        self._external_generated_dir = generated_directory / \
+            BuildScriptSet.EXTERNAL_GENERATED_DIR
         self._formatter = formatter
 
         # Build scripts added to the project, indexed by the path of the PyMake
         #   build script that triggered the creation of the build script.
         # Each build script path will be an absolute path.
         self._build_scripts: Dict[Path, BuildScript] = {}
+
+
+    def __bool__(self) -> bool:
+        """
+        Gets whether the set contains any build scripts.
+        """
+        return bool(self._build_scripts)
+
+
+    def __len__(self) -> int:
+        """
+        Gets the number of build scripts in the set.
+        """
+        return len(self._build_scripts)
 
 
     def get_or_add_build_script(self, caller_path: Optional[Path] = None) \
@@ -57,16 +78,20 @@ class BuildScriptSet:
         #   for the build script.
         try:
             rel_path = caller_path.relative_to(self._source_dir).parent
+            target_path = self._generated_dir / rel_path
         except ValueError:
-            raise ValueError(
-                "Build scripts may only be created by PyMake build scripts " +
-                "located in the source directory."
-            )
+            # The build script lies outside of the source directory.
+            # Use the path of the build script relative to the file system root
+            #   as the path for the generated build script.
+            fs_root = os.path.abspath('.').split(os.path.sep)[0] + os.path.sep
+            rel_path = caller_path.relative_to(Path(fs_root)).parent
+            target_path = self._external_generated_dir / rel_path
 
-        # Create a new build script instance
         generated_file_name = \
             BuildScriptSet.get_generated_build_script_name(caller_path)
-        target_path = self._generated_dir / rel_path / generated_file_name
+        target_path /= generated_file_name
+
+        # Create a new build script instance
         build_script = BuildScript(
             target_path,
             CMakeGenerator(self._formatter)
