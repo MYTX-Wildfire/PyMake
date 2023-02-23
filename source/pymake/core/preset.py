@@ -4,7 +4,7 @@ from pymake.common.cmake_build_type import ECMakeBuildType
 from pymake.common.cmake_generator import ECMakeGenerator
 from pymake.generators.trace_file_generator import ITraceFileGenerator
 from pymake.tracing.traced import ITraced
-from typing import Dict, Iterable, Optional
+from typing import Dict, List, Optional, Sequence
 
 class Preset(ITraced):
     """
@@ -17,12 +17,12 @@ class Preset(ITraced):
         name: str,
         desc: Optional[str] = None,
         is_hidden: bool = False,
-        cmake_generator: Optional[str] = None,
+        cmake_generator: Optional[str | ECMakeGenerator] = None,
         binary_path: Optional[str] = None,
         install_path: Optional[str] = None,
         cache_vars: Optional[Dict[str, str]] = None,
         env_vars: Optional[Dict[str, str]] = None,
-        inherits: Optional[Preset] | Iterable[Preset] = None,
+        inherits: Optional[Preset] | Sequence[Preset] = None,
         is_full_preset: bool = False):
         """
         Initializes the preset.
@@ -48,7 +48,10 @@ class Preset(ITraced):
         self._name = name
         self._description = desc
         self._hidden = is_hidden
-        self._generator = cmake_generator
+        if isinstance(cmake_generator, ECMakeGenerator):
+            self._generator = cmake_generator.value
+        else:
+            self._generator = cmake_generator
         self._binary_dir = binary_path
         self._install_dir = install_path
         self._cache_variables = cache_vars if cache_vars else {}
@@ -195,6 +198,14 @@ class Preset(ITraced):
         return self._env_variables
 
 
+    @property
+    def base_presets(self) -> List[Preset]:
+        """
+        Gets the presets that this preset inherits from.
+        """
+        return self._base_presets
+
+
     def as_build_preset(self,
         source_dir: Path,
         generated_dir: Path) -> Dict[str, object]:
@@ -280,6 +291,7 @@ class Preset(ITraced):
         preset = Preset(
             name=self._name,
             desc=self._description,
+            is_hidden=self._hidden,
             inherits=self._base_presets,
             is_full_preset=True
         )
@@ -328,8 +340,6 @@ class Preset(ITraced):
         Merges the values of another preset into this preset.
         @param preset Preset to merge.
         """
-        if preset._hidden:
-            self._hidden = True
         if preset._generator is not None:
             self._generator = preset._generator
         if preset._binary_dir is not None:
@@ -340,19 +350,29 @@ class Preset(ITraced):
         self._env_variables.update(preset._env_variables)
 
 
-    def set_cache_variable(self, name: str, value: str) -> None:
+    def set_cache_variable(self, name: str, value: Optional[str]) -> None:
         """
         Sets a CMake cache variable.
         @param name Name of the cache variable.
-        @param value Value of the cache variable.
+        @param value Value of the cache variable. If set to None, clears the
+          variable entry if it exists.
         """
-        self._cache_variables[name] = value
+        if value is None:
+            if name in self._cache_variables:
+                del self._cache_variables[name]
+        else:
+            self._cache_variables[name] = value
 
 
-    def set_env_variable(self, name: str, value: str) -> None:
+    def set_env_variable(self, name: str, value: Optional[str]) -> None:
         """
         Sets an environment variable.
         @param name Name of the environment variable.
-        @param value Value of the environment variable.
+        @param value Value of the environment variable. If set to None, clears
+          the variable entry if it exists.
         """
-        self._env_variables[name] = value
+        if value is None:
+            if name in self._env_variables:
+                del self._env_variables[name]
+        else:
+            self._env_variables[name] = value
