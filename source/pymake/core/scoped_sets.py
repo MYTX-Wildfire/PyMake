@@ -27,6 +27,30 @@ class ScopedSets(Generic[T]):
         self._private: TracedSet[T] = private if private else TracedSet()
 
 
+    @property
+    def public(self) -> TracedSet[T]:
+        """
+        Gets the public values in the set.
+        """
+        return self._public
+
+
+    @property
+    def interface(self) -> TracedSet[T]:
+        """
+        Gets the interface values in the set.
+        """
+        return self._interface
+
+
+    @property
+    def private(self) -> TracedSet[T]:
+        """
+        Gets the private values in the set.
+        """
+        return self._private
+
+
     def to_trace_dict(self) -> Dict[str, object]:
         """
         Converts the set to a dictionary that can be written to a trace file.

@@ -53,11 +53,11 @@ class ITarget(ABC, ITraced):
 
 
     @property
-    def install_path(self) -> Optional[Traced[str]]:
+    def install_path(self) -> Optional[str]:
         """
         Gets the path that the target will be installed to.
         """
-        return self._install_path
+        return self._install_path.value if self._install_path else None
 
 
     @property
@@ -82,6 +82,14 @@ class ITarget(ABC, ITraced):
         Gets the type of the target.
         """
         return self._target_type
+
+
+    @property
+    def sources(self) -> ScopedSets[Path]:
+        """
+        Gets the source files for the target.
+        """
+        return self._sources
 
 
     def add_sources(self,
@@ -136,6 +144,10 @@ class ITarget(ABC, ITraced):
         props: Dict[str, object] = {}
         props["type"] = full_target._target_type.value
         props["sources"] = full_target._sources.to_trace_dict()
+        props["is_installed"] = full_target._is_installed
+        props["install_path"] = full_target._install_path.value \
+            if full_target._install_path else "<cmake_default>"
+
         generator.write_file({
             self.target_name: props
         }, output_path)
