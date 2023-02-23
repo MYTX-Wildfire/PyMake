@@ -46,3 +46,9 @@ def test_add_duplicate_value_throws():
 
     with pytest.raises(ValueError):
         xs.add(x)
+
+
+def test_clone_returns_new_instance():
+    xs: TracedSet[int] = TracedSet()
+    ys = xs.clone()
+    assert xs is not ys
