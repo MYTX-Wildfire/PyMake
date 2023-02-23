@@ -56,6 +56,14 @@ class Project(ITraced):
         return self._project_name
 
 
+    @property
+    def project_languages(self) -> Iterable[EProjectLanguage]:
+        """
+        Gets the languages used in the project.
+        """
+        return self._project_languages
+
+
     def add_executable(self,
         target_name: str) -> ExecutableTarget:
         """
