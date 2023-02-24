@@ -58,21 +58,34 @@ jobs:
       if: success()
       run: |
         cd "$GITHUB_WORKSPACE"
-        COVERAGE=$(coverage report | awk 'END { print $(NF) }')
-        VALUE=$(echo $COVERAGE | grep -oP "\d+")
-        echo "COVERAGE_PERCENT=$COVERAGE" >> $GITHUB_ENV
-        echo "COVERAGE_VALUE=$VALUE" >> $GITHUB_ENV
+        METHOD_COVERAGE=$(awk '/Summary/ { gsub("[^0-9]", "", $3); print $3 }' coverage.md)
+        BRANCH_COVERAGE=$(awk '/Summary/ { gsub("[^0-9]", "", $8); print $8 }' coverage.md)
+        echo "METHOD_COVERAGE=$METHOD_COVERAGE" >> $GITHUB_ENV
+        echo "BRANCH_COVERAGE=$BRANCH_COVERAGE" >> $GITHUB_ENV
 
-    - name: Update code coverage badge
+    - name: Update method code coverage badge
       if: success()
       uses: schneegans/dynamic-badges-action@v1.6.0
       with:
         auth: ${{ secrets.GIST_SECRET }}
         gistID: 44526288c8a6404b92d17b67a9b95d8f
-        filename: coverage.json
-        label: Coverage
-        message: ${{ env.COVERAGE_PERCENT }}
-        valColorRange: ${{ env.COVERAGE_VALUE}}
+        filename: method-coverage.json
+        label: Method Coverage
+        message: ${{ env.METHOD_COVERAGE }}%
+        valColorRange: ${{ env.METHOD_COVERAGE }}
+        maxColorRange: 90
+        minColorRange: 0
+
+    - name: Update branch code coverage badge
+      if: success()
+      uses: schneegans/dynamic-badges-action@v1.6.0
+      with:
+        auth: ${{ secrets.GIST_SECRET }}
+        gistID: 0f8f2777e0c02dc7be8732706f36ae7a
+        filename: branch-coverage.json
+        label: Branch Coverage
+        message: ${{ env.BRANCH_COVERAGE }}%
+        valColorRange: ${{ env.BRANCH_COVERAGE }}
         maxColorRange: 90
         minColorRange: 0
 
