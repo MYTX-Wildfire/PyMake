@@ -5,19 +5,36 @@ on: [push, pull_request]
 jobs:
   tests:
     runs-on: ubuntu-latest
-    container:
-      image: .devcontainer/ubuntu.dockerfile
-      options: --rm
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Build Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: ./.devcontainer/gh-actions.dockerfile
+        push: false
+        tags: pymake:latest
+
+    - name: Start docker container
+      run: docker run --rm -itd --name pymake pymake:latest
+
     - name: Run unit tests
-      run: pytest --cov=pymake --cov-branch --cov-report=xml tests/unit
+      run: >
+        docker exec pymake
+        pytest --cov=pymake --cov-branch --cov-report=xml tests/unit
 
     - name: Run integration tests
-      run: pytest --cov=pymake --cov-branch --cov-report=xml tests/integration
+      run: >
+        docker exec pymake
+        pytest --cov=pymake --cov-branch --cov-report=xml tests/integration
 
     - name: Report code coverage
-      run: coverage report --show-missing
-      if: success() && github.ref == 'refs/heads/main'
+      run: >
+        docker exec pymake
+        coverage report --show-missing
+      if: success()
+
+    - name: Stop docker container
+      run: docker stop pymake
