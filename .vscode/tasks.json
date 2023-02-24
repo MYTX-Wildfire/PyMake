@@ -46,7 +46,9 @@
 			"group": "test",
 			"command": "coverage",
 			"args": [
-				"report"
+				"report",
+				"--show-missing",
+				"--skip-empty"
 			],
 			"dependsOn": [
 				"Run all tests"
