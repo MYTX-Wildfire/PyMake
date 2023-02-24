@@ -18,7 +18,7 @@ jobs:
         tags: pymake:latest
 
     - name: Start docker container
-      run: |
+      run: >
         docker run --rm -itd --name pymake -v "$GITHUB_WORKSPACE:/pymake"
         pymake:latest
 
