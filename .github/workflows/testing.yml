@@ -20,6 +20,7 @@ jobs:
     - name: Start docker container
       run: >
         docker run --rm -itd --name pymake -v "$GITHUB_WORKSPACE:/pymake"
+        --env PYTHONPATH="/pymake/source"
         pymake:latest
 
     - name: Run unit tests
