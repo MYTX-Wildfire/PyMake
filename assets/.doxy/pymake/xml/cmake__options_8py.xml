@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="cmake__options_8py" kind="file" language="Python">
+    <compoundname>cmake_options.py</compoundname>
+    <innerclass refid="classpymake_1_1core_1_1cmake__options_1_1CMakeOptions" prot="public">pymake::core::cmake_options::CMakeOptions</innerclass>
+    <innernamespace refid="namespacepymake_1_1core_1_1cmake__options">pymake::core::cmake_options</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacepymake_1_1core_1_1cmake__options" refkind="compound"><highlight class="keyword">from</highlight><highlight class="normal"><sp/>typing<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>NamedTuple</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="classpymake_1_1core_1_1cmake__options_1_1CMakeOptions" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1core_1_1cmake__options_1_1CMakeOptions" kindref="compound">CMakeOptions</ref>(NamedTuple):</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Various<sp/>CMake<sp/>options<sp/>that<sp/>may<sp/>be<sp/>enabled<sp/>via<sp/>PyMake<sp/>flags.</highlight></codeline>
+<codeline lineno="6"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Whether<sp/>to<sp/>pass<sp/>`--verbose`<sp/>to<sp/>CMake.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>verbose:<sp/>bool</highlight></codeline>
+    </programlisting>
+    <location file="source/pymake/core/cmake_options.py"/>
+  </compounddef>
+</doxygen>

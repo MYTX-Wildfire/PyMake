@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpymake_1_1core_1_1cmake314_1_1CMake314" kind="class" language="Python" prot="public">
+    <compoundname>pymake::core::cmake314::CMake314</compoundname>
+    <basecompoundref refid="classpymake_1_1core_1_1cmake_1_1ICMake" prot="public" virt="non-virtual">pymake.core.cmake.ICMake</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpymake_1_1core_1_1cmake314_1_1CMake314_1ab7918dec278a2ee963cbfb98429fbb9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def pymake.core.cmake314.CMake314.__init__</definition>
+        <argsstring>(self, str|Path source_directory=&quot;.&quot;, str|Path generated_directory=&quot;.pymake&quot;)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>str|Path</type>
+          <declname>source_directory</declname>
+          <defval>&quot;.&quot;</defval>
+        </param>
+        <param>
+          <type>str|Path</type>
+          <declname>generated_directory</declname>
+          <defval>&quot;.pymake&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Initializes the CMake instance.
+@param source_directory Path to the directory containing the source
+  files for the PyMake project. If this is a relative path, it will be
+  interpreted relative to the caller&apos;s directory.
+@param generated_directory Path to the directory where PyMake should
+  generate the CMake files. If this is a relative path, it will be
+  interpreted relative to the caller&apos;s directory.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/cmake314.py" line="14" column="1" bodyfile="source/pymake/core/cmake314.py" bodystart="16" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classpymake_1_1core_1_1cmake314_1_1CMake314_1abfe65377a37c00b3602fa331bbb69407" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.core.cmake314.CMake314._generate_presets</definition>
+        <argsstring>(self, Path output_path)</argsstring>
+        <name>_generate_presets</name>
+        <reimplements refid="classpymake_1_1core_1_1cmake_1_1ICMake_1a732841068922cc307c3757fbd1a8d0d1">_generate_presets</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Path</type>
+          <declname>output_path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Generates the CMakePresets.json file (if supported).
+@param output_path Path where the CMakePresets.json file should be
+  written.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/cmake314.py" line="38" column="1" bodyfile="source/pymake/core/cmake314.py" bodystart="38" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1cmake314_1_1CMake314_1ae4e7ef1bcf2ddbe304a93b82d03a038c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition> int pymake.core.cmake314.CMake314._run_cmake</definition>
+        <argsstring>(self, PyMakeArgs args, List[Preset] presets)</argsstring>
+        <name>_run_cmake</name>
+        <reimplements refid="classpymake_1_1core_1_1cmake_1_1ICMake_1a6b30f2e46bf61db87d5c5c3e807f5217">_run_cmake</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs" kindref="compound">PyMakeArgs</ref></type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type>List</type>
+          <declname>presets</declname>
+          <array>[Preset]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Runs CMake to build the project.
+@param args Arguments that were passed to PyMake.
+@param presets Presets that should be used when building the project.
+  Will always contain at least one value.
+@returns The exit code of the CMake process.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/cmake314.py" line="47" column="1" bodyfile="source/pymake/core/cmake314.py" bodystart="47" bodyend="122"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>ICMake implementation that generates CMake v3.14-compliant code.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>pymake.core.cmake314.CMake314</label>
+        <link refid="classpymake_1_1core_1_1cmake314_1_1CMake314"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>pymake.core.cmake.ICMake</label>
+        <link refid="classpymake_1_1core_1_1cmake_1_1ICMake"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ABC</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>pymake.core.cmake314.CMake314</label>
+        <link refid="classpymake_1_1core_1_1cmake314_1_1CMake314"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>pymake.core.cmake.ICMake</label>
+        <link refid="classpymake_1_1core_1_1cmake_1_1ICMake"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ABC</label>
+      </node>
+    </collaborationgraph>
+    <location file="source/pymake/core/cmake314.py" line="10" column="1" bodyfile="source/pymake/core/cmake314.py" bodystart="10" bodyend="122"/>
+    <listofallmembers>
+      <member refid="classpymake_1_1core_1_1cmake314_1_1CMake314_1ab7918dec278a2ee963cbfb98429fbb9b" prot="public" virt="non-virtual"><scope>pymake::core::cmake314::CMake314</scope><name>__init__</name></member>
+      <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1adbfc7b28ebfea29d83ddda4a71d33d8f" prot="public" virt="non-virtual" ambiguityscope="pymake::core::cmake::ICMake."><scope>pymake::core::cmake314::CMake314</scope><name>__init__</name></member>
+      <member refid="classpymake_1_1core_1_1cmake314_1_1CMake314_1abfe65377a37c00b3602fa331bbb69407" prot="private" virt="non-virtual"><scope>pymake::core::cmake314::CMake314</scope><name>_generate_presets</name></member>
+      <member refid="classpymake_1_1core_1_1cmake314_1_1CMake314_1ae4e7ef1bcf2ddbe304a93b82d03a038c" prot="private" virt="non-virtual"><scope>pymake::core::cmake314::CMake314</scope><name>_run_cmake</name></member>
+      <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1ab0a6509f20313961d5fd55c6f459de1c" prot="public" virt="non-virtual"><scope>pymake::core::cmake314::CMake314</scope><name>add_preset</name></member>
+      <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1ab702a88ba94c03ea922cbb63a188f466" prot="public" virt="non-virtual"><scope>pymake::core::cmake314::CMake314</scope><name>add_project</name></member>
+      <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1ac645776bf0038c3887473e3e8b2dce9e" prot="public" virt="non-virtual"><scope>pymake::core::cmake314::CMake314</scope><name>build</name></member>
+      <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1a6384f30767b802979e6efa25a3aa2e2c" prot="public" virt="non-virtual"><scope>pymake::core::cmake314::CMake314</scope><name>generate</name></member>
+      <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1aaa64f2f745bf23e38a75bb0c49b38031" prot="public" virt="non-virtual"><scope>pymake::core::cmake314::CMake314</scope><name>set_default_presets</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

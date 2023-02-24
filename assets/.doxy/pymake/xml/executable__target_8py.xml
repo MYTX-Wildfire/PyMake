@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="executable__target_8py" kind="file" language="Python">
+    <compoundname>executable_target.py</compoundname>
+    <innerclass refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget" prot="public">pymake::core::executable_target::ExecutableTarget</innerclass>
+    <innernamespace refid="namespacepymake_1_1core_1_1executable__target">pymake::core::executable_target</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacepymake_1_1core_1_1executable__target" refkind="compound"><highlight class="keyword">from</highlight><highlight class="normal"><sp/>__future__<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>annotations</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/><ref refid="namespacepymake_1_1common_1_1target__type" kindref="compound">pymake.common.target_type</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ETargetType</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/><ref refid="namespacepymake_1_1core_1_1build__script__set" kindref="compound">pymake.core.build_script_set</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>BuildScriptSet</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/><ref refid="namespacepymake_1_1core_1_1target" kindref="compound">pymake.core.target</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ITarget</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget" kindref="compound">ExecutableTarget</ref>(<ref refid="classpymake_1_1core_1_1target_1_1ITarget" kindref="compound">ITarget</ref>):</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="8"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Represents<sp/>a<sp/>single<sp/>executable<sp/>CMake<sp/>target.</highlight></codeline>
+<codeline lineno="9"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget_1a470d3b9cefa637590958a0abd3032843" kindref="member">__init__</ref>(self,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>build_scripts:<sp/>BuildScriptSet,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>target_name:<sp/>str):</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="14"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Initializes<sp/>the<sp/>target.</highlight></codeline>
+<codeline lineno="15"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@param<sp/>build_scripts<sp/>Set<sp/>of<sp/>build<sp/>scripts<sp/>that<sp/>the<sp/>project<sp/>will<sp/>generate.</highlight></codeline>
+<codeline lineno="16"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@param<sp/>target_name<sp/>Name<sp/>of<sp/>the<sp/>target.</highlight></codeline>
+<codeline lineno="17"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>super().<ref refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget_1a470d3b9cefa637590958a0abd3032843" kindref="member">__init__</ref>(</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>build_scripts,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>target_name,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ETargetType.EXECUTABLE</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Generate<sp/>the<sp/>CMake<sp/>code</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>generator<sp/>=<sp/>self.<ref refid="classpymake_1_1core_1_1target_1_1ITarget_1aaa90e6fca67f3cf06a6961d40fe30b9b" kindref="member">_build_scripts</ref>_build_scripts.get_or_add_build_script().generator</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/>generator.open_method_block(</highlight><highlight class="stringliteral">&quot;add_executable&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>b:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b.add_arguments(self.<ref refid="classpymake_1_1core_1_1target_1_1ITarget_1ae5c82730b77913e2cbbb548decf76aed" kindref="member">_target_name</ref>_target_name)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget_1a929eb84894a3e2f74cf151b173afcef4" kindref="member">get_full_target</ref>(self)<sp/>-&gt;<sp/>ExecutableTarget:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="32"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Gets<sp/>a<sp/>target<sp/>instance<sp/>that<sp/>includes<sp/>all<sp/>values<sp/>for<sp/>the<sp/>target.</highlight></codeline>
+<codeline lineno="33"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Target<sp/>instances<sp/>normally<sp/>do<sp/>not<sp/>include<sp/>values<sp/>from<sp/>targets<sp/>that</highlight></codeline>
+<codeline lineno="34"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>they<sp/>link<sp/>to.<sp/>The<sp/>target<sp/>instance<sp/>returned<sp/>by<sp/>this<sp/>method<sp/>contains</highlight></codeline>
+<codeline lineno="35"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>all<sp/>values<sp/>for<sp/>the<sp/>target,<sp/>including<sp/>values<sp/>from<sp/>linked-to<sp/>targets.</highlight></codeline>
+<codeline lineno="36"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@returns<sp/>A<sp/>target<sp/>instance<sp/>that<sp/>includes<sp/>all<sp/>values<sp/>from<sp/>targets<sp/>that</highlight></codeline>
+<codeline lineno="37"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this<sp/>target<sp/>links<sp/>to.</highlight></codeline>
+<codeline lineno="38"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Nothing<sp/>needs<sp/>to<sp/>be<sp/>done<sp/>yet<sp/>since<sp/>target<sp/>linking<sp/>hasn&apos;t<sp/>been</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/><sp/><sp/>implemented<sp/>yet</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>self</highlight></codeline>
+    </programlisting>
+    <location file="source/pymake/core/executable_target.py"/>
+  </compounddef>
+</doxygen>

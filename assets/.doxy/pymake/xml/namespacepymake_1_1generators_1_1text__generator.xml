@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespacepymake_1_1generators_1_1text__generator" kind="namespace" language="Python">
+    <compoundname>pymake::generators::text_generator</compoundname>
+    <innerclass refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator" prot="public">pymake::generators::text_generator::TextGenerator</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="source/pymake/generators/text_generator.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

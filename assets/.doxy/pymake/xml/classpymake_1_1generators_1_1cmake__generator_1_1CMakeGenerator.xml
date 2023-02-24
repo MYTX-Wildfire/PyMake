@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator" kind="class" language="Python" prot="public">
+    <compoundname>pymake::generators::cmake_generator::CMakeGenerator</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1afe028826204f9e14f3df5195955d99ec" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.generators.cmake_generator.CMakeGenerator::_text_generator</definition>
+        <argsstring></argsstring>
+        <name>_text_generator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/cmake_generator.py" line="21" column="1" bodyfile="source/pymake/generators/cmake_generator.py" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1a6c7946b1b37a3d7758875584a8f987e5" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.generators.cmake_generator.CMakeGenerator::_formatter</definition>
+        <argsstring></argsstring>
+        <name>_formatter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/cmake_generator.py" line="22" column="1" bodyfile="source/pymake/generators/cmake_generator.py" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1ac0d30bf52f634fb668ce45b875f85438" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def pymake.generators.cmake_generator.CMakeGenerator.__init__</definition>
+        <argsstring>(self, ICallerInfoFormatter formatter, bool use_spaces=False, int tab_size=4)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>ICallerInfoFormatter</type>
+          <declname>formatter</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>use_spaces</declname>
+          <defval>False</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tab_size</declname>
+          <defval>4</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Initializes the generator.
+@param formatter Formatter used to format tracing information.
+@param use_spaces Whether spaces should be used in the generated string.
+@param tab_size Only used if `use_spaces` is true. Determines the number
+  of spaces inserted for each indentation level.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/cmake_generator.py" line="10" column="1" bodyfile="source/pymake/generators/cmake_generator.py" bodystart="13" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1aab71098cd859e858f6f648f5b498beea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>str</type>
+        <definition> str pymake.generators.cmake_generator.CMakeGenerator.generate</definition>
+        <argsstring>(self)</argsstring>
+        <name>generate</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the contents of the generated CMake file.
+@returns The contents of the generated CMake file.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/cmake_generator.py" line="25" column="1" bodyfile="source/pymake/generators/cmake_generator.py" bodystart="25" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1a7e25c67f2e9097fa371853a6704434f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder" kindref="compound">CMakeMethodBuilder</ref></type>
+        <definition> CMakeMethodBuilder pymake.generators.cmake_generator.CMakeGenerator.open_method_block</definition>
+        <argsstring>(self, str method_name)</argsstring>
+        <name>open_method_block</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>str</type>
+          <declname>method_name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Opens a method block.
+@param method_name Name of the method.
+@returns A builder used to generate the method.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/cmake_generator.py" line="33" column="1" bodyfile="source/pymake/generators/cmake_generator.py" bodystart="33" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1add992102183f8995355cdce4bf5be6d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.generators.cmake_generator.CMakeGenerator.write_file</definition>
+        <argsstring>(self, str|Path output_path)</argsstring>
+        <name>write_file</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>str|Path</type>
+          <declname>output_path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Writes the generated CMake file to the specified path.
+@param output_path Path to write the generated CMake file to.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/cmake_generator.py" line="46" column="1" bodyfile="source/pymake/generators/cmake_generator.py" bodystart="46" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Generator used to generate CMake files.
+</verbatim> </para>
+    </detaileddescription>
+    <location file="source/pymake/generators/cmake_generator.py" line="6" column="1" bodyfile="source/pymake/generators/cmake_generator.py" bodystart="6" bodyend="58"/>
+    <listofallmembers>
+      <member refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1ac0d30bf52f634fb668ce45b875f85438" prot="public" virt="non-virtual"><scope>pymake::generators::cmake_generator::CMakeGenerator</scope><name>__init__</name></member>
+      <member refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1a6c7946b1b37a3d7758875584a8f987e5" prot="private" virt="non-virtual"><scope>pymake::generators::cmake_generator::CMakeGenerator</scope><name>_formatter</name></member>
+      <member refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1afe028826204f9e14f3df5195955d99ec" prot="private" virt="non-virtual"><scope>pymake::generators::cmake_generator::CMakeGenerator</scope><name>_text_generator</name></member>
+      <member refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1aab71098cd859e858f6f648f5b498beea" prot="public" virt="non-virtual"><scope>pymake::generators::cmake_generator::CMakeGenerator</scope><name>generate</name></member>
+      <member refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1a7e25c67f2e9097fa371853a6704434f5" prot="public" virt="non-virtual"><scope>pymake::generators::cmake_generator::CMakeGenerator</scope><name>open_method_block</name></member>
+      <member refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1add992102183f8995355cdce4bf5be6d1" prot="public" virt="non-virtual"><scope>pymake::generators::cmake_generator::CMakeGenerator</scope><name>write_file</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

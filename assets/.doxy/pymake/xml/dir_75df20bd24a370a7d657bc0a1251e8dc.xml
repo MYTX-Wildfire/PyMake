@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_75df20bd24a370a7d657bc0a1251e8dc" kind="dir">
+    <compoundname>source/pymake/tracing</compoundname>
+    <innerfile refid="caller__info_8py">caller_info.py</innerfile>
+    <innerfile refid="caller__info__formatter_8py">caller_info_formatter.py</innerfile>
+    <innerfile refid="full__caller__info__formatter_8py">full_caller_info_formatter.py</innerfile>
+    <innerfile refid="null__caller__info__formatter_8py">null_caller_info_formatter.py</innerfile>
+    <innerfile refid="shortened__caller__info__formatter_8py">shortened_caller_info_formatter.py</innerfile>
+    <innerfile refid="traced_8py">traced.py</innerfile>
+    <innerfile refid="traced__set_8py">traced_set.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="source/pymake/tracing/"/>
+  </compounddef>
+</doxygen>

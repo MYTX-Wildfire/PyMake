@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="null__caller__info__formatter_8py" kind="file" language="Python">
+    <compoundname>null_caller_info_formatter.py</compoundname>
+    <innerclass refid="classnull__caller__info__formatter_1_1NullCallerInfoFormatter" prot="public">null_caller_info_formatter::NullCallerInfoFormatter</innerclass>
+    <innernamespace refid="namespacenull__caller__info__formatter">null_caller_info_formatter</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacenull__caller__info__formatter" refkind="compound"><highlight class="keyword">from</highlight><highlight class="normal"><sp/>pymake.tracing.caller_info_formatter<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ICallerInfoFormatter</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>pymake.tracing.caller_info<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>CallerInfo</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>pymake.tracing.traced<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ITraced,<sp/>Traced</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>typing<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Any</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="classnull__caller__info__formatter_1_1NullCallerInfoFormatter" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classnull__caller__info__formatter_1_1NullCallerInfoFormatter" kindref="compound">NullCallerInfoFormatter</ref>(ICallerInfoFormatter):</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="8"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Formatter<sp/>that<sp/>always<sp/>returns<sp/>empty<sp/>strings.</highlight></codeline>
+<codeline lineno="9"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classnull__caller__info__formatter_1_1NullCallerInfoFormatter_1a4a78cd2faf4e738301a7e86f8d5d4cbb" kindref="member">format</ref>(self,<sp/>x:<sp/>CallerInfo<sp/>|<sp/>ITraced<sp/>|<sp/>Traced[Any])<sp/>-&gt;<sp/>str:</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="13"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Converts<sp/>the<sp/>caller<sp/>info<sp/>data<sp/>into<sp/>a<sp/>formatted<sp/>string.</highlight></codeline>
+<codeline lineno="14"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@param<sp/>x<sp/>Object<sp/>providing<sp/>caller<sp/>info<sp/>data.</highlight></codeline>
+<codeline lineno="15"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="source/pymake/tracing/null_caller_info_formatter.py"/>
+  </compounddef>
+</doxygen>

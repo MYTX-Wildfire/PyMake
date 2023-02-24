@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="target__type_8py" kind="file" language="Python">
+    <compoundname>target_type.py</compoundname>
+    <innerclass refid="classpymake_1_1common_1_1target__type_1_1ETargetType" prot="public">pymake::common::target_type::ETargetType</innerclass>
+    <innernamespace refid="namespacepymake_1_1common_1_1target__type">pymake::common::target_type</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacepymake_1_1common_1_1target__type" refkind="compound"><highlight class="keyword">from</highlight><highlight class="normal"><sp/>enum<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Enum</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="classpymake_1_1common_1_1target__type_1_1ETargetType" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1common_1_1target__type_1_1ETargetType" kindref="compound">ETargetType</ref>(Enum):</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Enum<sp/>for<sp/>the<sp/>various<sp/>CMake<sp/>target<sp/>types.</highlight></codeline>
+<codeline lineno="6"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Indicates<sp/>that<sp/>the<sp/>target<sp/>creates<sp/>an<sp/>executable<sp/>binary.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>EXECUTABLE<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Executable&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Indicates<sp/>that<sp/>the<sp/>target<sp/>creates<sp/>a<sp/>static<sp/>library.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Static&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Indicates<sp/>that<sp/>the<sp/>target<sp/>creates<sp/>a<sp/>shared<sp/>library.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>SHARED<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Shared&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Indicates<sp/>that<sp/>the<sp/>target<sp/>is<sp/>an<sp/>interface<sp/>target.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>INTERFACE<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Interface&quot;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="source/pymake/common/target_type.py"/>
+  </compounddef>
+</doxygen>

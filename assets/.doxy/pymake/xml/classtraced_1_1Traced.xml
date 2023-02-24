@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classtraced_1_1Traced" kind="class" language="Python" prot="public">
+    <compoundname>traced::Traced</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Generic</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">T</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtraced_1_1Traced_1a9f467cbf48ee3a36a04a78033a2134ed" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>traced.Traced::_value</definition>
+        <argsstring></argsstring>
+        <name>_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/traced.py" line="37" column="1" bodyfile="source/pymake/tracing/traced.py" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtraced_1_1Traced_1af0fc9f6406ac40c05d5b75265e247811" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>traced.Traced::_origin</definition>
+        <argsstring></argsstring>
+        <name>_origin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/traced.py" line="38" column="1" bodyfile="source/pymake/tracing/traced.py" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtraced_1_1Traced_1a1280afb9822a7b3bb621c0d81dad75a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def traced.Traced.__init__</definition>
+        <argsstring>(self, T value, CallerInfo|None call_site=None)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="namespacetraced_1addebc245d7ec712ca433f824255551db" kindref="member">T</ref></type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>CallerInfo|None</type>
+          <declname>call_site</declname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Initializes the object.
+@param value Value to wrap.
+@param call_site Call site where the value was provided from. If not
+  provided, the call site will be determined automatically by capturing
+  the first external frame.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/traced.py" line="29" column="1" bodyfile="source/pymake/tracing/traced.py" bodystart="29" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classtraced_1_1Traced_1a63c51634bcf8674a92e399532168a1d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Dict[str, object]</type>
+        <definition> Dict[str, object] traced.Traced.to_dict</definition>
+        <argsstring>(self)</argsstring>
+        <name>to_dict</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Converts the object to a dictionary that can be written to a trace file.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/traced.py" line="42" column="1" bodyfile="source/pymake/tracing/traced.py" bodystart="42" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classtraced_1_1Traced_1ae872281bdf9bb7dba66c6533a3015bc9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>CallerInfo</type>
+        <definition> CallerInfo traced.Traced.origin</definition>
+        <argsstring>(self)</argsstring>
+        <name>origin</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Returns the call site where the value was provided from.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/traced.py" line="56" column="1" bodyfile="source/pymake/tracing/traced.py" bodystart="56" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classtraced_1_1Traced_1aa2762e4b52c2d176e0e8aefb5acb9699" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacetraced_1addebc245d7ec712ca433f824255551db" kindref="member">T</ref></type>
+        <definition> T traced.Traced.value</definition>
+        <argsstring>(self)</argsstring>
+        <name>value</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Retrieves the wrapped value.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/traced.py" line="64" column="1" bodyfile="source/pymake/tracing/traced.py" bodystart="64" bodyend="69"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Wrapper used to add tracing information to a value.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>T</label>
+      </node>
+      <node id="2">
+        <label>Generic</label>
+      </node>
+      <node id="1">
+        <label>traced.Traced</label>
+        <link refid="classtraced_1_1Traced"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>T</label>
+      </node>
+      <node id="2">
+        <label>Generic</label>
+      </node>
+      <node id="1">
+        <label>traced.Traced</label>
+        <link refid="classtraced_1_1Traced"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="source/pymake/tracing/traced.py" line="25" column="1" bodyfile="source/pymake/tracing/traced.py" bodystart="25" bodyend="69"/>
+    <listofallmembers>
+      <member refid="classtraced_1_1Traced_1a1280afb9822a7b3bb621c0d81dad75a3" prot="public" virt="non-virtual"><scope>traced::Traced</scope><name>__init__</name></member>
+      <member refid="classtraced_1_1Traced_1af0fc9f6406ac40c05d5b75265e247811" prot="private" virt="non-virtual"><scope>traced::Traced</scope><name>_origin</name></member>
+      <member refid="classtraced_1_1Traced_1a9f467cbf48ee3a36a04a78033a2134ed" prot="private" virt="non-virtual"><scope>traced::Traced</scope><name>_value</name></member>
+      <member refid="classtraced_1_1Traced_1ae872281bdf9bb7dba66c6533a3015bc9" prot="public" virt="non-virtual"><scope>traced::Traced</scope><name>origin</name></member>
+      <member refid="classtraced_1_1Traced_1a63c51634bcf8674a92e399532168a1d3" prot="public" virt="non-virtual"><scope>traced::Traced</scope><name>to_dict</name></member>
+      <member refid="classtraced_1_1Traced_1aa2762e4b52c2d176e0e8aefb5acb9699" prot="public" virt="non-virtual"><scope>traced::Traced</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="generators_2cmake__generator_8py" kind="file" language="Python">
+    <compoundname>cmake_generator.py</compoundname>
+    <innerclass refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator" prot="public">pymake::generators::cmake_generator::CMakeGenerator</innerclass>
+    <innernamespace refid="namespacepymake_1_1generators_1_1cmake__generator">pymake::generators::cmake_generator</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacepymake_1_1generators_1_1cmake__generator" refkind="compound"><highlight class="keyword">from</highlight><highlight class="normal"><sp/>pathlib<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Path</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/><ref refid="namespacepymake_1_1generators_1_1cmake__method__builder" kindref="compound">pymake.generators.cmake_method_builder</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>CMakeMethodBuilder</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/><ref refid="namespacepymake_1_1generators_1_1text__generator" kindref="compound">pymake.generators.text_generator</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>TextGenerator</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>pymake.tracing.caller_info_formatter<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ICallerInfoFormatter</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator" kindref="compound">CMakeGenerator</ref>:</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="8"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Generator<sp/>used<sp/>to<sp/>generate<sp/>CMake<sp/>files.</highlight></codeline>
+<codeline lineno="9"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1ac0d30bf52f634fb668ce45b875f85438" kindref="member">__init__</ref>(self,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>formatter:<sp/>ICallerInfoFormatter,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>use_spaces:<sp/>bool<sp/>=<sp/></highlight><highlight class="keyword">False</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tab_size:<sp/>int<sp/>=<sp/>4):</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="15"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Initializes<sp/>the<sp/>generator.</highlight></codeline>
+<codeline lineno="16"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@param<sp/>formatter<sp/>Formatter<sp/>used<sp/>to<sp/>format<sp/>tracing<sp/>information.</highlight></codeline>
+<codeline lineno="17"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@param<sp/>use_spaces<sp/>Whether<sp/>spaces<sp/>should<sp/>be<sp/>used<sp/>in<sp/>the<sp/>generated<sp/>string.</highlight></codeline>
+<codeline lineno="18"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@param<sp/>tab_size<sp/>Only<sp/>used<sp/>if<sp/>`use_spaces`<sp/>is<sp/>true.<sp/>Determines<sp/>the<sp/>number</highlight></codeline>
+<codeline lineno="19"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>of<sp/>spaces<sp/>inserted<sp/>for<sp/>each<sp/>indentation<sp/>level.</highlight></codeline>
+<codeline lineno="20"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1afe028826204f9e14f3df5195955d99ec" kindref="member">_text_generator</ref>_text_generator<sp/>=<sp/><ref refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator" kindref="compound">TextGenerator</ref>(use_spaces,<sp/>tab_size)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1a6c7946b1b37a3d7758875584a8f987e5" kindref="member">_formatter</ref>_formatter<sp/>=<sp/>formatter</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1aab71098cd859e858f6f648f5b498beea" kindref="member">generate</ref>(self)<sp/>-&gt;<sp/>str:</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="27"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Gets<sp/>the<sp/>contents<sp/>of<sp/>the<sp/>generated<sp/>CMake<sp/>file.</highlight></codeline>
+<codeline lineno="28"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@returns<sp/>The<sp/>contents<sp/>of<sp/>the<sp/>generated<sp/>CMake<sp/>file.</highlight></codeline>
+<codeline lineno="29"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>self.<ref refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1afe028826204f9e14f3df5195955d99ec" kindref="member">_text_generator</ref>_text_generator.text</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1a7e25c67f2e9097fa371853a6704434f5" kindref="member">open_method_block</ref>(self,<sp/>method_name:<sp/>str)<sp/>-&gt;<sp/>CMakeMethodBuilder:</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="35"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Opens<sp/>a<sp/>method<sp/>block.</highlight></codeline>
+<codeline lineno="36"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@param<sp/>method_name<sp/>Name<sp/>of<sp/>the<sp/>method.</highlight></codeline>
+<codeline lineno="37"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@returns<sp/>A<sp/>builder<sp/>used<sp/>to<sp/>generate<sp/>the<sp/>method.</highlight></codeline>
+<codeline lineno="38"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder" kindref="compound">CMakeMethodBuilder</ref>(</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1a6c7946b1b37a3d7758875584a8f987e5" kindref="member">_formatter</ref>_formatter,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1afe028826204f9e14f3df5195955d99ec" kindref="member">_text_generator</ref>_text_generator,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>method_name</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1add992102183f8995355cdce4bf5be6d1" kindref="member">write_file</ref>(self,<sp/>output_path:<sp/>str<sp/>|<sp/>Path)<sp/>-&gt;<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="48"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Writes<sp/>the<sp/>generated<sp/>CMake<sp/>file<sp/>to<sp/>the<sp/>specified<sp/>path.</highlight></codeline>
+<codeline lineno="49"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@param<sp/>output_path<sp/>Path<sp/>to<sp/>write<sp/>the<sp/>generated<sp/>CMake<sp/>file<sp/>to.</highlight></codeline>
+<codeline lineno="50"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Create<sp/>the<sp/>path<sp/>to<sp/>the<sp/>output<sp/>file<sp/>if<sp/>it<sp/>doesn&apos;t<sp/>exist</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>output_dir<sp/>=<sp/>Path(output_path).parent</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>output_dir.exists():</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>output_dir.mkdir(parents=</highlight><highlight class="keyword">True</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/>open(output_path,<sp/></highlight><highlight class="stringliteral">&quot;w&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>f:</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>f.write(self.<ref refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1aab71098cd859e858f6f648f5b498beea" kindref="member">generate</ref>generate())</highlight></codeline>
+    </programlisting>
+    <location file="source/pymake/generators/cmake_generator.py"/>
+  </compounddef>
+</doxygen>

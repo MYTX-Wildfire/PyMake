@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespacepymake_1_1generators" kind="namespace" language="Python">
+    <compoundname>pymake::generators</compoundname>
+    <innernamespace refid="namespacepymake_1_1generators_1_1cmake__generator">pymake::generators::cmake_generator</innernamespace>
+    <innernamespace refid="namespacepymake_1_1generators_1_1cmake__method__builder">pymake::generators::cmake_method_builder</innernamespace>
+    <innernamespace refid="namespacepymake_1_1generators_1_1json__file__generator">pymake::generators::json_file_generator</innernamespace>
+    <innernamespace refid="namespacepymake_1_1generators_1_1text__generator">pymake::generators::text_generator</innernamespace>
+    <innernamespace refid="namespacepymake_1_1generators_1_1trace__file__generator">pymake::generators::trace_file_generator</innernamespace>
+    <innernamespace refid="namespacepymake_1_1generators_1_1yaml__file__generator">pymake::generators::yaml_file_generator</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="source/pymake/generators/__init__.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

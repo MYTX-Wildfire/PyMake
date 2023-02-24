@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="caller__info__formatter_8py" kind="file" language="Python">
+    <compoundname>caller_info_formatter.py</compoundname>
+    <innerclass refid="classcaller__info__formatter_1_1ICallerInfoFormatter" prot="public">caller_info_formatter::ICallerInfoFormatter</innerclass>
+    <innernamespace refid="namespacecaller__info__formatter">caller_info_formatter</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacecaller__info__formatter" refkind="compound"><highlight class="keyword">from</highlight><highlight class="normal"><sp/>abc<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ABC,<sp/>abstractmethod</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>pymake.tracing.caller_info<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>CallerInfo</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>pymake.tracing.traced<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ITraced,<sp/>Traced</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>typing<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Any</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="classcaller__info__formatter_1_1ICallerInfoFormatter" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classcaller__info__formatter_1_1ICallerInfoFormatter" kindref="compound">ICallerInfoFormatter</ref>(ABC):</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="8"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Base<sp/>class<sp/>for<sp/>types<sp/>that<sp/>format<sp/>data<sp/>from<sp/>a<sp/>`CallerInfo`<sp/>instance.</highlight></codeline>
+<codeline lineno="9"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor">@abstractmethod</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classcaller__info__formatter_1_1ICallerInfoFormatter_1a43e8ded446a923085fd5d57197b2fdbb" kindref="member">format</ref>(self,<sp/>x:<sp/>CallerInfo<sp/>|<sp/>ITraced<sp/>|<sp/>Traced[Any])<sp/>-&gt;<sp/>str:</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="13"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Converts<sp/>the<sp/>caller<sp/>info<sp/>data<sp/>into<sp/>a<sp/>formatted<sp/>string.</highlight></codeline>
+<codeline lineno="14"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@param<sp/>x<sp/>Object<sp/>providing<sp/>caller<sp/>info<sp/>data.</highlight></codeline>
+<codeline lineno="15"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>NotImplementedError()</highlight></codeline>
+    </programlisting>
+    <location file="source/pymake/tracing/caller_info_formatter.py"/>
+  </compounddef>
+</doxygen>

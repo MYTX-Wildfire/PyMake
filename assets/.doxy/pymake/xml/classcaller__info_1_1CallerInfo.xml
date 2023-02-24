@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcaller__info_1_1CallerInfo" kind="class" language="Python" prot="public">
+    <compoundname>caller_info::CallerInfo</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcaller__info_1_1CallerInfo_1a5a7123a9da4d44a23f4860186cbd333a" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>caller_info.CallerInfo::_file_path</definition>
+        <argsstring></argsstring>
+        <name>_file_path</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/caller_info.py" line="23" column="1" bodyfile="source/pymake/tracing/caller_info.py" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcaller__info_1_1CallerInfo_1a7f62bb34baf93d6a9cfc49f817a6cf31" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>caller_info.CallerInfo::_line_number</definition>
+        <argsstring></argsstring>
+        <name>_line_number</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/caller_info.py" line="24" column="1" bodyfile="source/pymake/tracing/caller_info.py" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcaller__info_1_1CallerInfo_1a2fff51cbfde2f91ea95bc5ef90e7c5f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def caller_info.CallerInfo.__init__</definition>
+        <argsstring>(self, Path|str file_path, int line_number)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Path|str</type>
+          <declname>file_path</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>line_number</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Initializes the object.
+@param file_path Absolute path to the file that the stack frame is from.
+@param line_number Line number of the executing code whose stack frame
+  is captured.
+@throws ValueError Thrown if `file_path` is not an absolute path.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/caller_info.py" line="10" column="1" bodyfile="source/pymake/tracing/caller_info.py" bodystart="10" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classcaller__info_1_1CallerInfo_1aa76587e64ed3d1ce38349ee1fcca4604" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Path</type>
+        <definition> Path caller_info.CallerInfo.file_path</definition>
+        <argsstring>(self)</argsstring>
+        <name>file_path</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the file path of the caller&apos;s code.
+@invariant This will always be an absolute path.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/caller_info.py" line="73" column="1" bodyfile="source/pymake/tracing/caller_info.py" bodystart="73" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classcaller__info_1_1CallerInfo_1a5a7298a545946dbbe2b5321c8f565aa2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition> int caller_info.CallerInfo.line_number</definition>
+        <argsstring>(self)</argsstring>
+        <name>line_number</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the line number of the caller&apos;s code.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/caller_info.py" line="82" column="1" bodyfile="source/pymake/tracing/caller_info.py" bodystart="82" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classcaller__info_1_1CallerInfo_1a8b4dbde01c871f37bef8b6bca7e2873b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition> int caller_info.CallerInfo.__hash__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__hash__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Generates the hash of the object.
+@returns The hash of the object.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/caller_info.py" line="89" column="1" bodyfile="source/pymake/tracing/caller_info.py" bodystart="89" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classcaller__info_1_1CallerInfo_1af9cb01e6c0231da26e9e340cb63c86b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition> bool caller_info.CallerInfo.__eq__</definition>
+        <argsstring>(self, object other)</argsstring>
+        <name>__eq__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Checks if the other object is equal to this object.
+@param other Object to compare to this object.
+@returns True if the two objects are equal.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/caller_info.py" line="97" column="1" bodyfile="source/pymake/tracing/caller_info.py" bodystart="97" bodyend="112"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classcaller__info_1_1CallerInfo_1ac14b0441b524e7052d7fb63065bc11eb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcaller__info_1_1CallerInfo" kindref="compound">CallerInfo</ref></type>
+        <definition> CallerInfo caller_info.CallerInfo.closest_external_frame</definition>
+        <argsstring>()</argsstring>
+        <name>closest_external_frame</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Creates a `CallerInfo` instance for the closest non-pymake stack frame.
+@returns A `CallerInfo` instance that captures the data for the closest
+  non-pymake stack frame.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/caller_info.py" line="28" column="1" bodyfile="source/pymake/tracing/caller_info.py" bodystart="28" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classcaller__info_1_1CallerInfo_1abd88acd56b14209c6ea56ff0c4c37fac" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcaller__info_1_1CallerInfo" kindref="compound">CallerInfo</ref></type>
+        <definition> CallerInfo caller_info.CallerInfo.from_stack_frame</definition>
+        <argsstring>(int offset)</argsstring>
+        <name>from_stack_frame</name>
+        <param>
+          <type>int</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Generates a caller info instance from the target stack frame.
+@param offset Offset in numbers of stack frames from the caller method
+  to capture in the `CallerInfo` instance. A value of 0 will capture
+  the caller method&apos;s stack frame.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/caller_info.py" line="44" column="1" bodyfile="source/pymake/tracing/caller_info.py" bodystart="44" bodyend="71"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Helper class that captures caller information for a method.
+</verbatim> </para>
+    </detaileddescription>
+    <location file="source/pymake/tracing/caller_info.py" line="6" column="1" bodyfile="source/pymake/tracing/caller_info.py" bodystart="6" bodyend="112"/>
+    <listofallmembers>
+      <member refid="classcaller__info_1_1CallerInfo_1af9cb01e6c0231da26e9e340cb63c86b8" prot="public" virt="non-virtual"><scope>caller_info::CallerInfo</scope><name>__eq__</name></member>
+      <member refid="classcaller__info_1_1CallerInfo_1a8b4dbde01c871f37bef8b6bca7e2873b" prot="public" virt="non-virtual"><scope>caller_info::CallerInfo</scope><name>__hash__</name></member>
+      <member refid="classcaller__info_1_1CallerInfo_1a2fff51cbfde2f91ea95bc5ef90e7c5f3" prot="public" virt="non-virtual"><scope>caller_info::CallerInfo</scope><name>__init__</name></member>
+      <member refid="classcaller__info_1_1CallerInfo_1a5a7123a9da4d44a23f4860186cbd333a" prot="private" virt="non-virtual"><scope>caller_info::CallerInfo</scope><name>_file_path</name></member>
+      <member refid="classcaller__info_1_1CallerInfo_1a7f62bb34baf93d6a9cfc49f817a6cf31" prot="private" virt="non-virtual"><scope>caller_info::CallerInfo</scope><name>_line_number</name></member>
+      <member refid="classcaller__info_1_1CallerInfo_1ac14b0441b524e7052d7fb63065bc11eb" prot="public" virt="non-virtual"><scope>caller_info::CallerInfo</scope><name>closest_external_frame</name></member>
+      <member refid="classcaller__info_1_1CallerInfo_1aa76587e64ed3d1ce38349ee1fcca4604" prot="public" virt="non-virtual"><scope>caller_info::CallerInfo</scope><name>file_path</name></member>
+      <member refid="classcaller__info_1_1CallerInfo_1abd88acd56b14209c6ea56ff0c4c37fac" prot="public" virt="non-virtual"><scope>caller_info::CallerInfo</scope><name>from_stack_frame</name></member>
+      <member refid="classcaller__info_1_1CallerInfo_1a5a7298a545946dbbe2b5321c8f565aa2" prot="public" virt="non-virtual"><scope>caller_info::CallerInfo</scope><name>line_number</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

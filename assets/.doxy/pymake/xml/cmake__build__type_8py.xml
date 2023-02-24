@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="cmake__build__type_8py" kind="file" language="Python">
+    <compoundname>cmake_build_type.py</compoundname>
+    <innerclass refid="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType" prot="public">pymake::common::cmake_build_type::ECMakeBuildType</innerclass>
+    <innernamespace refid="namespacepymake_1_1common_1_1cmake__build__type">pymake::common::cmake_build_type</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacepymake_1_1common_1_1cmake__build__type" refkind="compound"><highlight class="keyword">from</highlight><highlight class="normal"><sp/>enum<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Enum</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType" kindref="compound">ECMakeBuildType</ref>(Enum):</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Defines<sp/>constants<sp/>for<sp/>each<sp/>built<sp/>in<sp/>CMake<sp/>build<sp/>type.</highlight></codeline>
+<codeline lineno="6"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Debug<sp/>build<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>Debug<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Debug&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Release<sp/>build<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>Release<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Release&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Release<sp/>with<sp/>Debug<sp/>Info<sp/>build<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>RelWithDebInfo<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;RelWithDebInfo&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Minimum<sp/>Size<sp/>Release<sp/>build<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>MinSizeRel<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;MinSizeRel&quot;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="source/pymake/common/cmake_build_type.py"/>
+  </compounddef>
+</doxygen>

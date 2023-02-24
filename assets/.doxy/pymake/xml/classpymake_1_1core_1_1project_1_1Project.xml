@@ -1,0 +1,250 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpymake_1_1core_1_1project_1_1Project" kind="class" language="Python" prot="public">
+    <compoundname>pymake::core::project::Project</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ITraced</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="classpymake_1_1core_1_1project_1_1Project_1af194f0afe5dc8f490d1416355fa0f564" prot="public" static="yes" readable="no" writable="no" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type></type>
+        <definition>pymake.core.project.Project::on_target_added</definition>
+        <argsstring></argsstring>
+        <name>on_target_added</name>
+        <initializer>=  property(fset=_set_on_target_added)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/project.py" line="105" column="1" bodyfile="source/pymake/core/project.py" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classpymake_1_1core_1_1project_1_1Project_1a4610a0d37dd1d61065c0ebad275487ab" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.project.Project::_build_scripts</definition>
+        <argsstring></argsstring>
+        <name>_build_scripts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/project.py" line="23" column="1" bodyfile="source/pymake/core/project.py" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1project_1_1Project_1a0d4a81f373af0b60d4f453a8b77aedc6" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.project.Project::_project_name</definition>
+        <argsstring></argsstring>
+        <name>_project_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/project.py" line="24" column="1" bodyfile="source/pymake/core/project.py" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1project_1_1Project_1a734bd4f3c826a810b4454a3c79dd40ac" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.project.Project::_project_languages</definition>
+        <argsstring></argsstring>
+        <name>_project_languages</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/project.py" line="25" column="1" bodyfile="source/pymake/core/project.py" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1project_1_1Project_1ad20ddabd8c8c30303b70261110ec6ef4" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.project.Project::_on_target_added</definition>
+        <argsstring></argsstring>
+        <name>_on_target_added</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/project.py" line="101" column="1" bodyfile="source/pymake/core/project.py" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpymake_1_1core_1_1project_1_1Project_1a1fea9370ae9a9270664c9b8467f88c1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def pymake.core.project.Project.__init__</definition>
+        <argsstring>(self, BuildScriptSet build_scripts, str project_name, EProjectLanguage|Iterable[EProjectLanguage] project_languages)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet" kindref="compound">BuildScriptSet</ref></type>
+          <declname>build_scripts</declname>
+        </param>
+        <param>
+          <type>str</type>
+          <declname>project_name</declname>
+        </param>
+        <param>
+          <type><ref refid="classpymake_1_1common_1_1project__language_1_1EProjectLanguage" kindref="compound">EProjectLanguage</ref>|Iterable</type>
+          <declname>project_languages</declname>
+          <array>[EProjectLanguage]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Initializes the project.
+@param build_scripts Set of build scripts that the project will generate.
+@param project_name Name of the project.
+@param project_languages Languages used in the project.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/project.py" line="12" column="1" bodyfile="source/pymake/core/project.py" bodystart="15" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1project_1_1Project_1ada87aa4393b2a5aabfdba3ad15497e1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>str</type>
+        <definition> str pymake.core.project.Project.project_name</definition>
+        <argsstring>(self)</argsstring>
+        <name>project_name</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the name of the project.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/project.py" line="52" column="1" bodyfile="source/pymake/core/project.py" bodystart="52" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1project_1_1Project_1a1057fd55dbbc1a64ddf63502fb52ceaa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Iterable[<ref refid="classpymake_1_1common_1_1project__language_1_1EProjectLanguage" kindref="compound">EProjectLanguage</ref>]</type>
+        <definition> Iterable[EProjectLanguage] pymake.core.project.Project.project_languages</definition>
+        <argsstring>(self)</argsstring>
+        <name>project_languages</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the languages used in the project.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/project.py" line="60" column="1" bodyfile="source/pymake/core/project.py" bodystart="60" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1project_1_1Project_1a3eba56a2cb6693a88d010e5e9bee4443" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget" kindref="compound">ExecutableTarget</ref></type>
+        <definition> ExecutableTarget pymake.core.project.Project.add_executable</definition>
+        <argsstring>(self, str target_name)</argsstring>
+        <name>add_executable</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>str</type>
+          <declname>target_name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Adds an executable target to the project.
+@param target_name Name of the target.
+@throws ValueError Thrown if a target with the given name already exists.
+@returns The target instance.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/project.py" line="67" column="1" bodyfile="source/pymake/core/project.py" bodystart="68" bodyend="94"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classpymake_1_1core_1_1project_1_1Project_1ac02166e039b180fa007ddca9e6508852" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.core.project.Project._set_on_target_added</definition>
+        <argsstring>(self, Callable[[ExecutableTarget], None] callback)</argsstring>
+        <name>_set_on_target_added</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Callable</type>
+          <defname>callback</defname>
+          <array>[[ExecutableTarget]</array>
+        </param>
+        <param>
+          <type>None]</type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Sets the callback that will be invoked when a target is added.
+@param callback Callback to invoke when a target is added to the project.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/project.py" line="95" column="1" bodyfile="source/pymake/core/project.py" bodystart="96" bodyend="103"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Represents a single project scope in a PyMake project.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>pymake.core.project.Project</label>
+        <link refid="classpymake_1_1core_1_1project_1_1Project"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ITraced</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>pymake.core.project.Project</label>
+        <link refid="classpymake_1_1core_1_1project_1_1Project"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ITraced</label>
+      </node>
+    </collaborationgraph>
+    <location file="source/pymake/core/project.py" line="8" column="1" bodyfile="source/pymake/core/project.py" bodystart="8" bodyend="106"/>
+    <listofallmembers>
+      <member refid="classpymake_1_1core_1_1project_1_1Project_1a1fea9370ae9a9270664c9b8467f88c1f" prot="public" virt="non-virtual"><scope>pymake::core::project::Project</scope><name>__init__</name></member>
+      <member refid="classpymake_1_1core_1_1project_1_1Project_1a4610a0d37dd1d61065c0ebad275487ab" prot="private" virt="non-virtual"><scope>pymake::core::project::Project</scope><name>_build_scripts</name></member>
+      <member refid="classpymake_1_1core_1_1project_1_1Project_1ad20ddabd8c8c30303b70261110ec6ef4" prot="private" virt="non-virtual"><scope>pymake::core::project::Project</scope><name>_on_target_added</name></member>
+      <member refid="classpymake_1_1core_1_1project_1_1Project_1a734bd4f3c826a810b4454a3c79dd40ac" prot="private" virt="non-virtual"><scope>pymake::core::project::Project</scope><name>_project_languages</name></member>
+      <member refid="classpymake_1_1core_1_1project_1_1Project_1a0d4a81f373af0b60d4f453a8b77aedc6" prot="private" virt="non-virtual"><scope>pymake::core::project::Project</scope><name>_project_name</name></member>
+      <member refid="classpymake_1_1core_1_1project_1_1Project_1ac02166e039b180fa007ddca9e6508852" prot="private" virt="non-virtual"><scope>pymake::core::project::Project</scope><name>_set_on_target_added</name></member>
+      <member refid="classpymake_1_1core_1_1project_1_1Project_1a3eba56a2cb6693a88d010e5e9bee4443" prot="public" virt="non-virtual"><scope>pymake::core::project::Project</scope><name>add_executable</name></member>
+      <member refid="classpymake_1_1core_1_1project_1_1Project_1af194f0afe5dc8f490d1416355fa0f564" prot="public" virt="non-virtual"><scope>pymake::core::project::Project</scope><name>on_target_added</name></member>
+      <member refid="classpymake_1_1core_1_1project_1_1Project_1a1057fd55dbbc1a64ddf63502fb52ceaa" prot="public" virt="non-virtual"><scope>pymake::core::project::Project</scope><name>project_languages</name></member>
+      <member refid="classpymake_1_1core_1_1project_1_1Project_1ada87aa4393b2a5aabfdba3ad15497e1a" prot="public" virt="non-virtual"><scope>pymake::core::project::Project</scope><name>project_name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

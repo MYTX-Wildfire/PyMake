@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespacefull__caller__info__formatter" kind="namespace" language="Python">
+    <compoundname>full_caller_info_formatter</compoundname>
+    <innerclass refid="classfull__caller__info__formatter_1_1FullCallerInfoFormatter" prot="public">full_caller_info_formatter::FullCallerInfoFormatter</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="source/pymake/tracing/full_caller_info_formatter.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

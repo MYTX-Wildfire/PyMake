@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespacepymake_1_1common_1_1project__language" kind="namespace" language="Python">
+    <compoundname>pymake::common::project_language</compoundname>
+    <innerclass refid="classpymake_1_1common_1_1project__language_1_1EProjectLanguage" prot="public">pymake::common::project_language::EProjectLanguage</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="source/pymake/common/project_language.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

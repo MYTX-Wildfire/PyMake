@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpymake_1_1generators_1_1json__file__generator_1_1JsonFileGenerator" kind="class" language="Python" prot="public">
+    <compoundname>pymake::generators::json_file_generator::JsonFileGenerator</compoundname>
+    <basecompoundref refid="classpymake_1_1generators_1_1trace__file__generator_1_1ITraceFileGenerator" prot="public" virt="non-virtual">pymake.generators.trace_file_generator.ITraceFileGenerator</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpymake_1_1generators_1_1json__file__generator_1_1JsonFileGenerator_1a49265b4c8e2f271d16f5e408827d9e40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>str</type>
+        <definition> str pymake.generators.json_file_generator.JsonFileGenerator.generate</definition>
+        <argsstring>(self, Any data)</argsstring>
+        <name>generate</name>
+        <reimplements refid="classpymake_1_1generators_1_1trace__file__generator_1_1ITraceFileGenerator_1aae75954880103481629c615f4c26f1ae">generate</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Any</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the contents of the generated trace file.
+@returns The contents of the generated trace file.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/json_file_generator.py" line="11" column="1" bodyfile="source/pymake/generators/json_file_generator.py" bodystart="11" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1json__file__generator_1_1JsonFileGenerator_1a9f0e66af8c5573adb70da7d2bbe2fca8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.generators.json_file_generator.JsonFileGenerator.write_file</definition>
+        <argsstring>(self, Any data, str|Path output_path)</argsstring>
+        <name>write_file</name>
+        <reimplements refid="classpymake_1_1generators_1_1trace__file__generator_1_1ITraceFileGenerator_1afacf4fe3a070c69a58e40b741baf5c48">write_file</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Any</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>str|Path</type>
+          <declname>output_path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Writes the generated trace file to the specified path.
+@param output_path Path to write the generated trace file to.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/json_file_generator.py" line="19" column="1" bodyfile="source/pymake/generators/json_file_generator.py" bodystart="19" bodyend="27"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Class that generates a JSON file containing tracing information.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>ABC</label>
+      </node>
+      <node id="2">
+        <label>pymake.generators.trace_file_generator.ITraceFileGenerator</label>
+        <link refid="classpymake_1_1generators_1_1trace__file__generator_1_1ITraceFileGenerator"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>pymake.generators.json_file_generator.JsonFileGenerator</label>
+        <link refid="classpymake_1_1generators_1_1json__file__generator_1_1JsonFileGenerator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>ABC</label>
+      </node>
+      <node id="2">
+        <label>pymake.generators.trace_file_generator.ITraceFileGenerator</label>
+        <link refid="classpymake_1_1generators_1_1trace__file__generator_1_1ITraceFileGenerator"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>pymake.generators.json_file_generator.JsonFileGenerator</label>
+        <link refid="classpymake_1_1generators_1_1json__file__generator_1_1JsonFileGenerator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="source/pymake/generators/json_file_generator.py" line="6" column="1" bodyfile="source/pymake/generators/json_file_generator.py" bodystart="6" bodyend="27"/>
+    <listofallmembers>
+      <member refid="classpymake_1_1generators_1_1json__file__generator_1_1JsonFileGenerator_1a49265b4c8e2f271d16f5e408827d9e40" prot="public" virt="non-virtual"><scope>pymake::generators::json_file_generator::JsonFileGenerator</scope><name>generate</name></member>
+      <member refid="classpymake_1_1generators_1_1json__file__generator_1_1JsonFileGenerator_1a9f0e66af8c5573adb70da7d2bbe2fca8" prot="public" virt="non-virtual"><scope>pymake::generators::json_file_generator::JsonFileGenerator</scope><name>write_file</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

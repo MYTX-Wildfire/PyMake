@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classtraced__set_1_1TracedSet" kind="class" language="Python" prot="public">
+    <compoundname>traced_set::TracedSet</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Generic</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">T</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtraced__set_1_1TracedSet_1a5185cf82e6e78f95992793b6a1f99176" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>traced_set.TracedSet::_values</definition>
+        <argsstring></argsstring>
+        <name>_values</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/traced_set.py" line="18" column="1" bodyfile="source/pymake/tracing/traced_set.py" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtraced__set_1_1TracedSet_1a2737cfdef256e7a806ab6899b811dc26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def traced_set.TracedSet.__init__</definition>
+        <argsstring>(self, Optional[Dict[T, Traced[T]]] values=None)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Optional]]</type>
+          <declname>values</declname>
+          <array>[Dict[T, Traced[T]</array>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Initializes the set.
+@param values Dictionary of values to add to the set.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/traced_set.py" line="12" column="1" bodyfile="source/pymake/tracing/traced_set.py" bodystart="13" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classtraced__set_1_1TracedSet_1aa9c885acb2a9c87a7877ae52270a10b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition> bool traced_set.TracedSet.__bool__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__bool__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Checks whether the set is not empty.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/traced_set.py" line="21" column="1" bodyfile="source/pymake/tracing/traced_set.py" bodystart="21" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classtraced__set_1_1TracedSet_1a96e30c72d0c4929922ffcaffc582f7de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition> bool traced_set.TracedSet.__contains__</definition>
+        <argsstring>(self, T value)</argsstring>
+        <name>__contains__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="namespacetraced__set_1adfeb9765931a67f117715030e2294fe3" kindref="member">T</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Checks whether the set contains the value.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/traced_set.py" line="28" column="1" bodyfile="source/pymake/tracing/traced_set.py" bodystart="28" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classtraced__set_1_1TracedSet_1ae9e302f66e782537228fd868ecf72b1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Iterator[Traced[<ref refid="namespacetraced__set_1adfeb9765931a67f117715030e2294fe3" kindref="member">T</ref>]]</type>
+        <definition> Iterator[Traced[T]] traced_set.TracedSet.__iter__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__iter__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Allows each traced value in the set to be iterated over.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/traced_set.py" line="35" column="1" bodyfile="source/pymake/tracing/traced_set.py" bodystart="35" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classtraced__set_1_1TracedSet_1a1a1372a84476bfffc20d44eb75f93513" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None traced_set.TracedSet.add</definition>
+        <argsstring>(self, T value)</argsstring>
+        <name>add</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="namespacetraced__set_1adfeb9765931a67f117715030e2294fe3" kindref="member">T</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Adds a new value to the set.
+@param value Value to add to the set.
+@throws ValueError Thrown if the set already contains the value.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/traced_set.py" line="42" column="1" bodyfile="source/pymake/tracing/traced_set.py" bodystart="42" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classtraced__set_1_1TracedSet_1a22bd58106c4d69b0e4fb0fe79fd1c994" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classtraced__set_1_1TracedSet" kindref="compound">TracedSet</ref>[<ref refid="namespacetraced__set_1adfeb9765931a67f117715030e2294fe3" kindref="member">T</ref>]</type>
+        <definition> TracedSet[T] traced_set.TracedSet.clone</definition>
+        <argsstring>(self)</argsstring>
+        <name>clone</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Creates a clone of the set.
+@returns A clone of the set.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/traced_set.py" line="58" column="1" bodyfile="source/pymake/tracing/traced_set.py" bodystart="58" bodyend="64"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>A set that automatically captures tracing information for added values.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>T</label>
+      </node>
+      <node id="1">
+        <label>traced_set.TracedSet</label>
+        <link refid="classtraced__set_1_1TracedSet"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Generic</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>T</label>
+      </node>
+      <node id="1">
+        <label>traced_set.TracedSet</label>
+        <link refid="classtraced__set_1_1TracedSet"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Generic</label>
+      </node>
+    </collaborationgraph>
+    <location file="source/pymake/tracing/traced_set.py" line="8" column="1" bodyfile="source/pymake/tracing/traced_set.py" bodystart="8" bodyend="64"/>
+    <listofallmembers>
+      <member refid="classtraced__set_1_1TracedSet_1aa9c885acb2a9c87a7877ae52270a10b5" prot="public" virt="non-virtual"><scope>traced_set::TracedSet</scope><name>__bool__</name></member>
+      <member refid="classtraced__set_1_1TracedSet_1a96e30c72d0c4929922ffcaffc582f7de" prot="public" virt="non-virtual"><scope>traced_set::TracedSet</scope><name>__contains__</name></member>
+      <member refid="classtraced__set_1_1TracedSet_1a2737cfdef256e7a806ab6899b811dc26" prot="public" virt="non-virtual"><scope>traced_set::TracedSet</scope><name>__init__</name></member>
+      <member refid="classtraced__set_1_1TracedSet_1ae9e302f66e782537228fd868ecf72b1f" prot="public" virt="non-virtual"><scope>traced_set::TracedSet</scope><name>__iter__</name></member>
+      <member refid="classtraced__set_1_1TracedSet_1a5185cf82e6e78f95992793b6a1f99176" prot="private" virt="non-virtual"><scope>traced_set::TracedSet</scope><name>_values</name></member>
+      <member refid="classtraced__set_1_1TracedSet_1a1a1372a84476bfffc20d44eb75f93513" prot="public" virt="non-virtual"><scope>traced_set::TracedSet</scope><name>add</name></member>
+      <member refid="classtraced__set_1_1TracedSet_1a22bd58106c4d69b0e4fb0fe79fd1c994" prot="public" virt="non-virtual"><scope>traced_set::TracedSet</scope><name>clone</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

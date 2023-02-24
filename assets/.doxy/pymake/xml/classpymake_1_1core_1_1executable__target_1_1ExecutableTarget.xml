@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget" kind="class" language="Python" prot="public">
+    <compoundname>pymake::core::executable_target::ExecutableTarget</compoundname>
+    <basecompoundref refid="classpymake_1_1core_1_1target_1_1ITarget" prot="public" virt="non-virtual">pymake.core.target.ITarget</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget_1a470d3b9cefa637590958a0abd3032843" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def pymake.core.executable_target.ExecutableTarget.__init__</definition>
+        <argsstring>(self, BuildScriptSet build_scripts, str target_name)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet" kindref="compound">BuildScriptSet</ref></type>
+          <declname>build_scripts</declname>
+        </param>
+        <param>
+          <type>str</type>
+          <declname>target_name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Initializes the target.
+@param build_scripts Set of build scripts that the project will generate.
+@param target_name Name of the target.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/executable_target.py" line="10" column="1" bodyfile="source/pymake/core/executable_target.py" bodystart="12" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget_1a929eb84894a3e2f74cf151b173afcef4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget" kindref="compound">ExecutableTarget</ref></type>
+        <definition> ExecutableTarget pymake.core.executable_target.ExecutableTarget.get_full_target</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_full_target</name>
+        <reimplements refid="classpymake_1_1core_1_1target_1_1ITarget_1a38fa1492e0960300a98de0a460020f4a">get_full_target</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets a target instance that includes all values for the target.
+Target instances normally do not include values from targets that
+  they link to. The target instance returned by this method contains
+  all values for the target, including values from linked-to targets.
+@returns A target instance that includes all values from targets that
+  this target links to.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/executable_target.py" line="30" column="1" bodyfile="source/pymake/core/executable_target.py" bodystart="30" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Represents a single executable CMake target.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>pymake.core.executable_target.ExecutableTarget</label>
+        <link refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ABC</label>
+      </node>
+      <node id="4">
+        <label>ITraced</label>
+      </node>
+      <node id="2">
+        <label>pymake.core.target.ITarget</label>
+        <link refid="classpymake_1_1core_1_1target_1_1ITarget"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>pymake.core.executable_target.ExecutableTarget</label>
+        <link refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ABC</label>
+      </node>
+      <node id="4">
+        <label>ITraced</label>
+      </node>
+      <node id="2">
+        <label>pymake.core.target.ITarget</label>
+        <link refid="classpymake_1_1core_1_1target_1_1ITarget"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="source/pymake/core/executable_target.py" line="6" column="1" bodyfile="source/pymake/core/executable_target.py" bodystart="6" bodyend="42"/>
+    <listofallmembers>
+      <member refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget_1a470d3b9cefa637590958a0abd3032843" prot="public" virt="non-virtual"><scope>pymake::core::executable_target::ExecutableTarget</scope><name>__init__</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1aa62c0e5c2be61f9d25129ab6a21089ca" prot="public" virt="non-virtual" ambiguityscope="pymake::core::target::ITarget."><scope>pymake::core::executable_target::ExecutableTarget</scope><name>__init__</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1ae0e6eb3b7e3f10a25094d090af55489c" prot="public" virt="non-virtual"><scope>pymake::core::executable_target::ExecutableTarget</scope><name>add_sources</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a4e167f0ea43a03226881d55aaefea689" prot="public" virt="non-virtual"><scope>pymake::core::executable_target::ExecutableTarget</scope><name>generate_trace_file</name></member>
+      <member refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget_1a929eb84894a3e2f74cf151b173afcef4" prot="public" virt="non-virtual"><scope>pymake::core::executable_target::ExecutableTarget</scope><name>get_full_target</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a11b72cc122c7bc8c496c8001cb56fa82" prot="public" virt="non-virtual"><scope>pymake::core::executable_target::ExecutableTarget</scope><name>install</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a58f4287c41484e6baec5356c124039fc" prot="public" virt="non-virtual"><scope>pymake::core::executable_target::ExecutableTarget</scope><name>install_path</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1afe6606145d900528b8579a1c3a4ac2f1" prot="public" virt="non-virtual"><scope>pymake::core::executable_target::ExecutableTarget</scope><name>is_full_target</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a938f2922523b6caa7c7a9d360f52736f" prot="public" virt="non-virtual"><scope>pymake::core::executable_target::ExecutableTarget</scope><name>is_installed</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a77da8818e2b53a19c23ce79c85c51b8e" prot="public" virt="non-virtual"><scope>pymake::core::executable_target::ExecutableTarget</scope><name>sources</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a415695ba1a2b0beed5e1aa1dbf30b09c" prot="public" virt="non-virtual"><scope>pymake::core::executable_target::ExecutableTarget</scope><name>target_name</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a20c37d27ea7ef9a792311147c2ba3feb" prot="public" virt="non-virtual"><scope>pymake::core::executable_target::ExecutableTarget</scope><name>target_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

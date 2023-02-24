@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs" kind="class" language="Python" prot="public">
+    <compoundname>pymake::core::pymake_args::PyMakeArgs</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Namespace</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs_1ae0b04b6c981d0890822f210612874469" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.pymake_args.PyMakeArgs::verbose</definition>
+        <argsstring></argsstring>
+        <name>verbose</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/pymake_args.py" line="13" column="1" bodyfile="source/pymake/core/pymake_args.py" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs_1a6e9a1645123675a1b93d53d482e63f54" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.pymake_args.PyMakeArgs::presets</definition>
+        <argsstring></argsstring>
+        <name>presets</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/pymake_args.py" line="14" column="1" bodyfile="source/pymake/core/pymake_args.py" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs_1a22360212ad9a308c60a46c29ef88b778" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.core.pymake_args.PyMakeArgs.__init__</definition>
+        <argsstring>(self, bool verbose, list[str] presets)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>verbose</declname>
+        </param>
+        <param>
+          <type>list</type>
+          <declname>presets</declname>
+          <array>[str]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Initializes the PyMake arguments.
+@param verbose Whether verbose output should be enabled.
+@param presets Names of presets to enable.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/pymake_args.py" line="7" column="1" bodyfile="source/pymake/core/pymake_args.py" bodystart="7" bodyend="15"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Stores arguments passed to PyMake.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>pymake.core.pymake_args.PyMakeArgs</label>
+        <link refid="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Namespace</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>pymake.core.pymake_args.PyMakeArgs</label>
+        <link refid="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Namespace</label>
+      </node>
+    </collaborationgraph>
+    <location file="source/pymake/core/pymake_args.py" line="3" column="1" bodyfile="source/pymake/core/pymake_args.py" bodystart="3" bodyend="15"/>
+    <listofallmembers>
+      <member refid="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs_1a22360212ad9a308c60a46c29ef88b778" prot="public" virt="non-virtual"><scope>pymake::core::pymake_args::PyMakeArgs</scope><name>__init__</name></member>
+      <member refid="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs_1a6e9a1645123675a1b93d53d482e63f54" prot="public" virt="non-virtual"><scope>pymake::core::pymake_args::PyMakeArgs</scope><name>presets</name></member>
+      <member refid="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs_1ae0b04b6c981d0890822f210612874469" prot="public" virt="non-virtual"><scope>pymake::core::pymake_args::PyMakeArgs</scope><name>verbose</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

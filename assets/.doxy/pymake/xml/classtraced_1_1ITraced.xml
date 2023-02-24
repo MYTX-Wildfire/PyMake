@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classtraced_1_1ITraced" kind="class" language="Python" prot="public">
+    <compoundname>traced::ITraced</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtraced_1_1ITraced_1ac6ad5ceae03fba7724a53383230b52b7" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>traced.ITraced::_origin</definition>
+        <argsstring></argsstring>
+        <name>_origin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/traced.py" line="14" column="1" bodyfile="source/pymake/tracing/traced.py" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtraced_1_1ITraced_1a03f53e95b6d7778c9b7eb7b731a8ab7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def traced.ITraced.__init__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Initializes the object.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/traced.py" line="10" column="1" bodyfile="source/pymake/tracing/traced.py" bodystart="10" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtraced_1_1ITraced_1a9b94d384a7a23b267e4a4f98a3470d69" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>CallerInfo</type>
+        <definition> CallerInfo traced.ITraced.origin</definition>
+        <argsstring>(self)</argsstring>
+        <name>origin</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the location that constructed the object.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/traced.py" line="18" column="1" bodyfile="source/pymake/tracing/traced.py" bodystart="18" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Interface implemented by classes that provide tracing data for themselves.
+</verbatim> </para>
+    </detaileddescription>
+    <location file="source/pymake/tracing/traced.py" line="6" column="1" bodyfile="source/pymake/tracing/traced.py" bodystart="6" bodyend="25"/>
+    <listofallmembers>
+      <member refid="classtraced_1_1ITraced_1a03f53e95b6d7778c9b7eb7b731a8ab7d" prot="public" virt="non-virtual"><scope>traced::ITraced</scope><name>__init__</name></member>
+      <member refid="classtraced_1_1ITraced_1ac6ad5ceae03fba7724a53383230b52b7" prot="private" virt="non-virtual"><scope>traced::ITraced</scope><name>_origin</name></member>
+      <member refid="classtraced_1_1ITraced_1a9b94d384a7a23b267e4a4f98a3470d69" prot="public" virt="non-virtual"><scope>traced::ITraced</scope><name>origin</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

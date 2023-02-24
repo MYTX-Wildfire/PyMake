@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespacepymake_1_1common_1_1scope" kind="namespace" language="Python">
+    <compoundname>pymake::common::scope</compoundname>
+    <innerclass refid="classpymake_1_1common_1_1scope_1_1EScope" prot="public">pymake::common::scope::EScope</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="source/pymake/common/scope.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

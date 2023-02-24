@@ -1,0 +1,66 @@
+# Class Hierarchy
+
+This inheritance list is sorted roughly, but not completely, alphabetically:
+
+
+* **class** [**caller\_info::CallerInfo**](classcaller__info_1_1CallerInfo.md) 
+* **class** [**pymake::core::build\_script\_set::BuildScriptSet**](classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet.md) 
+* **class** [**pymake::generators::cmake\_generator::CMakeGenerator**](classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator.md) 
+* **class** [**pymake::generators::cmake\_method\_builder::CMakeMethodBuilder**](classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder.md) 
+* **class** [**pymake::generators::text\_generator::TextGenerator**](classpymake_1_1generators_1_1text__generator_1_1TextGenerator.md) 
+* **class** [**traced::ITraced**](classtraced_1_1ITraced.md) 
+* **class** **ABC**  
+  * **class** [**caller\_info\_formatter::ICallerInfoFormatter**](classcaller__info__formatter_1_1ICallerInfoFormatter.md) 
+  * **class** [**pymake::core::cmake::ICMake**](classpymake_1_1core_1_1cmake_1_1ICMake.md)   
+    * **class** [**pymake::core::cmake314::CMake314**](classpymake_1_1core_1_1cmake314_1_1CMake314.md) 
+    * **class** [**pymake::core::cmake325::CMake325**](classpymake_1_1core_1_1cmake325_1_1CMake325.md) 
+  * **class** [**pymake::core::cmake::ICMake**](classpymake_1_1core_1_1cmake_1_1ICMake.md)   
+    * **class** [**pymake::core::cmake314::CMake314**](classpymake_1_1core_1_1cmake314_1_1CMake314.md) 
+    * **class** [**pymake::core::cmake325::CMake325**](classpymake_1_1core_1_1cmake325_1_1CMake325.md) 
+  * **class** [**pymake::core::cmake::ICMake**](classpymake_1_1core_1_1cmake_1_1ICMake.md)   
+    * **class** [**pymake::core::cmake314::CMake314**](classpymake_1_1core_1_1cmake314_1_1CMake314.md) 
+    * **class** [**pymake::core::cmake325::CMake325**](classpymake_1_1core_1_1cmake325_1_1CMake325.md) 
+  * **class** [**pymake::core::target::ITarget**](classpymake_1_1core_1_1target_1_1ITarget.md)   
+    * **class** [**pymake::core::executable\_target::ExecutableTarget**](classpymake_1_1core_1_1executable__target_1_1ExecutableTarget.md) 
+  * **class** [**pymake::core::target::ITarget**](classpymake_1_1core_1_1target_1_1ITarget.md)   
+    * **class** [**pymake::core::executable\_target::ExecutableTarget**](classpymake_1_1core_1_1executable__target_1_1ExecutableTarget.md) 
+  * **class** [**pymake::generators::trace\_file\_generator::ITraceFileGenerator**](classpymake_1_1generators_1_1trace__file__generator_1_1ITraceFileGenerator.md)   
+    * **class** [**pymake::generators::json\_file\_generator::JsonFileGenerator**](classpymake_1_1generators_1_1json__file__generator_1_1JsonFileGenerator.md) 
+    * **class** [**pymake::generators::yaml\_file\_generator::YamlFileGenerator**](classpymake_1_1generators_1_1yaml__file__generator_1_1YamlFileGenerator.md) 
+  * **class** [**pymake::generators::trace\_file\_generator::ITraceFileGenerator**](classpymake_1_1generators_1_1trace__file__generator_1_1ITraceFileGenerator.md)   
+    * **class** [**pymake::generators::json\_file\_generator::JsonFileGenerator**](classpymake_1_1generators_1_1json__file__generator_1_1JsonFileGenerator.md) 
+    * **class** [**pymake::generators::yaml\_file\_generator::YamlFileGenerator**](classpymake_1_1generators_1_1yaml__file__generator_1_1YamlFileGenerator.md) 
+  * **class** [**pymake::generators::trace\_file\_generator::ITraceFileGenerator**](classpymake_1_1generators_1_1trace__file__generator_1_1ITraceFileGenerator.md)   
+    * **class** [**pymake::generators::json\_file\_generator::JsonFileGenerator**](classpymake_1_1generators_1_1json__file__generator_1_1JsonFileGenerator.md) 
+    * **class** [**pymake::generators::yaml\_file\_generator::YamlFileGenerator**](classpymake_1_1generators_1_1yaml__file__generator_1_1YamlFileGenerator.md) 
+* **class** **ICallerInfoFormatter**  
+  * **class** [**full\_caller\_info\_formatter::FullCallerInfoFormatter**](classfull__caller__info__formatter_1_1FullCallerInfoFormatter.md) 
+  * **class** [**null\_caller\_info\_formatter::NullCallerInfoFormatter**](classnull__caller__info__formatter_1_1NullCallerInfoFormatter.md) 
+  * **class** [**shortened\_caller\_info\_formatter::ShortenedCallerInfoFormatter**](classshortened__caller__info__formatter_1_1ShortenedCallerInfoFormatter.md) 
+* **class** **Enum**  
+  * **class** [**pymake::common::cmake\_build\_type::ECMakeBuildType**](classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType.md) 
+  * **class** [**pymake::common::cmake\_generator::ECMakeGenerator**](classpymake_1_1common_1_1cmake__generator_1_1ECMakeGenerator.md) 
+  * **class** [**pymake::common::cmake\_version::ECMakeVersion**](classpymake_1_1common_1_1cmake__version_1_1ECMakeVersion.md) 
+  * **class** [**pymake::common::project\_language::EProjectLanguage**](classpymake_1_1common_1_1project__language_1_1EProjectLanguage.md) 
+  * **class** [**pymake::common::scope::EScope**](classpymake_1_1common_1_1scope_1_1EScope.md) 
+  * **class** [**pymake::common::target\_type::ETargetType**](classpymake_1_1common_1_1target__type_1_1ETargetType.md) 
+* **class** **NamedTuple**  
+  * **class** [**pymake::core::build\_script::BuildScript**](classpymake_1_1core_1_1build__script_1_1BuildScript.md) 
+  * **class** [**pymake::core::cmake\_options::CMakeOptions**](classpymake_1_1core_1_1cmake__options_1_1CMakeOptions.md) 
+* **class** **ITraced**  
+  * **class** [**pymake::core::target::ITarget**](classpymake_1_1core_1_1target_1_1ITarget.md)   
+    * **class** [**pymake::core::executable\_target::ExecutableTarget**](classpymake_1_1core_1_1executable__target_1_1ExecutableTarget.md) 
+  * **class** [**pymake::core::preset::Preset**](classpymake_1_1core_1_1preset_1_1Preset.md) 
+  * **class** [**pymake::core::project::Project**](classpymake_1_1core_1_1project_1_1Project.md) 
+  * **class** [**pymake::core::target::ITarget**](classpymake_1_1core_1_1target_1_1ITarget.md)   
+    * **class** [**pymake::core::executable\_target::ExecutableTarget**](classpymake_1_1core_1_1executable__target_1_1ExecutableTarget.md) 
+* **class** **Namespace**  
+  * **class** [**pymake::core::pymake\_args::PyMakeArgs**](classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs.md) 
+* **class** **Generic**  
+  * **class** [**pymake::core::scoped\_sets::ScopedSets**](classpymake_1_1core_1_1scoped__sets_1_1ScopedSets.md) 
+  * **class** [**traced::Traced**](classtraced_1_1Traced.md) 
+  * **class** [**traced\_set::TracedSet**](classtraced__set_1_1TracedSet.md) 
+* **class** **T**  
+  * **class** [**pymake::core::scoped\_sets::ScopedSets**](classpymake_1_1core_1_1scoped__sets_1_1ScopedSets.md) 
+  * **class** [**traced::Traced**](classtraced_1_1Traced.md) 
+  * **class** [**traced\_set::TracedSet**](classtraced__set_1_1TracedSet.md) 

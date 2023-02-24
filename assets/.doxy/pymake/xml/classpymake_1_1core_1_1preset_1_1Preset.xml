@@ -1,0 +1,876 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpymake_1_1core_1_1preset_1_1Preset" kind="class" language="Python" prot="public">
+    <compoundname>pymake::core::preset::Preset</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ITraced</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classpymake_1_1core_1_1preset_1_1Preset_1a85c0d89be9283f43dccd0d03b9cdf36c" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string pymake.core.preset.Preset::CMAKE_BUILD_TYPE_VAR</definition>
+        <argsstring></argsstring>
+        <name>CMAKE_BUILD_TYPE_VAR</name>
+        <initializer>=  &quot;CMAKE_BUILD_TYPE&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="14" column="1" bodyfile="source/pymake/core/preset.py" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classpymake_1_1core_1_1preset_1_1Preset_1a0e53c92233770bf55c39616b04c4bf29" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.preset.Preset::_name</definition>
+        <argsstring></argsstring>
+        <name>_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="48" column="1" bodyfile="source/pymake/core/preset.py" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1preset_1_1Preset_1a9059d725edce0b4198ba65c1766683ad" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.preset.Preset::_description</definition>
+        <argsstring></argsstring>
+        <name>_description</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="49" column="1" bodyfile="source/pymake/core/preset.py" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1preset_1_1Preset_1abcd7579c96f156e3f31c3c5530e69b5e" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.preset.Preset::_hidden</definition>
+        <argsstring></argsstring>
+        <name>_hidden</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="50" column="1" bodyfile="source/pymake/core/preset.py" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1preset_1_1Preset_1a7011abd0e9908ed158371c1924fe01b8" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.preset.Preset::_generator</definition>
+        <argsstring></argsstring>
+        <name>_generator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="52" column="1" bodyfile="source/pymake/core/preset.py" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1preset_1_1Preset_1a9b9c41ace3ff8e88d128df3694ff9670" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.preset.Preset::_binary_dir</definition>
+        <argsstring></argsstring>
+        <name>_binary_dir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="55" column="1" bodyfile="source/pymake/core/preset.py" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1preset_1_1Preset_1a40c6d74d63df906885fe205597c8a09c" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.preset.Preset::_install_dir</definition>
+        <argsstring></argsstring>
+        <name>_install_dir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="56" column="1" bodyfile="source/pymake/core/preset.py" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1preset_1_1Preset_1af7a2837ebd02e9c94c2cb779d75537b5" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.preset.Preset::_cache_variables</definition>
+        <argsstring></argsstring>
+        <name>_cache_variables</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="57" column="1" bodyfile="source/pymake/core/preset.py" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1preset_1_1Preset_1a7f172a3fe51b489869d8fadb8a6f5a69" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.preset.Preset::_env_variables</definition>
+        <argsstring></argsstring>
+        <name>_env_variables</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="58" column="1" bodyfile="source/pymake/core/preset.py" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1preset_1_1Preset_1a30a6820dee9fc49ca24ac2bfd63ed724" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.preset.Preset::_base_presets</definition>
+        <argsstring></argsstring>
+        <name>_base_presets</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="60" column="1" bodyfile="source/pymake/core/preset.py" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1preset_1_1Preset_1a4133a71a074eb6feb891647ef4c2bd29" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.preset.Preset::_is_full_preset</definition>
+        <argsstring></argsstring>
+        <name>_is_full_preset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="65" column="1" bodyfile="source/pymake/core/preset.py" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1a6194b08c1f6780f982e7d5c0914129e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def pymake.core.preset.Preset.__init__</definition>
+        <argsstring>(self, str name, Optional[str] desc=None, bool is_hidden=False, Optional[str|ECMakeGenerator] cmake_generator=None, Optional[str] binary_path=None, Optional[str] install_path=None, Optional[Dict[str, str]] cache_vars=None, Optional[Dict[str, str]] env_vars=None, Optional[Preset]|Sequence[Preset] inherits=None, bool is_full_preset=False)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>str</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>Optional</type>
+          <declname>desc</declname>
+          <array>[str]</array>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>is_hidden</declname>
+          <defval>False</defval>
+        </param>
+        <param>
+          <type>Optional</type>
+          <declname>cmake_generator</declname>
+          <array>[str|ECMakeGenerator]</array>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>Optional</type>
+          <declname>binary_path</declname>
+          <array>[str]</array>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>Optional</type>
+          <declname>install_path</declname>
+          <array>[str]</array>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>Optional]</type>
+          <declname>cache_vars</declname>
+          <array>[Dict[str, str]</array>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>Optional]</type>
+          <declname>env_vars</declname>
+          <array>[Dict[str, str]</array>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>Optional|Sequence</type>
+          <declname>inherits</declname>
+          <array>[Preset][Preset]</array>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>is_full_preset</declname>
+          <defval>False</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Initializes the preset.
+@param name Name of the preset.
+@param desc Description of the preset.
+@param is_hidden Whether the preset should be hidden. Hidden presets are
+  not selectable when invoking PyMake.
+@param cmake_generator Name of the CMake generator.
+@param binary_path Path to the directory where CMake will generate the
+  build files. If this is a relative path, it will be interpreted
+  relative to the PyMake project&apos;s source directory.
+@param install_path Path to the directory where CMake will install built
+  targets. If this is a relative path, it will be interpreted relative
+  to the PyMake project&apos;s source directory.
+@param cache_vars Dictionary of cache variables to set.
+@param env_vars Dictionary of environment variables to set.
+@param inherits Presets that this preset inherits from.
+@param is_full_preset Whether the preset includes all values from
+  presets that it inherits from.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="16" column="1" bodyfile="source/pymake/core/preset.py" bodystart="26" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1ae87b92c58d60763b9a91855ca0956d49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>str</type>
+        <definition> str pymake.core.preset.Preset.preset_name</definition>
+        <argsstring>(self)</argsstring>
+        <name>preset_name</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the name of the preset.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="69" column="1" bodyfile="source/pymake/core/preset.py" bodystart="69" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1a076c789108b2971f6348c67006b2aaf4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Optional[str]</type>
+        <definition> Optional[str] pymake.core.preset.Preset.description</definition>
+        <argsstring>(self)</argsstring>
+        <name>description</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the description of the preset.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="77" column="1" bodyfile="source/pymake/core/preset.py" bodystart="77" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1a1403475b6bf10fb6cab67677e5c335a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.core.preset.Preset.description</definition>
+        <argsstring>(self, Optional[str] value)</argsstring>
+        <name>description</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Optional</type>
+          <declname>value</declname>
+          <array>[str]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Sets the description of the preset.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="85" column="1" bodyfile="source/pymake/core/preset.py" bodystart="85" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1a61e212af6f52e7d863ce710f8c9d2296" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition> bool pymake.core.preset.Preset.hidden</definition>
+        <argsstring>(self)</argsstring>
+        <name>hidden</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets whether the preset should be hidden.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="93" column="1" bodyfile="source/pymake/core/preset.py" bodystart="93" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1adab083cc5ca725aaa0df9c23e6ab5740" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.core.preset.Preset.hidden</definition>
+        <argsstring>(self, bool value)</argsstring>
+        <name>hidden</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Sets whether the preset should be hidden.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="101" column="1" bodyfile="source/pymake/core/preset.py" bodystart="101" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1a14e14c9935bd124b600bc2b95aae3b61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Optional[str]</type>
+        <definition> Optional[str] pymake.core.preset.Preset.generator</definition>
+        <argsstring>(self)</argsstring>
+        <name>generator</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the name of the CMake generator.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="109" column="1" bodyfile="source/pymake/core/preset.py" bodystart="109" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1a58e1a05e0ae24df6a1a7ce2bb675432e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.core.preset.Preset.generator</definition>
+        <argsstring>(self, Optional[str|ECMakeGenerator] value)</argsstring>
+        <name>generator</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Optional</type>
+          <declname>value</declname>
+          <array>[str|ECMakeGenerator]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Sets the name of the CMake generator.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="117" column="1" bodyfile="source/pymake/core/preset.py" bodystart="117" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1ae5b42c6789437a0b7f440d2a40c5805e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Optional[str]</type>
+        <definition> Optional[str] pymake.core.preset.Preset.binary_dir</definition>
+        <argsstring>(self)</argsstring>
+        <name>binary_dir</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the path to the directory where CMake will generate the build files.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="130" column="1" bodyfile="source/pymake/core/preset.py" bodystart="130" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1af87e05bcfcdb51cd06f1f4077ffb063b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.core.preset.Preset.binary_dir</definition>
+        <argsstring>(self, Optional[str] value)</argsstring>
+        <name>binary_dir</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Optional</type>
+          <declname>value</declname>
+          <array>[str]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Sets the path to the directory where CMake will generate the build files.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="138" column="1" bodyfile="source/pymake/core/preset.py" bodystart="138" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1ad6ddd07c354aa4ebcb39c0484fe2addf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Optional[str]</type>
+        <definition> Optional[str] pymake.core.preset.Preset.install_dir</definition>
+        <argsstring>(self)</argsstring>
+        <name>install_dir</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the path to the directory where CMake will install built targets.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="146" column="1" bodyfile="source/pymake/core/preset.py" bodystart="146" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1a2b9edced6e8d23ba5096f396a90ad9d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.core.preset.Preset.install_dir</definition>
+        <argsstring>(self, Optional[str] value)</argsstring>
+        <name>install_dir</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Optional</type>
+          <declname>value</declname>
+          <array>[str]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Sets the path to the directory where CMake will install built targets.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="154" column="1" bodyfile="source/pymake/core/preset.py" bodystart="154" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1a635caae29d79b01be64cd43244937bd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Dict[str, str]</type>
+        <definition> Dict[str, str] pymake.core.preset.Preset.cache_variables</definition>
+        <argsstring>(self)</argsstring>
+        <name>cache_variables</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the dictionary of cache variables to set.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="162" column="1" bodyfile="source/pymake/core/preset.py" bodystart="162" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1a3b07ec9de29d98d5a4d0a716583a20ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Optional[str]</type>
+        <definition> Optional[str] pymake.core.preset.Preset.cmake_build_type</definition>
+        <argsstring>(self)</argsstring>
+        <name>cmake_build_type</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the CMake build type.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="170" column="1" bodyfile="source/pymake/core/preset.py" bodystart="170" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1afec7ea6b5d971e30e89fe677be3c35c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.core.preset.Preset.cmake_build_type</definition>
+        <argsstring>(self, Optional[str|ECMakeBuildType] value)</argsstring>
+        <name>cmake_build_type</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Optional</type>
+          <declname>value</declname>
+          <array>[str|ECMakeBuildType]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Sets the CMake build type.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="180" column="1" bodyfile="source/pymake/core/preset.py" bodystart="180" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1a493e6f2e545862992739aede483553e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Dict[str, str]</type>
+        <definition> Dict[str, str] pymake.core.preset.Preset.env_variables</definition>
+        <argsstring>(self)</argsstring>
+        <name>env_variables</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the dictionary of environment variables to set.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="194" column="1" bodyfile="source/pymake/core/preset.py" bodystart="194" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1a868b3c251684ff88bc80c813b551e0af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>List[<ref refid="classpymake_1_1core_1_1preset_1_1Preset" kindref="compound">Preset</ref>]</type>
+        <definition> List[Preset] pymake.core.preset.Preset.base_presets</definition>
+        <argsstring>(self)</argsstring>
+        <name>base_presets</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the presets that this preset inherits from.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="202" column="1" bodyfile="source/pymake/core/preset.py" bodystart="202" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1a8a92008713a95db7e9c9bdd73a6193aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Dict[str, object]</type>
+        <definition> Dict[str, object] pymake.core.preset.Preset.as_build_preset</definition>
+        <argsstring>(self, Path source_dir, Path generated_dir)</argsstring>
+        <name>as_build_preset</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Path</type>
+          <declname>source_dir</declname>
+        </param>
+        <param>
+          <type>Path</type>
+          <declname>generated_dir</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Converts the preset to a CMake build preset.
+@param source_dir Path to the root of the PyMake project.
+@param generated_dir Path to the directory where PyMake will generate
+  CMake files.
+@return A dictionary representing the preset as a CMake build preset.
+  This dictionary can be serialized to JSON and written to the
+  &quot;buildPresets&quot; section of a CMakePresets.json file.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="209" column="1" bodyfile="source/pymake/core/preset.py" bodystart="211" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1af23045e63acb52e2c754c24a2f942cd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Dict[str, object]</type>
+        <definition> Dict[str, object] pymake.core.preset.Preset.as_configure_preset</definition>
+        <argsstring>(self, Path source_dir, Path generated_dir)</argsstring>
+        <name>as_configure_preset</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Path</type>
+          <declname>source_dir</declname>
+        </param>
+        <param>
+          <type>Path</type>
+          <declname>generated_dir</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Converts the preset to a CMake configure preset.
+@param source_dir Path to the root of the PyMake project.
+@param generated_dir Path to the directory where PyMake will generate
+  CMake files.
+@return A dictionary representing the preset as a CMake configure
+  preset. This dictionary can be serialized to JSON and written to the
+  &quot;configurePresets&quot; section of a CMakePresets.json file.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="233" column="1" bodyfile="source/pymake/core/preset.py" bodystart="235" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1a44b95f8003678110829a9ee313c7ffe5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classpymake_1_1core_1_1preset_1_1Preset" kindref="compound">Preset</ref></type>
+        <definition> Preset pymake.core.preset.Preset.as_full_preset</definition>
+        <argsstring>(self)</argsstring>
+        <name>as_full_preset</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Rolls all values from inherited presets into a new preset.
+The preset generated by this method will contain all values from this
+  preset and all of its inherited presets. Precedence is given to values
+  from presets farther down the inheritance chain.
+@return The preset with all values rolled into it.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="281" column="1" bodyfile="source/pymake/core/preset.py" bodystart="281" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1acc152c3df5cda03c359faf647f82d241" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def pymake.core.preset.Preset.generate_trace_file</definition>
+        <argsstring>(self, Path output_path, ITraceFileGenerator generator)</argsstring>
+        <name>generate_trace_file</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Path</type>
+          <declname>output_path</declname>
+        </param>
+        <param>
+          <type><ref refid="classpymake_1_1generators_1_1trace__file__generator_1_1ITraceFileGenerator" kindref="compound">ITraceFileGenerator</ref></type>
+          <declname>generator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Generates a trace file for the target.
+@param output_path Path to the output file.
+@param generator Generator to create the trace file using.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="305" column="1" bodyfile="source/pymake/core/preset.py" bodystart="307" bodyend="329"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1a81032b8e6e73f80f4267732ebb24ed25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.core.preset.Preset.inherit_from</definition>
+        <argsstring>(self, Preset preset)</argsstring>
+        <name>inherit_from</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classpymake_1_1core_1_1preset_1_1Preset" kindref="compound">Preset</ref></type>
+          <declname>preset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Inherit from another preset.
+@param preset Preset to inherit from.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="330" column="1" bodyfile="source/pymake/core/preset.py" bodystart="330" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1ad243163d25fd9e0e4acb1120e00dfce0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.core.preset.Preset.merge</definition>
+        <argsstring>(self, Preset preset)</argsstring>
+        <name>merge</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classpymake_1_1core_1_1preset_1_1Preset" kindref="compound">Preset</ref></type>
+          <declname>preset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Merges the values of another preset into this preset.
+@param preset Preset to merge.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="338" column="1" bodyfile="source/pymake/core/preset.py" bodystart="338" bodyend="352"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1a43c85d62083941c806de51a3fbd14f86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.core.preset.Preset.set_cache_variable</definition>
+        <argsstring>(self, str name, Optional[str] value)</argsstring>
+        <name>set_cache_variable</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>str</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>Optional</type>
+          <declname>value</declname>
+          <array>[str]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Sets a CMake cache variable.
+@param name Name of the cache variable.
+@param value Value of the cache variable. If set to None, clears the
+  variable entry if it exists.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="353" column="1" bodyfile="source/pymake/core/preset.py" bodystart="353" bodyend="366"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1preset_1_1Preset_1ae674f501980cdd5bce41a8bf126e7671" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.core.preset.Preset.set_env_variable</definition>
+        <argsstring>(self, str name, Optional[str] value)</argsstring>
+        <name>set_env_variable</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>str</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>Optional</type>
+          <declname>value</declname>
+          <array>[str]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Sets an environment variable.
+@param name Name of the environment variable.
+@param value Value of the environment variable. If set to None, clears
+  the variable entry if it exists.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/preset.py" line="367" column="1" bodyfile="source/pymake/core/preset.py" bodystart="367" bodyend="379"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Represents a CMake preset.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>pymake.core.preset.Preset</label>
+        <link refid="classpymake_1_1core_1_1preset_1_1Preset"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ITraced</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>pymake.core.preset.Preset</label>
+        <link refid="classpymake_1_1core_1_1preset_1_1Preset"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ITraced</label>
+      </node>
+    </collaborationgraph>
+    <location file="source/pymake/core/preset.py" line="9" column="1" bodyfile="source/pymake/core/preset.py" bodystart="9" bodyend="379"/>
+    <listofallmembers>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a6194b08c1f6780f982e7d5c0914129e3" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>__init__</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a30a6820dee9fc49ca24ac2bfd63ed724" prot="private" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>_base_presets</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a9b9c41ace3ff8e88d128df3694ff9670" prot="private" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>_binary_dir</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1af7a2837ebd02e9c94c2cb779d75537b5" prot="private" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>_cache_variables</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a9059d725edce0b4198ba65c1766683ad" prot="private" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>_description</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a7f172a3fe51b489869d8fadb8a6f5a69" prot="private" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>_env_variables</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a7011abd0e9908ed158371c1924fe01b8" prot="private" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>_generator</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1abcd7579c96f156e3f31c3c5530e69b5e" prot="private" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>_hidden</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a40c6d74d63df906885fe205597c8a09c" prot="private" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>_install_dir</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a4133a71a074eb6feb891647ef4c2bd29" prot="private" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>_is_full_preset</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a0e53c92233770bf55c39616b04c4bf29" prot="private" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>_name</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a8a92008713a95db7e9c9bdd73a6193aa" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>as_build_preset</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1af23045e63acb52e2c754c24a2f942cd7" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>as_configure_preset</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a44b95f8003678110829a9ee313c7ffe5" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>as_full_preset</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a868b3c251684ff88bc80c813b551e0af" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>base_presets</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1ae5b42c6789437a0b7f440d2a40c5805e" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>binary_dir</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1af87e05bcfcdb51cd06f1f4077ffb063b" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>binary_dir</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a635caae29d79b01be64cd43244937bd5" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>cache_variables</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a3b07ec9de29d98d5a4d0a716583a20ba" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>cmake_build_type</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1afec7ea6b5d971e30e89fe677be3c35c7" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>cmake_build_type</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a85c0d89be9283f43dccd0d03b9cdf36c" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>CMAKE_BUILD_TYPE_VAR</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a076c789108b2971f6348c67006b2aaf4" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>description</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a1403475b6bf10fb6cab67677e5c335a1" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>description</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a493e6f2e545862992739aede483553e9" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>env_variables</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1acc152c3df5cda03c359faf647f82d241" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>generate_trace_file</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a14e14c9935bd124b600bc2b95aae3b61" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>generator</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a58e1a05e0ae24df6a1a7ce2bb675432e" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>generator</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a61e212af6f52e7d863ce710f8c9d2296" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>hidden</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1adab083cc5ca725aaa0df9c23e6ab5740" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>hidden</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a81032b8e6e73f80f4267732ebb24ed25" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>inherit_from</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1ad6ddd07c354aa4ebcb39c0484fe2addf" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>install_dir</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a2b9edced6e8d23ba5096f396a90ad9d8" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>install_dir</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1ad243163d25fd9e0e4acb1120e00dfce0" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>merge</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1ae87b92c58d60763b9a91855ca0956d49" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>preset_name</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a43c85d62083941c806de51a3fbd14f86" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>set_cache_variable</name></member>
+      <member refid="classpymake_1_1core_1_1preset_1_1Preset_1ae674f501980cdd5bce41a8bf126e7671" prot="public" virt="non-virtual"><scope>pymake::core::preset::Preset</scope><name>set_env_variable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

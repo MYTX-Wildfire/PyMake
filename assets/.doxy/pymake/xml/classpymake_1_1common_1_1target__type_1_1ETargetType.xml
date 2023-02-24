@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpymake_1_1common_1_1target__type_1_1ETargetType" kind="class" language="Python" prot="public">
+    <compoundname>pymake::common::target_type::ETargetType</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Enum</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classpymake_1_1common_1_1target__type_1_1ETargetType_1aa4472e4a4c29621252d5246d8f2aa049" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string pymake.common.target_type.ETargetType::EXECUTABLE</definition>
+        <argsstring></argsstring>
+        <name>EXECUTABLE</name>
+        <initializer>=  &quot;Executable&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/common/target_type.py" line="8" column="1" bodyfile="source/pymake/common/target_type.py" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1common_1_1target__type_1_1ETargetType_1a39b399c6e7a9c52c87c3ee2480e5a38f" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string pymake.common.target_type.ETargetType::STATIC</definition>
+        <argsstring></argsstring>
+        <name>STATIC</name>
+        <initializer>=  &quot;Static&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/common/target_type.py" line="11" column="1" bodyfile="source/pymake/common/target_type.py" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1common_1_1target__type_1_1ETargetType_1afde2f313870c4d54526189808aaf3bd8" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string pymake.common.target_type.ETargetType::SHARED</definition>
+        <argsstring></argsstring>
+        <name>SHARED</name>
+        <initializer>=  &quot;Shared&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/common/target_type.py" line="14" column="1" bodyfile="source/pymake/common/target_type.py" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1common_1_1target__type_1_1ETargetType_1a1fd19e1abf885acd1b3a17525c640edf" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string pymake.common.target_type.ETargetType::INTERFACE</definition>
+        <argsstring></argsstring>
+        <name>INTERFACE</name>
+        <initializer>=  &quot;Interface&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/common/target_type.py" line="17" column="1" bodyfile="source/pymake/common/target_type.py" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Enum for the various CMake target types.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>pymake.common.target_type.ETargetType</label>
+        <link refid="classpymake_1_1common_1_1target__type_1_1ETargetType"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Enum</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>pymake.common.target_type.ETargetType</label>
+        <link refid="classpymake_1_1common_1_1target__type_1_1ETargetType"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Enum</label>
+      </node>
+    </collaborationgraph>
+    <location file="source/pymake/common/target_type.py" line="3" column="1" bodyfile="source/pymake/common/target_type.py" bodystart="3" bodyend="18"/>
+    <listofallmembers>
+      <member refid="classpymake_1_1common_1_1target__type_1_1ETargetType_1aa4472e4a4c29621252d5246d8f2aa049" prot="public" virt="non-virtual"><scope>pymake::common::target_type::ETargetType</scope><name>EXECUTABLE</name></member>
+      <member refid="classpymake_1_1common_1_1target__type_1_1ETargetType_1a1fd19e1abf885acd1b3a17525c640edf" prot="public" virt="non-virtual"><scope>pymake::common::target_type::ETargetType</scope><name>INTERFACE</name></member>
+      <member refid="classpymake_1_1common_1_1target__type_1_1ETargetType_1afde2f313870c4d54526189808aaf3bd8" prot="public" virt="non-virtual"><scope>pymake::common::target_type::ETargetType</scope><name>SHARED</name></member>
+      <member refid="classpymake_1_1common_1_1target__type_1_1ETargetType_1a39b399c6e7a9c52c87c3ee2480e5a38f" prot="public" virt="non-virtual"><scope>pymake::common::target_type::ETargetType</scope><name>STATIC</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

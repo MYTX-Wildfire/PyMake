@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="____init_____8py" kind="file" language="Python">
+    <compoundname>__init__.py</compoundname>
+    <innernamespace refid="namespacepymake">pymake</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacepymake" refkind="compound"><highlight class="comment">#<sp/>pyright:<sp/>reportUnusedImport=false</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.common.cmake_build_type<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ECMakeBuildType</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.common.cmake_generator<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ECMakeGenerator</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.common.project_language<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>EProjectLanguage</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.common.scope<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>EScope</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.core.cmake314<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>CMake314</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.core.cmake325<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>CMake325</highlight></codeline>
+    </programlisting>
+    <location file="source/pymake/__init__.py"/>
+  </compounddef>
+</doxygen>

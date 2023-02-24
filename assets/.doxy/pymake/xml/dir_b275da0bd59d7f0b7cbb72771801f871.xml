@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_b275da0bd59d7f0b7cbb72771801f871" kind="dir">
+    <compoundname>source/pymake/core</compoundname>
+    <innerfile refid="core_2____init_____8py">__init__.py</innerfile>
+    <innerfile refid="build__script_8py">build_script.py</innerfile>
+    <innerfile refid="build__script__set_8py">build_script_set.py</innerfile>
+    <innerfile refid="cmake_8py">cmake.py</innerfile>
+    <innerfile refid="cmake314_8py">cmake314.py</innerfile>
+    <innerfile refid="cmake325_8py">cmake325.py</innerfile>
+    <innerfile refid="cmake__options_8py">cmake_options.py</innerfile>
+    <innerfile refid="executable__target_8py">executable_target.py</innerfile>
+    <innerfile refid="preset_8py">preset.py</innerfile>
+    <innerfile refid="project_8py">project.py</innerfile>
+    <innerfile refid="pymake__args_8py">pymake_args.py</innerfile>
+    <innerfile refid="scoped__sets_8py">scoped_sets.py</innerfile>
+    <innerfile refid="target_8py">target.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="source/pymake/core/"/>
+  </compounddef>
+</doxygen>

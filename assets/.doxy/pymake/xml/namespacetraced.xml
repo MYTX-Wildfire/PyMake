@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespacetraced" kind="namespace" language="Python">
+    <compoundname>traced</compoundname>
+    <innerclass refid="classtraced_1_1ITraced" prot="public">traced::ITraced</innerclass>
+    <innerclass refid="classtraced_1_1Traced" prot="public">traced::Traced</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacetraced_1addebc245d7ec712ca433f824255551db" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>traced.T</definition>
+        <argsstring></argsstring>
+        <name>T</name>
+        <initializer>=  TypeVar(&quot;T&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/traced.py" line="4" column="1" bodyfile="source/pymake/tracing/traced.py" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="source/pymake/tracing/traced.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

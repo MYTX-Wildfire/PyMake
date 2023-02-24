@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpymake_1_1common_1_1scope_1_1EScope" kind="class" language="Python" prot="public">
+    <compoundname>pymake::common::scope::EScope</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Enum</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classpymake_1_1common_1_1scope_1_1EScope_1ab73eee4b0e428992ee37e0d4a9bf8837" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string pymake.common.scope.EScope::PRIVATE</definition>
+        <argsstring></argsstring>
+        <name>PRIVATE</name>
+        <initializer>=  &quot;PRIVATE&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/common/scope.py" line="8" column="1" bodyfile="source/pymake/common/scope.py" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1common_1_1scope_1_1EScope_1a9f1adaf56445cffbca8b411a539cbf76" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string pymake.common.scope.EScope::INTERFACE</definition>
+        <argsstring></argsstring>
+        <name>INTERFACE</name>
+        <initializer>=  &quot;INTERFACE&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/common/scope.py" line="11" column="1" bodyfile="source/pymake/common/scope.py" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1common_1_1scope_1_1EScope_1a09f89b90676afbabdb8c6056515af3e5" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string pymake.common.scope.EScope::PUBLIC</definition>
+        <argsstring></argsstring>
+        <name>PUBLIC</name>
+        <initializer>=  &quot;PUBLIC&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/common/scope.py" line="14" column="1" bodyfile="source/pymake/common/scope.py" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Defines values for each valid CMake scope value.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>pymake.common.scope.EScope</label>
+        <link refid="classpymake_1_1common_1_1scope_1_1EScope"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Enum</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>pymake.common.scope.EScope</label>
+        <link refid="classpymake_1_1common_1_1scope_1_1EScope"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Enum</label>
+      </node>
+    </collaborationgraph>
+    <location file="source/pymake/common/scope.py" line="3" column="1" bodyfile="source/pymake/common/scope.py" bodystart="3" bodyend="15"/>
+    <listofallmembers>
+      <member refid="classpymake_1_1common_1_1scope_1_1EScope_1a9f1adaf56445cffbca8b411a539cbf76" prot="public" virt="non-virtual"><scope>pymake::common::scope::EScope</scope><name>INTERFACE</name></member>
+      <member refid="classpymake_1_1common_1_1scope_1_1EScope_1ab73eee4b0e428992ee37e0d4a9bf8837" prot="public" virt="non-virtual"><scope>pymake::common::scope::EScope</scope><name>PRIVATE</name></member>
+      <member refid="classpymake_1_1common_1_1scope_1_1EScope_1a09f89b90676afbabdb8c6056515af3e5" prot="public" virt="non-virtual"><scope>pymake::common::scope::EScope</scope><name>PUBLIC</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

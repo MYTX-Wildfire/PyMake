@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespacepymake_1_1core_1_1scoped__sets" kind="namespace" language="Python">
+    <compoundname>pymake::core::scoped_sets</compoundname>
+    <innerclass refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets" prot="public">pymake::core::scoped_sets::ScopedSets</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacepymake_1_1core_1_1scoped__sets_1acc599a4dc79f6237c4f79f38680323b7" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>pymake::core::scoped_sets.T</definition>
+        <argsstring></argsstring>
+        <name>T</name>
+        <initializer>=  TypeVar(&quot;T&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/scoped_sets.py" line="6" column="1" bodyfile="source/pymake/core/scoped_sets.py" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="source/pymake/core/scoped_sets.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

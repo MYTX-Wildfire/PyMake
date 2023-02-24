@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="common_2cmake__generator_8py" kind="file" language="Python">
+    <compoundname>cmake_generator.py</compoundname>
+    <innerclass refid="classpymake_1_1common_1_1cmake__generator_1_1ECMakeGenerator" prot="public">pymake::common::cmake_generator::ECMakeGenerator</innerclass>
+    <innernamespace refid="namespacepymake_1_1common_1_1cmake__generator">pymake::common::cmake_generator</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacepymake_1_1common_1_1cmake__generator" refkind="compound"><highlight class="keyword">from</highlight><highlight class="normal"><sp/>enum<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Enum</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="classpymake_1_1common_1_1cmake__generator_1_1ECMakeGenerator" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1common_1_1cmake__generator_1_1ECMakeGenerator" kindref="compound">ECMakeGenerator</ref>(Enum):</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Defines<sp/>enums<sp/>for<sp/>common<sp/>CMake<sp/>generators.</highlight></codeline>
+<codeline lineno="6"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Ninja<sp/>build<sp/>system.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>Ninja<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Ninja&quot;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="source/pymake/common/cmake_generator.py"/>
+  </compounddef>
+</doxygen>

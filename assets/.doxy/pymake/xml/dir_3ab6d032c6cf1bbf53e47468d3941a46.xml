@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_3ab6d032c6cf1bbf53e47468d3941a46" kind="dir">
+    <compoundname>source/pymake/common</compoundname>
+    <innerfile refid="common_2____init_____8py">__init__.py</innerfile>
+    <innerfile refid="cmake__build__type_8py">cmake_build_type.py</innerfile>
+    <innerfile refid="common_2cmake__generator_8py">cmake_generator.py</innerfile>
+    <innerfile refid="cmake__version_8py">cmake_version.py</innerfile>
+    <innerfile refid="project__language_8py">project_language.py</innerfile>
+    <innerfile refid="scope_8py">scope.py</innerfile>
+    <innerfile refid="target__type_8py">target_type.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="source/pymake/common/"/>
+  </compounddef>
+</doxygen>

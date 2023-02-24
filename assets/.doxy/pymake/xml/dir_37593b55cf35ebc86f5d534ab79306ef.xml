@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_37593b55cf35ebc86f5d534ab79306ef" kind="dir">
+    <compoundname>source/pymake/generators</compoundname>
+    <innerfile refid="generators_2____init_____8py">__init__.py</innerfile>
+    <innerfile refid="generators_2cmake__generator_8py">cmake_generator.py</innerfile>
+    <innerfile refid="cmake__method__builder_8py">cmake_method_builder.py</innerfile>
+    <innerfile refid="json__file__generator_8py">json_file_generator.py</innerfile>
+    <innerfile refid="text__generator_8py">text_generator.py</innerfile>
+    <innerfile refid="trace__file__generator_8py">trace_file_generator.py</innerfile>
+    <innerfile refid="yaml__file__generator_8py">yaml_file_generator.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="source/pymake/generators/"/>
+  </compounddef>
+</doxygen>

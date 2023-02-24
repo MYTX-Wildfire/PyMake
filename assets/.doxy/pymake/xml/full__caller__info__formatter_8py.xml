@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="full__caller__info__formatter_8py" kind="file" language="Python">
+    <compoundname>full_caller_info_formatter.py</compoundname>
+    <innerclass refid="classfull__caller__info__formatter_1_1FullCallerInfoFormatter" prot="public">full_caller_info_formatter::FullCallerInfoFormatter</innerclass>
+    <innernamespace refid="namespacefull__caller__info__formatter">full_caller_info_formatter</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacefull__caller__info__formatter" refkind="compound"><highlight class="keyword">from</highlight><highlight class="normal"><sp/>pymake.tracing.caller_info_formatter<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ICallerInfoFormatter</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>pymake.tracing.caller_info<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>CallerInfo</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>pymake.tracing.traced<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ITraced,<sp/>Traced</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>typing<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Any</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="classfull__caller__info__formatter_1_1FullCallerInfoFormatter" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classfull__caller__info__formatter_1_1FullCallerInfoFormatter" kindref="compound">FullCallerInfoFormatter</ref>(ICallerInfoFormatter):</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="8"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Formatter<sp/>that<sp/>always<sp/>prints<sp/>full<sp/>paths.</highlight></codeline>
+<codeline lineno="9"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classfull__caller__info__formatter_1_1FullCallerInfoFormatter_1ac312048c78a463d147ee5e97791c84d4" kindref="member">format</ref>(self,<sp/>x:<sp/>CallerInfo<sp/>|<sp/>ITraced<sp/>|<sp/>Traced[Any])<sp/>-&gt;<sp/>str:</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="13"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Converts<sp/>the<sp/>caller<sp/>info<sp/>data<sp/>into<sp/>a<sp/>formatted<sp/>string.</highlight></codeline>
+<codeline lineno="14"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@param<sp/>x<sp/>Object<sp/>providing<sp/>caller<sp/>info<sp/>data.</highlight></codeline>
+<codeline lineno="15"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>isinstance(x,<sp/>CallerInfo):</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>caller_info<sp/>=<sp/>x</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>isinstance(x,<sp/>ITraced):</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>caller_info<sp/>=<sp/>x.origin</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>caller_info<sp/>=<sp/>x.origin</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>f</highlight><highlight class="stringliteral">&quot;{caller_info.file_path}:{caller_info.line_number}&quot;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="source/pymake/tracing/full_caller_info_formatter.py"/>
+  </compounddef>
+</doxygen>

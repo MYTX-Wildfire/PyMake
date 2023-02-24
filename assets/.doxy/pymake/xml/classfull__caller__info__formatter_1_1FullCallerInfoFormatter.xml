@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classfull__caller__info__formatter_1_1FullCallerInfoFormatter" kind="class" language="Python" prot="public">
+    <compoundname>full_caller_info_formatter::FullCallerInfoFormatter</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ICallerInfoFormatter</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classfull__caller__info__formatter_1_1FullCallerInfoFormatter_1ac312048c78a463d147ee5e97791c84d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>str</type>
+        <definition> str full_caller_info_formatter.FullCallerInfoFormatter.format</definition>
+        <argsstring>(self, CallerInfo|ITraced|Traced[Any] x)</argsstring>
+        <name>format</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>CallerInfo|ITraced|Traced</type>
+          <declname>x</declname>
+          <array>[Any]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Converts the caller info data into a formatted string.
+@param x Object providing caller info data.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/full_caller_info_formatter.py" line="11" column="1" bodyfile="source/pymake/tracing/full_caller_info_formatter.py" bodystart="11" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Formatter that always prints full paths.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>full_caller_info_formatter.FullCallerInfoFormatter</label>
+        <link refid="classfull__caller__info__formatter_1_1FullCallerInfoFormatter"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ICallerInfoFormatter</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>full_caller_info_formatter.FullCallerInfoFormatter</label>
+        <link refid="classfull__caller__info__formatter_1_1FullCallerInfoFormatter"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ICallerInfoFormatter</label>
+      </node>
+    </collaborationgraph>
+    <location file="source/pymake/tracing/full_caller_info_formatter.py" line="6" column="1" bodyfile="source/pymake/tracing/full_caller_info_formatter.py" bodystart="6" bodyend="24"/>
+    <listofallmembers>
+      <member refid="classfull__caller__info__formatter_1_1FullCallerInfoFormatter_1ac312048c78a463d147ee5e97791c84d4" prot="public" virt="non-virtual"><scope>full_caller_info_formatter::FullCallerInfoFormatter</scope><name>format</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

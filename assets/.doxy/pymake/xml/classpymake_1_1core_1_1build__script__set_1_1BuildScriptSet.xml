@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet" kind="class" language="Python" prot="public">
+    <compoundname>pymake::core::build_script_set::BuildScriptSet</compoundname>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a65f12ec4fa8c2d5a88b9863cd9259ad5" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string pymake.core.build_script_set.BuildScriptSet::EXTERNAL_GENERATED_DIR</definition>
+        <argsstring></argsstring>
+        <name>EXTERNAL_GENERATED_DIR</name>
+        <initializer>=  &quot;.external&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/build_script_set.py" line="15" column="1" bodyfile="source/pymake/core/build_script_set.py" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a45304a1653c855d9eb438e3f45d394c0" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.build_script_set.BuildScriptSet::_source_dir</definition>
+        <argsstring></argsstring>
+        <name>_source_dir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/build_script_set.py" line="33" column="1" bodyfile="source/pymake/core/build_script_set.py" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a0d8b26c344fe2186551b7bac52f67b0c" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.build_script_set.BuildScriptSet::_generated_dir</definition>
+        <argsstring></argsstring>
+        <name>_generated_dir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/build_script_set.py" line="34" column="1" bodyfile="source/pymake/core/build_script_set.py" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1ae5e0b33bffe87069fc8075dc8f057ef3" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.build_script_set.BuildScriptSet::_external_generated_dir</definition>
+        <argsstring></argsstring>
+        <name>_external_generated_dir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/build_script_set.py" line="35" column="1" bodyfile="source/pymake/core/build_script_set.py" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a1d11d18eda12409fc544d2343d6aeaea" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.build_script_set.BuildScriptSet::_formatter</definition>
+        <argsstring></argsstring>
+        <name>_formatter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/build_script_set.py" line="37" column="1" bodyfile="source/pymake/core/build_script_set.py" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a330ec6719238cebc8b27f3e792bed5a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def pymake.core.build_script_set.BuildScriptSet.__init__</definition>
+        <argsstring>(self, Path source_directory, Path generated_directory, ICallerInfoFormatter formatter)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Path</type>
+          <declname>source_directory</declname>
+        </param>
+        <param>
+          <type>Path</type>
+          <declname>generated_directory</declname>
+        </param>
+        <param>
+          <type>ICallerInfoFormatter</type>
+          <declname>formatter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Initializes the set.
+@param source_directory Path to the directory containing the source
+    files for the PyMake project. Must be an absolute path.
+@param generated_directory Path to the directory where PyMake should
+  generate the CMake files. Must be an absolute path.
+@param formatter Formatter that should be used when printing tracing
+  info.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/build_script_set.py" line="17" column="1" bodyfile="source/pymake/core/build_script_set.py" bodystart="20" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a6d5cb1196cee3c61d946192bd88ba20d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition> bool pymake.core.build_script_set.BuildScriptSet.__bool__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__bool__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets whether the set contains any build scripts.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/build_script_set.py" line="45" column="1" bodyfile="source/pymake/core/build_script_set.py" bodystart="45" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a94b2ad66ea7995f3777949da5f325233" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition> int pymake.core.build_script_set.BuildScriptSet.__len__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__len__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the number of build scripts in the set.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/build_script_set.py" line="52" column="1" bodyfile="source/pymake/core/build_script_set.py" bodystart="52" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1ae19f210640996a2cf121199717b68a6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classpymake_1_1core_1_1build__script_1_1BuildScript" kindref="compound">BuildScript</ref></type>
+        <definition> BuildScript pymake.core.build_script_set.BuildScriptSet.get_or_add_build_script</definition>
+        <argsstring>(self, Optional[Path] caller_path=None)</argsstring>
+        <name>get_or_add_build_script</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Optional</type>
+          <declname>caller_path</declname>
+          <array>[Path]</array>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the build script for the specified PyMake build script.
+If a build script instance does not exist for the caller path, a build
+  script instance will be created and added to the set.
+@param caller_path Path to the PyMake build script that triggered the
+  creation of the build script. If this is None, the caller path will
+  be determined using the closest external frame.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/build_script_set.py" line="59" column="1" bodyfile="source/pymake/core/build_script_set.py" bodystart="60" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a5b7041ef01854c613184c0e021e0739e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def pymake.core.build_script_set.BuildScriptSet.generate</definition>
+        <argsstring>(self)</argsstring>
+        <name>generate</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Generates all build scripts.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/build_script_set.py" line="103" column="1" bodyfile="source/pymake/core/build_script_set.py" bodystart="103" bodyend="111"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a54f09716f0696148945d69e2153c6871" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>str</type>
+        <definition> str pymake.core.build_script_set.BuildScriptSet.get_generated_build_script_name</definition>
+        <argsstring>(Path build_script_path)</argsstring>
+        <name>get_generated_build_script_name</name>
+        <param>
+          <type>Path</type>
+          <declname>build_script_path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the name to use for the generated build script.
+@param build_script_path Path to the PyMake build script that the build
+  script is for.
+@return Name to use for the build script generated for the PyMake build
+  script.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/build_script_set.py" line="113" column="1" bodyfile="source/pymake/core/build_script_set.py" bodystart="113" bodyend="129"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Stores all build script instances that must be generated.
+</verbatim> </para>
+    </detaileddescription>
+    <location file="source/pymake/core/build_script_set.py" line="9" column="1" bodyfile="source/pymake/core/build_script_set.py" bodystart="9" bodyend="129"/>
+    <listofallmembers>
+      <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a6d5cb1196cee3c61d946192bd88ba20d" prot="public" virt="non-virtual"><scope>pymake::core::build_script_set::BuildScriptSet</scope><name>__bool__</name></member>
+      <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a330ec6719238cebc8b27f3e792bed5a4" prot="public" virt="non-virtual"><scope>pymake::core::build_script_set::BuildScriptSet</scope><name>__init__</name></member>
+      <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a94b2ad66ea7995f3777949da5f325233" prot="public" virt="non-virtual"><scope>pymake::core::build_script_set::BuildScriptSet</scope><name>__len__</name></member>
+      <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1ae5e0b33bffe87069fc8075dc8f057ef3" prot="private" virt="non-virtual"><scope>pymake::core::build_script_set::BuildScriptSet</scope><name>_external_generated_dir</name></member>
+      <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a1d11d18eda12409fc544d2343d6aeaea" prot="private" virt="non-virtual"><scope>pymake::core::build_script_set::BuildScriptSet</scope><name>_formatter</name></member>
+      <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a0d8b26c344fe2186551b7bac52f67b0c" prot="private" virt="non-virtual"><scope>pymake::core::build_script_set::BuildScriptSet</scope><name>_generated_dir</name></member>
+      <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a45304a1653c855d9eb438e3f45d394c0" prot="private" virt="non-virtual"><scope>pymake::core::build_script_set::BuildScriptSet</scope><name>_source_dir</name></member>
+      <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a65f12ec4fa8c2d5a88b9863cd9259ad5" prot="public" virt="non-virtual"><scope>pymake::core::build_script_set::BuildScriptSet</scope><name>EXTERNAL_GENERATED_DIR</name></member>
+      <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a5b7041ef01854c613184c0e021e0739e" prot="public" virt="non-virtual"><scope>pymake::core::build_script_set::BuildScriptSet</scope><name>generate</name></member>
+      <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a54f09716f0696148945d69e2153c6871" prot="public" virt="non-virtual"><scope>pymake::core::build_script_set::BuildScriptSet</scope><name>get_generated_build_script_name</name></member>
+      <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1ae19f210640996a2cf121199717b68a6a" prot="public" virt="non-virtual"><scope>pymake::core::build_script_set::BuildScriptSet</scope><name>get_or_add_build_script</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

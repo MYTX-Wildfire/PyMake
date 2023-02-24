@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpymake_1_1common_1_1cmake__version_1_1ECMakeVersion" kind="class" language="Python" prot="public">
+    <compoundname>pymake::common::cmake_version::ECMakeVersion</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Enum</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classpymake_1_1common_1_1cmake__version_1_1ECMakeVersion_1a65c01a8b97b3ebf2569eba8919ffa0fc" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string pymake.common.cmake_version.ECMakeVersion::V3_14</definition>
+        <argsstring></argsstring>
+        <name>V3_14</name>
+        <initializer>=  &quot;3.14&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/common/cmake_version.py" line="8" column="1" bodyfile="source/pymake/common/cmake_version.py" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1common_1_1cmake__version_1_1ECMakeVersion_1a654c4a4a5a7d228249eacd0aa214f109" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string pymake.common.cmake_version.ECMakeVersion::V3_25</definition>
+        <argsstring></argsstring>
+        <name>V3_25</name>
+        <initializer>=  &quot;3.25&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/common/cmake_version.py" line="11" column="1" bodyfile="source/pymake/common/cmake_version.py" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Defines CMake versions supported by the PyMake transpiler.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>pymake.common.cmake_version.ECMakeVersion</label>
+        <link refid="classpymake_1_1common_1_1cmake__version_1_1ECMakeVersion"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Enum</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>pymake.common.cmake_version.ECMakeVersion</label>
+        <link refid="classpymake_1_1common_1_1cmake__version_1_1ECMakeVersion"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Enum</label>
+      </node>
+    </collaborationgraph>
+    <location file="source/pymake/common/cmake_version.py" line="3" column="1" bodyfile="source/pymake/common/cmake_version.py" bodystart="3" bodyend="12"/>
+    <listofallmembers>
+      <member refid="classpymake_1_1common_1_1cmake__version_1_1ECMakeVersion_1a65c01a8b97b3ebf2569eba8919ffa0fc" prot="public" virt="non-virtual"><scope>pymake::common::cmake_version::ECMakeVersion</scope><name>V3_14</name></member>
+      <member refid="classpymake_1_1common_1_1cmake__version_1_1ECMakeVersion_1a654c4a4a5a7d228249eacd0aa214f109" prot="public" virt="non-virtual"><scope>pymake::common::cmake_version::ECMakeVersion</scope><name>V3_25</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

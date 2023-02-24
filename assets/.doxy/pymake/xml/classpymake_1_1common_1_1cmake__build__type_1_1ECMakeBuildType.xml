@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType" kind="class" language="Python" prot="public">
+    <compoundname>pymake::common::cmake_build_type::ECMakeBuildType</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Enum</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType_1a26bb3282832e6b60c3a5e61b8135b123" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string pymake.common.cmake_build_type.ECMakeBuildType::Debug</definition>
+        <argsstring></argsstring>
+        <name>Debug</name>
+        <initializer>=  &quot;Debug&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/common/cmake_build_type.py" line="8" column="1" bodyfile="source/pymake/common/cmake_build_type.py" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType_1aef4f5f0b8c891837f5fa1645bfa5e6e4" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string pymake.common.cmake_build_type.ECMakeBuildType::Release</definition>
+        <argsstring></argsstring>
+        <name>Release</name>
+        <initializer>=  &quot;Release&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/common/cmake_build_type.py" line="11" column="1" bodyfile="source/pymake/common/cmake_build_type.py" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType_1a981f08f754229f5ce3ff9c17ff5a9c37" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string pymake.common.cmake_build_type.ECMakeBuildType::RelWithDebInfo</definition>
+        <argsstring></argsstring>
+        <name>RelWithDebInfo</name>
+        <initializer>=  &quot;RelWithDebInfo&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/common/cmake_build_type.py" line="14" column="1" bodyfile="source/pymake/common/cmake_build_type.py" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType_1ae7100ca33a533e59cd5315c03400e5ce" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string pymake.common.cmake_build_type.ECMakeBuildType::MinSizeRel</definition>
+        <argsstring></argsstring>
+        <name>MinSizeRel</name>
+        <initializer>=  &quot;MinSizeRel&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/common/cmake_build_type.py" line="17" column="1" bodyfile="source/pymake/common/cmake_build_type.py" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Defines constants for each built in CMake build type.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>pymake.common.cmake_build_type.ECMakeBuildType</label>
+        <link refid="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Enum</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>pymake.common.cmake_build_type.ECMakeBuildType</label>
+        <link refid="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Enum</label>
+      </node>
+    </collaborationgraph>
+    <location file="source/pymake/common/cmake_build_type.py" line="3" column="1" bodyfile="source/pymake/common/cmake_build_type.py" bodystart="3" bodyend="18"/>
+    <listofallmembers>
+      <member refid="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType_1a26bb3282832e6b60c3a5e61b8135b123" prot="public" virt="non-virtual"><scope>pymake::common::cmake_build_type::ECMakeBuildType</scope><name>Debug</name></member>
+      <member refid="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType_1ae7100ca33a533e59cd5315c03400e5ce" prot="public" virt="non-virtual"><scope>pymake::common::cmake_build_type::ECMakeBuildType</scope><name>MinSizeRel</name></member>
+      <member refid="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType_1aef4f5f0b8c891837f5fa1645bfa5e6e4" prot="public" virt="non-virtual"><scope>pymake::common::cmake_build_type::ECMakeBuildType</scope><name>Release</name></member>
+      <member refid="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType_1a981f08f754229f5ce3ff9c17ff5a9c37" prot="public" virt="non-virtual"><scope>pymake::common::cmake_build_type::ECMakeBuildType</scope><name>RelWithDebInfo</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

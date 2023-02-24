@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespacepymake_1_1core_1_1build__script" kind="namespace" language="Python">
+    <compoundname>pymake::core::build_script</compoundname>
+    <innerclass refid="classpymake_1_1core_1_1build__script_1_1BuildScript" prot="public">pymake::core::build_script::BuildScript</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="source/pymake/core/build_script.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classshortened__caller__info__formatter_1_1ShortenedCallerInfoFormatter" kind="class" language="Python" prot="public">
+    <compoundname>shortened_caller_info_formatter::ShortenedCallerInfoFormatter</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ICallerInfoFormatter</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classshortened__caller__info__formatter_1_1ShortenedCallerInfoFormatter_1a9451e946a5a6b1e9e61a405b575cad93" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>shortened_caller_info_formatter.ShortenedCallerInfoFormatter::_base_path</definition>
+        <argsstring></argsstring>
+        <name>_base_path</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/shortened_caller_info_formatter.py" line="29" column="1" bodyfile="source/pymake/tracing/shortened_caller_info_formatter.py" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classshortened__caller__info__formatter_1_1ShortenedCallerInfoFormatter_1abd4b9452673281390a325fb88531cf39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def shortened_caller_info_formatter.ShortenedCallerInfoFormatter.__init__</definition>
+        <argsstring>(self, Path|str base_path)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Path|str</type>
+          <declname>base_path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Initializes the formatter.
+@param base_path Path to use when shortening caller info data. Must be
+  an absolute path. If the caller&apos;s file path is descended from this
+  path, the file path will be shortened into a path relative to this
+  path.
+@throws ValueError Thrown if `base_path` is not an absolute path.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/shortened_caller_info_formatter.py" line="14" column="1" bodyfile="source/pymake/tracing/shortened_caller_info_formatter.py" bodystart="14" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classshortened__caller__info__formatter_1_1ShortenedCallerInfoFormatter_1a6a43c849a4c829e47d5266da36ab0e24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>str</type>
+        <definition> str shortened_caller_info_formatter.ShortenedCallerInfoFormatter.format</definition>
+        <argsstring>(self, CallerInfo|ITraced|Traced[Any] x)</argsstring>
+        <name>format</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>CallerInfo|ITraced|Traced</type>
+          <declname>x</declname>
+          <array>[Any]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Converts the caller info data into a formatted string.
+@param x Object providing caller info data.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/tracing/shortened_caller_info_formatter.py" line="32" column="1" bodyfile="source/pymake/tracing/shortened_caller_info_formatter.py" bodystart="32" bodyend="60"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Formatter that conditionally shortens printed file paths.
+Printed file paths will be shortened into a relative path if the path is
+  descended from the path passed to the constructor.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ICallerInfoFormatter</label>
+      </node>
+      <node id="1">
+        <label>shortened_caller_info_formatter.ShortenedCallerInfoFormatter</label>
+        <link refid="classshortened__caller__info__formatter_1_1ShortenedCallerInfoFormatter"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>ICallerInfoFormatter</label>
+      </node>
+      <node id="1">
+        <label>shortened_caller_info_formatter.ShortenedCallerInfoFormatter</label>
+        <link refid="classshortened__caller__info__formatter_1_1ShortenedCallerInfoFormatter"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="source/pymake/tracing/shortened_caller_info_formatter.py" line="8" column="1" bodyfile="source/pymake/tracing/shortened_caller_info_formatter.py" bodystart="8" bodyend="60"/>
+    <listofallmembers>
+      <member refid="classshortened__caller__info__formatter_1_1ShortenedCallerInfoFormatter_1abd4b9452673281390a325fb88531cf39" prot="public" virt="non-virtual"><scope>shortened_caller_info_formatter::ShortenedCallerInfoFormatter</scope><name>__init__</name></member>
+      <member refid="classshortened__caller__info__formatter_1_1ShortenedCallerInfoFormatter_1a9451e946a5a6b1e9e61a405b575cad93" prot="private" virt="non-virtual"><scope>shortened_caller_info_formatter::ShortenedCallerInfoFormatter</scope><name>_base_path</name></member>
+      <member refid="classshortened__caller__info__formatter_1_1ShortenedCallerInfoFormatter_1a6a43c849a4c829e47d5266da36ab0e24" prot="public" virt="non-virtual"><scope>shortened_caller_info_formatter::ShortenedCallerInfoFormatter</scope><name>format</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

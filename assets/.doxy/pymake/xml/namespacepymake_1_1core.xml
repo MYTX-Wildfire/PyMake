@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespacepymake_1_1core" kind="namespace" language="Python">
+    <compoundname>pymake::core</compoundname>
+    <innernamespace refid="namespacepymake_1_1core_1_1build__script">pymake::core::build_script</innernamespace>
+    <innernamespace refid="namespacepymake_1_1core_1_1build__script__set">pymake::core::build_script_set</innernamespace>
+    <innernamespace refid="namespacepymake_1_1core_1_1cmake">pymake::core::cmake</innernamespace>
+    <innernamespace refid="namespacepymake_1_1core_1_1cmake314">pymake::core::cmake314</innernamespace>
+    <innernamespace refid="namespacepymake_1_1core_1_1cmake325">pymake::core::cmake325</innernamespace>
+    <innernamespace refid="namespacepymake_1_1core_1_1cmake__options">pymake::core::cmake_options</innernamespace>
+    <innernamespace refid="namespacepymake_1_1core_1_1executable__target">pymake::core::executable_target</innernamespace>
+    <innernamespace refid="namespacepymake_1_1core_1_1preset">pymake::core::preset</innernamespace>
+    <innernamespace refid="namespacepymake_1_1core_1_1project">pymake::core::project</innernamespace>
+    <innernamespace refid="namespacepymake_1_1core_1_1pymake__args">pymake::core::pymake_args</innernamespace>
+    <innernamespace refid="namespacepymake_1_1core_1_1scoped__sets">pymake::core::scoped_sets</innernamespace>
+    <innernamespace refid="namespacepymake_1_1core_1_1target">pymake::core::target</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="source/pymake/core/__init__.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

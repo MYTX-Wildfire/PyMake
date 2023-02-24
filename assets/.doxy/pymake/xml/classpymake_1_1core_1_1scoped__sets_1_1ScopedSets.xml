@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets" kind="class" language="Python" prot="public">
+    <compoundname>pymake::core::scoped_sets::ScopedSets</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Generic</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">T</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1a80fc71f84cc0c78f84c0ee74e383a949" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def pymake.core.scoped_sets.ScopedSets.__init__</definition>
+        <argsstring>(self, Optional[TracedSet[T]] public=None, Optional[TracedSet[T]] interface=None, Optional[TracedSet[T]] private=None)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Optional]</type>
+          <declname>public</declname>
+          <array>[TracedSet[T]</array>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>Optional]</type>
+          <declname>interface</declname>
+          <array>[TracedSet[T]</array>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>Optional]</type>
+          <declname>private</declname>
+          <array>[TracedSet[T]</array>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Initializes the set.
+@param public Public values to add to the set.
+@param interface Interface values to add to the set.
+@param private Private values to add to the set.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/scoped_sets.py" line="15" column="1" bodyfile="source/pymake/core/scoped_sets.py" bodystart="18" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1a8a50ad4a380d61d97f8773905fac54d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>TracedSet[<ref refid="namespacepymake_1_1core_1_1scoped__sets_1acc599a4dc79f6237c4f79f38680323b7" kindref="member">T</ref>]</type>
+        <definition> TracedSet[T] pymake.core.scoped_sets.ScopedSets.public</definition>
+        <argsstring>(self)</argsstring>
+        <name>public</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the public values in the set.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/scoped_sets.py" line="31" column="1" bodyfile="source/pymake/core/scoped_sets.py" bodystart="31" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1ac35c79db496ca368637e20b44405c3b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>TracedSet[<ref refid="namespacepymake_1_1core_1_1scoped__sets_1acc599a4dc79f6237c4f79f38680323b7" kindref="member">T</ref>]</type>
+        <definition> TracedSet[T] pymake.core.scoped_sets.ScopedSets.interface</definition>
+        <argsstring>(self)</argsstring>
+        <name>interface</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the interface values in the set.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/scoped_sets.py" line="39" column="1" bodyfile="source/pymake/core/scoped_sets.py" bodystart="39" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1a23dcf0ff8a759d6d338386df1b40941d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>TracedSet[<ref refid="namespacepymake_1_1core_1_1scoped__sets_1acc599a4dc79f6237c4f79f38680323b7" kindref="member">T</ref>]</type>
+        <definition> TracedSet[T] pymake.core.scoped_sets.ScopedSets.private</definition>
+        <argsstring>(self)</argsstring>
+        <name>private</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the private values in the set.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/scoped_sets.py" line="47" column="1" bodyfile="source/pymake/core/scoped_sets.py" bodystart="47" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1a99d7cd0a7400ab341d7e79c7292c7db3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Dict[str, object]</type>
+        <definition> Dict[str, object] pymake.core.scoped_sets.ScopedSets.to_trace_dict</definition>
+        <argsstring>(self)</argsstring>
+        <name>to_trace_dict</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Converts the set to a dictionary that can be written to a trace file.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/scoped_sets.py" line="54" column="1" bodyfile="source/pymake/core/scoped_sets.py" bodystart="54" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1a0c918848b889b0f0540ec0b3536f70aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>TracedSet[<ref refid="namespacepymake_1_1core_1_1scoped__sets_1acc599a4dc79f6237c4f79f38680323b7" kindref="member">T</ref>]</type>
+        <definition> TracedSet[T] pymake.core.scoped_sets.ScopedSets.select_set</definition>
+        <argsstring>(self, EScope scope)</argsstring>
+        <name>select_set</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classpymake_1_1common_1_1scope_1_1EScope" kindref="compound">EScope</ref></type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the set for the specified scope.
+@param scope Scope to get the set for.
+@throws ValueError If the specified scope is invalid.
+@returns Set for the specified scope.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/scoped_sets.py" line="65" column="1" bodyfile="source/pymake/core/scoped_sets.py" bodystart="65" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1a635c1ceb9c4436b3bd85fd4f59fd1789" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition> bool pymake.core.scoped_sets.ScopedSets.__bool__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__bool__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Checks whether the set contains any values.
+@returns True if the set contains any values.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/scoped_sets.py" line="81" column="1" bodyfile="source/pymake/core/scoped_sets.py" bodystart="81" bodyend="87"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Collection of sets with different scopes.
+An instance of this class is used for most target properties that support
+  multiple scope levels.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>T</label>
+      </node>
+      <node id="1">
+        <label>pymake.core.scoped_sets.ScopedSets</label>
+        <link refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Generic</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>T</label>
+      </node>
+      <node id="1">
+        <label>pymake.core.scoped_sets.ScopedSets</label>
+        <link refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Generic</label>
+      </node>
+    </collaborationgraph>
+    <location file="source/pymake/core/scoped_sets.py" line="8" column="1" bodyfile="source/pymake/core/scoped_sets.py" bodystart="8" bodyend="87"/>
+    <listofallmembers>
+      <member refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1a635c1ceb9c4436b3bd85fd4f59fd1789" prot="public" virt="non-virtual"><scope>pymake::core::scoped_sets::ScopedSets</scope><name>__bool__</name></member>
+      <member refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1a80fc71f84cc0c78f84c0ee74e383a949" prot="public" virt="non-virtual"><scope>pymake::core::scoped_sets::ScopedSets</scope><name>__init__</name></member>
+      <member refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1ac35c79db496ca368637e20b44405c3b1" prot="public" virt="non-virtual"><scope>pymake::core::scoped_sets::ScopedSets</scope><name>interface</name></member>
+      <member refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1a23dcf0ff8a759d6d338386df1b40941d" prot="public" virt="non-virtual"><scope>pymake::core::scoped_sets::ScopedSets</scope><name>private</name></member>
+      <member refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1a8a50ad4a380d61d97f8773905fac54d9" prot="public" virt="non-virtual"><scope>pymake::core::scoped_sets::ScopedSets</scope><name>public</name></member>
+      <member refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1a0c918848b889b0f0540ec0b3536f70aa" prot="public" virt="non-virtual"><scope>pymake::core::scoped_sets::ScopedSets</scope><name>select_set</name></member>
+      <member refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1a99d7cd0a7400ab341d7e79c7292c7db3" prot="public" virt="non-virtual"><scope>pymake::core::scoped_sets::ScopedSets</scope><name>to_trace_dict</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

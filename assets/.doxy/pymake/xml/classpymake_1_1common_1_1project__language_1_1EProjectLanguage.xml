@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpymake_1_1common_1_1project__language_1_1EProjectLanguage" kind="class" language="Python" prot="public">
+    <compoundname>pymake::common::project_language::EProjectLanguage</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Enum</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classpymake_1_1common_1_1project__language_1_1EProjectLanguage_1a14f1a52a6d3c47886a0419b79bfc14c2" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string pymake.common.project_language.EProjectLanguage::Cpp</definition>
+        <argsstring></argsstring>
+        <name>Cpp</name>
+        <initializer>=  &quot;CXX&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/common/project_language.py" line="8" column="1" bodyfile="source/pymake/common/project_language.py" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Enum for the various languages a CMake project may use.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>pymake.common.project_language.EProjectLanguage</label>
+        <link refid="classpymake_1_1common_1_1project__language_1_1EProjectLanguage"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Enum</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>pymake.common.project_language.EProjectLanguage</label>
+        <link refid="classpymake_1_1common_1_1project__language_1_1EProjectLanguage"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Enum</label>
+      </node>
+    </collaborationgraph>
+    <location file="source/pymake/common/project_language.py" line="3" column="1" bodyfile="source/pymake/common/project_language.py" bodystart="3" bodyend="9"/>
+    <listofallmembers>
+      <member refid="classpymake_1_1common_1_1project__language_1_1EProjectLanguage_1a14f1a52a6d3c47886a0419b79bfc14c2" prot="public" virt="non-virtual"><scope>pymake::common::project_language::EProjectLanguage</scope><name>Cpp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

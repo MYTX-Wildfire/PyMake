@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="project_8py" kind="file" language="Python">
+    <compoundname>project.py</compoundname>
+    <innerclass refid="classpymake_1_1core_1_1project_1_1Project" prot="public">pymake::core::project::Project</innerclass>
+    <innernamespace refid="namespacepymake_1_1core_1_1project">pymake::core::project</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacepymake_1_1core_1_1project" refkind="compound"><highlight class="keyword">from</highlight><highlight class="normal"><sp/><ref refid="namespacepymake_1_1common_1_1project__language" kindref="compound">pymake.common.project_language</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>EProjectLanguage</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/><ref refid="namespacepymake_1_1core_1_1build__script__set" kindref="compound">pymake.core.build_script_set</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>BuildScriptSet</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/><ref refid="namespacepymake_1_1core_1_1executable__target" kindref="compound">pymake.core.executable_target</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ExecutableTarget</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/><ref refid="namespacepymake_1_1core_1_1target" kindref="compound">pymake.core.target</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ITarget</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>pymake.tracing.traced<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ITraced</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>typing<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Callable,<sp/>Dict,<sp/>Iterable,<sp/>Optional</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="classpymake_1_1core_1_1project_1_1Project" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1core_1_1project_1_1Project" kindref="compound">Project</ref>(ITraced):</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="10"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Represents<sp/>a<sp/>single<sp/>project<sp/>scope<sp/>in<sp/>a<sp/>PyMake<sp/>project.</highlight></codeline>
+<codeline lineno="11"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1core_1_1project_1_1Project_1a1fea9370ae9a9270664c9b8467f88c1f" kindref="member">__init__</ref>(self,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>build_scripts:<sp/>BuildScriptSet,</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>project_name:<sp/>str,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>project_languages:<sp/>EProjectLanguage<sp/>|<sp/>Iterable[EProjectLanguage]):</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="17"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Initializes<sp/>the<sp/>project.</highlight></codeline>
+<codeline lineno="18"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@param<sp/>build_scripts<sp/>Set<sp/>of<sp/>build<sp/>scripts<sp/>that<sp/>the<sp/>project<sp/>will<sp/>generate.</highlight></codeline>
+<codeline lineno="19"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@param<sp/>project_name<sp/>Name<sp/>of<sp/>the<sp/>project.</highlight></codeline>
+<codeline lineno="20"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@param<sp/>project_languages<sp/>Languages<sp/>used<sp/>in<sp/>the<sp/>project.</highlight></codeline>
+<codeline lineno="21"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>super().<ref refid="classpymake_1_1core_1_1project_1_1Project_1a1fea9370ae9a9270664c9b8467f88c1f" kindref="member">__init__</ref>()</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classpymake_1_1core_1_1project_1_1Project_1a4610a0d37dd1d61065c0ebad275487ab" kindref="member">_build_scripts</ref>_build_scripts<sp/>=<sp/>build_scripts</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classpymake_1_1core_1_1project_1_1Project_1a0d4a81f373af0b60d4f453a8b77aedc6" kindref="member">_project_name</ref>_project_name<sp/>=<sp/>project_name</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classpymake_1_1core_1_1project_1_1Project_1a734bd4f3c826a810b4454a3c79dd40ac" kindref="member">_project_languages</ref>_project_languages<sp/>=<sp/>list(project_languages)<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>isinstance(</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>project_languages,<sp/>Iterable)<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>[project_languages]</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Callback<sp/>that<sp/>will<sp/>be<sp/>invoked<sp/>when<sp/>a<sp/>target<sp/>is<sp/>added</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>The<sp/>callback<sp/>will<sp/>be<sp/>passed<sp/>the<sp/>target<sp/>that<sp/>was<sp/>just<sp/>added<sp/>as<sp/>its<sp/>only</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/><sp/><sp/>parameter.<sp/>If<sp/>a<sp/>target<sp/>was<sp/>already<sp/>added<sp/>with<sp/>the<sp/>given<sp/>name,<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/><sp/><sp/>previously<sp/>added<sp/>target<sp/>must<sp/>be<sp/>returned.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classpymake_1_1core_1_1project_1_1Project_1ad20ddabd8c8c30303b70261110ec6ef4" kindref="member">_on_target_added</ref>_on_target_added:<sp/>Callable[</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[ExecutableTarget],<sp/>Optional[ITarget]</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>]<sp/>=<sp/></highlight><highlight class="keyword">lambda</highlight><highlight class="normal"><sp/>target:<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Collections<sp/>of<sp/>untraced<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>These<sp/>values<sp/>are<sp/>stored<sp/>as-is<sp/>instead<sp/>of<sp/>in<sp/>`Traced`<sp/>objects<sp/>since</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/><sp/><sp/>each<sp/>instance<sp/>manages<sp/>its<sp/>own<sp/>tracing<sp/>information</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self._targets:<sp/>Dict[str,<sp/>ITarget]<sp/>=<sp/>{}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Generate<sp/>the<sp/>CMake<sp/>code</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>generator<sp/>=<sp/>self.<ref refid="classpymake_1_1core_1_1project_1_1Project_1a4610a0d37dd1d61065c0ebad275487ab" kindref="member">_build_scripts</ref>_build_scripts.get_or_add_build_script().generator</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/>generator.open_method_block(</highlight><highlight class="stringliteral">&quot;project&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>b:</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b.add_arguments(self.<ref refid="classpymake_1_1core_1_1project_1_1Project_1a0d4a81f373af0b60d4f453a8b77aedc6" kindref="member">_project_name</ref>_project_name)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b.add_keyword_arguments(</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;LANGUAGES&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[l.value<sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>l<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>self.<ref refid="classpymake_1_1core_1_1project_1_1Project_1a734bd4f3c826a810b4454a3c79dd40ac" kindref="member">_project_languages</ref>_project_languages]</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor">@property</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1core_1_1project_1_1Project_1ada87aa4393b2a5aabfdba3ad15497e1a" kindref="member">project_name</ref>(self)<sp/>-&gt;<sp/>str:</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="54"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Gets<sp/>the<sp/>name<sp/>of<sp/>the<sp/>project.</highlight></codeline>
+<codeline lineno="55"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>self.<ref refid="classpymake_1_1core_1_1project_1_1Project_1a0d4a81f373af0b60d4f453a8b77aedc6" kindref="member">_project_name</ref>_project_name</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor">@property</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1core_1_1project_1_1Project_1a1057fd55dbbc1a64ddf63502fb52ceaa" kindref="member">project_languages</ref>(self)<sp/>-&gt;<sp/>Iterable[EProjectLanguage]:</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="62"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Gets<sp/>the<sp/>languages<sp/>used<sp/>in<sp/>the<sp/>project.</highlight></codeline>
+<codeline lineno="63"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>self.<ref refid="classpymake_1_1core_1_1project_1_1Project_1a734bd4f3c826a810b4454a3c79dd40ac" kindref="member">_project_languages</ref>_project_languages</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1core_1_1project_1_1Project_1a3eba56a2cb6693a88d010e5e9bee4443" kindref="member">add_executable</ref>(self,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>target_name:<sp/>str)<sp/>-&gt;<sp/>ExecutableTarget:</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="70"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Adds<sp/>an<sp/>executable<sp/>target<sp/>to<sp/>the<sp/>project.</highlight></codeline>
+<codeline lineno="71"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@param<sp/>target_name<sp/>Name<sp/>of<sp/>the<sp/>target.</highlight></codeline>
+<codeline lineno="72"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@throws<sp/>ValueError<sp/>Thrown<sp/>if<sp/>a<sp/>target<sp/>with<sp/>the<sp/>given<sp/>name<sp/>already<sp/>exists.</highlight></codeline>
+<codeline lineno="73"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@returns<sp/>The<sp/>target<sp/>instance.</highlight></codeline>
+<codeline lineno="74"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>target<sp/>=<sp/><ref refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget" kindref="compound">ExecutableTarget</ref>(</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classpymake_1_1core_1_1project_1_1Project_1a4610a0d37dd1d61065c0ebad275487ab" kindref="member">_build_scripts</ref>_build_scripts,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>target_name</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Check<sp/>if<sp/>a<sp/>target<sp/>with<sp/>the<sp/>given<sp/>name<sp/>already<sp/>exists</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prev_target<sp/>=<sp/>self.<ref refid="classpymake_1_1core_1_1project_1_1Project_1ad20ddabd8c8c30303b70261110ec6ef4" kindref="member">_on_target_added</ref>_on_target_added(target)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>prev_target:</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error_str<sp/>=<sp/>f</highlight><highlight class="stringliteral">&quot;Error:<sp/>A<sp/>target<sp/>with<sp/>the<sp/>name<sp/>&apos;{target_name}&apos;<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>\</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;already<sp/>exists.\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error_str<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Note:<sp/>The<sp/>target<sp/>was<sp/>previously<sp/>added<sp/>at<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>\</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>f</highlight><highlight class="stringliteral">&quot;&apos;{prev_target.origin.file_path}&apos;:&quot;</highlight><highlight class="normal"><sp/>+<sp/>\</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>f</highlight><highlight class="stringliteral">&quot;&apos;{prev_target.origin.line_number}&apos;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>ValueError(error_str)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Add<sp/>the<sp/>target<sp/>to<sp/>the<sp/>project</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self._targets[target_name]<sp/>=<sp/>target</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>target</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal">_set_on_target_added(self,</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback:<sp/>Callable[[ExecutableTarget],<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">])<sp/>-&gt;<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="98"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Sets<sp/>the<sp/>callback<sp/>that<sp/>will<sp/>be<sp/>invoked<sp/>when<sp/>a<sp/>target<sp/>is<sp/>added.</highlight></codeline>
+<codeline lineno="99"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@param<sp/>callback<sp/>Callback<sp/>to<sp/>invoke<sp/>when<sp/>a<sp/>target<sp/>is<sp/>added<sp/>to<sp/>the<sp/>project.</highlight></codeline>
+<codeline lineno="100"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classpymake_1_1core_1_1project_1_1Project_1ad20ddabd8c8c30303b70261110ec6ef4" kindref="member">_on_target_added</ref>_on_target_added<sp/>=<sp/>callback</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Allow<sp/>external<sp/>objects<sp/>to<sp/>bind<sp/>to<sp/>the<sp/>`on_target_added`<sp/>event</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>on_target_added<sp/>=<sp/>property(fset=_set_on_target_added)</highlight></codeline>
+    </programlisting>
+    <location file="source/pymake/core/project.py"/>
+  </compounddef>
+</doxygen>

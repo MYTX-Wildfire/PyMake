@@ -1,0 +1,379 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpymake_1_1generators_1_1text__generator_1_1TextGenerator" kind="class" language="Python" prot="public">
+    <compoundname>pymake::generators::text_generator::TextGenerator</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1acc1ca774ac2d0697d8576eb06b776298" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.generators.text_generator.TextGenerator::_text</definition>
+        <argsstring></argsstring>
+        <name>_text</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/text_generator.py" line="13" column="1" bodyfile="source/pymake/generators/text_generator.py" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a8291810e5f2f34fb1416e3e55e441b81" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.generators.text_generator.TextGenerator::_indent_level</definition>
+        <argsstring></argsstring>
+        <name>_indent_level</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/text_generator.py" line="16" column="1" bodyfile="source/pymake/generators/text_generator.py" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a440e322ff0361cd8dcccd59a04b13214" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.generators.text_generator.TextGenerator::_indent</definition>
+        <argsstring></argsstring>
+        <name>_indent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/text_generator.py" line="19" column="1" bodyfile="source/pymake/generators/text_generator.py" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a32165f20a2c410309417b46cfc157f8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def pymake.generators.text_generator.TextGenerator.__init__</definition>
+        <argsstring>(self, bool use_spaces=False, int tab_size=4)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>use_spaces</declname>
+          <defval>False</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tab_size</declname>
+          <defval>4</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Initializes the generator.
+@param use_spaces Whether spaces should be used in the generated string.
+@param tab_size Only used if `use_spaces` is true. Determines the number
+  of spaces inserted for each indentation level.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/text_generator.py" line="5" column="1" bodyfile="source/pymake/generators/text_generator.py" bodystart="5" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a72f14829a2d2b587031f5e85b41a8d54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition> bool pymake.generators.text_generator.TextGenerator.at_start_of_line</definition>
+        <argsstring>(self)</argsstring>
+        <name>at_start_of_line</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets whether the generator is at the start of a new line.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/text_generator.py" line="24" column="1" bodyfile="source/pymake/generators/text_generator.py" bodystart="24" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a8bedf077e3d78deea2bd16b312b72d43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition> int pymake.generators.text_generator.TextGenerator.indentation_level</definition>
+        <argsstring>(self)</argsstring>
+        <name>indentation_level</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the current indentation level.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/text_generator.py" line="32" column="1" bodyfile="source/pymake/generators/text_generator.py" bodystart="32" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1aaf6dd3634b1a647d6042ab228fe80bcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.generators.text_generator.TextGenerator.indentation_level</definition>
+        <argsstring>(self, int value)</argsstring>
+        <name>indentation_level</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Sets the current indentation level.
+@param value New indentation level.
+@throws ValueError Thrown if the indentation level is negative.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/text_generator.py" line="40" column="1" bodyfile="source/pymake/generators/text_generator.py" bodystart="40" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a81e7bec3bdcacc43b55e9dbe891e005b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>str</type>
+        <definition> str pymake.generators.text_generator.TextGenerator.text</definition>
+        <argsstring>(self)</argsstring>
+        <name>text</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the string containing the generated text.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/text_generator.py" line="55" column="1" bodyfile="source/pymake/generators/text_generator.py" bodystart="55" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1adc5f44c0a319b77a1da9a0f97917cb0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.generators.text_generator.TextGenerator.append</definition>
+        <argsstring>(self, str text)</argsstring>
+        <name>append</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>str</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Adds text to the generator.
+This method will not append a newline character to the added text.
+@param text Text to add.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/text_generator.py" line="62" column="1" bodyfile="source/pymake/generators/text_generator.py" bodystart="62" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a294bb3ee7ff764ae6c4014a8d5fe02c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.generators.text_generator.TextGenerator.append_line</definition>
+        <argsstring>(self, str text)</argsstring>
+        <name>append_line</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>str</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Adds text to the generator.
+This method will append a newline character to the added text.
+@param text Text to add.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/text_generator.py" line="76" column="1" bodyfile="source/pymake/generators/text_generator.py" bodystart="76" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1ac57167cfbfec0f0ca6d10af63008969b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.generators.text_generator.TextGenerator.apply_indentation</definition>
+        <argsstring>(self)</argsstring>
+        <name>apply_indentation</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Adds whitespace characters to apply the current indentation level.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/text_generator.py" line="87" column="1" bodyfile="source/pymake/generators/text_generator.py" bodystart="87" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a9dcb2fd0918caf4dc318ecda524532d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.generators.text_generator.TextGenerator.decrease_indentation_level</definition>
+        <argsstring>(self, int delta=1)</argsstring>
+        <name>decrease_indentation_level</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delta</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Decreases the indentation level by the specified amount.
+@param delta Amount to decrease the indentation level by. Must be a
+  value greater than or equal to 0.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/text_generator.py" line="94" column="1" bodyfile="source/pymake/generators/text_generator.py" bodystart="94" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1ac794de83f5c6b8e98ef61814c5d509ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.generators.text_generator.TextGenerator.finish_line</definition>
+        <argsstring>(self)</argsstring>
+        <name>finish_line</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Finishes the current line if not currently on a new line.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/text_generator.py" line="104" column="1" bodyfile="source/pymake/generators/text_generator.py" bodystart="104" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a1659c8bfe0508472c8b5235696804095" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.generators.text_generator.TextGenerator.increase_indentation_level</definition>
+        <argsstring>(self, int delta=1)</argsstring>
+        <name>increase_indentation_level</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delta</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Increases the indentation level by the specified amount.
+@param delta Amount to increase the indentation level by. Must be a
+  value greater than or equal to 0.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/text_generator.py" line="112" column="1" bodyfile="source/pymake/generators/text_generator.py" bodystart="112" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1ab85a2c9f3571d82e7b871b08a37e9d9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.generators.text_generator.TextGenerator.modify_indentation_level</definition>
+        <argsstring>(self, int delta)</argsstring>
+        <name>modify_indentation_level</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Modifies the current indentation level by the specified amount.
+@param delta Amount to increase or decrease the indentation level by.
+  If this is negative and the resulting indentation level is less than
+  zero, the indentation level will be clamped to zero.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/text_generator.py" line="122" column="1" bodyfile="source/pymake/generators/text_generator.py" bodystart="122" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a769c24014dd018498bde2e9f89069023" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition> bool pymake.generators.text_generator.TextGenerator.remove_last_instance_of</definition>
+        <argsstring>(self, str text)</argsstring>
+        <name>remove_last_instance_of</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>str</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Removes the last instance of the specified text from the generator.
+@param text Text to remove.
+@returns True if the text was found and removed; otherwise, false.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/text_generator.py" line="133" column="1" bodyfile="source/pymake/generators/text_generator.py" bodystart="133" bodyend="143"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Helper type used to format a text string to make it easy for humans to read.
+</verbatim> </para>
+    </detaileddescription>
+    <location file="source/pymake/generators/text_generator.py" line="1" column="1" bodyfile="source/pymake/generators/text_generator.py" bodystart="1" bodyend="143"/>
+    <listofallmembers>
+      <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a32165f20a2c410309417b46cfc157f8f" prot="public" virt="non-virtual"><scope>pymake::generators::text_generator::TextGenerator</scope><name>__init__</name></member>
+      <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a440e322ff0361cd8dcccd59a04b13214" prot="private" virt="non-virtual"><scope>pymake::generators::text_generator::TextGenerator</scope><name>_indent</name></member>
+      <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a8291810e5f2f34fb1416e3e55e441b81" prot="private" virt="non-virtual"><scope>pymake::generators::text_generator::TextGenerator</scope><name>_indent_level</name></member>
+      <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1acc1ca774ac2d0697d8576eb06b776298" prot="private" virt="non-virtual"><scope>pymake::generators::text_generator::TextGenerator</scope><name>_text</name></member>
+      <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1adc5f44c0a319b77a1da9a0f97917cb0a" prot="public" virt="non-virtual"><scope>pymake::generators::text_generator::TextGenerator</scope><name>append</name></member>
+      <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a294bb3ee7ff764ae6c4014a8d5fe02c6" prot="public" virt="non-virtual"><scope>pymake::generators::text_generator::TextGenerator</scope><name>append_line</name></member>
+      <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1ac57167cfbfec0f0ca6d10af63008969b" prot="public" virt="non-virtual"><scope>pymake::generators::text_generator::TextGenerator</scope><name>apply_indentation</name></member>
+      <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a72f14829a2d2b587031f5e85b41a8d54" prot="public" virt="non-virtual"><scope>pymake::generators::text_generator::TextGenerator</scope><name>at_start_of_line</name></member>
+      <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a9dcb2fd0918caf4dc318ecda524532d9" prot="public" virt="non-virtual"><scope>pymake::generators::text_generator::TextGenerator</scope><name>decrease_indentation_level</name></member>
+      <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1ac794de83f5c6b8e98ef61814c5d509ab" prot="public" virt="non-virtual"><scope>pymake::generators::text_generator::TextGenerator</scope><name>finish_line</name></member>
+      <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a1659c8bfe0508472c8b5235696804095" prot="public" virt="non-virtual"><scope>pymake::generators::text_generator::TextGenerator</scope><name>increase_indentation_level</name></member>
+      <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a8bedf077e3d78deea2bd16b312b72d43" prot="public" virt="non-virtual"><scope>pymake::generators::text_generator::TextGenerator</scope><name>indentation_level</name></member>
+      <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1aaf6dd3634b1a647d6042ab228fe80bcb" prot="public" virt="non-virtual"><scope>pymake::generators::text_generator::TextGenerator</scope><name>indentation_level</name></member>
+      <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1ab85a2c9f3571d82e7b871b08a37e9d9b" prot="public" virt="non-virtual"><scope>pymake::generators::text_generator::TextGenerator</scope><name>modify_indentation_level</name></member>
+      <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a769c24014dd018498bde2e9f89069023" prot="public" virt="non-virtual"><scope>pymake::generators::text_generator::TextGenerator</scope><name>remove_last_instance_of</name></member>
+      <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a81e7bec3bdcacc43b55e9dbe891e005b" prot="public" virt="non-virtual"><scope>pymake::generators::text_generator::TextGenerator</scope><name>text</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

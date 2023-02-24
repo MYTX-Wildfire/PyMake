@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_07157586182338563a5b56382e54f8e9" kind="dir">
+    <compoundname>source/pymake</compoundname>
+    <innerdir refid="dir_3ab6d032c6cf1bbf53e47468d3941a46">source/pymake/common</innerdir>
+    <innerdir refid="dir_b275da0bd59d7f0b7cbb72771801f871">source/pymake/core</innerdir>
+    <innerdir refid="dir_37593b55cf35ebc86f5d534ab79306ef">source/pymake/generators</innerdir>
+    <innerdir refid="dir_75df20bd24a370a7d657bc0a1251e8dc">source/pymake/tracing</innerdir>
+    <innerfile refid="____init_____8py">__init__.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="source/pymake/"/>
+  </compounddef>
+</doxygen>

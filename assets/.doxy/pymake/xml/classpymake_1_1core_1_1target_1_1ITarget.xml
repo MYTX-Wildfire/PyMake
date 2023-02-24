@@ -1,0 +1,418 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpymake_1_1core_1_1target_1_1ITarget" kind="class" language="Python" prot="public">
+    <compoundname>pymake::core::target::ITarget</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ABC</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">ITraced</basecompoundref>
+    <derivedcompoundref refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget" prot="public" virt="non-virtual">pymake.core.executable_target.ExecutableTarget</derivedcompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classpymake_1_1core_1_1target_1_1ITarget_1aaa90e6fca67f3cf06a6961d40fe30b9b" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.target.ITarget::_build_scripts</definition>
+        <argsstring></argsstring>
+        <name>_build_scripts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/target.py" line="28" column="1" bodyfile="source/pymake/core/target.py" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1target_1_1ITarget_1ae5c82730b77913e2cbbb548decf76aed" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.target.ITarget::_target_name</definition>
+        <argsstring></argsstring>
+        <name>_target_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/target.py" line="29" column="1" bodyfile="source/pymake/core/target.py" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1target_1_1ITarget_1a65d5255fffdbf62a83946c8c837c843b" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.target.ITarget::_target_type</definition>
+        <argsstring></argsstring>
+        <name>_target_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/target.py" line="30" column="1" bodyfile="source/pymake/core/target.py" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1target_1_1ITarget_1aa2ec725b968c55c9af282a88e379fe48" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.target.ITarget::_is_full_target</definition>
+        <argsstring></argsstring>
+        <name>_is_full_target</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/target.py" line="31" column="1" bodyfile="source/pymake/core/target.py" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1target_1_1ITarget_1a9ee02ebaf97c44ce7882a3c0c40e280e" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.target.ITarget::_is_installed</definition>
+        <argsstring></argsstring>
+        <name>_is_installed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/target.py" line="43" column="1" bodyfile="source/pymake/core/target.py" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1core_1_1target_1_1ITarget_1a64a988387d68bd70c646f396e20693cc" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.core.target.ITarget::_install_path</definition>
+        <argsstring></argsstring>
+        <name>_install_path</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/target.py" line="179" column="1" bodyfile="source/pymake/core/target.py" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpymake_1_1core_1_1target_1_1ITarget_1aa62c0e5c2be61f9d25129ab6a21089ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def pymake.core.target.ITarget.__init__</definition>
+        <argsstring>(self, BuildScriptSet build_scripts, str target_name, ETargetType target_type)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet" kindref="compound">BuildScriptSet</ref></type>
+          <declname>build_scripts</declname>
+        </param>
+        <param>
+          <type>str</type>
+          <declname>target_name</declname>
+        </param>
+        <param>
+          <type><ref refid="classpymake_1_1common_1_1target__type_1_1ETargetType" kindref="compound">ETargetType</ref></type>
+          <declname>target_type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Initializes the target.
+@param build_scripts Set of build scripts that the project will generate.
+@param target_name Name of the target.
+@param target_type Type of the target.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/target.py" line="17" column="1" bodyfile="source/pymake/core/target.py" bodystart="20" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1target_1_1ITarget_1a938f2922523b6caa7c7a9d360f52736f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition> bool pymake.core.target.ITarget.is_installed</definition>
+        <argsstring>(self)</argsstring>
+        <name>is_installed</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets whether the target will be installed.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/target.py" line="48" column="1" bodyfile="source/pymake/core/target.py" bodystart="48" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1target_1_1ITarget_1a58f4287c41484e6baec5356c124039fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Optional[str]</type>
+        <definition> Optional[str] pymake.core.target.ITarget.install_path</definition>
+        <argsstring>(self)</argsstring>
+        <name>install_path</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the path that the target will be installed to.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/target.py" line="56" column="1" bodyfile="source/pymake/core/target.py" bodystart="56" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1target_1_1ITarget_1afe6606145d900528b8579a1c3a4ac2f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition> bool pymake.core.target.ITarget.is_full_target</definition>
+        <argsstring>(self)</argsstring>
+        <name>is_full_target</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets whether the target includes all values from targets that it links to.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/target.py" line="64" column="1" bodyfile="source/pymake/core/target.py" bodystart="64" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1target_1_1ITarget_1a415695ba1a2b0beed5e1aa1dbf30b09c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>str</type>
+        <definition> str pymake.core.target.ITarget.target_name</definition>
+        <argsstring>(self)</argsstring>
+        <name>target_name</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the name of the target.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/target.py" line="72" column="1" bodyfile="source/pymake/core/target.py" bodystart="72" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1target_1_1ITarget_1a20c37d27ea7ef9a792311147c2ba3feb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classpymake_1_1common_1_1target__type_1_1ETargetType" kindref="compound">ETargetType</ref></type>
+        <definition> ETargetType pymake.core.target.ITarget.target_type</definition>
+        <argsstring>(self)</argsstring>
+        <name>target_type</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the type of the target.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/target.py" line="80" column="1" bodyfile="source/pymake/core/target.py" bodystart="80" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1target_1_1ITarget_1a77da8818e2b53a19c23ce79c85c51b8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets" kindref="compound">ScopedSets</ref>[Path]</type>
+        <definition> ScopedSets[Path] pymake.core.target.ITarget.sources</definition>
+        <argsstring>(self)</argsstring>
+        <name>sources</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets the source files for the target.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/target.py" line="88" column="1" bodyfile="source/pymake/core/target.py" bodystart="88" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1target_1_1ITarget_1ae0e6eb3b7e3f10a25094d090af55489c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.core.target.ITarget.add_sources</definition>
+        <argsstring>(self, str|Iterable[str] sources, EScope scope=EScope.PRIVATE)</argsstring>
+        <name>add_sources</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>str|Iterable</type>
+          <declname>sources</declname>
+          <array>[str]</array>
+        </param>
+        <param>
+          <type><ref refid="classpymake_1_1common_1_1scope_1_1EScope" kindref="compound">EScope</ref></type>
+          <declname>scope</declname>
+          <defval><ref refid="classpymake_1_1common_1_1scope_1_1EScope_1ab73eee4b0e428992ee37e0d4a9bf8837" kindref="member">EScope.PRIVATE</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Adds source files to the target.
+@param sources Source files to add to the target. If any path is a
+  relative path, it will be interpreted relative to the caller&apos;s
+  directory.
+@param scope Scope of the source files.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/target.py" line="95" column="1" bodyfile="source/pymake/core/target.py" bodystart="97" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1target_1_1ITarget_1a4e167f0ea43a03226881d55aaefea689" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def pymake.core.target.ITarget.generate_trace_file</definition>
+        <argsstring>(self, Path output_path, ITraceFileGenerator generator)</argsstring>
+        <name>generate_trace_file</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Path</type>
+          <declname>output_path</declname>
+        </param>
+        <param>
+          <type><ref refid="classpymake_1_1generators_1_1trace__file__generator_1_1ITraceFileGenerator" kindref="compound">ITraceFileGenerator</ref></type>
+          <declname>generator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Generates a trace file for the target.
+@param output_path Path to the output file.
+@param generator Generator to create the trace file using.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/target.py" line="133" column="1" bodyfile="source/pymake/core/target.py" bodystart="135" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1target_1_1ITarget_1a38fa1492e0960300a98de0a460020f4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classpymake_1_1core_1_1target_1_1ITarget" kindref="compound">ITarget</ref></type>
+        <definition> ITarget pymake.core.target.ITarget.get_full_target</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_full_target</name>
+        <reimplementedby refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget_1a929eb84894a3e2f74cf151b173afcef4">get_full_target</reimplementedby>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Gets a target instance that includes all values for the target.
+Target instances normally do not include values from targets that
+  they link to. The target instance returned by this method contains
+  all values for the target, including values from linked-to targets.
+@returns A target instance that includes all values from targets that
+  this target links to.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/target.py" line="157" column="1" bodyfile="source/pymake/core/target.py" bodystart="157" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1core_1_1target_1_1ITarget_1a11b72cc122c7bc8c496c8001cb56fa82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.core.target.ITarget.install</definition>
+        <argsstring>(self, Optional[str] install_path=None)</argsstring>
+        <name>install</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Optional</type>
+          <declname>install_path</declname>
+          <array>[str]</array>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Installs the target.
+@param install_path Path to install the target to. If this is `None`,
+  the path that the target will be installed to will be CMake&apos;s default
+  path for the target type.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/core/target.py" line="169" column="1" bodyfile="source/pymake/core/target.py" bodystart="170" bodyend="193"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Represents a single CMake target.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>pymake.core.executable_target.ExecutableTarget</label>
+        <link refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ABC</label>
+      </node>
+      <node id="3">
+        <label>ITraced</label>
+      </node>
+      <node id="1">
+        <label>pymake.core.target.ITarget</label>
+        <link refid="classpymake_1_1core_1_1target_1_1ITarget"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>ABC</label>
+      </node>
+      <node id="3">
+        <label>ITraced</label>
+      </node>
+      <node id="1">
+        <label>pymake.core.target.ITarget</label>
+        <link refid="classpymake_1_1core_1_1target_1_1ITarget"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="source/pymake/core/target.py" line="13" column="1" bodyfile="source/pymake/core/target.py" bodystart="13" bodyend="193"/>
+    <listofallmembers>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1aa62c0e5c2be61f9d25129ab6a21089ca" prot="public" virt="non-virtual"><scope>pymake::core::target::ITarget</scope><name>__init__</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1aaa90e6fca67f3cf06a6961d40fe30b9b" prot="private" virt="non-virtual"><scope>pymake::core::target::ITarget</scope><name>_build_scripts</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a64a988387d68bd70c646f396e20693cc" prot="private" virt="non-virtual"><scope>pymake::core::target::ITarget</scope><name>_install_path</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1aa2ec725b968c55c9af282a88e379fe48" prot="private" virt="non-virtual"><scope>pymake::core::target::ITarget</scope><name>_is_full_target</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a9ee02ebaf97c44ce7882a3c0c40e280e" prot="private" virt="non-virtual"><scope>pymake::core::target::ITarget</scope><name>_is_installed</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1ae5c82730b77913e2cbbb548decf76aed" prot="private" virt="non-virtual"><scope>pymake::core::target::ITarget</scope><name>_target_name</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a65d5255fffdbf62a83946c8c837c843b" prot="private" virt="non-virtual"><scope>pymake::core::target::ITarget</scope><name>_target_type</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1ae0e6eb3b7e3f10a25094d090af55489c" prot="public" virt="non-virtual"><scope>pymake::core::target::ITarget</scope><name>add_sources</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a4e167f0ea43a03226881d55aaefea689" prot="public" virt="non-virtual"><scope>pymake::core::target::ITarget</scope><name>generate_trace_file</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a38fa1492e0960300a98de0a460020f4a" prot="public" virt="non-virtual"><scope>pymake::core::target::ITarget</scope><name>get_full_target</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a11b72cc122c7bc8c496c8001cb56fa82" prot="public" virt="non-virtual"><scope>pymake::core::target::ITarget</scope><name>install</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a58f4287c41484e6baec5356c124039fc" prot="public" virt="non-virtual"><scope>pymake::core::target::ITarget</scope><name>install_path</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1afe6606145d900528b8579a1c3a4ac2f1" prot="public" virt="non-virtual"><scope>pymake::core::target::ITarget</scope><name>is_full_target</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a938f2922523b6caa7c7a9d360f52736f" prot="public" virt="non-virtual"><scope>pymake::core::target::ITarget</scope><name>is_installed</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a77da8818e2b53a19c23ce79c85c51b8e" prot="public" virt="non-virtual"><scope>pymake::core::target::ITarget</scope><name>sources</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a415695ba1a2b0beed5e1aa1dbf30b09c" prot="public" virt="non-virtual"><scope>pymake::core::target::ITarget</scope><name>target_name</name></member>
+      <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a20c37d27ea7ef9a792311147c2ba3feb" prot="public" virt="non-virtual"><scope>pymake::core::target::ITarget</scope><name>target_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

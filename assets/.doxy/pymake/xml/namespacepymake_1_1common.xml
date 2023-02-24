@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespacepymake_1_1common" kind="namespace" language="Python">
+    <compoundname>pymake::common</compoundname>
+    <innernamespace refid="namespacepymake_1_1common_1_1cmake__build__type">pymake::common::cmake_build_type</innernamespace>
+    <innernamespace refid="namespacepymake_1_1common_1_1cmake__generator">pymake::common::cmake_generator</innernamespace>
+    <innernamespace refid="namespacepymake_1_1common_1_1cmake__version">pymake::common::cmake_version</innernamespace>
+    <innernamespace refid="namespacepymake_1_1common_1_1project__language">pymake::common::project_language</innernamespace>
+    <innernamespace refid="namespacepymake_1_1common_1_1scope">pymake::common::scope</innernamespace>
+    <innernamespace refid="namespacepymake_1_1common_1_1target__type">pymake::common::target_type</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="source/pymake/common/__init__.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

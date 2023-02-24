@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="pymake__args_8py" kind="file" language="Python">
+    <compoundname>pymake_args.py</compoundname>
+    <innerclass refid="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs" prot="public">pymake::core::pymake_args::PyMakeArgs</innerclass>
+    <innernamespace refid="namespacepymake_1_1core_1_1pymake__args">pymake::core::pymake_args</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacepymake_1_1core_1_1pymake__args" refkind="compound"><highlight class="keyword">from</highlight><highlight class="normal"><sp/>argparse<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Namespace</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs" kindref="compound">PyMakeArgs</ref>(Namespace):</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Stores<sp/>arguments<sp/>passed<sp/>to<sp/>PyMake.</highlight></codeline>
+<codeline lineno="6"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs_1a22360212ad9a308c60a46c29ef88b778" kindref="member">__init__</ref>(self,<sp/>verbose:<sp/>bool,<sp/>presets:<sp/>list[str])<sp/>-&gt;<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="9"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Initializes<sp/>the<sp/>PyMake<sp/>arguments.</highlight></codeline>
+<codeline lineno="10"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@param<sp/>verbose<sp/>Whether<sp/>verbose<sp/>output<sp/>should<sp/>be<sp/>enabled.</highlight></codeline>
+<codeline lineno="11"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@param<sp/>presets<sp/>Names<sp/>of<sp/>presets<sp/>to<sp/>enable.</highlight></codeline>
+<codeline lineno="12"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs_1ae0b04b6c981d0890822f210612874469" kindref="member">verbose</ref>verbose<sp/>=<sp/>verbose</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs_1a6e9a1645123675a1b93d53d482e63f54" kindref="member">presets</ref>presets<sp/>=<sp/>presets</highlight></codeline>
+    </programlisting>
+    <location file="source/pymake/core/pymake_args.py"/>
+  </compounddef>
+</doxygen>

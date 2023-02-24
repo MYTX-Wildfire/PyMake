@@ -1,0 +1,409 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.1" xml:lang="en-US">
+  <compound refid="classpymake_1_1core_1_1build__script_1_1BuildScript" kind="class"><name>pymake::core::build_script::BuildScript</name>
+  </compound>
+  <compound refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet" kind="class"><name>pymake::core::build_script_set::BuildScriptSet</name>
+    <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a65f12ec4fa8c2d5a88b9863cd9259ad5" kind="variable"><name>EXTERNAL_GENERATED_DIR</name></member>
+    <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a45304a1653c855d9eb438e3f45d394c0" kind="variable"><name>_source_dir</name></member>
+    <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a0d8b26c344fe2186551b7bac52f67b0c" kind="variable"><name>_generated_dir</name></member>
+    <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1ae5e0b33bffe87069fc8075dc8f057ef3" kind="variable"><name>_external_generated_dir</name></member>
+    <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a1d11d18eda12409fc544d2343d6aeaea" kind="variable"><name>_formatter</name></member>
+    <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a330ec6719238cebc8b27f3e792bed5a4" kind="function"><name>__init__</name></member>
+    <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a6d5cb1196cee3c61d946192bd88ba20d" kind="function"><name>__bool__</name></member>
+    <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a94b2ad66ea7995f3777949da5f325233" kind="function"><name>__len__</name></member>
+    <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1ae19f210640996a2cf121199717b68a6a" kind="function"><name>get_or_add_build_script</name></member>
+    <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a5b7041ef01854c613184c0e021e0739e" kind="function"><name>generate</name></member>
+    <member refid="classpymake_1_1core_1_1build__script__set_1_1BuildScriptSet_1a54f09716f0696148945d69e2153c6871" kind="function"><name>get_generated_build_script_name</name></member>
+  </compound>
+  <compound refid="classcaller__info_1_1CallerInfo" kind="class"><name>caller_info::CallerInfo</name>
+    <member refid="classcaller__info_1_1CallerInfo_1a5a7123a9da4d44a23f4860186cbd333a" kind="variable"><name>_file_path</name></member>
+    <member refid="classcaller__info_1_1CallerInfo_1a7f62bb34baf93d6a9cfc49f817a6cf31" kind="variable"><name>_line_number</name></member>
+    <member refid="classcaller__info_1_1CallerInfo_1a2fff51cbfde2f91ea95bc5ef90e7c5f3" kind="function"><name>__init__</name></member>
+    <member refid="classcaller__info_1_1CallerInfo_1aa76587e64ed3d1ce38349ee1fcca4604" kind="function"><name>file_path</name></member>
+    <member refid="classcaller__info_1_1CallerInfo_1a5a7298a545946dbbe2b5321c8f565aa2" kind="function"><name>line_number</name></member>
+    <member refid="classcaller__info_1_1CallerInfo_1a8b4dbde01c871f37bef8b6bca7e2873b" kind="function"><name>__hash__</name></member>
+    <member refid="classcaller__info_1_1CallerInfo_1af9cb01e6c0231da26e9e340cb63c86b8" kind="function"><name>__eq__</name></member>
+    <member refid="classcaller__info_1_1CallerInfo_1ac14b0441b524e7052d7fb63065bc11eb" kind="function"><name>closest_external_frame</name></member>
+    <member refid="classcaller__info_1_1CallerInfo_1abd88acd56b14209c6ea56ff0c4c37fac" kind="function"><name>from_stack_frame</name></member>
+  </compound>
+  <compound refid="classpymake_1_1core_1_1cmake314_1_1CMake314" kind="class"><name>pymake::core::cmake314::CMake314</name>
+    <member refid="classpymake_1_1core_1_1cmake314_1_1CMake314_1ab7918dec278a2ee963cbfb98429fbb9b" kind="function"><name>__init__</name></member>
+    <member refid="classpymake_1_1core_1_1cmake314_1_1CMake314_1abfe65377a37c00b3602fa331bbb69407" kind="function"><name>_generate_presets</name></member>
+    <member refid="classpymake_1_1core_1_1cmake314_1_1CMake314_1ae4e7ef1bcf2ddbe304a93b82d03a038c" kind="function"><name>_run_cmake</name></member>
+  </compound>
+  <compound refid="classpymake_1_1core_1_1cmake325_1_1CMake325" kind="class"><name>pymake::core::cmake325::CMake325</name>
+    <member refid="classpymake_1_1core_1_1cmake325_1_1CMake325_1affe696a728eb6700a63266e52650d457" kind="function"><name>__init__</name></member>
+    <member refid="classpymake_1_1core_1_1cmake325_1_1CMake325_1ae39c6fbef4507506096ab5b1f7060a02" kind="function"><name>_generate_presets</name></member>
+    <member refid="classpymake_1_1core_1_1cmake325_1_1CMake325_1a622edb758143ddab25c894dde654bc94" kind="function"><name>_run_cmake</name></member>
+  </compound>
+  <compound refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator" kind="class"><name>pymake::generators::cmake_generator::CMakeGenerator</name>
+    <member refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1afe028826204f9e14f3df5195955d99ec" kind="variable"><name>_text_generator</name></member>
+    <member refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1a6c7946b1b37a3d7758875584a8f987e5" kind="variable"><name>_formatter</name></member>
+    <member refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1ac0d30bf52f634fb668ce45b875f85438" kind="function"><name>__init__</name></member>
+    <member refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1aab71098cd859e858f6f648f5b498beea" kind="function"><name>generate</name></member>
+    <member refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1a7e25c67f2e9097fa371853a6704434f5" kind="function"><name>open_method_block</name></member>
+    <member refid="classpymake_1_1generators_1_1cmake__generator_1_1CMakeGenerator_1add992102183f8995355cdce4bf5be6d1" kind="function"><name>write_file</name></member>
+  </compound>
+  <compound refid="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder" kind="class"><name>pymake::generators::cmake_method_builder::CMakeMethodBuilder</name>
+    <member refid="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1a52da5f2accd180b2cea0dedd39043213" kind="variable"><name>_generator</name></member>
+    <member refid="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1ab2571fc8f60fac568b23994bf7f2eece" kind="variable"><name>_arguments_added</name></member>
+    <member refid="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1a13dac8e54f63f76c8b5e49245b8a463d" kind="function"><name>__init__</name></member>
+    <member refid="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1ac5d5eac144aecb189c90dd040598de50" kind="function"><name>add_arguments</name></member>
+    <member refid="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1aa58a4dd8c207099b25c6be003204b9b0" kind="function"><name>add_keyword_arguments</name></member>
+    <member refid="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1a8131792fc1d2ef048cbdb7c729642416" kind="function"><name>__enter__</name></member>
+    <member refid="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1a7221cccb1a8c5ca0fb70b4a877b43afc" kind="function"><name>__exit__</name></member>
+  </compound>
+  <compound refid="classpymake_1_1core_1_1cmake__options_1_1CMakeOptions" kind="class"><name>pymake::core::cmake_options::CMakeOptions</name>
+  </compound>
+  <compound refid="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType" kind="class"><name>pymake::common::cmake_build_type::ECMakeBuildType</name>
+    <member refid="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType_1a26bb3282832e6b60c3a5e61b8135b123" kind="variable"><name>Debug</name></member>
+    <member refid="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType_1aef4f5f0b8c891837f5fa1645bfa5e6e4" kind="variable"><name>Release</name></member>
+    <member refid="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType_1a981f08f754229f5ce3ff9c17ff5a9c37" kind="variable"><name>RelWithDebInfo</name></member>
+    <member refid="classpymake_1_1common_1_1cmake__build__type_1_1ECMakeBuildType_1ae7100ca33a533e59cd5315c03400e5ce" kind="variable"><name>MinSizeRel</name></member>
+  </compound>
+  <compound refid="classpymake_1_1common_1_1cmake__generator_1_1ECMakeGenerator" kind="class"><name>pymake::common::cmake_generator::ECMakeGenerator</name>
+    <member refid="classpymake_1_1common_1_1cmake__generator_1_1ECMakeGenerator_1acb8a18448aad1b27953f3c86489445c8" kind="variable"><name>Ninja</name></member>
+  </compound>
+  <compound refid="classpymake_1_1common_1_1cmake__version_1_1ECMakeVersion" kind="class"><name>pymake::common::cmake_version::ECMakeVersion</name>
+    <member refid="classpymake_1_1common_1_1cmake__version_1_1ECMakeVersion_1a65c01a8b97b3ebf2569eba8919ffa0fc" kind="variable"><name>V3_14</name></member>
+    <member refid="classpymake_1_1common_1_1cmake__version_1_1ECMakeVersion_1a654c4a4a5a7d228249eacd0aa214f109" kind="variable"><name>V3_25</name></member>
+  </compound>
+  <compound refid="classpymake_1_1common_1_1project__language_1_1EProjectLanguage" kind="class"><name>pymake::common::project_language::EProjectLanguage</name>
+    <member refid="classpymake_1_1common_1_1project__language_1_1EProjectLanguage_1a14f1a52a6d3c47886a0419b79bfc14c2" kind="variable"><name>Cpp</name></member>
+  </compound>
+  <compound refid="classpymake_1_1common_1_1scope_1_1EScope" kind="class"><name>pymake::common::scope::EScope</name>
+    <member refid="classpymake_1_1common_1_1scope_1_1EScope_1ab73eee4b0e428992ee37e0d4a9bf8837" kind="variable"><name>PRIVATE</name></member>
+    <member refid="classpymake_1_1common_1_1scope_1_1EScope_1a9f1adaf56445cffbca8b411a539cbf76" kind="variable"><name>INTERFACE</name></member>
+    <member refid="classpymake_1_1common_1_1scope_1_1EScope_1a09f89b90676afbabdb8c6056515af3e5" kind="variable"><name>PUBLIC</name></member>
+  </compound>
+  <compound refid="classpymake_1_1common_1_1target__type_1_1ETargetType" kind="class"><name>pymake::common::target_type::ETargetType</name>
+    <member refid="classpymake_1_1common_1_1target__type_1_1ETargetType_1aa4472e4a4c29621252d5246d8f2aa049" kind="variable"><name>EXECUTABLE</name></member>
+    <member refid="classpymake_1_1common_1_1target__type_1_1ETargetType_1a39b399c6e7a9c52c87c3ee2480e5a38f" kind="variable"><name>STATIC</name></member>
+    <member refid="classpymake_1_1common_1_1target__type_1_1ETargetType_1afde2f313870c4d54526189808aaf3bd8" kind="variable"><name>SHARED</name></member>
+    <member refid="classpymake_1_1common_1_1target__type_1_1ETargetType_1a1fd19e1abf885acd1b3a17525c640edf" kind="variable"><name>INTERFACE</name></member>
+  </compound>
+  <compound refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget" kind="class"><name>pymake::core::executable_target::ExecutableTarget</name>
+    <member refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget_1a470d3b9cefa637590958a0abd3032843" kind="function"><name>__init__</name></member>
+    <member refid="classpymake_1_1core_1_1executable__target_1_1ExecutableTarget_1a929eb84894a3e2f74cf151b173afcef4" kind="function"><name>get_full_target</name></member>
+  </compound>
+  <compound refid="classfull__caller__info__formatter_1_1FullCallerInfoFormatter" kind="class"><name>full_caller_info_formatter::FullCallerInfoFormatter</name>
+    <member refid="classfull__caller__info__formatter_1_1FullCallerInfoFormatter_1ac312048c78a463d147ee5e97791c84d4" kind="function"><name>format</name></member>
+  </compound>
+  <compound refid="classcaller__info__formatter_1_1ICallerInfoFormatter" kind="class"><name>caller_info_formatter::ICallerInfoFormatter</name>
+    <member refid="classcaller__info__formatter_1_1ICallerInfoFormatter_1a43e8ded446a923085fd5d57197b2fdbb" kind="function"><name>format</name></member>
+  </compound>
+  <compound refid="classpymake_1_1core_1_1cmake_1_1ICMake" kind="class"><name>pymake::core::cmake::ICMake</name>
+    <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1ada74c013589685ddf070bbef349a1a65" kind="variable"><name>_minimum_version</name></member>
+    <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1ad22509197b9fb02db16c367c26de1adf" kind="variable"><name>_source_dir</name></member>
+    <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1a23d736f8a80e17ae1679f93f188e3842" kind="variable"><name>_generated_dir</name></member>
+    <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1a229b00d9a80225e862ea5c8f4645ad85" kind="variable"><name>_build_scripts</name></member>
+    <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1a8c528894096db4d63baf43847b9eea0f" kind="variable"><name>_default_presets</name></member>
+    <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1adbfc7b28ebfea29d83ddda4a71d33d8f" kind="function"><name>__init__</name></member>
+    <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1ab702a88ba94c03ea922cbb63a188f466" kind="function"><name>add_project</name></member>
+    <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1ab0a6509f20313961d5fd55c6f459de1c" kind="function"><name>add_preset</name></member>
+    <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1ac645776bf0038c3887473e3e8b2dce9e" kind="function"><name>build</name></member>
+    <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1a6384f30767b802979e6efa25a3aa2e2c" kind="function"><name>generate</name></member>
+    <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1aaa64f2f745bf23e38a75bb0c49b38031" kind="function"><name>set_default_presets</name></member>
+    <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1a732841068922cc307c3757fbd1a8d0d1" kind="function"><name>_generate_presets</name></member>
+    <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1a6b30f2e46bf61db87d5c5c3e807f5217" kind="function"><name>_run_cmake</name></member>
+    <member refid="classpymake_1_1core_1_1cmake_1_1ICMake_1aa9d7681989d61f417548ecec4195a9e5" kind="function"><name>_on_target_added</name></member>
+  </compound>
+  <compound refid="classpymake_1_1core_1_1target_1_1ITarget" kind="class"><name>pymake::core::target::ITarget</name>
+    <member refid="classpymake_1_1core_1_1target_1_1ITarget_1aaa90e6fca67f3cf06a6961d40fe30b9b" kind="variable"><name>_build_scripts</name></member>
+    <member refid="classpymake_1_1core_1_1target_1_1ITarget_1ae5c82730b77913e2cbbb548decf76aed" kind="variable"><name>_target_name</name></member>
+    <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a65d5255fffdbf62a83946c8c837c843b" kind="variable"><name>_target_type</name></member>
+    <member refid="classpymake_1_1core_1_1target_1_1ITarget_1aa2ec725b968c55c9af282a88e379fe48" kind="variable"><name>_is_full_target</name></member>
+    <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a9ee02ebaf97c44ce7882a3c0c40e280e" kind="variable"><name>_is_installed</name></member>
+    <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a64a988387d68bd70c646f396e20693cc" kind="variable"><name>_install_path</name></member>
+    <member refid="classpymake_1_1core_1_1target_1_1ITarget_1aa62c0e5c2be61f9d25129ab6a21089ca" kind="function"><name>__init__</name></member>
+    <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a938f2922523b6caa7c7a9d360f52736f" kind="function"><name>is_installed</name></member>
+    <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a58f4287c41484e6baec5356c124039fc" kind="function"><name>install_path</name></member>
+    <member refid="classpymake_1_1core_1_1target_1_1ITarget_1afe6606145d900528b8579a1c3a4ac2f1" kind="function"><name>is_full_target</name></member>
+    <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a415695ba1a2b0beed5e1aa1dbf30b09c" kind="function"><name>target_name</name></member>
+    <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a20c37d27ea7ef9a792311147c2ba3feb" kind="function"><name>target_type</name></member>
+    <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a77da8818e2b53a19c23ce79c85c51b8e" kind="function"><name>sources</name></member>
+    <member refid="classpymake_1_1core_1_1target_1_1ITarget_1ae0e6eb3b7e3f10a25094d090af55489c" kind="function"><name>add_sources</name></member>
+    <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a4e167f0ea43a03226881d55aaefea689" kind="function"><name>generate_trace_file</name></member>
+    <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a38fa1492e0960300a98de0a460020f4a" kind="function"><name>get_full_target</name></member>
+    <member refid="classpymake_1_1core_1_1target_1_1ITarget_1a11b72cc122c7bc8c496c8001cb56fa82" kind="function"><name>install</name></member>
+  </compound>
+  <compound refid="classtraced_1_1ITraced" kind="class"><name>traced::ITraced</name>
+    <member refid="classtraced_1_1ITraced_1ac6ad5ceae03fba7724a53383230b52b7" kind="variable"><name>_origin</name></member>
+    <member refid="classtraced_1_1ITraced_1a03f53e95b6d7778c9b7eb7b731a8ab7d" kind="function"><name>__init__</name></member>
+    <member refid="classtraced_1_1ITraced_1a9b94d384a7a23b267e4a4f98a3470d69" kind="function"><name>origin</name></member>
+  </compound>
+  <compound refid="classpymake_1_1generators_1_1trace__file__generator_1_1ITraceFileGenerator" kind="class"><name>pymake::generators::trace_file_generator::ITraceFileGenerator</name>
+    <member refid="classpymake_1_1generators_1_1trace__file__generator_1_1ITraceFileGenerator_1aae75954880103481629c615f4c26f1ae" kind="function"><name>generate</name></member>
+    <member refid="classpymake_1_1generators_1_1trace__file__generator_1_1ITraceFileGenerator_1afacf4fe3a070c69a58e40b741baf5c48" kind="function"><name>write_file</name></member>
+  </compound>
+  <compound refid="classpymake_1_1generators_1_1json__file__generator_1_1JsonFileGenerator" kind="class"><name>pymake::generators::json_file_generator::JsonFileGenerator</name>
+    <member refid="classpymake_1_1generators_1_1json__file__generator_1_1JsonFileGenerator_1a49265b4c8e2f271d16f5e408827d9e40" kind="function"><name>generate</name></member>
+    <member refid="classpymake_1_1generators_1_1json__file__generator_1_1JsonFileGenerator_1a9f0e66af8c5573adb70da7d2bbe2fca8" kind="function"><name>write_file</name></member>
+  </compound>
+  <compound refid="classnull__caller__info__formatter_1_1NullCallerInfoFormatter" kind="class"><name>null_caller_info_formatter::NullCallerInfoFormatter</name>
+    <member refid="classnull__caller__info__formatter_1_1NullCallerInfoFormatter_1a4a78cd2faf4e738301a7e86f8d5d4cbb" kind="function"><name>format</name></member>
+  </compound>
+  <compound refid="classpymake_1_1core_1_1preset_1_1Preset" kind="class"><name>pymake::core::preset::Preset</name>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a85c0d89be9283f43dccd0d03b9cdf36c" kind="variable"><name>CMAKE_BUILD_TYPE_VAR</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a0e53c92233770bf55c39616b04c4bf29" kind="variable"><name>_name</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a9059d725edce0b4198ba65c1766683ad" kind="variable"><name>_description</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1abcd7579c96f156e3f31c3c5530e69b5e" kind="variable"><name>_hidden</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a7011abd0e9908ed158371c1924fe01b8" kind="variable"><name>_generator</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a9b9c41ace3ff8e88d128df3694ff9670" kind="variable"><name>_binary_dir</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a40c6d74d63df906885fe205597c8a09c" kind="variable"><name>_install_dir</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1af7a2837ebd02e9c94c2cb779d75537b5" kind="variable"><name>_cache_variables</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a7f172a3fe51b489869d8fadb8a6f5a69" kind="variable"><name>_env_variables</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a30a6820dee9fc49ca24ac2bfd63ed724" kind="variable"><name>_base_presets</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a4133a71a074eb6feb891647ef4c2bd29" kind="variable"><name>_is_full_preset</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a6194b08c1f6780f982e7d5c0914129e3" kind="function"><name>__init__</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1ae87b92c58d60763b9a91855ca0956d49" kind="function"><name>preset_name</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a076c789108b2971f6348c67006b2aaf4" kind="function"><name>description</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a1403475b6bf10fb6cab67677e5c335a1" kind="function"><name>description</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a61e212af6f52e7d863ce710f8c9d2296" kind="function"><name>hidden</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1adab083cc5ca725aaa0df9c23e6ab5740" kind="function"><name>hidden</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a14e14c9935bd124b600bc2b95aae3b61" kind="function"><name>generator</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a58e1a05e0ae24df6a1a7ce2bb675432e" kind="function"><name>generator</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1ae5b42c6789437a0b7f440d2a40c5805e" kind="function"><name>binary_dir</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1af87e05bcfcdb51cd06f1f4077ffb063b" kind="function"><name>binary_dir</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1ad6ddd07c354aa4ebcb39c0484fe2addf" kind="function"><name>install_dir</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a2b9edced6e8d23ba5096f396a90ad9d8" kind="function"><name>install_dir</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a635caae29d79b01be64cd43244937bd5" kind="function"><name>cache_variables</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a3b07ec9de29d98d5a4d0a716583a20ba" kind="function"><name>cmake_build_type</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1afec7ea6b5d971e30e89fe677be3c35c7" kind="function"><name>cmake_build_type</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a493e6f2e545862992739aede483553e9" kind="function"><name>env_variables</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a868b3c251684ff88bc80c813b551e0af" kind="function"><name>base_presets</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a8a92008713a95db7e9c9bdd73a6193aa" kind="function"><name>as_build_preset</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1af23045e63acb52e2c754c24a2f942cd7" kind="function"><name>as_configure_preset</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a44b95f8003678110829a9ee313c7ffe5" kind="function"><name>as_full_preset</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1acc152c3df5cda03c359faf647f82d241" kind="function"><name>generate_trace_file</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a81032b8e6e73f80f4267732ebb24ed25" kind="function"><name>inherit_from</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1ad243163d25fd9e0e4acb1120e00dfce0" kind="function"><name>merge</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1a43c85d62083941c806de51a3fbd14f86" kind="function"><name>set_cache_variable</name></member>
+    <member refid="classpymake_1_1core_1_1preset_1_1Preset_1ae674f501980cdd5bce41a8bf126e7671" kind="function"><name>set_env_variable</name></member>
+  </compound>
+  <compound refid="classpymake_1_1core_1_1project_1_1Project" kind="class"><name>pymake::core::project::Project</name>
+    <member refid="classpymake_1_1core_1_1project_1_1Project_1af194f0afe5dc8f490d1416355fa0f564" kind="property"><name>on_target_added</name></member>
+    <member refid="classpymake_1_1core_1_1project_1_1Project_1a4610a0d37dd1d61065c0ebad275487ab" kind="variable"><name>_build_scripts</name></member>
+    <member refid="classpymake_1_1core_1_1project_1_1Project_1a0d4a81f373af0b60d4f453a8b77aedc6" kind="variable"><name>_project_name</name></member>
+    <member refid="classpymake_1_1core_1_1project_1_1Project_1a734bd4f3c826a810b4454a3c79dd40ac" kind="variable"><name>_project_languages</name></member>
+    <member refid="classpymake_1_1core_1_1project_1_1Project_1ad20ddabd8c8c30303b70261110ec6ef4" kind="variable"><name>_on_target_added</name></member>
+    <member refid="classpymake_1_1core_1_1project_1_1Project_1a1fea9370ae9a9270664c9b8467f88c1f" kind="function"><name>__init__</name></member>
+    <member refid="classpymake_1_1core_1_1project_1_1Project_1ada87aa4393b2a5aabfdba3ad15497e1a" kind="function"><name>project_name</name></member>
+    <member refid="classpymake_1_1core_1_1project_1_1Project_1a1057fd55dbbc1a64ddf63502fb52ceaa" kind="function"><name>project_languages</name></member>
+    <member refid="classpymake_1_1core_1_1project_1_1Project_1a3eba56a2cb6693a88d010e5e9bee4443" kind="function"><name>add_executable</name></member>
+    <member refid="classpymake_1_1core_1_1project_1_1Project_1ac02166e039b180fa007ddca9e6508852" kind="function"><name>_set_on_target_added</name></member>
+  </compound>
+  <compound refid="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs" kind="class"><name>pymake::core::pymake_args::PyMakeArgs</name>
+    <member refid="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs_1ae0b04b6c981d0890822f210612874469" kind="variable"><name>verbose</name></member>
+    <member refid="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs_1a6e9a1645123675a1b93d53d482e63f54" kind="variable"><name>presets</name></member>
+    <member refid="classpymake_1_1core_1_1pymake__args_1_1PyMakeArgs_1a22360212ad9a308c60a46c29ef88b778" kind="function"><name>__init__</name></member>
+  </compound>
+  <compound refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets" kind="class"><name>pymake::core::scoped_sets::ScopedSets</name>
+    <member refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1a80fc71f84cc0c78f84c0ee74e383a949" kind="function"><name>__init__</name></member>
+    <member refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1a8a50ad4a380d61d97f8773905fac54d9" kind="function"><name>public</name></member>
+    <member refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1ac35c79db496ca368637e20b44405c3b1" kind="function"><name>interface</name></member>
+    <member refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1a23dcf0ff8a759d6d338386df1b40941d" kind="function"><name>private</name></member>
+    <member refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1a99d7cd0a7400ab341d7e79c7292c7db3" kind="function"><name>to_trace_dict</name></member>
+    <member refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1a0c918848b889b0f0540ec0b3536f70aa" kind="function"><name>select_set</name></member>
+    <member refid="classpymake_1_1core_1_1scoped__sets_1_1ScopedSets_1a635c1ceb9c4436b3bd85fd4f59fd1789" kind="function"><name>__bool__</name></member>
+  </compound>
+  <compound refid="classshortened__caller__info__formatter_1_1ShortenedCallerInfoFormatter" kind="class"><name>shortened_caller_info_formatter::ShortenedCallerInfoFormatter</name>
+    <member refid="classshortened__caller__info__formatter_1_1ShortenedCallerInfoFormatter_1a9451e946a5a6b1e9e61a405b575cad93" kind="variable"><name>_base_path</name></member>
+    <member refid="classshortened__caller__info__formatter_1_1ShortenedCallerInfoFormatter_1abd4b9452673281390a325fb88531cf39" kind="function"><name>__init__</name></member>
+    <member refid="classshortened__caller__info__formatter_1_1ShortenedCallerInfoFormatter_1a6a43c849a4c829e47d5266da36ab0e24" kind="function"><name>format</name></member>
+  </compound>
+  <compound refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator" kind="class"><name>pymake::generators::text_generator::TextGenerator</name>
+    <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1acc1ca774ac2d0697d8576eb06b776298" kind="variable"><name>_text</name></member>
+    <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a8291810e5f2f34fb1416e3e55e441b81" kind="variable"><name>_indent_level</name></member>
+    <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a440e322ff0361cd8dcccd59a04b13214" kind="variable"><name>_indent</name></member>
+    <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a32165f20a2c410309417b46cfc157f8f" kind="function"><name>__init__</name></member>
+    <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a72f14829a2d2b587031f5e85b41a8d54" kind="function"><name>at_start_of_line</name></member>
+    <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a8bedf077e3d78deea2bd16b312b72d43" kind="function"><name>indentation_level</name></member>
+    <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1aaf6dd3634b1a647d6042ab228fe80bcb" kind="function"><name>indentation_level</name></member>
+    <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a81e7bec3bdcacc43b55e9dbe891e005b" kind="function"><name>text</name></member>
+    <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1adc5f44c0a319b77a1da9a0f97917cb0a" kind="function"><name>append</name></member>
+    <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a294bb3ee7ff764ae6c4014a8d5fe02c6" kind="function"><name>append_line</name></member>
+    <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1ac57167cfbfec0f0ca6d10af63008969b" kind="function"><name>apply_indentation</name></member>
+    <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a9dcb2fd0918caf4dc318ecda524532d9" kind="function"><name>decrease_indentation_level</name></member>
+    <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1ac794de83f5c6b8e98ef61814c5d509ab" kind="function"><name>finish_line</name></member>
+    <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a1659c8bfe0508472c8b5235696804095" kind="function"><name>increase_indentation_level</name></member>
+    <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1ab85a2c9f3571d82e7b871b08a37e9d9b" kind="function"><name>modify_indentation_level</name></member>
+    <member refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator_1a769c24014dd018498bde2e9f89069023" kind="function"><name>remove_last_instance_of</name></member>
+  </compound>
+  <compound refid="classtraced_1_1Traced" kind="class"><name>traced::Traced</name>
+    <member refid="classtraced_1_1Traced_1a9f467cbf48ee3a36a04a78033a2134ed" kind="variable"><name>_value</name></member>
+    <member refid="classtraced_1_1Traced_1af0fc9f6406ac40c05d5b75265e247811" kind="variable"><name>_origin</name></member>
+    <member refid="classtraced_1_1Traced_1a1280afb9822a7b3bb621c0d81dad75a3" kind="function"><name>__init__</name></member>
+    <member refid="classtraced_1_1Traced_1a63c51634bcf8674a92e399532168a1d3" kind="function"><name>to_dict</name></member>
+    <member refid="classtraced_1_1Traced_1ae872281bdf9bb7dba66c6533a3015bc9" kind="function"><name>origin</name></member>
+    <member refid="classtraced_1_1Traced_1aa2762e4b52c2d176e0e8aefb5acb9699" kind="function"><name>value</name></member>
+  </compound>
+  <compound refid="classtraced__set_1_1TracedSet" kind="class"><name>traced_set::TracedSet</name>
+    <member refid="classtraced__set_1_1TracedSet_1a5185cf82e6e78f95992793b6a1f99176" kind="variable"><name>_values</name></member>
+    <member refid="classtraced__set_1_1TracedSet_1a2737cfdef256e7a806ab6899b811dc26" kind="function"><name>__init__</name></member>
+    <member refid="classtraced__set_1_1TracedSet_1aa9c885acb2a9c87a7877ae52270a10b5" kind="function"><name>__bool__</name></member>
+    <member refid="classtraced__set_1_1TracedSet_1a96e30c72d0c4929922ffcaffc582f7de" kind="function"><name>__contains__</name></member>
+    <member refid="classtraced__set_1_1TracedSet_1ae9e302f66e782537228fd868ecf72b1f" kind="function"><name>__iter__</name></member>
+    <member refid="classtraced__set_1_1TracedSet_1a1a1372a84476bfffc20d44eb75f93513" kind="function"><name>add</name></member>
+    <member refid="classtraced__set_1_1TracedSet_1a22bd58106c4d69b0e4fb0fe79fd1c994" kind="function"><name>clone</name></member>
+  </compound>
+  <compound refid="classpymake_1_1generators_1_1yaml__file__generator_1_1YamlFileGenerator" kind="class"><name>pymake::generators::yaml_file_generator::YamlFileGenerator</name>
+    <member refid="classpymake_1_1generators_1_1yaml__file__generator_1_1YamlFileGenerator_1aa15fdd091970438c031902cdd2834662" kind="function"><name>generate</name></member>
+    <member refid="classpymake_1_1generators_1_1yaml__file__generator_1_1YamlFileGenerator_1aa794325e11d1f6d45cdffc941b815230" kind="function"><name>write_file</name></member>
+  </compound>
+  <compound refid="namespacecaller__info" kind="namespace"><name>caller_info</name>
+  </compound>
+  <compound refid="namespacecaller__info__formatter" kind="namespace"><name>caller_info_formatter</name>
+  </compound>
+  <compound refid="namespacefull__caller__info__formatter" kind="namespace"><name>full_caller_info_formatter</name>
+  </compound>
+  <compound refid="namespacenull__caller__info__formatter" kind="namespace"><name>null_caller_info_formatter</name>
+  </compound>
+  <compound refid="namespacepymake" kind="namespace"><name>pymake</name>
+  </compound>
+  <compound refid="namespacepymake_1_1common" kind="namespace"><name>pymake::common</name>
+  </compound>
+  <compound refid="namespacepymake_1_1common_1_1cmake__build__type" kind="namespace"><name>pymake::common::cmake_build_type</name>
+  </compound>
+  <compound refid="namespacepymake_1_1common_1_1cmake__generator" kind="namespace"><name>pymake::common::cmake_generator</name>
+  </compound>
+  <compound refid="namespacepymake_1_1common_1_1cmake__version" kind="namespace"><name>pymake::common::cmake_version</name>
+  </compound>
+  <compound refid="namespacepymake_1_1common_1_1project__language" kind="namespace"><name>pymake::common::project_language</name>
+  </compound>
+  <compound refid="namespacepymake_1_1common_1_1scope" kind="namespace"><name>pymake::common::scope</name>
+  </compound>
+  <compound refid="namespacepymake_1_1common_1_1target__type" kind="namespace"><name>pymake::common::target_type</name>
+  </compound>
+  <compound refid="namespacepymake_1_1core" kind="namespace"><name>pymake::core</name>
+  </compound>
+  <compound refid="namespacepymake_1_1core_1_1build__script" kind="namespace"><name>pymake::core::build_script</name>
+  </compound>
+  <compound refid="namespacepymake_1_1core_1_1build__script__set" kind="namespace"><name>pymake::core::build_script_set</name>
+  </compound>
+  <compound refid="namespacepymake_1_1core_1_1cmake" kind="namespace"><name>pymake::core::cmake</name>
+  </compound>
+  <compound refid="namespacepymake_1_1core_1_1cmake314" kind="namespace"><name>pymake::core::cmake314</name>
+  </compound>
+  <compound refid="namespacepymake_1_1core_1_1cmake325" kind="namespace"><name>pymake::core::cmake325</name>
+  </compound>
+  <compound refid="namespacepymake_1_1core_1_1cmake__options" kind="namespace"><name>pymake::core::cmake_options</name>
+  </compound>
+  <compound refid="namespacepymake_1_1core_1_1executable__target" kind="namespace"><name>pymake::core::executable_target</name>
+  </compound>
+  <compound refid="namespacepymake_1_1core_1_1preset" kind="namespace"><name>pymake::core::preset</name>
+  </compound>
+  <compound refid="namespacepymake_1_1core_1_1project" kind="namespace"><name>pymake::core::project</name>
+  </compound>
+  <compound refid="namespacepymake_1_1core_1_1pymake__args" kind="namespace"><name>pymake::core::pymake_args</name>
+  </compound>
+  <compound refid="namespacepymake_1_1core_1_1scoped__sets" kind="namespace"><name>pymake::core::scoped_sets</name>
+    <member refid="namespacepymake_1_1core_1_1scoped__sets_1acc599a4dc79f6237c4f79f38680323b7" kind="variable"><name>T</name></member>
+  </compound>
+  <compound refid="namespacepymake_1_1core_1_1target" kind="namespace"><name>pymake::core::target</name>
+  </compound>
+  <compound refid="namespacepymake_1_1generators" kind="namespace"><name>pymake::generators</name>
+  </compound>
+  <compound refid="namespacepymake_1_1generators_1_1cmake__generator" kind="namespace"><name>pymake::generators::cmake_generator</name>
+  </compound>
+  <compound refid="namespacepymake_1_1generators_1_1cmake__method__builder" kind="namespace"><name>pymake::generators::cmake_method_builder</name>
+  </compound>
+  <compound refid="namespacepymake_1_1generators_1_1json__file__generator" kind="namespace"><name>pymake::generators::json_file_generator</name>
+  </compound>
+  <compound refid="namespacepymake_1_1generators_1_1text__generator" kind="namespace"><name>pymake::generators::text_generator</name>
+  </compound>
+  <compound refid="namespacepymake_1_1generators_1_1trace__file__generator" kind="namespace"><name>pymake::generators::trace_file_generator</name>
+  </compound>
+  <compound refid="namespacepymake_1_1generators_1_1yaml__file__generator" kind="namespace"><name>pymake::generators::yaml_file_generator</name>
+  </compound>
+  <compound refid="namespaceshortened__caller__info__formatter" kind="namespace"><name>shortened_caller_info_formatter</name>
+  </compound>
+  <compound refid="namespacetraced" kind="namespace"><name>traced</name>
+    <member refid="namespacetraced_1addebc245d7ec712ca433f824255551db" kind="variable"><name>T</name></member>
+  </compound>
+  <compound refid="namespacetraced__set" kind="namespace"><name>traced_set</name>
+    <member refid="namespacetraced__set_1adfeb9765931a67f117715030e2294fe3" kind="variable"><name>T</name></member>
+  </compound>
+  <compound refid="____init_____8py" kind="file"><name>__init__.py</name>
+  </compound>
+  <compound refid="common_2____init_____8py" kind="file"><name>__init__.py</name>
+  </compound>
+  <compound refid="core_2____init_____8py" kind="file"><name>__init__.py</name>
+  </compound>
+  <compound refid="generators_2____init_____8py" kind="file"><name>__init__.py</name>
+  </compound>
+  <compound refid="cmake__build__type_8py" kind="file"><name>cmake_build_type.py</name>
+  </compound>
+  <compound refid="common_2cmake__generator_8py" kind="file"><name>cmake_generator.py</name>
+  </compound>
+  <compound refid="generators_2cmake__generator_8py" kind="file"><name>cmake_generator.py</name>
+  </compound>
+  <compound refid="cmake__version_8py" kind="file"><name>cmake_version.py</name>
+  </compound>
+  <compound refid="project__language_8py" kind="file"><name>project_language.py</name>
+  </compound>
+  <compound refid="scope_8py" kind="file"><name>scope.py</name>
+  </compound>
+  <compound refid="target__type_8py" kind="file"><name>target_type.py</name>
+  </compound>
+  <compound refid="build__script_8py" kind="file"><name>build_script.py</name>
+  </compound>
+  <compound refid="build__script__set_8py" kind="file"><name>build_script_set.py</name>
+  </compound>
+  <compound refid="cmake_8py" kind="file"><name>cmake.py</name>
+  </compound>
+  <compound refid="cmake314_8py" kind="file"><name>cmake314.py</name>
+  </compound>
+  <compound refid="cmake325_8py" kind="file"><name>cmake325.py</name>
+  </compound>
+  <compound refid="cmake__options_8py" kind="file"><name>cmake_options.py</name>
+  </compound>
+  <compound refid="executable__target_8py" kind="file"><name>executable_target.py</name>
+  </compound>
+  <compound refid="preset_8py" kind="file"><name>preset.py</name>
+  </compound>
+  <compound refid="project_8py" kind="file"><name>project.py</name>
+  </compound>
+  <compound refid="pymake__args_8py" kind="file"><name>pymake_args.py</name>
+  </compound>
+  <compound refid="scoped__sets_8py" kind="file"><name>scoped_sets.py</name>
+  </compound>
+  <compound refid="target_8py" kind="file"><name>target.py</name>
+  </compound>
+  <compound refid="cmake__method__builder_8py" kind="file"><name>cmake_method_builder.py</name>
+  </compound>
+  <compound refid="json__file__generator_8py" kind="file"><name>json_file_generator.py</name>
+  </compound>
+  <compound refid="text__generator_8py" kind="file"><name>text_generator.py</name>
+  </compound>
+  <compound refid="trace__file__generator_8py" kind="file"><name>trace_file_generator.py</name>
+  </compound>
+  <compound refid="yaml__file__generator_8py" kind="file"><name>yaml_file_generator.py</name>
+  </compound>
+  <compound refid="caller__info_8py" kind="file"><name>caller_info.py</name>
+  </compound>
+  <compound refid="caller__info__formatter_8py" kind="file"><name>caller_info_formatter.py</name>
+  </compound>
+  <compound refid="full__caller__info__formatter_8py" kind="file"><name>full_caller_info_formatter.py</name>
+  </compound>
+  <compound refid="null__caller__info__formatter_8py" kind="file"><name>null_caller_info_formatter.py</name>
+  </compound>
+  <compound refid="shortened__caller__info__formatter_8py" kind="file"><name>shortened_caller_info_formatter.py</name>
+  </compound>
+  <compound refid="traced_8py" kind="file"><name>traced.py</name>
+  </compound>
+  <compound refid="traced__set_8py" kind="file"><name>traced_set.py</name>
+  </compound>
+  <compound refid="dir_3ab6d032c6cf1bbf53e47468d3941a46" kind="dir"><name>source/pymake/common</name>
+  </compound>
+  <compound refid="dir_b275da0bd59d7f0b7cbb72771801f871" kind="dir"><name>source/pymake/core</name>
+  </compound>
+  <compound refid="dir_37593b55cf35ebc86f5d534ab79306ef" kind="dir"><name>source/pymake/generators</name>
+  </compound>
+  <compound refid="dir_07157586182338563a5b56382e54f8e9" kind="dir"><name>source/pymake</name>
+  </compound>
+  <compound refid="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b" kind="dir"><name>source</name>
+  </compound>
+  <compound refid="dir_75df20bd24a370a7d657bc0a1251e8dc" kind="dir"><name>source/pymake/tracing</name>
+  </compound>
+</doxygenindex>

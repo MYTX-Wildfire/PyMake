@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder" kind="class" language="Python" prot="public">
+    <compoundname>pymake::generators::cmake_method_builder::CMakeMethodBuilder</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1a52da5f2accd180b2cea0dedd39043213" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.generators.cmake_method_builder.CMakeMethodBuilder::_generator</definition>
+        <argsstring></argsstring>
+        <name>_generator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/cmake_method_builder.py" line="23" column="1" bodyfile="source/pymake/generators/cmake_method_builder.py" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1ab2571fc8f60fac568b23994bf7f2eece" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>pymake.generators.cmake_method_builder.CMakeMethodBuilder::_arguments_added</definition>
+        <argsstring></argsstring>
+        <name>_arguments_added</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/cmake_method_builder.py" line="24" column="1" bodyfile="source/pymake/generators/cmake_method_builder.py" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1a13dac8e54f63f76c8b5e49245b8a463d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def pymake.generators.cmake_method_builder.CMakeMethodBuilder.__init__</definition>
+        <argsstring>(self, ICallerInfoFormatter formatter, TextGenerator generator, str method_name)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>ICallerInfoFormatter</type>
+          <declname>formatter</declname>
+        </param>
+        <param>
+          <type><ref refid="classpymake_1_1generators_1_1text__generator_1_1TextGenerator" kindref="compound">TextGenerator</ref></type>
+          <declname>generator</declname>
+        </param>
+        <param>
+          <type>str</type>
+          <declname>method_name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Initializes the builder.
+@param generator Generator to write the generated code to.
+@param method_name Name of the method.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/cmake_method_builder.py" line="12" column="1" bodyfile="source/pymake/generators/cmake_method_builder.py" bodystart="15" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1ac5d5eac144aecb189c90dd040598de50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.generators.cmake_method_builder.CMakeMethodBuilder.add_arguments</definition>
+        <argsstring>(self, str|Iterable[str] arguments)</argsstring>
+        <name>add_arguments</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>str|Iterable</type>
+          <declname>arguments</declname>
+          <array>[str]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Adds keyword-less argument(s) to the method.
+@param
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/cmake_method_builder.py" line="35" column="1" bodyfile="source/pymake/generators/cmake_method_builder.py" bodystart="35" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1aa58a4dd8c207099b25c6be003204b9b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.generators.cmake_method_builder.CMakeMethodBuilder.add_keyword_arguments</definition>
+        <argsstring>(self, str keyword, str|Iterable[str] arguments)</argsstring>
+        <name>add_keyword_arguments</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>str</type>
+          <declname>keyword</declname>
+        </param>
+        <param>
+          <type>str|Iterable</type>
+          <declname>arguments</declname>
+          <array>[str]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Adds argument(s) under a method parameter keyword to the method.
+@param keyword Keyword to use.
+@param arguments Argument(s) to add.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/cmake_method_builder.py" line="48" column="1" bodyfile="source/pymake/generators/cmake_method_builder.py" bodystart="50" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1a8131792fc1d2ef048cbdb7c729642416" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder" kindref="compound">CMakeMethodBuilder</ref></type>
+        <definition> CMakeMethodBuilder pymake.generators.cmake_method_builder.CMakeMethodBuilder.__enter__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__enter__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Enters the method block.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/cmake_method_builder.py" line="70" column="1" bodyfile="source/pymake/generators/cmake_method_builder.py" bodystart="70" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1a7221cccb1a8c5ca0fb70b4a877b43afc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>None</type>
+        <definition> None pymake.generators.cmake_method_builder.CMakeMethodBuilder.__exit__</definition>
+        <argsstring>(self, Optional[Type[BaseException]] exc_type, Optional[BaseException] exc_value, Optional[TracebackType] traceback)</argsstring>
+        <name>__exit__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>Optional]</type>
+          <declname>exc_type</declname>
+          <array>[Type[BaseException]</array>
+        </param>
+        <param>
+          <type>Optional</type>
+          <declname>exc_value</declname>
+          <array>[BaseException]</array>
+        </param>
+        <param>
+          <type>Optional</type>
+          <declname>traceback</declname>
+          <array>[TracebackType]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Exits the method block.
+@param exc_type Type of exception that was raised.
+@param exc_value Value of the exception that was raised.
+@param traceback Traceback of the exception that was raised.
+@returns True if the exception should be suppressed, otherwise False.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/generators/cmake_method_builder.py" line="77" column="1" bodyfile="source/pymake/generators/cmake_method_builder.py" bodystart="80" bodyend="100"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Helper type used to generate a CMake method.
+</verbatim> </para>
+    </detaileddescription>
+    <location file="source/pymake/generators/cmake_method_builder.py" line="8" column="1" bodyfile="source/pymake/generators/cmake_method_builder.py" bodystart="8" bodyend="100"/>
+    <listofallmembers>
+      <member refid="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1a8131792fc1d2ef048cbdb7c729642416" prot="public" virt="non-virtual"><scope>pymake::generators::cmake_method_builder::CMakeMethodBuilder</scope><name>__enter__</name></member>
+      <member refid="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1a7221cccb1a8c5ca0fb70b4a877b43afc" prot="public" virt="non-virtual"><scope>pymake::generators::cmake_method_builder::CMakeMethodBuilder</scope><name>__exit__</name></member>
+      <member refid="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1a13dac8e54f63f76c8b5e49245b8a463d" prot="public" virt="non-virtual"><scope>pymake::generators::cmake_method_builder::CMakeMethodBuilder</scope><name>__init__</name></member>
+      <member refid="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1ab2571fc8f60fac568b23994bf7f2eece" prot="private" virt="non-virtual"><scope>pymake::generators::cmake_method_builder::CMakeMethodBuilder</scope><name>_arguments_added</name></member>
+      <member refid="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1a52da5f2accd180b2cea0dedd39043213" prot="private" virt="non-virtual"><scope>pymake::generators::cmake_method_builder::CMakeMethodBuilder</scope><name>_generator</name></member>
+      <member refid="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1ac5d5eac144aecb189c90dd040598de50" prot="public" virt="non-virtual"><scope>pymake::generators::cmake_method_builder::CMakeMethodBuilder</scope><name>add_arguments</name></member>
+      <member refid="classpymake_1_1generators_1_1cmake__method__builder_1_1CMakeMethodBuilder_1aa58a4dd8c207099b25c6be003204b9b0" prot="public" virt="non-virtual"><scope>pymake::generators::cmake_method_builder::CMakeMethodBuilder</scope><name>add_keyword_arguments</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

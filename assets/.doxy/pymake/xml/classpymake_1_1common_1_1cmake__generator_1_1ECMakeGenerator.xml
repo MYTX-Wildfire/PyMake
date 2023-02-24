@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpymake_1_1common_1_1cmake__generator_1_1ECMakeGenerator" kind="class" language="Python" prot="public">
+    <compoundname>pymake::common::cmake_generator::ECMakeGenerator</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Enum</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classpymake_1_1common_1_1cmake__generator_1_1ECMakeGenerator_1acb8a18448aad1b27953f3c86489445c8" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string pymake.common.cmake_generator.ECMakeGenerator::Ninja</definition>
+        <argsstring></argsstring>
+        <name>Ninja</name>
+        <initializer>=  &quot;Ninja&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/pymake/common/cmake_generator.py" line="8" column="1" bodyfile="source/pymake/common/cmake_generator.py" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Defines enums for common CMake generators.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>pymake.common.cmake_generator.ECMakeGenerator</label>
+        <link refid="classpymake_1_1common_1_1cmake__generator_1_1ECMakeGenerator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Enum</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>pymake.common.cmake_generator.ECMakeGenerator</label>
+        <link refid="classpymake_1_1common_1_1cmake__generator_1_1ECMakeGenerator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Enum</label>
+      </node>
+    </collaborationgraph>
+    <location file="source/pymake/common/cmake_generator.py" line="3" column="1" bodyfile="source/pymake/common/cmake_generator.py" bodystart="3" bodyend="9"/>
+    <listofallmembers>
+      <member refid="classpymake_1_1common_1_1cmake__generator_1_1ECMakeGenerator_1acb8a18448aad1b27953f3c86489445c8" prot="public" virt="non-virtual"><scope>pymake::common::cmake_generator::ECMakeGenerator</scope><name>Ninja</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

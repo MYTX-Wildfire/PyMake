@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="cmake__version_8py" kind="file" language="Python">
+    <compoundname>cmake_version.py</compoundname>
+    <innerclass refid="classpymake_1_1common_1_1cmake__version_1_1ECMakeVersion" prot="public">pymake::common::cmake_version::ECMakeVersion</innerclass>
+    <innernamespace refid="namespacepymake_1_1common_1_1cmake__version">pymake::common::cmake_version</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacepymake_1_1common_1_1cmake__version" refkind="compound"><highlight class="keyword">from</highlight><highlight class="normal"><sp/>enum<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Enum</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="classpymake_1_1common_1_1cmake__version_1_1ECMakeVersion" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpymake_1_1common_1_1cmake__version_1_1ECMakeVersion" kindref="compound">ECMakeVersion</ref>(Enum):</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Defines<sp/>CMake<sp/>versions<sp/>supported<sp/>by<sp/>the<sp/>PyMake<sp/>transpiler.</highlight></codeline>
+<codeline lineno="6"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>CMake<sp/>v3.14.5<sp/>(released<sp/>2019-05-31)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>V3_14<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;3.14&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>CMake<sp/>v3.25.2<sp/>(released<sp/>2023-01-19)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>V3_25<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;3.25&quot;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="source/pymake/common/cmake_version.py"/>
+  </compounddef>
+</doxygen>
