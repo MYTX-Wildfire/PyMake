@@ -19,8 +19,10 @@
 			"cwd": "${workspaceFolder}",
 			"args": [
 				"tests/unit",
-				"--cov=pymake",
-				"--cov-report=xml"
+				// Coverage must not be enabled or debugging will not work.
+				// https://github.com/microsoft/vscode-python/issues/693
+				// https://pytest-cov.readthedocs.io/en/latest/debuggers.html
+				"--no-cov"
 			]
 		}
 	]
