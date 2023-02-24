@@ -22,17 +22,18 @@ jobs:
 
     - name: Run unit tests
       run: >
-        docker exec pymake
+        docker exec pymake cd "$GITHUB_WORKSPACE" &&
         pytest --cov=pymake --cov-branch --cov-report=xml tests/unit
 
     - name: Run integration tests
       run: >
-        docker exec pymake
-        pytest --cov=pymake --cov-branch --cov-report=xml tests/integration
+        docker exec pymake cd "$GITHUB_WORKSPACE" &&
+        pytest --cov=pymake --cov-branch --cov-report=xml --cov-append
+        tests/integration
 
     - name: Report code coverage
       run: >
-        docker exec pymake
+        docker exec pymake cd "$GITHUB_WORKSPACE" &&
         coverage report --show-missing
       if: success()
 
