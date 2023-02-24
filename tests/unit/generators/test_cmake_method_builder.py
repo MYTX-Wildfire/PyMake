@@ -1,6 +1,6 @@
 from pymake.generators.cmake_generator import CMakeGenerator
 from pymake.tracing.null_caller_info_formatter import NullCallerInfoFormatter
-from tests.tracing.mock_caller_info_formatter import MockCallerInfoFormatter
+from unit.tracing.mock_caller_info_formatter import MockCallerInfoFormatter
 
 def test_generate_empty_method():
     """

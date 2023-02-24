@@ -18,7 +18,7 @@
 			"module": "pytest",
 			"cwd": "${workspaceFolder}",
 			"args": [
-				"tests",
+				"tests/unit",
 				"--cov=pymake",
 				"--cov-report=xml"
 			]

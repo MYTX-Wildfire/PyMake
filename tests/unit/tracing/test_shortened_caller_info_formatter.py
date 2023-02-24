@@ -3,7 +3,7 @@ from pymake.tracing.caller_info import CallerInfo
 from pymake.tracing.shortened_caller_info_formatter import ShortenedCallerInfoFormatter
 from pymake.tracing.traced import Traced
 import pytest
-from tests.tracing.dummy_traced import DummyTraced
+from unit.tracing.dummy_traced import DummyTraced
 
 def test_shortened_caller_info_formatter_on_caller_info_full_path():
     """
