@@ -34,11 +34,24 @@ jobs:
         pytest --cov=pymake --cov-branch --cov-report=xml --cov-append
         tests/integration
 
-    - name: Report code coverage
+    - name: Dump code coverage
       run: >
         docker exec -w "/repo" pymake
         coverage report --show-missing
       if: success()
+
+    - name: Record code coverage
+      uses: irongut/CodeCoverageSummary@v1.3.0
+      with:
+        filename: $GITHUB_WORKSPACE/coverage.xml
+        badge: true
+        fail_below_min: true
+        format: markdown
+        hide_branch_rate: false
+        hide_complexity: false
+        indicators: true
+        output: both
+        thresholds: '75 90'
 
     - name: Stop docker container
       run: docker stop pymake
