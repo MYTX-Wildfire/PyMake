@@ -1,0 +1,56 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run unit tests",
+			"type": "shell",
+			"group": "test",
+			"command": "pytest",
+			"args": [
+				"--cov=pymake",
+				"--cov-branch",
+				"--cov-report=xml",
+				"${workspaceFolder}/tests/unit"
+			],
+		},
+		{
+			"label": "Run integration tests",
+			"type": "shell",
+			"group": "test",
+			"command": "pytest",
+			"args": [
+				"--cov=pymake",
+				"--cov-branch",
+				"--cov-report=xml",
+				"${workspaceFolder}/tests/integration"
+			],
+		},
+		{
+			"label": "Run all tests",
+			"type": "shell",
+			"group": "test",
+			"command": "pytest",
+			"args": [
+				"--cov=pymake",
+				"--cov-branch",
+				"--cov-report=xml",
+				"${workspaceFolder}/tests/unit",
+				"${workspaceFolder}/tests/integration"
+			]
+		},
+		{
+			"label": "Run all tests and report coverage",
+			"type": "process",
+			"group": "test",
+			"command": "coverage",
+			"args": [
+				"report"
+			],
+			"dependsOn": [
+				"Run all tests"
+			]
+		}
+	]
+}
