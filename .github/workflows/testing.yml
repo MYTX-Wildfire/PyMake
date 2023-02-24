@@ -13,7 +13,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        file: ./.devcontainer/ubuntu.dockerfile
+        file: ./.devcontainer/gh-actions.dockerfile
         push: false
         tags: pymake:latest
 
