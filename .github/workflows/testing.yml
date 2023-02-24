@@ -1,0 +1,23 @@
+name: Run tests and measure code coverage
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    container:
+      image: .devcontainer/ubuntu.dockerfile
+      options: --rm
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run unit tests
+      run: pytest --cov=pymake --cov-branch --cov-report=xml tests/unit
+
+    - name: Run integration tests
+      run: pytest --cov=pymake --cov-branch --cov-report=xml tests/integration
+
+    - name: Report code coverage
+      run: coverage report --show-missing
+      if: success() && github.ref == 'refs/heads/main'
