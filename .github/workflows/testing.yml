@@ -18,22 +18,24 @@ jobs:
         tags: pymake:latest
 
     - name: Start docker container
-      run: docker run --rm -itd --name pymake pymake:latest
+      run: |
+        docker run --rm -itd --name pymake -v "$GITHUB_WORKSPACE:/pymake"
+        pymake:latest
 
     - name: Run unit tests
       run: >
-        docker exec pymake bash -c 'cd "$GITHUB_WORKSPACE" && ls -alF &&
+        docker exec --w "/pymake" pymake &&
         pytest --cov=pymake --cov-branch --cov-report=xml tests/unit'
 
     - name: Run integration tests
       run: >
-        docker exec pymake bash -c 'cd "$GITHUB_WORKSPACE" &&
+        docker exec --w "/pymake" pymake &&
         pytest --cov=pymake --cov-branch --cov-report=xml --cov-append
         tests/integration'
 
     - name: Report code coverage
       run: >
-        docker exec pymake bash -c 'cd "$GITHUB_WORKSPACE" &&
+        docker exec --w "/pymake" pymake &&
         coverage report --show-missing'
       if: success()
 
