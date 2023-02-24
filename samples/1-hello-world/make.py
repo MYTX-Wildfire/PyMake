@@ -1,8 +1,23 @@
 #!/usr/bin/env python3
+import argparse
 from pymake import CMake314, CMake325, ECMakeBuildType, ECMakeGenerator, \
     EProjectLanguage
 
-cmake = CMake325()
+# Figure out whether the build should use CMake 3.14 or 3.25
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "--cmake-version",
+    choices=["3.14", "3.25"],
+    default="3.25",
+    help="The version of CMake to use."
+)
+cli_args = parser.parse_known_args()[0]
+
+# Set up the CMake project
+if cli_args.cmake_version == "3.14":
+    cmake = CMake314()
+else:
+    cmake = CMake325()
 project = cmake.add_project("HelloWorld", EProjectLanguage.Cpp)
 
 # Set up presets

@@ -12,13 +12,27 @@
 			"justMyCode": true
 		},
 		{
-			"name": "Run tests",
+			"name": "Run unit tests",
 			"type": "python",
 			"request": "launch",
 			"module": "pytest",
 			"cwd": "${workspaceFolder}",
 			"args": [
 				"tests/unit",
+				// Coverage must not be enabled or debugging will not work.
+				// https://github.com/microsoft/vscode-python/issues/693
+				// https://pytest-cov.readthedocs.io/en/latest/debuggers.html
+				"--no-cov"
+			]
+		},
+		{
+			"name": "Run integration tests",
+			"type": "python",
+			"request": "launch",
+			"module": "pytest",
+			"cwd": "${workspaceFolder}",
+			"args": [
+				"tests/integration",
 				// Coverage must not be enabled or debugging will not work.
 				// https://github.com/microsoft/vscode-python/issues/693
 				// https://pytest-cov.readthedocs.io/en/latest/debuggers.html

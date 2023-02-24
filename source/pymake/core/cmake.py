@@ -160,10 +160,14 @@ class ICMake(ABC):
         )
         if not args:
             args = sys.argv[1:]
-        cli_args = parser.parse_args(args, namespace=PyMakeArgs(
-            verbose=False,
-            presets=[]
-        ))
+        cli_args = parser.parse_known_args(
+            args,
+            namespace=PyMakeArgs(
+                verbose=False,
+                presets=[]
+            )
+        )[0]
+        assert isinstance(cli_args, PyMakeArgs)
 
         # Get the presets to use
         selected_presets: List[Preset] = []
