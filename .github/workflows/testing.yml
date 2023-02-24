@@ -1,4 +1,4 @@
-name: Run tests and measure code coverage
+name: PyMake Test Suite
 
 on: [push, pull_request]
 
