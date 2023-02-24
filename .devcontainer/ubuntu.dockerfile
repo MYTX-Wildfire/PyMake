@@ -9,6 +9,7 @@ ARG PYTHON_VERSION=3.11
 # Install apt packages
 RUN apt-get update -y && \
 	apt-get install -y \
+		doxygen \
 		git \
 		ninja-build \
 		python${PYTHON_VERSION} \
@@ -27,7 +28,10 @@ RUN python3 -m pip install \
 	mkdocs-material \
 	mkdocs-git-revision-date-localized-plugin \
 	pygments \
-	# Packages for enabling plantuml support
+	# Packages for documentation
+	mkdoxy \
+	jinja2 \
+	ruamel.yaml \
 	plantuml-markdown \
 	# Other
 	autopep8 \
