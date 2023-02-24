@@ -25,18 +25,18 @@ jobs:
     - name: Run unit tests
       run: >
         docker exec --w "/pymake" pymake
-        pytest --cov=pymake --cov-branch --cov-report=xml tests/unit'
+        pytest --cov=pymake --cov-branch --cov-report=xml tests/unit
 
     - name: Run integration tests
       run: >
         docker exec --w "/pymake" pymake
         pytest --cov=pymake --cov-branch --cov-report=xml --cov-append
-        tests/integration'
+        tests/integration
 
     - name: Report code coverage
       run: >
         docker exec --w "/pymake" pymake
-        coverage report --show-missing'
+        coverage report --show-missing
       if: success()
 
     - name: Stop docker container
