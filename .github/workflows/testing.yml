@@ -22,7 +22,7 @@ jobs:
 
     - name: Run unit tests
       run: >
-        docker exec pymake bash -c 'cd "$GITHUB_WORKSPACE" &&
+        docker exec pymake bash -c 'cd "$GITHUB_WORKSPACE" && ls -alF &&
         pytest --cov=pymake --cov-branch --cov-report=xml tests/unit'
 
     - name: Run integration tests
