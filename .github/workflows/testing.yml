@@ -22,19 +22,19 @@ jobs:
 
     - name: Run unit tests
       run: >
-        docker exec pymake bash -c "cd \"$GITHUB_WORKSPACE\" &&
-        pytest --cov=pymake --cov-branch --cov-report=xml tests/unit"
+        docker exec pymake bash -c 'cd "$GITHUB_WORKSPACE" &&
+        pytest --cov=pymake --cov-branch --cov-report=xml tests/unit'
 
     - name: Run integration tests
       run: >
-        docker exec pymake bash -c "cd \"$GITHUB_WORKSPACE\" &&
+        docker exec pymake bash -c 'cd "$GITHUB_WORKSPACE" &&
         pytest --cov=pymake --cov-branch --cov-report=xml --cov-append
-        tests/integration"
+        tests/integration'
 
     - name: Report code coverage
       run: >
-        docker exec pymake bash -c "cd \"$GITHUB_WORKSPACE\" &&
-        coverage report --show-missing"
+        docker exec pymake bash -c 'cd "$GITHUB_WORKSPACE" &&
+        coverage report --show-missing'
       if: success()
 
     - name: Stop docker container
