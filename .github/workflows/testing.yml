@@ -58,8 +58,8 @@ jobs:
       if: success()
       run: |
         cd "$GITHUB_WORKSPACE"
-        METHOD_COVERAGE=$(awk '/Summary/ { gsub("[^0-9]", "", $3); print $3 }' coverage.md)
-        BRANCH_COVERAGE=$(awk '/Summary/ { gsub("[^0-9]", "", $8); print $8 }' coverage.md)
+        METHOD_COVERAGE=$(awk '/Summary/ { gsub("[^0-9]", "", $3); print $3 }' code-coverage-results.md)
+        BRANCH_COVERAGE=$(awk '/Summary/ { gsub("[^0-9]", "", $8); print $8 }' code-coverage-results.md)
         echo "METHOD_COVERAGE=$METHOD_COVERAGE" >> $GITHUB_ENV
         echo "BRANCH_COVERAGE=$BRANCH_COVERAGE" >> $GITHUB_ENV
 
