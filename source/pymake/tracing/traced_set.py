@@ -39,20 +39,17 @@ class TracedSet(Generic[T]):
         return (v for v in self._values.values())
 
 
-    def add(self, value: T) -> None:
+    def add(self, value: T) -> bool:
         """
         Adds a new value to the set.
         @param value Value to add to the set.
-        @throws ValueError Thrown if the set already contains the value.
+        @returns True if the value was added, False if it was already in the set.
         """
         if value in self._values:
-            call_site = self._values[value].origin
-            raise ValueError(
-                "Value already exists in the set: '{value}'.\n" +
-                "Note - value was previously added at " +
-                f"'{call_site.file_path}':'{call_site.line_number}'"
-            )
+            return False
+
         self._values[value] = Traced(value)
+        return True
 
 
     def clone(self) -> TracedSet[T]:
@@ -61,3 +58,12 @@ class TracedSet(Generic[T]):
         @returns A clone of the set.
         """
         return TracedSet(self._values.copy())
+
+
+    def merge(self, other: TracedSet[T]) -> None:
+        """
+        Merges the values from another set into this set.
+        @param other Set to merge values from.
+        """
+        for value in other:
+            self._values[value.value] = value

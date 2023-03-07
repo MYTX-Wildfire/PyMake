@@ -3,9 +3,9 @@ from pymake.common.target_type import ETargetType
 from pymake.core.build_script_set import BuildScriptSet
 from pymake.core.target import ITarget
 
-class ExecutableTarget(ITarget):
+class SharedLibraryTarget(ITarget):
     """
-    Represents a single executable CMake target.
+    Represents a single shared library CMake target.
     """
     def __init__(self,
         build_scripts: BuildScriptSet,
@@ -18,7 +18,7 @@ class ExecutableTarget(ITarget):
         super().__init__(
             build_scripts,
             target_name,
-            ETargetType.EXECUTABLE
+            ETargetType.SHARED
         )
 
 
@@ -28,5 +28,6 @@ class ExecutableTarget(ITarget):
         """
         # Generate the CMake code
         generator = self._build_scripts.get_or_add_build_script().generator
-        with generator.open_method_block("add_executable") as b:
+        with generator.open_method_block("add_library") as b:
             b.add_arguments(self._target_name)
+            b.add_arguments("SHARED")

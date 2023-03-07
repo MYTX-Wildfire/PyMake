@@ -12,6 +12,17 @@
 			"justMyCode": true
 		},
 		{
+			"name": "Hello Static",
+			"type": "python",
+			"request": "launch",
+			"program": "${workspaceFolder}/samples/2-hello-static/make.py",
+			"args": [
+				"debug"
+			],
+			"console": "integratedTerminal",
+			"justMyCode": true
+		},
+		{
 			"name": "Run unit tests",
 			"type": "python",
 			"request": "launch",

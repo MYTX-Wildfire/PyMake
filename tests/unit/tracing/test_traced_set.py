@@ -1,5 +1,4 @@
 from pymake.tracing.traced_set import TracedSet
-import pytest
 
 def test_is_empty_after_construction():
     xs: TracedSet[int] = TracedSet()
@@ -37,15 +36,6 @@ def test_iterate_over_values():
         keys.remove(x.value)
 
     assert not keys
-
-
-def test_add_duplicate_value_throws():
-    x = 1
-    xs: TracedSet[int] = TracedSet()
-    xs.add(x)
-
-    with pytest.raises(ValueError):
-        xs.add(x)
 
 
 def test_clone_returns_new_instance():

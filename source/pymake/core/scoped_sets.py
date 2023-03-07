@@ -51,6 +51,20 @@ class ScopedSets(Generic[T]):
         return self._private
 
 
+    def merge(self,
+        other: ScopedSets[T],
+        merge_private: bool = False) -> None:
+        """
+        Merges the values from another set into this set.
+        @param other Set to merge values from.
+        @param merge_private Whether to merge private values.
+        """
+        self._public.merge(other._public)
+        self._interface.merge(other._interface)
+        if merge_private:
+            self._private.merge(other._private)
+
+
     def to_trace_dict(self) -> Dict[str, object]:
         """
         Converts the set to a dictionary that can be written to a trace file.

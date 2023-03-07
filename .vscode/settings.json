@@ -10,7 +10,8 @@
 		}
 	},
 	"python.analysis.extraPaths": [
-		"source"
+		"source",
+		"samples/2-hello-static"
 	],
 	"python.analysis.typeCheckingMode": "strict",
 	"python.languageServer": "Pylance",

@@ -1,5 +1,7 @@
+from __future__ import annotations
 from abc import ABC, abstractmethod
 import argparse
+from importlib import util
 from pathlib import Path
 from pymake.common.cmake_version import ECMakeVersion
 from pymake.common.project_language import EProjectLanguage
@@ -41,6 +43,10 @@ class ICMake(ABC):
         caller_info = CallerInfo.closest_external_frame()
         caller_dir = Path(caller_info.file_path).parent
 
+        # Add the caller's directory to the Python path so that PyMake build
+        #   scripts can import variables from other build scripts
+        sys.path.append(str(caller_dir))
+
         # Get absolute paths to each directory
         source_directory = Path(source_directory) \
             if isinstance(source_directory, str) else source_directory
@@ -77,6 +83,46 @@ class ICMake(ABC):
 
         # Targets that have been added by any project
         self._targets: Dict[str, ITarget] = {}
+
+
+    def add_subdirectory(self, subdirectory: str | Path):
+        """
+        Adds a subdirectory to the CMake project.
+        @param subdirectory Path to the subdirectory to add. If this is a
+          relative path, it will be interpreted relative to the caller's
+          directory.
+        @throws FileNotFoundError Thrown if the subdirectory does not contain
+          a 'make.py' file.
+        """
+        # Get the path to the caller's directory
+        caller_info = CallerInfo.closest_external_frame()
+        caller_dir = Path(caller_info.file_path).parent
+
+        # Get absolute path to the subdirectory
+        subdirectory = Path(subdirectory) \
+            if isinstance(subdirectory, str) else subdirectory
+        if not subdirectory.is_absolute():
+            subdirectory = caller_dir / subdirectory
+
+        # Make sure the subdirectory has a make.py file
+        make_py_path = subdirectory / "make.py"
+        if not make_py_path.exists():
+            raise FileNotFoundError(
+                f"Error: The subdirectory '{subdirectory}' does not contain " +
+                "a 'make.py' file.")
+
+        # Call the subdirectory's make.py file
+        spec = util.spec_from_file_location("make", make_py_path)
+        assert spec
+        assert spec.loader
+        module = util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+
+        # Generate the CMake code for the subdirectory
+        subdir_rel_path = subdirectory.relative_to(self._source_dir)
+        generator = self._build_scripts.get_or_add_build_script().generator
+        with generator.open_method_block("add_subdirectory") as b:
+            b.add_arguments(str(subdir_rel_path))
 
 
     def add_project(self,
