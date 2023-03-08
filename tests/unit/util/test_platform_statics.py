@@ -61,3 +61,17 @@ def test_shared_lib_name():
         assert PlatformStatics.get_shared_lib_name("foo") == "libfoo.dylib"
     else:
         assert PlatformStatics.get_shared_lib_name("foo") == "libfoo.so"
+
+
+def test_executable_suffix():
+    if PlatformStatics.is_windows():
+        assert PlatformStatics.executable_suffix() == ".exe"
+    else:
+        assert PlatformStatics.executable_suffix() == ""
+
+
+def test_executable_name():
+    if PlatformStatics.is_windows():
+        assert PlatformStatics.get_executable_name("foo") == "foo.exe"
+    else:
+        assert PlatformStatics.get_executable_name("foo") == "foo"

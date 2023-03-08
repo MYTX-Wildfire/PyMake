@@ -111,3 +111,25 @@ class PlatformStatics:
         """
         return PlatformStatics.shared_lib_prefix() + name + \
             PlatformStatics.shared_lib_suffix()
+
+
+    @staticmethod
+    def executable_suffix() -> str:
+        """
+        Gets the extension for executables.
+        @returns The extension for executables.
+        """
+        if PlatformStatics.is_windows():
+            # Code coverage is recorded on Linux; ignore non-Linux branches
+            return ".exe" # pragma: no cover
+        return ""
+
+
+    @staticmethod
+    def get_executable_name(name: str) -> str:
+        """
+        Gets the name of an executable.
+        @param name Name of the executable, minus any prefix or suffix.
+        @returns The name of the executable.
+        """
+        return name + PlatformStatics.executable_suffix()

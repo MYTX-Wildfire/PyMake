@@ -1,7 +1,8 @@
 from pathlib import Path
+from pymake.util.platform_statics import PlatformStatics
 import subprocess
 import shutil
-from typing import List, Optional
+from typing import List, Optional, Tuple
 
 class PyMakeHelpers:
     """
@@ -138,3 +139,49 @@ class PyMakeHelpers:
         for _ in search_dir.rglob(file_name):
             return True
         return False
+
+
+    def run_binary(self,
+        binary_name: str,
+        output_path: Optional[str] = None) -> Tuple[bool, int, str]:
+        """
+        Finds and runs the specified binary.
+        @param search_dir Directory to search for the binary.
+        @param binary_name Name of the binary to run. Should not include an
+          extension.
+        @param output_path Path to the directory where the binary should be
+          found. Must be a path relative to the install directory if provided.
+          Can be a path to a file or folder. If the path is to a folder, only
+          that folder will be searched for a binary with the target name. If not
+          provided, the entire install directory will be searched.
+        @return A tuple containing whether the binary was found, the exit code
+          of the binary and the output from the binary (stdout and stderr). If
+          the binary was not found, the exit code and output will be -1 and "".
+        """
+        # Determine which directory should be searched
+        search_dir = self._install_dir
+        if output_path:
+            search_dir = search_dir / output_path
+
+        # Get the platform specific binary name
+        binary_name = PlatformStatics.get_executable_name(binary_name)
+
+        # `output_path` can be a path to a file or folder. If it's a path to a
+        #   folder, only search that folder. If the path is to a file, simply
+        #   check if a file exists at that path.
+        if not search_dir.is_dir():
+            raise ValueError("The specified path is not a directory")
+
+        # Search the directory for the binary
+        for file in search_dir.rglob(binary_name):
+            # Run the binary
+            process = subprocess.run(
+                [file],
+                cwd=self._project_dir,
+                check=False,
+                capture_output=True
+            )
+            return True, process.returncode, process.stdout.decode("utf-8")
+
+        # The binary could not be found
+        return False, -1, ""
