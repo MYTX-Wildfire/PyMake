@@ -215,22 +215,6 @@ def test_clear_install_dir():
     assert not preset.install_dir
 
 
-def test_clear_cache_variable():
-    preset = Preset("foo")
-    preset.set_cache_variable("foo", "bar")
-    assert preset.cache_variables == {"foo": "bar"}
-    preset.set_cache_variable("foo", None)
-    assert not preset.cache_variables
-
-
-def test_clear_env_variable():
-    preset = Preset("foo")
-    preset.set_env_variable("foo", "bar")
-    assert preset.env_variables == {"foo": "bar"}
-    preset.set_env_variable("foo", None)
-    assert not preset.env_variables
-
-
 def test_clear_build_type():
     preset = Preset("foo")
     preset.cmake_build_type = ECMakeBuildType.MinSizeRel
@@ -481,3 +465,72 @@ def test_trace_file_generation(tmp_path: Any):
     assert env_var_key in contents
     assert env_var_value in contents
     assert base_preset_name in contents
+
+
+def test_clear_cmake_build_type():
+    # Set up the preset
+    preset = Preset("foo")
+    preset.cmake_build_type = ECMakeBuildType.Debug
+
+    # Clear the build type
+    preset.cmake_build_type = None
+
+    # Check the value
+    assert not preset.cmake_build_type
+
+
+def test_clear_cmake_build_type_when_build_type_not_set():
+    # Set up the preset
+    preset = Preset("foo")
+
+    # Clear the build type
+    preset.cmake_build_type = None
+
+    # Check the value
+    assert not preset.cmake_build_type
+
+
+def test_clear_cache_variable():
+    # Set up the preset
+    preset = Preset("foo")
+    preset.set_cache_variable("foo", "bar")
+
+    # Clear the cache variable
+    preset.set_cache_variable("foo", None)
+
+    # Check the value
+    assert not preset.cache_variables
+
+
+def test_clear_cache_variable_when_cache_variable_not_set():
+    # Set up the preset
+    preset = Preset("foo")
+
+    # Clear the cache variable
+    preset.set_cache_variable("foo", None)
+
+    # Check the value
+    assert not preset.cache_variables
+
+
+def test_clear_env_variable():
+    # Set up the preset
+    preset = Preset("foo")
+    preset.set_env_variable("foo", "bar")
+
+    # Clear the env variable
+    preset.set_env_variable("foo", None)
+
+    # Check the value
+    assert not preset.env_variables
+
+
+def test_clear_env_variable_when_env_variable_not_set():
+    # Set up the preset
+    preset = Preset("foo")
+
+    # Clear the env variable
+    preset.set_env_variable("foo", None)
+
+    # Check the value
+    assert not preset.env_variables
