@@ -42,3 +42,9 @@ def test_clone_returns_new_instance():
     xs: TracedSet[int] = TracedSet()
     ys = xs.clone()
     assert xs is not ys
+
+
+def test_traced_set_returns_false_if_value_already_exists():
+    xs: TracedSet[int] = TracedSet()
+    assert xs.add(1)
+    assert not xs.add(1)
