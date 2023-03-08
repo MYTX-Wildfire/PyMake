@@ -42,9 +42,9 @@ class ITarget(ABC, ITraced):
         self._include_directories: ScopedSets[Path] = ScopedSets()
 
         # Libraries to link to
-        # Each item may be a string containing the name or path to an external
-        #   library or a PyMake target. If the item is a PyMake target, the
-        #   target will not be an executable target.
+        # Each item may be a string containing the name or absolute path to an
+        #   external library, or a PyMake target. If the item is a PyMake
+        #   target, the target will not be an executable target.
         self._link_libraries: ScopedSets[str | ITarget] = ScopedSets()
 
         # Whether the target will be installed
@@ -230,7 +230,11 @@ class ITarget(ABC, ITraced):
         Configures the current target to link to the target or library.
         @param target Target to link to. Must not be an executable target.
         @param scope Visibility scope for the library.
+        @throws ValueError If the target is an executable target.
         """
+        if target.target_type == ETargetType.EXECUTABLE:
+            raise ValueError("Cannot link to an executable target.")
+
         # If the target has already been added, don't generate new CMake code
         if not self._link_libraries.select_set(scope).add(target):
             return
@@ -261,7 +265,17 @@ class ITarget(ABC, ITraced):
           to true, the platform-specific shared library prefix and suffix will
           be added to the library name.
         @param scope Visibility scope for the library.
+        @throws ValueError If `is_static` is set to `True` and the library name
+          is not a string.
+        @throws ValueError If `is_shared` is set to `True` and the library name
+          is not a string.
+        @throws ValueError If `is_static` and `is_shared` are both set to `True`.
         """
+        if is_static and is_shared:
+            raise ValueError(
+                "The library cannot be both static and shared."
+            )
+
         # Add the platform-specific library prefix and suffix if necessary
         if is_static:
             if not isinstance(library, str):
@@ -294,17 +308,14 @@ class ITarget(ABC, ITraced):
             )
 
 
-    def generate_trace_file(self,
-        output_path: Path,
-        generator: ITraceFileGenerator):
+    def generate_trace_dict(self) -> Dict[str, object]:
         """
-        Generates a trace file for the target.
-        @param output_path Path to the output file.
-        @param generator Generator to create the trace file using.
+        Generates a dictionary containing the properties of the target.
+        @return Dictionary containing the properties of the target.
         """
         # Generate a dictionary containing the properties to write to the trace
         #   file
-        full_target = self._get_full_target()
+        full_target = self.get_full_target(include_private=True)
         props: Dict[str, object] = {}
         props["type"] = full_target._target_type.value
         props["sources"] = full_target._sources.to_trace_dict()
@@ -314,10 +325,94 @@ class ITarget(ABC, ITraced):
         props["is_installed"] = full_target._is_installed
         props["install_path"] = full_target._install_path.value \
             if full_target._install_path else "<cmake_default>"
+        return props
 
+
+    def generate_trace_file(self,
+        output_path: Path,
+        generator: ITraceFileGenerator):
+        """
+        Generates a trace file for the target.
+        @param output_path Path to the output file.
+        @param generator Generator to create the trace file using.
+        """
         generator.write_file({
-            self.target_name: props
+            self.target_name: self.generate_trace_dict()
         }, output_path)
+
+
+    def get_full_target(self, include_private: bool = True) -> ITarget:
+        """
+        Gets a target instance that includes all values for the target.
+        Target instances normally do not include values from targets that
+          they link to. The target instance returned by this method contains
+          all values for the target, including values from linked-to targets.
+        @param include_private Whether to include values from private
+          dependencies. This should be true for the first call to this method
+          and false for every recursive call made by this method.
+        @returns A target instance that includes all values from targets that
+          this target links to.
+        """
+        # Create the target to return
+        target = self._create_empty_clone()
+
+        # Populate the target with properties from each linked-to target
+        linked_targets = [
+            target.value
+            for target in self._link_libraries.select_set(EScope.PUBLIC)
+            if isinstance(target.value, ITarget)
+        ]
+        linked_targets.extend([
+            target.value
+            for target in self._link_libraries.select_set(EScope.INTERFACE)
+            if isinstance(target.value, ITarget)
+        ])
+        if include_private:
+            linked_targets.extend([
+                target.value
+                for target in self._link_libraries.select_set(EScope.PRIVATE)
+                if isinstance(target.value, ITarget)
+            ])
+
+        # Merge all properties from linked targets into the target
+        # Note that the linked target's own linked targets should not be added
+        #   to the full target
+        for linked_target in linked_targets:
+            full_linked_target = linked_target.get_full_target(
+                include_private=False
+            )
+            target._include_directories.merge(
+                full_linked_target._include_directories
+            )
+            target._link_libraries.merge(
+                full_linked_target._link_libraries
+            )
+            target._sources.merge(
+                full_linked_target._sources
+            )
+
+        # Merge the properties from this target into the target
+        target._sources.merge(
+            self._sources,
+            merge_private=True
+        )
+        target._include_directories.merge(
+            self._include_directories,
+            merge_private=True
+        )
+        target._link_libraries.merge(
+            self._link_libraries,
+            merge_private=True
+        )
+        target._link_libraries.merge(
+            self._link_libraries,
+            merge_private=True
+        )
+        target._is_installed = self._is_installed
+        target._install_path = self._install_path
+        target._is_full_target = True
+
+        return target
 
 
     def install(self,
@@ -358,66 +453,9 @@ class ITarget(ABC, ITraced):
         An empty clone is a clone that has only the values required to be passed
           to the target's constructor and not any values passed to any of the
           target's methods.
-        @remarks This method is only used to ensure that `_get_full_target()`
+        @remarks This method is only used to ensure that `get_full_target()`
           can construct a clone of the current target and add properties to
           the clone.
         @returns An empty clone of the target.
         """
         raise NotImplementedError()
-
-
-    def _get_full_target(self) -> ITarget:
-        """
-        Gets a target instance that includes all values for the target.
-        Target instances normally do not include values from targets that
-          they link to. The target instance returned by this method contains
-          all values for the target, including values from linked-to targets.
-        @returns A target instance that includes all values from targets that
-          this target links to.
-        """
-        # Create the target to return
-        target = self._create_empty_clone()
-
-        # Populate the target with properties from each linked-to target
-        linked_targets = [
-            target.value
-            for target in self._link_libraries.select_set(EScope.PUBLIC)
-            if isinstance(target.value, ITarget)
-        ]
-        linked_targets.extend([
-            target.value
-            for target in self._link_libraries.select_set(EScope.INTERFACE)
-            if isinstance(target.value, ITarget)
-        ])
-
-        # Merge all properties from linked targets into the target
-        # Note that the linked target's own linked targets should not be added
-        #   to the full target
-        for linked_target in linked_targets:
-            full_linked_target = linked_target._get_full_target()
-            target._sources.merge(full_linked_target._sources)
-            target._include_directories.merge(
-                full_linked_target._include_directories
-            )
-
-        # Merge the properties from this target into the target
-        target._sources.merge(
-            self._sources,
-            merge_private=True
-        )
-        target._include_directories.merge(
-            self._include_directories,
-            merge_private=True
-        )
-        target._link_libraries.merge(
-            self._link_libraries,
-            merge_private=True
-        )
-        target._link_libraries.merge(
-            self._link_libraries,
-            merge_private=True
-        )
-        target._is_installed = self._is_installed
-        target._install_path = self._install_path
-
-        return target

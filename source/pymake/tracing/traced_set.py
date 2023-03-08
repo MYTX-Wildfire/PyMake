@@ -32,11 +32,27 @@ class TracedSet(Generic[T]):
         return value in self._values
 
 
+    def __getitem__(self, value: T) -> Traced[T]:
+        """
+        Gets the traced value from the set.
+        @param value Value to get the traced value for.
+        @returns The traced value for the given value.
+        """
+        return self._values[value]
+
+
     def __iter__(self) -> Iterator[Traced[T]]:
         """
         Allows each traced value in the set to be iterated over.
         """
         return (v for v in self._values.values())
+
+
+    def __len__(self) -> int:
+        """
+        Gets the number of values in the set.
+        """
+        return len(self._values)
 
 
     def add(self, value: T) -> bool:

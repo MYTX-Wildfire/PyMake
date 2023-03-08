@@ -1,3 +1,4 @@
+from pymake.tracing.caller_info import CallerInfo
 from pymake.tracing.traced_set import TracedSet
 
 def test_is_empty_after_construction():
@@ -48,3 +49,24 @@ def test_traced_set_returns_false_if_value_already_exists():
     xs: TracedSet[int] = TracedSet()
     assert xs.add(1)
     assert not xs.add(1)
+
+
+def test_traced_set_length():
+    xs: TracedSet[int] = TracedSet()
+    assert len(xs) == 0
+
+    xs.add(1)
+    assert len(xs) == 1
+
+    xs.add(2)
+    assert len(xs) == 2
+
+
+def test_get_value_from_traced_set():
+    xs: TracedSet[int] = TracedSet()
+    xs.add(1)
+    call_site = CallerInfo.closest_external_frame()
+
+    assert xs[1].value == 1
+    assert xs[1].origin.file_path == call_site.file_path
+    assert xs[1].origin.line_number == (call_site.line_number - 1)
