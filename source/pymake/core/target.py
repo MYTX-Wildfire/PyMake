@@ -247,7 +247,8 @@ class ITarget(ABC, ITraced):
         @param library Name or path to the library.
         @param is_static Whether the library is a static library. If this is set
           to true, the platform-specific static library prefix and suffix will
-          be added to the library name.
+          be added to the library name. Setting this to `True` requires that the
+          library name is a string, not a Path.
         @param is_shared Whether the library is a shared library. If this is set
           to true, the platform-specific shared library prefix and suffix will
           be added to the library name.
@@ -255,11 +256,19 @@ class ITarget(ABC, ITraced):
         """
         # Add the platform-specific library prefix and suffix if necessary
         if is_static:
-            library = PlatformStatics.static_lib_prefix() + str(library) + \
-                PlatformStatics.static_lib_suffix()
+            if not isinstance(library, str):
+                raise ValueError(
+                    "The library name must be a string if `is_static` is " + \
+                    "set to `True`."
+                )
+            library = PlatformStatics.get_static_lib_name(library)
         elif is_shared:
-            library = PlatformStatics.shared_lib_prefix() + str(library) + \
-                PlatformStatics.shared_lib_suffix()
+            if not isinstance(library, str):
+                raise ValueError(
+                    "The library name must be a string if `is_shared` is " + \
+                    "set to `True`."
+                )
+            library = PlatformStatics.get_shared_lib_name(library)
         elif isinstance(library, Path):
             library = str(library.resolve())
 

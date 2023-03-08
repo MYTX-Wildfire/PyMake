@@ -48,7 +48,8 @@ class PlatformStatics:
         @returns The prefix for static libraries.
         """
         if PlatformStatics.is_windows():
-            return ""
+            # Code coverage is recorded on Linux; ignore non-Linux branches
+            return "" # pragma: no cover
         return "lib"
 
 
@@ -59,8 +60,20 @@ class PlatformStatics:
         @returns The extension for static libraries.
         """
         if PlatformStatics.is_windows():
-            return ".lib"
+            # Code coverage is recorded on Linux; ignore non-Linux branches
+            return ".lib" # pragma: no cover
         return ".a"
+
+
+    @staticmethod
+    def get_static_lib_name(name: str) -> str:
+        """
+        Gets the name of a static library.
+        @param name Name of the library, minus any prefix or suffix.
+        @returns The name of the static library.
+        """
+        return PlatformStatics.static_lib_prefix() + name + \
+            PlatformStatics.static_lib_suffix()
 
 
     @staticmethod
@@ -70,7 +83,8 @@ class PlatformStatics:
         @returns The prefix for shared libraries.
         """
         if PlatformStatics.is_windows():
-            return ""
+            # Code coverage is recorded on Linux; ignore non-Linux branches
+            return "" # pragma: no cover
         return "lib"
 
 
@@ -80,6 +94,20 @@ class PlatformStatics:
         Gets the extension for shared libraries.
         @returns The extension for shared libraries.
         """
+        # Code coverage is recorded on Linux; ignore non-Linux branches
         if PlatformStatics.is_windows():
-            return ".dll"
+            return ".dll" # pragma: no cover
+        elif PlatformStatics.is_macos():
+            return ".dylib" # pragma: no cover
         return ".so"
+
+
+    @staticmethod
+    def get_shared_lib_name(name: str) -> str:
+        """
+        Gets the name of a shared library.
+        @param name Name of the library, minus any prefix or suffix.
+        @returns The name of the shared library.
+        """
+        return PlatformStatics.shared_lib_prefix() + name + \
+            PlatformStatics.shared_lib_suffix()
