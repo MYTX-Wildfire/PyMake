@@ -1,11 +1,11 @@
 from __future__ import annotations
 from pymake.common.target_type import ETargetType
 from pymake.core.build_script_set import BuildScriptSet
-from pymake.core.target import ITarget
+from pymake.targets.target import ITarget
 
-class SharedLibraryTarget(ITarget):
+class StaticLibraryTarget(ITarget):
     """
-    Represents a single shared library CMake target.
+    Represents a single static library CMake target.
     """
     def __init__(self,
         build_scripts: BuildScriptSet,
@@ -18,7 +18,7 @@ class SharedLibraryTarget(ITarget):
         super().__init__(
             build_scripts,
             target_name,
-            ETargetType.SHARED
+            ETargetType.STATIC
         )
 
 
@@ -30,4 +30,4 @@ class SharedLibraryTarget(ITarget):
         generator = self._build_scripts.get_or_add_build_script().generator
         with generator.open_method_block("add_library") as b:
             b.add_arguments(self._target_name)
-            b.add_arguments("SHARED")
+            b.add_arguments("STATIC")

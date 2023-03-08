@@ -1,9 +1,9 @@
 from pymake.common.project_language import EProjectLanguage
 from pymake.core.build_script_set import BuildScriptSet
-from pymake.core.executable_target import ExecutableTarget
-from pymake.core.shared_library_target import SharedLibraryTarget
-from pymake.core.static_library_target import StaticLibraryTarget
-from pymake.core.target import ITarget
+from pymake.targets.executable_target import ExecutableTarget
+from pymake.targets.shared_library_target import SharedLibraryTarget
+from pymake.targets.static_library_target import StaticLibraryTarget
+from pymake.targets.target import ITarget
 from pymake.tracing.traced import ITraced
 from typing import Callable, Dict, Iterable, Optional
 

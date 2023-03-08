@@ -1,9 +1,9 @@
 from pathlib import Path
 from pymake.common.project_language import EProjectLanguage
 from pymake.core.build_script_set import BuildScriptSet
-from pymake.core.executable_target import ExecutableTarget
+from pymake.targets.executable_target import ExecutableTarget
 from pymake.core.project import Project
-from pymake.core.target import ITarget
+from pymake.targets.target import ITarget
 from pymake.tracing.null_caller_info_formatter import NullCallerInfoFormatter
 import pytest
 from typing import Callable, Optional

@@ -9,7 +9,7 @@ from pymake.core.build_script_set import BuildScriptSet
 from pymake.core.preset import Preset
 from pymake.core.project import Project
 from pymake.core.pymake_args import PyMakeArgs
-from pymake.core.target import ITarget
+from pymake.targets.target import ITarget
 from pymake.generators.yaml_file_generator import YamlFileGenerator
 from pymake.tracing.caller_info import CallerInfo
 from pymake.tracing.caller_info_formatter import ICallerInfoFormatter

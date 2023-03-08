@@ -2,7 +2,7 @@ from pathlib import Path
 from pymake.common.scope import EScope
 from pymake.common.target_type import ETargetType
 from pymake.core.build_script_set import BuildScriptSet
-from pymake.core.executable_target import ExecutableTarget
+from pymake.targets.executable_target import ExecutableTarget
 from pymake.generators.yaml_file_generator import YamlFileGenerator
 from pymake.tracing.null_caller_info_formatter import NullCallerInfoFormatter
 from typing import Any
