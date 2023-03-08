@@ -69,3 +69,57 @@ def test_trace_dict_contains_all_values():
     assert public_val in str(public_values)
     assert interface_val in str(interface_values)
     assert private_val in str(private_values)
+
+
+def test_merge_sets():
+    public_val = "foo"
+    interface_val = "bar"
+    private_val = "baz"
+
+    # Set up the scoped sets
+    scoped_sets: ScopedSets[str] = ScopedSets()
+    scoped_sets.public.add(public_val)
+    scoped_sets.interface.add(interface_val)
+    scoped_sets.private.add(private_val)
+
+    # Merge the sets
+    other_scoped_sets: ScopedSets[str] = ScopedSets()
+    other_scoped_sets.public.add("other_public")
+    other_scoped_sets.interface.add("other_interface")
+    other_scoped_sets.private.add("other_private")
+    scoped_sets.merge(other_scoped_sets)
+
+    # Check that the values from the other set are in the current set
+    assert public_val in scoped_sets.public
+    assert interface_val in scoped_sets.interface
+    assert private_val in scoped_sets.private
+    assert "other_public" in scoped_sets.public
+    assert "other_interface" in scoped_sets.interface
+    assert "other_private" not in scoped_sets.private
+
+
+def test_merge_sets_including_private_values():
+    public_val = "foo"
+    interface_val = "bar"
+    private_val = "baz"
+
+    # Set up the scoped sets
+    scoped_sets: ScopedSets[str] = ScopedSets()
+    scoped_sets.public.add(public_val)
+    scoped_sets.interface.add(interface_val)
+    scoped_sets.private.add(private_val)
+
+    # Merge the sets
+    other_scoped_sets: ScopedSets[str] = ScopedSets()
+    other_scoped_sets.public.add("other_public")
+    other_scoped_sets.interface.add("other_interface")
+    other_scoped_sets.private.add("other_private")
+    scoped_sets.merge(other_scoped_sets, merge_private=True)
+
+    # Check that the values from the other set are in the current set
+    assert public_val in scoped_sets.public
+    assert interface_val in scoped_sets.interface
+    assert private_val in scoped_sets.private
+    assert "other_public" in scoped_sets.public
+    assert "other_interface" in scoped_sets.interface
+    assert "other_private" in scoped_sets.private

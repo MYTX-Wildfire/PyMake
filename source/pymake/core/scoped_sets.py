@@ -85,11 +85,13 @@ class ScopedSets(Generic[T]):
         """
         if scope == EScope.PUBLIC:
             return self._public
-        if scope == EScope.INTERFACE:
+        elif scope == EScope.INTERFACE:
             return self._interface
-        if scope == EScope.PRIVATE:
+        elif scope == EScope.PRIVATE:
             return self._private
-        raise ValueError(f"Invalid scope: '{scope}'")
+        else:
+            # This should never be hit
+            raise ValueError(f"Invalid scope: '{scope}'") # pragma: no cover
 
 
     def __bool__(self) -> bool:
