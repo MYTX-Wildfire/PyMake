@@ -373,7 +373,10 @@ class ITarget(ABC, ITraced):
             )
 
         # Merge the properties from this target into the target
-        target._sources.merge(self._sources)
+        target._sources.merge(
+            self._sources,
+            merge_private=True
+        )
         target._include_directories.merge(
             self._include_directories,
             merge_private=True
@@ -386,5 +389,7 @@ class ITarget(ABC, ITraced):
             self._link_libraries,
             merge_private=True
         )
+        target._is_installed = self._is_installed
+        target._install_path = self._install_path
 
         return target

@@ -21,12 +21,13 @@ class TestExecutableTarget:
         assert target.target_type == ETargetType.EXECUTABLE
 
 
-    def test_creating_target_generates_cmake_code(self):
+    def test_generate_cmake_code(self):
         """
         Verifies that creating an executable target generates the appropriate CMake code.
         """
         target_name = "foo"
-        ExecutableTarget(self.build_script_set, target_name)
+        target = ExecutableTarget(self.build_script_set, target_name)
+        target.generate_declaration()
         assert self.build_script_set
         assert len(self.build_script_set) == 1
 
@@ -145,13 +146,19 @@ class TestExecutableTarget:
         # Values used by the test
         target_name = "foo"
         sources = ["foo.cpp", "bar.cpp", "baz.cpp"]
+        includes = [ "include1", "include2", "include3" ]
+        libraries = [ "lib1", "lib2", "lib3" ]
         install_path = "/install/path"
 
         # Set up the target
         target = ExecutableTarget(self.build_script_set, target_name)
-        target.add_sources(sources[0], EScope.PUBLIC)
-        target.add_sources(sources[1], EScope.PRIVATE)
-        target.add_sources(sources[2], EScope.INTERFACE)
+        indices = [0, 1, 2]
+        scopes = [EScope.PUBLIC, EScope.PRIVATE, EScope.INTERFACE]
+
+        for index, scope in zip(indices, scopes):
+            target.add_sources(sources[index], scope)
+            target.add_include_directories(includes[index], scope)
+            target.link_to_library(libraries[index], False, False, scope)
         target.install(install_path)
 
         # Generate the trace file
@@ -169,4 +176,8 @@ class TestExecutableTarget:
         assert ETargetType.EXECUTABLE.value in contents
         for source in sources:
             assert source in contents
+        for include in includes:
+            assert include in contents
+        for library in libraries:
+            assert library in contents
         assert install_path in contents

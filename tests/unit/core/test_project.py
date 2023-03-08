@@ -1,6 +1,7 @@
 from pathlib import Path
 from pymake.common.project_language import EProjectLanguage
 from pymake.core.build_script_set import BuildScriptSet
+from pymake.core.executable_target import ExecutableTarget
 from pymake.core.project import Project
 from pymake.core.target import ITarget
 from pymake.tracing.null_caller_info_formatter import NullCallerInfoFormatter
@@ -62,6 +63,23 @@ class TestProject:
         assert executable.target_name == executable_name
 
 
+    def test_add_duplicate_executable_allowed_if_origin_is_identical(self):
+        project = Project(
+            self.build_scripts_set,
+            "foo",
+            EProjectLanguage.Cpp
+        )
+
+        # This would normally be handled by the `ICMake` instance that constructs
+        #   the project.
+        executable_name = "bar"
+        on_target_added: Callable[[ITarget], Optional[ITarget]] = lambda x: x
+        project.on_target_added = on_target_added
+
+        # This should not throw despite `on_target_added` returning an object
+        project.add_executable(executable_name)
+
+
     def test_add_executable_throws_if_duplicate_name(self):
         project = Project(
             self.build_scripts_set,
@@ -71,9 +89,10 @@ class TestProject:
 
         # This would normally be handled by the `ICMake` instance that constructs
         #   the project.
-        on_target_added: Callable[[ITarget], Optional[ITarget]] = lambda x: x
+        executable_name = "bar"
+        target = ExecutableTarget(self.build_scripts_set, executable_name)
+        on_target_added: Callable[[ITarget], Optional[ITarget]] = lambda x: target
         project.on_target_added = on_target_added
 
-        executable_name = "bar"
         with pytest.raises(ValueError):
             project.add_executable(executable_name)
