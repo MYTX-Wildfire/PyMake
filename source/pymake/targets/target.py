@@ -1,5 +1,5 @@
 from __future__ import annotations
-from abc import ABC
+from abc import ABC, abstractmethod
 from pathlib import Path
 from pymake.common.scope import EScope
 from pymake.common.target_type import ETargetType
@@ -215,6 +215,14 @@ class ITarget(ABC, ITraced):
             )
 
 
+    @abstractmethod
+    def generate_declaration(self) -> None:
+        """
+        Generates the declaration for the target.
+        """
+        raise NotImplementedError()
+
+
     def link_to_target(self,
         target: ITarget,
         scope: EScope = EScope.PRIVATE):
@@ -343,6 +351,21 @@ class ITarget(ABC, ITraced):
                 )
 
 
+    @abstractmethod
+    def _create_empty_clone(self) -> ITarget:
+        """
+        Creates an empty clone of the target.
+        An empty clone is a clone that has only the values required to be passed
+          to the target's constructor and not any values passed to any of the
+          target's methods.
+        @remarks This method is only used to ensure that `_get_full_target()`
+          can construct a clone of the current target and add properties to
+          the clone.
+        @returns An empty clone of the target.
+        """
+        raise NotImplementedError()
+
+
     def _get_full_target(self) -> ITarget:
         """
         Gets a target instance that includes all values for the target.
@@ -353,11 +376,7 @@ class ITarget(ABC, ITraced):
           this target links to.
         """
         # Create the target to return
-        target = ITarget(
-            self._build_scripts,
-            self._target_name,
-            self._target_type
-        )
+        target = self._create_empty_clone()
 
         # Populate the target with properties from each linked-to target
         linked_targets = [

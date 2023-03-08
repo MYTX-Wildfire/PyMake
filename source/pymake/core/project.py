@@ -73,20 +73,11 @@ class Project(ITraced):
         @throws ValueError Thrown if a target with the given name already exists.
         @returns The target instance.
         """
-        target = ExecutableTarget(
+        target = self._add_target(ExecutableTarget(
             self._build_scripts,
             target_name
-        )
-
-        # Check if a target with the given name already exists
-        prev_target = self._check_is_target_redefined(target)
-        if prev_target:
-            assert isinstance(prev_target, ExecutableTarget)
-            return prev_target
-
-        # Add the target to the project
-        target.generate_declaration()
-        self._targets[target_name] = target
+        ))
+        assert isinstance(target, ExecutableTarget)
         return target
 
 
@@ -98,20 +89,11 @@ class Project(ITraced):
         @throws ValueError Thrown if a target with the given name already exists.
         @returns The target instance.
         """
-        target = StaticLibraryTarget(
+        target = self._add_target(StaticLibraryTarget(
             self._build_scripts,
             target_name
-        )
-
-        # Check if a target with the given name already exists
-        prev_target = self._check_is_target_redefined(target)
-        if prev_target:
-            assert isinstance(prev_target, StaticLibraryTarget)
-            return prev_target
-
-        # Add the target to the project
-        target.generate_declaration()
-        self._targets[target_name] = target
+        ))
+        assert isinstance(target, StaticLibraryTarget)
         return target
 
 
@@ -123,20 +105,31 @@ class Project(ITraced):
         @throws ValueError Thrown if a target with the given name already exists.
         @returns The target instance.
         """
-        target = SharedLibraryTarget(
+        target = self._add_target(SharedLibraryTarget(
             self._build_scripts,
             target_name
-        )
+        ))
+        assert isinstance(target, SharedLibraryTarget)
+        return target
 
+
+    def _add_target(self, target: ITarget) -> ITarget:
+        """
+        Adds a target to the project.
+        @param target Target to add.
+        @throws ValueError Thrown if a target with the given name already
+          exists and is defined at a different location.
+        @returns The newly created target, or the previously added target if it
+          was defined at the same location as the target being added.
+        """
         # Check if a target with the given name already exists
         prev_target = self._check_is_target_redefined(target)
         if prev_target:
-            assert isinstance(prev_target, SharedLibraryTarget)
             return prev_target
 
         # Add the target to the project
         target.generate_declaration()
-        self._targets[target_name] = target
+        self._targets[target.target_name] = target
         return target
 
 
