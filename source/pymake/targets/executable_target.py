@@ -55,15 +55,80 @@ class ExecutableTarget(ITarget):
         return trace_dict
 
 
-    def mark_is_test_target(self):
+    def mark_is_test_target(
+        self,
+        add_valgrind_target: bool = False,
+        valgrind_target_suffix: str = "valgrind",
+        add_helgrind_target: bool = False,
+        helgrind_target_suffix: str = "helgrind",
+        add_drd_target: bool = False,
+        drd_target_suffix: str = "drd"):
         """
         Marks the target as a test target.
+        @param add_valgrind Whether to also add a valgrind test target that runs
+          the executable.
+        @param valgrind_target_suffix Suffix to add to the target name to
+          generate the valgrind target name.
+        @param add_helgrind Whether to also add a helgrind test target that runs
+          the executable.
+        @param helgrind_target_suffix Suffix to add to the target name to
+          generate the helgrind target name.
+        @param add_drd Whether to also add a valgrind drd test target that runs
+          the executable.
         """
         self._is_test_target = Traced(True)
         generator = self._build_scripts.get_or_add_build_script().generator
         with generator.open_method_block("add_test") as b:
             b.add_keyword_arguments("NAME", self._target_name)
             b.add_keyword_arguments("COMMAND", self._target_name)
+
+        if add_valgrind_target:
+            valgrind_target = f"{self._target_name}-{valgrind_target_suffix}"
+            with generator.open_method_block("add_test") as b:
+                b.add_keyword_arguments("NAME", valgrind_target)
+                b.add_keyword_arguments(
+                    "COMMAND",
+                    [
+                        "valgrind",
+                        "--leak-check=full",
+                        "--track-origins=yes",
+                        "--fair-sched=yes",
+                        "--show-leak-kinds=definite,indirect,possible",
+                        "--errors-for-leak-kinds=definite,indirect,possible",
+                        "--error-exitcode=1",
+                        f"./{self._target_name}"
+                    ]
+                )
+
+        if add_helgrind_target:
+            helgrind_target = f"{self._target_name}-{helgrind_target_suffix}"
+            with generator.open_method_block("add_test") as b:
+                b.add_keyword_arguments("NAME", helgrind_target)
+                b.add_keyword_arguments(
+                    "COMMAND",
+                    [
+                        "valgrind",
+                        "--tool=helgrind",
+                        "--fair-sched=yes",
+                        "--error-exitcode=1",
+                        f"./{self._target_name}"
+                    ]
+                )
+
+        if add_drd_target:
+            drd_target = f"{self._target_name}-{drd_target_suffix}"
+            with generator.open_method_block("add_test") as b:
+                b.add_keyword_arguments("NAME", drd_target)
+                b.add_keyword_arguments(
+                    "COMMAND",
+                    [
+                        "valgrind",
+                        "--tool=drd",
+                        "--fair-sched=yes",
+                        "--error-exitcode=1",
+                        f"./{self._target_name}"
+                    ]
+                )
 
 
     def set_install_rpath(self, path: str) -> None:

@@ -19,6 +19,7 @@ RUN apt-get update -y && \
 		python3-pip \
 		ssh \
 		sudo \
+		valgrind \
 		vim && \
 	update-alternatives --install \
 		/usr/bin/python3 python3 /usr/bin/python${PYTHON_VERSION} 3
