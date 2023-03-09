@@ -4,7 +4,7 @@ from pymake.common.cmake_build_type import ECMakeBuildType
 from pymake.common.cmake_generator import ECMakeGenerator
 from pymake.generators.trace_file_generator import ITraceFileGenerator
 from pymake.tracing.traced import ITraced
-from typing import Dict, List, Optional, Sequence
+from typing import Dict, Iterable, List, Optional, Sequence
 
 class Preset(ITraced):
     """
@@ -23,6 +23,7 @@ class Preset(ITraced):
         cache_vars: Optional[Dict[str, str]] = None,
         env_vars: Optional[Dict[str, str]] = None,
         inherits: Optional[Preset] | Sequence[Preset] = None,
+        targets: str | Iterable[str] = "install",
         is_full_preset: bool = False):
         """
         Initializes the preset.
@@ -40,6 +41,7 @@ class Preset(ITraced):
         @param cache_vars Dictionary of cache variables to set.
         @param env_vars Dictionary of environment variables to set.
         @param inherits Presets that this preset inherits from.
+        @param targets Target(s) that should be built when using the preset.
         @param is_full_preset Whether the preset includes all values from
           presets that it inherits from.
         """
@@ -62,6 +64,10 @@ class Preset(ITraced):
             self._base_presets = [inherits]
         else:
             self._base_presets = list(inherits)
+        if isinstance(targets, str):
+            self._targets = [targets]
+        else:
+            self._targets = list(targets)
         self._is_full_preset = is_full_preset
 
 
@@ -199,6 +205,25 @@ class Preset(ITraced):
 
 
     @property
+    def targets(self) -> List[str]:
+        """
+        Gets the target(s) that should be built when using the preset.
+        """
+        return self._targets
+
+
+    @targets.setter
+    def targets(self, value: str | Iterable[str]) -> None:
+        """
+        Sets the target(s) that should be built when using the preset.
+        """
+        if isinstance(value, str):
+            self._targets = [value]
+        else:
+            self._targets = list(value)
+
+
+    @property
     def base_presets(self) -> List[Preset]:
         """
         Gets the presets that this preset inherits from.
@@ -226,7 +251,7 @@ class Preset(ITraced):
             preset["hidden"] = True
         preset["configurePreset"] = self._name
         preset["inheritConfigureEnvironment"] = True
-        preset["targets"] = "install"
+        preset["targets"] = self._targets
         return preset
 
 
@@ -293,6 +318,7 @@ class Preset(ITraced):
             desc=self._description,
             is_hidden=self._hidden,
             inherits=self._base_presets,
+            targets=self._targets,
             is_full_preset=True
         )
         for p in self._base_presets:
@@ -321,6 +347,7 @@ class Preset(ITraced):
         props["installDir"] = full_preset._install_dir
         props["cacheVariables"] = full_preset._cache_variables
         props["environment"] = full_preset._env_variables
+        props["targets"] = full_preset._targets
         props["inherits"] = [p._name for p in full_preset._base_presets]
         generator.write_file({
             full_preset.preset_name: props

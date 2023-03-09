@@ -14,12 +14,14 @@ class Project(ITraced):
     def __init__(self,
         build_scripts: BuildScriptSet,
         project_name: str,
-        project_languages: EProjectLanguage | Iterable[EProjectLanguage]):
+        project_languages: EProjectLanguage | Iterable[EProjectLanguage],
+        enable_ctest: bool = True):
         """
         Initializes the project.
         @param build_scripts Set of build scripts that the project will generate.
         @param project_name Name of the project.
         @param project_languages Languages used in the project.
+        @param enable_ctest Whether to enable CTest for the project.
         """
         super().__init__()
         self._build_scripts = build_scripts
@@ -47,6 +49,12 @@ class Project(ITraced):
                 "LANGUAGES",
                 [l.value for l in self._project_languages]
             )
+
+        if enable_ctest:
+            with generator.open_method_block("include") as b:
+                b.add_arguments("CTest")
+            with generator.open_method_block("enable_testing") as b:
+                pass
 
 
     @property

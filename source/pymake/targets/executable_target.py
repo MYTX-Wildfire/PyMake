@@ -2,6 +2,7 @@ from __future__ import annotations
 from pymake.common.target_type import ETargetType
 from pymake.core.build_script_set import BuildScriptSet
 from pymake.targets.target import ITarget
+from pymake.tracing.traced import Traced
 from typing import Dict, Optional
 
 class ExecutableTarget(ITarget):
@@ -22,8 +23,11 @@ class ExecutableTarget(ITarget):
             ETargetType.EXECUTABLE
         )
 
+        # Whether the target is a test target
+        self._is_test_target = Traced(False)
+
         # RPATH to use when installed
-        self._install_rpath: Optional[str] = None
+        self._install_rpath: Optional[Traced[str]] = None
 
 
     def generate_declaration(self) -> None:
@@ -51,12 +55,23 @@ class ExecutableTarget(ITarget):
         return trace_dict
 
 
+    def mark_is_test_target(self):
+        """
+        Marks the target as a test target.
+        """
+        self._is_test_target = Traced(True)
+        generator = self._build_scripts.get_or_add_build_script().generator
+        with generator.open_method_block("add_test") as b:
+            b.add_keyword_arguments("NAME", self._target_name)
+            b.add_keyword_arguments("COMMAND", self._target_name)
+
+
     def set_install_rpath(self, path: str) -> None:
         """
         Sets the rpath that the installed executable will use.
         @param path Path to set the rpath to. Can use `$ORIGIN`.
         """
-        self._install_rpath = path
+        self._install_rpath = Traced(path)
         generator = self._build_scripts.get_or_add_build_script().generator
         with generator.open_method_block("set_target_properties") as b:
             b.add_arguments(self._target_name)

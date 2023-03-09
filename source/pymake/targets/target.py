@@ -47,6 +47,10 @@ class ITarget(ABC, ITraced):
         #   target, the target will not be an executable target.
         self._link_libraries: ScopedSets[str | ITarget] = ScopedSets()
 
+        # Paths to directories to search for libraries
+        # All paths in this set will be absolute paths.
+        self._link_directories: ScopedSets[Path] = ScopedSets()
+
         # Whether the target will be installed
         # If `_is_installed` is `True` but `_install_path` is `None`, the path
         #   that the target will be installed to will be CMake's default path
@@ -116,6 +120,14 @@ class ITarget(ABC, ITraced):
         Gets the include directories for the target.
         """
         return self._include_directories
+
+
+    @property
+    def link_directories(self) -> ScopedSets[Path]:
+        """
+        Gets the directories to search for libraries.
+        """
+        return self._link_directories
 
 
     @property
@@ -212,6 +224,50 @@ class ITarget(ABC, ITraced):
             b.add_keyword_arguments(
                 scope.value,
                 include_directory_abs_paths
+            )
+
+
+    def add_link_directories(self,
+        link_directories: str | Iterable[str],
+        scope: EScope = EScope.PRIVATE) -> None:
+        """
+        Adds link directories to the target.
+        @param link_directories Link directories to add to the target.
+          If any path is a relative path, it will be interpreted relative to the
+          caller's directory.
+        @param scope Scope of the link directories.
+        """
+        if isinstance(link_directories, str):
+            link_directories = [link_directories]
+
+        # Get the path of the caller
+        # Any relative paths will be interpreted relative to this path.
+        caller_info = CallerInfo.closest_external_frame()
+        caller_path = Path(caller_info.file_path).parent
+
+        link_directory_abs_paths: List[str] = []
+        for link_directory in link_directories:
+            # Convert all paths to absolute paths if they aren't already
+            path = Path(link_directory)
+            if not path.is_absolute():
+                path = caller_path / path
+            path = path.resolve()
+
+            if not self._link_directories.select_set(scope).add(path):
+                continue
+            link_directory_abs_paths.append(str(path))
+
+        # If no new paths were added, skip generating the CMake code
+        if not link_directory_abs_paths:
+            return
+
+        # Generate the CMake code
+        generator = self._build_scripts.get_or_add_build_script().generator
+        with generator.open_method_block("target_link_directories") as b:
+            b.add_arguments(self._target_name)
+            b.add_keyword_arguments(
+                scope.value,
+                link_directory_abs_paths
             )
 
 
