@@ -8,6 +8,7 @@ ARG PYTHON_VERSION=3.11
 RUN apt-get update -y && \
 	apt-get install -y \
 		git \
+		libgtest-dev \
 		ninja-build \
 		python${PYTHON_VERSION} \
 		python3-pip \
@@ -83,3 +84,9 @@ RUN mkdir -p /tmp/${USERNAME} && \
 		--slave /usr/bin/ctest ctest /tools/cmake/3.25.2/bin/ctest && \
 	# Clean up temporary files
 	rm -rf /tmp/${USERNAME}
+
+# Compile googletest
+RUN cd /usr/src/gtest && \
+	cmake3.25 . && \
+	make && \
+	cp *.a /usr/lib

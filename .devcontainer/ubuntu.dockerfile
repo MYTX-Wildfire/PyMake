@@ -9,8 +9,11 @@ ARG PYTHON_VERSION=3.11
 # Install apt packages
 RUN apt-get update -y && \
 	apt-get install -y \
+	 	clang-15 \
 		doxygen \
 		git \
+		g++-12 \
+		libgtest-dev \
 		ninja-build \
 		python${PYTHON_VERSION} \
 		python3-pip \
@@ -89,6 +92,12 @@ RUN mkdir -p /tmp/${USERNAME} && \
 		--slave /usr/bin/ctest ctest /tools/cmake/3.25.2/bin/ctest && \
 	# Clean up temporary files
 	rm -rf /tmp/${USERNAME}
+
+# Compile googletest
+RUN cd /usr/src/gtest && \
+	cmake3.25 . -DCMAKE_CXX_COMPILER=g++-12 && \
+	make && \
+	cp lib/*.a /usr/lib
 
 # Create the user
 RUN groupadd --gid $USER_GID $USERNAME && \
