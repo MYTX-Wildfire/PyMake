@@ -7,7 +7,10 @@ ARG PYTHON_VERSION=3.11
 # Install apt packages
 RUN apt-get update -y && \
 	apt-get install -y \
+	 	clang-15 \
+		doxygen \
 		git \
+		g++-12 \
 		libgtest-dev \
 		ninja-build \
 		python${PYTHON_VERSION} \
@@ -87,6 +90,6 @@ RUN mkdir -p /tmp/${USERNAME} && \
 
 # Compile googletest
 RUN cd /usr/src/gtest && \
-	cmake3.25 . && \
+	cmake3.25 . -DCMAKE_CXX_COMPILER=g++-12 && \
 	make && \
-	cp *.a /usr/lib
+	cp lib/*.a /usr/lib
