@@ -3,7 +3,7 @@ from pymake.generators.text_generator import TextGenerator
 from pymake.tracing.caller_info import CallerInfo
 from pymake.tracing.caller_info_formatter import ICallerInfoFormatter
 from types import TracebackType
-from typing import Iterable, Optional, Type
+from typing import Optional, Type
 
 class CMakeMethodBuilder:
     """
@@ -32,29 +32,31 @@ class CMakeMethodBuilder:
         self._generator.indentation_level += 1
 
 
-    def add_arguments(self, arguments: str | Iterable[str]) -> None:
+    def add_arguments(self, *args: str) -> None:
         """
         Adds keyword-less argument(s) to the method.
-        @param
+        @param args Argument(s) to add. If this is empty, this method will be
+          a no-op.
         """
-        if isinstance(arguments, str):
-            arguments = [arguments]
+        if not args:
+            return
 
         self._arguments_added = True
-        for argument in arguments:
-            self._generator.append_line(argument)
+        for arg in args:
+            self._generator.append_line(arg)
 
 
     def add_keyword_arguments(self,
         keyword: str,
-        arguments: str | Iterable[str]) -> None:
+        *args: str) -> None:
         """
         Adds argument(s) under a method parameter keyword to the method.
         @param keyword Keyword to use.
-        @param arguments Argument(s) to add.
+        @param args Argument(s) to add. Must not be empty.
+        @throws RuntimeError Thrown if `args` is empty.
         """
-        if isinstance(arguments, str):
-            arguments = [arguments]
+        if not args:
+            raise RuntimeError("No arguments provided.")
 
         self._arguments_added = True
 
@@ -62,8 +64,8 @@ class CMakeMethodBuilder:
         #   increased indentation level for the arguments
         self._generator.append_line(f"{keyword}")
         self._generator.increase_indentation_level()
-        for argument in arguments:
-            self._generator.append_line(argument)
+        for arg in args:
+            self._generator.append_line(arg)
         self._generator.decrease_indentation_level()
 
 
@@ -92,8 +94,8 @@ class CMakeMethodBuilder:
         else:
             # This should be a no-op, but is included just in case
             self._generator.finish_line()
-            self._generator.decrease_indentation_level()
 
         # Finish the line with the parenthesis and add a new line afterwards
         #   to separate this method call from the next line of code
+        self._generator.decrease_indentation_level()
         self._generator.append_line(")\n")

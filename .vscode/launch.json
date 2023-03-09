@@ -1,7 +1,7 @@
 {
 	"configurations": [
 		{
-			"name": "Hello World",
+			"name": "[1] Hello World",
 			"type": "python",
 			"request": "launch",
 			"program": "${workspaceFolder}/samples/1-hello-world/make.py",
@@ -12,10 +12,43 @@
 			"justMyCode": true
 		},
 		{
-			"name": "Hello Static",
+			"name": "[2] Hello Static",
 			"type": "python",
 			"request": "launch",
 			"program": "${workspaceFolder}/samples/2-hello-static/make.py",
+			"args": [
+				"debug"
+			],
+			"console": "integratedTerminal",
+			"justMyCode": true
+		},
+		{
+			"name": "[3] Hello Shared",
+			"type": "python",
+			"request": "launch",
+			"program": "${workspaceFolder}/samples/3-hello-shared/make.py",
+			"args": [
+				"debug"
+			],
+			"console": "integratedTerminal",
+			"justMyCode": true
+		},
+		{
+			"name": "[4] Hello GTest",
+			"type": "python",
+			"request": "launch",
+			"program": "${workspaceFolder}/samples/4-hello-gtest/make.py",
+			"args": [
+				"debug"
+			],
+			"console": "integratedTerminal",
+			"justMyCode": true
+		},
+		{
+			"name": "[5] Hello Valgrind",
+			"type": "python",
+			"request": "launch",
+			"program": "${workspaceFolder}/samples/5-hello-valgrind/make.py",
 			"args": [
 				"debug"
 			],

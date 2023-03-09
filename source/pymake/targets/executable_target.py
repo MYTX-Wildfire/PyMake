@@ -11,20 +11,20 @@ class ExecutableTarget(ITarget):
     """
     def __init__(self,
         build_scripts: BuildScriptSet,
-        target_name: str):
+        target_name: str,
+        project_all_target_name: str):
         """
         Initializes the target.
         @param build_scripts Set of build scripts that the project will generate.
         @param target_name Name of the target.
+        @param project_all_target_name Name of the project's `all` target.
         """
         super().__init__(
             build_scripts,
             target_name,
             ETargetType.EXECUTABLE
         )
-
-        # Whether the target is a test target
-        self._is_test_target = Traced(False)
+        self._project_all_target_name = project_all_target_name
 
         # RPATH to use when installed
         self._install_rpath: Optional[Traced[str]] = None
@@ -37,6 +37,11 @@ class ExecutableTarget(ITarget):
         # Generate the CMake code
         generator = self._build_scripts.get_or_add_build_script().generator
         with generator.open_method_block("add_executable") as b:
+            b.add_arguments(self._target_name)
+
+        # Add the target as a dependency of the project's `all` target
+        with generator.open_method_block("add_dependencies") as b:
+            b.add_arguments(self._project_all_target_name)
             b.add_arguments(self._target_name)
 
 
@@ -88,16 +93,14 @@ class ExecutableTarget(ITarget):
                 b.add_keyword_arguments("NAME", valgrind_target)
                 b.add_keyword_arguments(
                     "COMMAND",
-                    [
-                        "valgrind",
-                        "--leak-check=full",
-                        "--track-origins=yes",
-                        "--fair-sched=yes",
-                        "--show-leak-kinds=definite,indirect,possible",
-                        "--errors-for-leak-kinds=definite,indirect,possible",
-                        "--error-exitcode=1",
-                        f"./{self._target_name}"
-                    ]
+                    "valgrind",
+                    "--leak-check=full",
+                    "--track-origins=yes",
+                    "--fair-sched=yes",
+                    "--show-leak-kinds=definite,indirect,possible",
+                    "--errors-for-leak-kinds=definite,indirect,possible",
+                    "--error-exitcode=1",
+                    f"./{self._target_name}"
                 )
 
         if add_helgrind_target:
@@ -106,13 +109,11 @@ class ExecutableTarget(ITarget):
                 b.add_keyword_arguments("NAME", helgrind_target)
                 b.add_keyword_arguments(
                     "COMMAND",
-                    [
-                        "valgrind",
-                        "--tool=helgrind",
-                        "--fair-sched=yes",
-                        "--error-exitcode=1",
-                        f"./{self._target_name}"
-                    ]
+                    "valgrind",
+                    "--tool=helgrind",
+                    "--fair-sched=yes",
+                    "--error-exitcode=1",
+                    f"./{self._target_name}"
                 )
 
         if add_drd_target:
@@ -121,13 +122,11 @@ class ExecutableTarget(ITarget):
                 b.add_keyword_arguments("NAME", drd_target)
                 b.add_keyword_arguments(
                     "COMMAND",
-                    [
-                        "valgrind",
-                        "--tool=drd",
-                        "--fair-sched=yes",
-                        "--error-exitcode=1",
-                        f"./{self._target_name}"
-                    ]
+                    "valgrind",
+                    "--tool=drd",
+                    "--fair-sched=yes",
+                    "--error-exitcode=1",
+                    f"./{self._target_name}"
                 )
 
 
@@ -157,7 +156,8 @@ class ExecutableTarget(ITarget):
         """
         target = ExecutableTarget(
             self._build_scripts,
-            self._target_name
+            self._target_name,
+            self._project_all_target_name
         )
         target._install_rpath = self._install_rpath
         return target

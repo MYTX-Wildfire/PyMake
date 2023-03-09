@@ -9,17 +9,20 @@ class StaticLibraryTarget(ITarget):
     """
     def __init__(self,
         build_scripts: BuildScriptSet,
-        target_name: str):
+        target_name: str,
+        project_all_target_name: str):
         """
         Initializes the target.
         @param build_scripts Set of build scripts that the project will generate.
         @param target_name Name of the target.
+        @param project_all_target_name Name of the project's `all` target.
         """
         super().__init__(
             build_scripts,
             target_name,
             ETargetType.STATIC
         )
+        self._project_all_target_name = project_all_target_name
 
 
     def generate_declaration(self) -> None:
@@ -31,6 +34,11 @@ class StaticLibraryTarget(ITarget):
         with generator.open_method_block("add_library") as b:
             b.add_arguments(self._target_name)
             b.add_arguments("STATIC")
+
+        # Add the target as a dependency of the project's `all` target
+        with generator.open_method_block("add_dependencies") as b:
+            b.add_arguments(self._project_all_target_name)
+            b.add_arguments(self._target_name)
 
 
     def _create_empty_clone(self) -> ITarget:
@@ -46,5 +54,6 @@ class StaticLibraryTarget(ITarget):
         """
         return StaticLibraryTarget(
             self._build_scripts,
-            self._target_name
+            self._target_name,
+            self._project_all_target_name
         )

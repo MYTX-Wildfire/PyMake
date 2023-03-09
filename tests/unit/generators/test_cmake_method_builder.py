@@ -38,7 +38,7 @@ def test_generate_method_with_single_argument():
 def test_generate_method_with_arguments():
     generator = CMakeGenerator(NullCallerInfoFormatter())
     with generator.open_method_block("foo") as method:
-        method.add_arguments(["bar", "baz"])
+        method.add_arguments("bar", "baz")
 
     cmake_code = generator.generate()
     tokens = cmake_code.splitlines()
@@ -72,7 +72,7 @@ def test_generate_method_with_single_keyword_argument():
 def test_generate_method_with_keyword_arguments():
     generator = CMakeGenerator(NullCallerInfoFormatter())
     with generator.open_method_block("foo") as method:
-        method.add_keyword_arguments("KEYWORD", ["bar", "baz"])
+        method.add_keyword_arguments("KEYWORD", "bar", "baz")
 
     cmake_code = generator.generate()
     tokens = cmake_code.splitlines()

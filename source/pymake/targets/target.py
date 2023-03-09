@@ -179,7 +179,7 @@ class ITarget(ABC, ITraced):
             b.add_arguments(self._target_name)
             b.add_keyword_arguments(
                 scope.value,
-                source_abs_paths
+                *source_abs_paths
             )
 
 
@@ -223,7 +223,7 @@ class ITarget(ABC, ITraced):
             b.add_arguments(self._target_name)
             b.add_keyword_arguments(
                 scope.value,
-                include_directory_abs_paths
+                *include_directory_abs_paths
             )
 
 
@@ -267,7 +267,7 @@ class ITarget(ABC, ITraced):
             b.add_arguments(self._target_name)
             b.add_keyword_arguments(
                 scope.value,
-                link_directory_abs_paths
+                *link_directory_abs_paths
             )
 
 
