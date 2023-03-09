@@ -2,6 +2,7 @@ from __future__ import annotations
 from pymake.common.target_type import ETargetType
 from pymake.core.build_script_set import BuildScriptSet
 from pymake.targets.target import ITarget
+from typing import Dict, Optional
 
 class ExecutableTarget(ITarget):
     """
@@ -21,6 +22,9 @@ class ExecutableTarget(ITarget):
             ETargetType.EXECUTABLE
         )
 
+        # RPATH to use when installed
+        self._install_rpath: Optional[str] = None
+
 
     def generate_declaration(self) -> None:
         """
@@ -30,6 +34,34 @@ class ExecutableTarget(ITarget):
         generator = self._build_scripts.get_or_add_build_script().generator
         with generator.open_method_block("add_executable") as b:
             b.add_arguments(self._target_name)
+
+
+    def generate_trace_dict(self) -> Dict[str, object]:
+        """
+        Generates a dictionary containing the properties of the target.
+        @return Dictionary containing the properties of the target.
+        """
+        # Get the trace file from the `Target` class
+        trace_dict = super().generate_trace_dict()
+
+        # Add executable-specific properties
+        if self._install_rpath is not None:
+            trace_dict["install_rpath"] = self._install_rpath
+
+        return trace_dict
+
+
+    def set_install_rpath(self, path: str) -> None:
+        """
+        Sets the rpath that the installed executable will use.
+        @param path Path to set the rpath to. Can use `$ORIGIN`.
+        """
+        self._install_rpath = path
+        generator = self._build_scripts.get_or_add_build_script().generator
+        with generator.open_method_block("set_target_properties") as b:
+            b.add_arguments(self._target_name)
+            b.add_arguments("PROPERTIES")
+            b.add_keyword_arguments("INSTALL_RPATH", path)
 
 
     def _create_empty_clone(self) -> ITarget:
@@ -43,7 +75,9 @@ class ExecutableTarget(ITarget):
           the clone.
         @returns An empty clone of the target.
         """
-        return ExecutableTarget(
+        target = ExecutableTarget(
             self._build_scripts,
             self._target_name
         )
+        target._install_rpath = self._install_rpath
+        return target
