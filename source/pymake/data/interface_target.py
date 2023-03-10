@@ -17,10 +17,10 @@ class InterfaceTarget(ITarget):
         super().__init__(
             target_name,
             ETargetType.INTERFACE,
-            # An interface target cannot be a sanitizer target
-            ESanitizerFlags.NONE,
             # An interface target can never be a test target
-            ETestFlags.NONE
+            ETestFlags.NONE,
+            # An interface target cannot be a sanitizer target
+            ESanitizerFlags.NONE
         )
 
 

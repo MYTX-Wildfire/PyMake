@@ -32,11 +32,11 @@ class ExternalLibrary(ITarget):
           was compiled.
         """
         super().__init__(
-            target_name=target_name,
-            target_type=ETargetType.IMPORTED,
-            sanitizer_flags=sanitizer_flags,
+            target_name,
+            ETargetType.IMPORTED,
             # Imported targets should never be test targets
-            test_flags=ETestFlags.NONE
+            ETestFlags.NONE,
+            sanitizer_flags
         )
 
         # These values are provided by PyMake code and should be valid

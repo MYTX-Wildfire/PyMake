@@ -1,5 +1,7 @@
 # Custom Dictionary Words
 ctest
+helgrind
+memcheck
 pymake
 pyright
 pytest

@@ -15,20 +15,20 @@ class ITarget(ABC, ITraced):
     def __init__(self,
         target_name: str,
         target_type: ETargetType,
-        sanitizer_flags: int,
-        test_flags: int):
+        test_flags: int,
+        sanitizer_flags: int):
         """
         Initializes the target.
         @param target_name The name of the target.
         @param target_type The type of the target.
-        @param sanitizer_flags The sanitizers enabled for the target.
         @param test_flags Identifies whether the target is a test target and
           what kind of target the test target is.
+        @param sanitizer_flags The sanitizers enabled for the target.
         """
         self._target_name = target_name
         self._target_type = target_type
-        self._sanitizer_flags = sanitizer_flags
         self._test_flags = test_flags
+        self._sanitizer_flags = sanitizer_flags
 
 
     @property

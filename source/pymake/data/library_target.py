@@ -22,9 +22,9 @@ class LibraryTarget(ITarget):
         super().__init__(
             target_name,
             target_type,
-            sanitizer_flags,
             # A library target can never be a test target
-            ETestFlags.NONE
+            ETestFlags.NONE,
+            sanitizer_flags
         )
 
 
