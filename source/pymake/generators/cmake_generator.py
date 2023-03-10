@@ -19,7 +19,33 @@ class CMakeGenerator:
           of spaces inserted for each indentation level.
         """
         self._text_generator = TextGenerator(use_spaces, tab_size)
+        self._use_spaces = use_spaces
+        self._tab_size = tab_size
         self._formatter = formatter
+
+
+    @property
+    def formatter(self) -> ICallerInfoFormatter:
+        """
+        Gets the formatter used to format tracing information.
+        """
+        return self._formatter
+
+
+    @property
+    def use_spaces(self) -> bool:
+        """
+        Gets whether spaces should be used in the generated string.
+        """
+        return self._use_spaces
+
+
+    @property
+    def tab_size(self) -> int:
+        """
+        Gets the number of spaces inserted for each indentation level.
+        """
+        return self._tab_size
 
 
     def generate(self) -> str:

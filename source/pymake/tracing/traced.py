@@ -1,3 +1,4 @@
+from pathlib import Path
 from pymake.tracing.caller_info import CallerInfo
 from typing import Dict, Generic, TypeVar
 
@@ -7,11 +8,15 @@ class ITraced:
     """
     Interface implemented by classes that provide tracing data for themselves.
     """
-    def __init__(self):
+    def __init__(self,
+        origin: CallerInfo | None = None):
         """
         Initializes the object.
+        @param origin Call site where the object was constructed. If not
+          provided, the call site will be determined automatically by capturing
+          the first external frame.
         """
-        self._origin = CallerInfo.closest_external_frame()
+        self._origin = origin if origin else CallerInfo.closest_external_frame()
 
 
     @property
@@ -22,7 +27,31 @@ class ITraced:
         return self._origin
 
 
-class Traced(Generic[T]):
+    @property
+    def file_path(self) -> Path:
+        """
+        Gets the file path where the object was constructed.
+        """
+        return self._origin.file_path
+
+
+    @property
+    def file_dir(self) -> Path:
+        """
+        Gets the directory where the object was constructed.
+        """
+        return self._origin.file_path.parent
+
+
+    @property
+    def line_number(self) -> int:
+        """
+        Gets the line number where the object was constructed.
+        """
+        return self._origin.line_number
+
+
+class Traced(Generic[T], ITraced):
     """
     Wrapper used to add tracing information to a value.
     """
@@ -34,9 +63,8 @@ class Traced(Generic[T]):
           provided, the call site will be determined automatically by capturing
           the first external frame.
         """
+        super().__init__(call_site)
         self._value = value
-        self._origin = (call_site if call_site
-            else CallerInfo.closest_external_frame())
 
 
     def to_dict(self) -> Dict[str, object]:
@@ -46,18 +74,10 @@ class Traced(Generic[T]):
         return {
             "value": str(self._value),
             "origin": {
-                "file": str(self._origin.file_path),
-                "line": self._origin.line_number
+                "file": str(self.origin.file_path),
+                "line": self.origin.line_number
             }
         }
-
-
-    @property
-    def origin(self) -> CallerInfo:
-        """
-        Returns the call site where the value was provided from.
-        """
-        return self._origin
 
 
     @property

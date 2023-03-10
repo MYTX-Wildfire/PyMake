@@ -1,4 +1,6 @@
 # Custom Dictionary Words
+ctest
 pymake
 pyright
 pytest
+valgrind
