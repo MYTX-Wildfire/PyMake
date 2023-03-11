@@ -1,14 +1,10 @@
 from __future__ import annotations
 from pathlib import Path
 from pymake.common.cmake_version import ECMakeVersion
-from pymake.core.build_script import BuildScript
 from pymake.model.project_scope import ProjectScope
-from pymake.generators.cmake_generator import CMakeGenerator
 from pymake.tracing.caller_info import CallerInfo
-from pymake.tracing.caller_info_formatter import ICallerInfoFormatter
-from pymake.tracing.shortened_caller_info_formatter import ShortenedCallerInfoFormatter
 from pymake.tracing.traced_dict import TracedDict
-from typing import Dict, Iterable, Optional
+from typing import Dict, Iterable
 
 class PyMakeProject:
     """
@@ -26,9 +22,7 @@ class PyMakeProject:
         source_dir: str | Path,
         generated_dir: str | Path,
         build_dir: str | Path,
-        install_dir: str | Path,
-        caller_info_formatter: Optional[ICallerInfoFormatter] = None) \
-            -> PyMakeProject:
+        install_dir: str | Path) -> PyMakeProject:
         """
         Gets or creates the PyMake project for the target origin.
         @param origin Location in external PyMake build scripts to get the
@@ -51,8 +45,6 @@ class PyMakeProject:
           install tree. This may be an absolute or relative path. If the path
           is a relative path, it will be resolved relative to the caller's
           directory.
-        @param caller_info_formatter The formatter to use when outputting caller
-          information. If this is None, a default formatter will be used.
         @returns The PyMake project for the call site.
         """
         if not origin:
@@ -68,8 +60,7 @@ class PyMakeProject:
             source_dir,
             generated_dir,
             build_dir,
-            install_dir,
-            caller_info_formatter
+            install_dir
         )
         PyMakeProject._pymake_projects[origin] = project
         return project
@@ -80,8 +71,7 @@ class PyMakeProject:
         source_dir: str | Path,
         generated_dir: str | Path,
         build_dir: str | Path,
-        install_dir: str | Path,
-        caller_info_formatter: Optional[ICallerInfoFormatter] = None):
+        install_dir: str | Path):
         """
         Initializes the project.
         @param cmake_version The version of CMake to target when generating the
@@ -101,8 +91,6 @@ class PyMakeProject:
           install tree. This may be an absolute or relative path. If the path
           is a relative path, it will be resolved relative to the caller's
           directory.
-        @param caller_info_formatter The formatter to use when outputting caller
-          information. If this is None, a default formatter will be used.
         """
         # Get the path to resolve relative paths against.
         caller_info = CallerInfo.closest_external_frame()
@@ -134,15 +122,17 @@ class PyMakeProject:
         self._generated_dir = generated_dir
         self._build_dir = build_dir
         self._install_dir = install_dir
-        if caller_info_formatter:
-            self._caller_info_formatter = caller_info_formatter
-        else:
-            self._caller_info_formatter = ShortenedCallerInfoFormatter(
-                source_dir
-            )
 
         # Collection of project scopes
         self._project_scopes: TracedDict[str, ProjectScope] = TracedDict()
+
+
+    @property
+    def cmake_version(self) -> ECMakeVersion:
+        """
+        The version of CMake to target when generating the project.
+        """
+        return self._cmake_version
 
 
     @property
@@ -196,56 +186,3 @@ class PyMakeProject:
         @return The project scope.
         """
         raise NotImplementedError()
-
-
-    def generate_project(self,
-        use_spaces: bool = False,
-        tab_size: int = 4) -> None:
-        """
-        Generates the CMake build scripts for the project.
-        @param use_spaces Whether to use spaces instead of tabs for indentation
-          in the generated output.
-        @param tab_size The number of spaces to use for each indentation level.
-          Only used if `use_spaces` is True.
-        """
-        # Create the top-level build script
-        build_script = BuildScript(
-            target_path=self.generated_dir / "CMakeLists.txt",
-            generator=CMakeGenerator(
-                self._caller_info_formatter,
-                use_spaces,
-                tab_size
-            )
-        )
-
-        # Generate required initial declarations
-        with build_script.generator.open_method_block(
-            "cmake_minimum_required") as b:
-            b.add_keyword_arguments("VERSION", self._cmake_version.value)
-
-        # Generate add_subdirectory() calls for each project scope
-        for project_name, _ in self._project_scopes:
-            with build_script.generator.open_method_block(
-                "add_subdirectory") as b:
-                b.add_arguments(project_name)
-
-        # Write the top-level build script to disk
-        build_script.write_file()
-
-        # Generate the build scripts for each project scope
-        for project_name, project_scope in self._project_scopes:
-            project_dir = self.generated_dir / project_name
-            project_dir.mkdir(parents=True, exist_ok=True)
-
-            project_build_script = BuildScript(
-                target_path=project_dir / "CMakeLists.txt",
-                generator=CMakeGenerator(
-                    self._caller_info_formatter,
-                    use_spaces,
-                    tab_size
-                )
-            )
-            project_scope.generate_project(
-                project_dir,
-                project_build_script
-            )

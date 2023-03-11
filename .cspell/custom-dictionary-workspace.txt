@@ -1,10 +1,17 @@
 # Custom Dictionary Words
+cppcheck
+cpplint
 ctest
 Doxygen
 gtest
 helgrind
+implib
+interprocedural
+iwyu
 memcheck
 pymake
 pyright
 pytest
+rpath
+rpaths
 valgrind
