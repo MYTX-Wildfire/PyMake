@@ -2,10 +2,11 @@ from pymake.common.sanitizer_flags import ESanitizerFlags
 from pymake.common.scope import EScope
 from pymake.core.build_script import BuildScript
 from pymake.model.targets.build.executable_target import ExecutableTarget
-from pymake.model.targets.interface_target import InterfaceTarget
 from pymake.model.targets.build.library_target import LibraryTarget
+from pymake.model.targets.interface_target import InterfaceTarget
+from pymake.model.targets.target import Target
 from pymake.tracing.traced_dict import TracedDict
-from typing import Callable, Dict, Generic, Optional, TypeVar
+from typing import Callable, Dict, Generic, Iterable, List, Optional, TypeVar
 
 LibraryType = TypeVar("LibraryType", bound=LibraryTarget)
 
@@ -52,6 +53,19 @@ class InternalLibrarySet(Generic[LibraryType]):
             if sanitizer_flag == ESanitizerFlags.NONE:
                 continue
             self._sanitized_targets_by_flag[sanitizer_flag] = None
+
+
+    @property
+    def targets(self) -> Iterable[Target]:
+        """
+        Gets the targets in this target set.
+        """
+        targets: List[Target] = []
+        if self._library_target:
+            targets.append(self._library_target)
+        targets.extend([t for _, t in self._sanitized_targets])
+        targets.extend([t for _, t in self._test_targets])
+        return targets
 
 
     def add_base_target(self, target_name: str) -> LibraryType:

@@ -3,6 +3,8 @@ from pymake.common.project_language import EProjectLanguage
 from pymake.common.test_flags import ETestFlags
 from pymake.core.build_script import BuildScript
 from pymake.model.targets.build.executable_target import ExecutableTarget
+from pymake.model.target_sets.executable_set import ExecutableSet
+from pymake.model.target_sets.target_set import ITargetSet
 from pymake.model.target_sets.library_set import LibrarySet
 from pymake.generators.cmake_generator import CMakeGenerator
 from pymake.tracing.traced import ITraced
@@ -92,6 +94,14 @@ class ProjectScope(ITraced):
         Gets the name of the project's `test` target.
         """
         return self._project_test_target_name
+
+
+    @property
+    def target_sets(self) -> Iterable[ITargetSet]:
+        """
+        Gets all target sets in the project.
+        """
+        return [s for _, s in self._target_sets]
 
 
     def add_executable(self,

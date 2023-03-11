@@ -2,6 +2,10 @@ from pymake.visitors.null_project_scope_visitor import NullProjectScopeVisitor
 from pymake.visitors.null_project_visitor import NullProjectVisitor
 from pymake.visitors.project_scope_visitor import IProjectScopeVisitor
 from pymake.visitors.project_visitor import IProjectVisitor
+from pymake.visitors.target_set.executable_set_visitor import IExecutableSetVisitor
+from pymake.visitors.target_set.library_set_visitor import ILibrarySetVisitor
+from pymake.visitors.target_set.null_executable_set_visitor import NullExecutableSetVisitor
+from pymake.visitors.target_set.null_library_set_visitor import NullLibrarySetVisitor
 from pymake.visitors.targets.build.build_target_visitor import IBuildTargetVisitor
 from pymake.visitors.targets.build.executable_target_visitor import IExecutableTargetVisitor
 from pymake.visitors.targets.build.library_target_visitor import ILibraryTargetVisitor
@@ -20,6 +24,8 @@ from pymake.visitors.targets.imported.external_library_target_visitor import IEx
 from pymake.visitors.targets.imported.imported_target_visitor import IImportedTargetVisitor
 from pymake.visitors.targets.imported.null_external_library_target_visitor import NullExternalLibraryTargetVisitor
 from pymake.visitors.targets.imported.null_imported_target_visitor import NullImportedTargetVisitor
+from pymake.visitors.targets.null_target_visitor import NullTargetVisitor
+from pymake.visitors.targets.target_visitor import ITargetVisitor
 from pymake.visitors.targets.test.drd_test_target_visitor import IDrdTestTargetVisitor
 from pymake.visitors.targets.test.gtest_target_visitor import IGTestTargetVisitor
 from pymake.visitors.targets.test.helgrind_test_target_visitor import IHelgrindTestTargetVisitor
@@ -42,6 +48,9 @@ class VisitorSet:
     def __init__(self,
         project_visitor: IProjectVisitor = NullProjectVisitor(),
         project_scope_visitor: IProjectScopeVisitor = NullProjectScopeVisitor(),
+        executable_set_visitor: IExecutableSetVisitor = NullExecutableSetVisitor(),
+        library_set_visitor: ILibrarySetVisitor = NullLibrarySetVisitor(),
+        target_visitor: ITargetVisitor = NullTargetVisitor(),
         build_target_visitor: IBuildTargetVisitor = NullBuildTargetVisitor(),
         executable_target_visitor: IExecutableTargetVisitor = NullExecutableTargetVisitor(),
         library_target_visitor: ILibraryTargetVisitor = NullLibraryTargetVisitor(),
@@ -63,8 +72,13 @@ class VisitorSet:
         @param project_visitor The visitor that will be applied to projects.
         @param project_scope_visitor The visitor that will be applied to project
           scopes.
+        @param target_visitor The visitor that will be applied to targets.
         @param build_target_visitor The visitor that will be applied to build
           targets.
+        @param executable_set_visitor The visitor that will be applied to
+          executable sets.
+        @param library_set_visitor The visitor that will be applied to library
+          sets.
         @param executable_target_visitor The visitor that will be applied to
           executable targets.
         @param library_target_visitor The visitor that will be applied to
@@ -98,6 +112,9 @@ class VisitorSet:
         """
         self._project_visitor = project_visitor
         self._project_scope_visitor = project_scope_visitor
+        self._executable_set_visitor = executable_set_visitor
+        self._library_set_visitor = library_set_visitor
+        self._target_visitor = target_visitor
         self._build_target_visitor = build_target_visitor
         self._executable_target_visitor = executable_target_visitor
         self._library_target_visitor = library_target_visitor
@@ -130,6 +147,30 @@ class VisitorSet:
         Gets the visitor that will be applied to project scopes.
         """
         return self._project_scope_visitor
+
+
+    @property
+    def executable_set_visitor(self) -> IExecutableSetVisitor:
+        """
+        Gets the visitor that will be applied to executable sets.
+        """
+        return self._executable_set_visitor
+
+
+    @property
+    def library_set_visitor(self) -> ILibrarySetVisitor:
+        """
+        Gets the visitor that will be applied to library sets.
+        """
+        return self._library_set_visitor
+
+
+    @property
+    def target_visitor(self) -> ITargetVisitor:
+        """
+        Gets the visitor that will be applied to targets.
+        """
+        return self._target_visitor
 
 
     @property
@@ -258,4 +299,3 @@ class VisitorSet:
         Gets the visitor that will be applied to memcheck test targets.
         """
         return self._memcheck_test_target_visitor
-

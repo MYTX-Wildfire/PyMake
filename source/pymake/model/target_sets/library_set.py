@@ -1,11 +1,12 @@
 from pymake.core.build_script import BuildScript
-from pymake.model.targets.build.executable_target import ExecutableTarget
-from pymake.model.targets.interface_target import InterfaceTarget
 from pymake.model.target_sets.internal_library_set import InternalLibrarySet
+from pymake.model.target_sets.target_set import ITargetSet
+from pymake.model.targets.build.executable_target import ExecutableTarget
 from pymake.model.targets.build.shared_library_target import SharedLibraryTarget
 from pymake.model.targets.build.static_library_target import StaticLibraryTarget
-from pymake.model.target_sets.target_set import ITargetSet
-from typing import Optional
+from pymake.model.targets.interface_target import InterfaceTarget
+from pymake.model.targets.target import Target
+from typing import Iterable, List, Optional
 
 class LibrarySet(ITargetSet):
     """
@@ -171,18 +172,13 @@ class LibrarySet(ITargetSet):
         )
 
 
-    def generate_target_set(self,
-        build_script: BuildScript) -> None:
+    @property
+    def targets(self) -> Iterable[Target]:
         """
-        Generates the CMake code for the object.
-        @param build_script The build script to write the target set's CMake
-          code to.
+        Gets the targets in this target set.
         """
-        # Generate the common target before any target in the set
-        self._common_target.generate_target(build_script)
-
-        # Generate the library sets
-        self._static_library_set.generate_library_set(build_script)
-        self._shared_library_set.generate_library_set(build_script)
-
-        build_script.write_file()
+        targets: List[Target] = []
+        targets.append(self._common_target)
+        targets.extend(self._static_library_set.targets)
+        targets.extend(self._shared_library_set.targets)
+        return targets

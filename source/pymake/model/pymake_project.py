@@ -8,7 +8,7 @@ from pymake.tracing.caller_info import CallerInfo
 from pymake.tracing.caller_info_formatter import ICallerInfoFormatter
 from pymake.tracing.shortened_caller_info_formatter import ShortenedCallerInfoFormatter
 from pymake.tracing.traced_dict import TracedDict
-from typing import Dict, Optional
+from typing import Dict, Iterable, Optional
 
 class PyMakeProject:
     """
@@ -179,6 +179,14 @@ class PyMakeProject:
         This is guaranteed to be an absolute path.
         """
         return self._install_dir
+
+
+    @property
+    def project_scopes(self) -> Iterable[ProjectScope]:
+        """
+        The project scopes in the project.
+        """
+        return [p for _, p in self._project_scopes]
 
 
     def get_or_add_project_scope(self, name: str) -> ProjectScope:
