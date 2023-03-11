@@ -2,11 +2,8 @@ from pymake.visitors.visitor import IVisitor
 from typing import Generic, TypeVar
 
 NodeType = TypeVar('NodeType')
-ChildNodeType = TypeVar('ChildNodeType')
 
-class NullVisitor(
-    IVisitor[NodeType, ChildNodeType],
-    Generic[NodeType, ChildNodeType]):
+class NullVisitor(IVisitor[NodeType], Generic[NodeType]):
     """
     Base type for classes that visit a model object and generate CMake code.
     """

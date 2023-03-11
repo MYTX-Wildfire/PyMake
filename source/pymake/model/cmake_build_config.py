@@ -3,7 +3,7 @@ from pathlib import Path
 from pymake.common.cmake_build_type import ECMakeBuildType
 from pymake.common.cmake_generator import ECMakeGenerator
 from pymake.tracing.caller_info import CallerInfo
-import os
+from pymake.util.path_statics import PathStatics
 from typing import Any, Callable, List, Optional
 
 class CMakeBuildConfig:
@@ -413,32 +413,12 @@ class CMakeBuildConfig:
           resolved using the system PATH.
         @returns The resolved absolute path.
         """
-        # If resolving via the PATH was not requested, treat strings as paths.
-        if isinstance(file_path, str) and not resolve_strings_using_path:
-            file_path = Path(file_path)
-        elif isinstance(file_path, str):
-            # Resolve the path using the system PATH.
-            for path in os.environ["PATH"].split(os.pathsep):
-                candidate_path = Path(path).joinpath(file_path)
-                if os.path.isfile(candidate_path):
-                    return candidate_path
-            raise FileNotFoundError(
-                f"Could not find a file with name '{file_path}' on the PATH."
-            )
-
         # Get the directory to resolve relative paths against.
         caller_info = CallerInfo.closest_external_frame()
         caller_dir = caller_info.file_path.parent
 
-        # Resolve the path.
-        if not file_path.is_absolute():
-            file_path = caller_dir / file_path
-        file_path = file_path.resolve()
-
-        if not file_path.exists():
-            raise ValueError(f'Path "{file_path}" does not exist.')
-
-        if not file_path.is_file():
-            raise ValueError(f'Path "{file_path}" is not a file.')
-
-        return file_path
+        return PathStatics.validate_file(
+            file_path,
+            caller_dir,
+            resolve_strings_using_path
+        )

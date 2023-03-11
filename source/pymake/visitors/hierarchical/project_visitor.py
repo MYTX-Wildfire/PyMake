@@ -1,9 +1,8 @@
-from pymake.model.project_scope import ProjectScope
 from pymake.model.pymake_project import PyMakeProject
 from pymake.visitors.hierarchical.hierarchical_state import HierarchicalState
 from pymake.visitors.visitor import IVisitor
 
-class ProjectVisitor(IVisitor[PyMakeProject, ProjectScope]):
+class ProjectVisitor(IVisitor[PyMakeProject]):
     """
     Visitor that generates top-level CMake code for a project.
     """

@@ -1,5 +1,5 @@
 from pymake.common.test_flags import ETestFlags
-from pymake.core.build_script import BuildScript
+from pymake.generators.build_script import BuildScript
 from pymake.model.targets.build.executable_target import ExecutableTarget
 
 class TestTarget(ExecutableTarget):

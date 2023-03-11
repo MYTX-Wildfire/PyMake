@@ -1,4 +1,4 @@
-from pymake.core.build_script import BuildScript
+from pymake.generators.build_script import BuildScript
 from pymake.generators.cmake_generator import CMakeGenerator
 from pymake.model.project_scope import ProjectScope
 from pymake.model.pymake_project import PyMakeProject

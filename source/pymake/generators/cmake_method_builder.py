@@ -1,9 +1,10 @@
 from __future__ import annotations
+from pathlib import Path
 from pymake.generators.text_generator import TextGenerator
-from pymake.tracing.caller_info import CallerInfo
 from pymake.tracing.caller_info_formatter import ICallerInfoFormatter
+from pymake.tracing.traced import Traced
 from types import TracebackType
-from typing import Optional, Type
+from typing import Any, Optional, Type
 
 class CMakeMethodBuilder:
     """
@@ -18,46 +19,43 @@ class CMakeMethodBuilder:
         @param generator Generator to write the generated code to.
         @param method_name Name of the method.
         """
-        caller_info = CallerInfo.closest_external_frame()
-        caller_info_str = formatter.format(caller_info)
+        self._formatter = formatter
         self._generator = generator
         self._arguments_added = False
-
-        # Only add the tracing information if it's not empty
-        if caller_info_str:
-            self._generator.append_line(f"# {formatter.format(caller_info)}")
 
         # Open the method
         self._generator.append_line(f"{method_name}(")
         self._generator.indentation_level += 1
 
 
-    def add_arguments(self, *args: str) -> None:
+    def add_arguments(self, *args: Any | Traced[Any]) -> None:
         """
         Adds keyword-less argument(s) to the method.
         @param args Argument(s) to add. If this is empty, this method will be
-          a no-op.
+          a no-op. Strings and paths will be automatically quoted; all other
+          types will be converted to strings and written directly.
         """
         if not args:
             return
-
         self._arguments_added = True
+
         for arg in args:
-            self._generator.append_line(arg)
+            self._write_arg(arg)
 
 
     def add_keyword_arguments(self,
         keyword: str,
-        *args: str) -> None:
+        *args: Any | Traced[Any]) -> None:
         """
         Adds argument(s) under a method parameter keyword to the method.
         @param keyword Keyword to use.
-        @param args Argument(s) to add. Must not be empty.
+        @param args Argument(s) to add. Must not be empty. Strings and paths
+          will be automatically quoted; all other types will be converted to
+          strings and written directly.
         @throws RuntimeError Thrown if `args` is empty.
         """
         if not args:
             raise RuntimeError("No arguments provided.")
-
         self._arguments_added = True
 
         # Place the keyword on the current indentation level, then use an
@@ -65,7 +63,7 @@ class CMakeMethodBuilder:
         self._generator.append_line(f"{keyword}")
         self._generator.increase_indentation_level()
         for arg in args:
-            self._generator.append_line(arg)
+            self._write_arg(arg)
         self._generator.decrease_indentation_level()
 
 
@@ -99,3 +97,43 @@ class CMakeMethodBuilder:
         #   to separate this method call from the next line of code
         self._generator.decrease_indentation_level()
         self._generator.append_line(")\n")
+
+
+    def _write_arg(self, arg: Any | Traced[Any]) -> None:
+        """
+        Writes an argument to the generator.
+        @param arg Argument to write. Strings and paths will be automatically
+          quoted; all other types will be converted to strings and written
+          directly.
+        """
+        if isinstance(arg, Traced):
+            self._write_traced(arg)
+        else:
+            self._write_line(arg)
+
+
+    def _write_traced(self,
+        traced: Traced[Any]) -> None:
+        """
+        Adds a traced value to the method.
+        @param traced Traced value to add. Strings and paths will be
+          automatically quoted; all other types will be converted to strings and
+          written directly.
+        """
+        self._generator.append_line(
+            f"# {self._formatter.format(traced)}"
+        )
+        self._write_line(traced.value)
+
+
+    def _write_line(self, value: Any) -> None:
+        """
+        Writes a value to the generator.
+        @param value Value to write. Strings and paths will be automatically
+          quoted; all other types will be converted to strings and written
+          directly.
+        """
+        if isinstance(value, (str, Path)):
+            self._generator.append_line(f"\"{value}\"")
+        else:
+            self._generator.append_line(f"{value}")

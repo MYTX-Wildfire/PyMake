@@ -1,4 +1,4 @@
-from pymake.core.build_script import BuildScript
+from pymake.generators.build_script import BuildScript
 from pymake.model.targets.build.executable_target import ExecutableTarget
 from pymake.model.targets.test.test_target import TestTarget
 

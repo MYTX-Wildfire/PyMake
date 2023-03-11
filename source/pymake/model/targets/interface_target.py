@@ -1,7 +1,7 @@
 from pymake.common.sanitizer_flags import ESanitizerFlags
 from pymake.common.target_type import ETargetType
 from pymake.common.test_flags import ETestFlags
-from pymake.core.build_script import BuildScript
+from pymake.generators.build_script import BuildScript
 from pymake.model.targets.target import Target
 
 class InterfaceTarget(Target):

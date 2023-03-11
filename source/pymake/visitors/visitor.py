@@ -2,9 +2,8 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 NodeType = TypeVar('NodeType')
-ChildNodeType = TypeVar('ChildNodeType')
 
-class IVisitor(ABC, Generic[NodeType, ChildNodeType]):
+class IVisitor(ABC, Generic[NodeType]):
     """
     Base type for classes that visit a model object and generate CMake code.
     """

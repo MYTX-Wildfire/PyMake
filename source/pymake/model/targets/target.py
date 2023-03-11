@@ -1,5 +1,6 @@
 from __future__ import annotations
 from pymake.common.test_flags import ETestFlags
+from pymake.model.cmake_target_properties import CMakeTargetProperties
 from pymake.tracing.traced import ITraced
 
 class Target(ITraced):
@@ -20,6 +21,7 @@ class Target(ITraced):
         self._target_name = target_name
         self._test_flags = test_flags
         self._sanitizer_flags = sanitizer_flags
+        self._properties = CMakeTargetProperties()
 
 
     @property
@@ -52,3 +54,11 @@ class Target(ITraced):
         Gets the sanitizers enabled for the target.
         """
         return self._sanitizer_flags
+
+
+    @property
+    def properties(self) -> CMakeTargetProperties:
+        """
+        Gets the properties of the target.
+        """
+        return self._properties

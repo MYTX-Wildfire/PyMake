@@ -3,7 +3,9 @@ from pymake.visitors.hierarchical.hierarchical_state import HierarchicalState
 from pymake.visitors.hierarchical.project_visitor import ProjectVisitor
 from pymake.visitors.visitor import IVisitor
 from pymake.visitors.visitor_set import IVisitorSet
-from typing import Any
+from typing import TypeVar
+
+NodeType = TypeVar('NodeType')
 
 class HierarchicalVisitorSet(IVisitorSet):
     """
@@ -19,14 +21,14 @@ class HierarchicalVisitorSet(IVisitorSet):
         self._state = HierarchicalState(project)
 
 
-    def get_visitor_for_node(self, node: Any) \
-        -> IVisitor[Any, Any]:
+    def get_visitor_for_node(self, node: NodeType) -> IVisitor[NodeType]:
         """
         Gets the visitor for the specified node.
         @param node The node to get the visitor for.
         @return The visitor for the specified node.
         """
         if isinstance(node, PyMakeProject):
+            # pyright: reportGeneralTypeIssues=false
             return ProjectVisitor(self._state)
         raise NotImplementedError()
 

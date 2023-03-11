@@ -1,5 +1,5 @@
 from pymake.common.target_type import ETargetType
-from pymake.core.build_script import BuildScript
+from pymake.generators.build_script import BuildScript
 from pymake.model.targets.build.build_target import BuildTarget
 
 class ExecutableTarget(BuildTarget):

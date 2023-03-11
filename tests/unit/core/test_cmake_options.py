@@ -1,4 +1,4 @@
-from pymake.core.cmake_options import CMakeOptions
+from pymake.common.cmake_options import CMakeOptions
 
 def test_properties_match_ctor_args():
     verbose = True
