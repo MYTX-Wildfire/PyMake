@@ -5,7 +5,7 @@ from pymake.visitors.visitor import IVisitor
 
 class ProjectVisitor(IVisitor[PyMakeProject, ProjectScope]):
     """
-    Visitor set that generates CMake code in a hierarchical manner.
+    Visitor that generates top-level CMake code for a project.
     """
     def __init__(self, state: HierarchicalState):
         """

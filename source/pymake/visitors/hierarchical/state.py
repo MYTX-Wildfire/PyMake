@@ -7,7 +7,7 @@ from pymake.model.targets.target import Target
 from pymake.tracing.caller_info_formatter import ICallerInfoFormatter
 from pymake.tracing.shortened_caller_info_formatter import ShortenedCallerInfoFormatter
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, Optional, Set
 
 class HierarchicalState:
     """
@@ -52,10 +52,7 @@ class HierarchicalState:
 
         ## Maps each target to the target set that owns it.
         # Each target is stored by its target name.
-        self._target_parents: Dict[str, TargetSet] = {}
-
-        ## Keep track of all test targets in the project.
-        self._test_targets: List[Target] = []
+        self._target_set_owners: Dict[str, TargetSet] = {}
 
         # Create the build script for the project
         project_build_script_path = project.generated_dir / "CMakeLists.txt"
@@ -108,8 +105,8 @@ class HierarchicalState:
 
                 for target in target_set.targets:
                     # Map each target back to its target set
-                    assert target.target_name not in self._target_parents
-                    self._target_parents[target.target_name] = target_set
+                    assert target.target_name not in self._target_set_owners
+                    self._target_set_owners[target.target_name] = target_set
 
                     # Store the path within the generated build directory where
                     #   the target's build file will be generated
@@ -128,18 +125,6 @@ class HierarchicalState:
                     assert target not in self._build_scripts
                     self._build_scripts[target] = target_set_build_script
 
-                    # Keep track of all test targets
-                    if target.is_test_target:
-                        self._test_targets.append(target)
-
-
-    @property
-    def test_targets(self) -> List[Target]:
-        """
-        Gets all test targets in the project.
-        """
-        return self._test_targets
-
 
     def generate_build_scripts(self):
         """
@@ -156,16 +141,6 @@ class HierarchicalState:
                 generated_paths.add(build_script.target_path)
 
 
-    def get_build_script_for_node(self, node: Any) -> BuildScript:
-        """
-        Gets the build script for the given node.
-        @param node Node to get the build script for.
-        @returns The build script for the given node.
-        """
-        assert node in self._build_scripts
-        return self._build_scripts[node]
-
-
     def get_target_build_path(self, target: str | Target) -> Path:
         """
         Gets the path within the generated build directory where the target's
@@ -178,39 +153,3 @@ class HierarchicalState:
         if isinstance(target, Target):
             target = target.target_name
         return self._target_build_paths[target]
-
-
-    def get_test_fixture_target_name(self, project: ProjectScope) -> str:
-        """
-        Gets the target name used for the project's test fixture.
-        @remarks A test fixture is used to force CMake to build test executables
-          before attempting to run tests. For more information, see here:
-          https://stackoverflow.com/a/56448477
-        @param project Project to get the test fixture target name for.
-        @returns The target name of the test fixture for the project.
-        """
-        return "\"pymake-internal-build-tests-fixture-target-" + \
-            project.project_name + "\""
-
-
-    def get_test_fixture_name(self, project: ProjectScope | Target) -> str:
-        """
-        Gets the name of the test fixture for the project or target.
-        @remarks See `get_test_fixture_target_name` for more information.
-        @param project Project or target to get the test fixture name for.
-        @returns The name of the test fixture for the project or target.
-        """
-        if isinstance(project, Target):
-            # "Rename" the parameter to make it clear that it's a target
-            target = project
-
-            # Look up the target set that owns the target, then get the project
-            #   scope for the target set
-            assert target.target_name in self._target_parents
-            target_set = self._target_parents[target.target_name]
-            assert target_set.set_name in self._target_set_parents
-            project = self._target_set_parents[target_set.set_name]
-            return self.get_test_fixture_target_name(project)
-        else:
-            return "\"pymake-internal-build-tests-fixture-" + \
-                project.project_name + "\""

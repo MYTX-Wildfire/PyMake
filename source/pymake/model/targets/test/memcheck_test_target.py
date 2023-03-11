@@ -1,3 +1,4 @@
+from pymake.common.test_flags import ETestFlags
 from pymake.core.build_script import BuildScript
 from pymake.model.targets.build.executable_target import ExecutableTarget
 from pymake.model.targets.test.valgrind_test_target import ValgrindTestTarget
@@ -8,19 +9,16 @@ class MemcheckTestTarget(ValgrindTestTarget):
     """
     def __init__(self,
         target_name: str,
-        test_flags: int,
         target_executable: ExecutableTarget):
         """
         Initializes the target.
         @param target_name The name of the target.
-        @param test_flags Flags to set for the test target. Must have at least
-          one flag set.
         @param target_executable The executable target to run under Valgrind.
         @throws RuntimeError If no test flags are set.
         """
         super().__init__(
             target_name,
-            test_flags,
+            target_executable.test_flags | ETestFlags.VALGRIND_MEMCHECK,
             target_executable
         )
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 from pathlib import Path
 from pymake.common.cmake_version import ECMakeVersion
+from pymake.common.project_language import EProjectLanguage
 from pymake.model.project_scope import ProjectScope
 from pymake.tracing.caller_info import CallerInfo
 from pymake.tracing.traced_dict import TracedDict
@@ -17,17 +18,14 @@ class PyMakeProject:
 
     @staticmethod
     def get_pymake_project_by_origin(
-        origin: CallerInfo | None,
         cmake_version: ECMakeVersion,
         source_dir: str | Path,
         generated_dir: str | Path,
         build_dir: str | Path,
-        install_dir: str | Path) -> PyMakeProject:
+        install_dir: str | Path,
+        origin: CallerInfo | None = None) -> PyMakeProject:
         """
         Gets or creates the PyMake project for the target origin.
-        @param origin Location in external PyMake build scripts to get the
-          PyMake project for. If this is None, the closest external frame will
-          be used.
         @param cmake_version The version of CMake to target when generating the
           project.
         @param source_dir The path to the folder containing all source files.
@@ -45,6 +43,9 @@ class PyMakeProject:
           install tree. This may be an absolute or relative path. If the path
           is a relative path, it will be resolved relative to the caller's
           directory.
+        @param origin Location in external PyMake build scripts to get the
+          PyMake project for. If this is None, the closest external frame will
+          be used.
         @returns The PyMake project for the call site.
         """
         if not origin:
@@ -123,7 +124,7 @@ class PyMakeProject:
         self._build_dir = build_dir
         self._install_dir = install_dir
 
-        # Collection of project scopes
+        # Collection of project scopes, indexed by project name.
         self._project_scopes: TracedDict[str, ProjectScope] = TracedDict()
 
 
@@ -179,10 +180,52 @@ class PyMakeProject:
         return [p for _, p in self._project_scopes]
 
 
-    def get_or_add_project_scope(self, name: str) -> ProjectScope:
+    def add_project_scope(self,
+        project_name: str,
+        project_languages: EProjectLanguage | Iterable[EProjectLanguage],
+        project_all_target_name: str,
+        project_test_target_name: str) -> ProjectScope:
         """
-        Gets or adds a project scope to the project.
-        @param name Name of the project scope.
-        @return The project scope.
+        Adds a project scope to the project.
+        @param project_name The name of the project.
+        @param project_languages The languages used in the project.
+        @param enable_ctest Whether to enable CTest for the project.
+        @param project_all_target_name Name of the project-specific `all`
+          target.
+        @param project_test_target_name Name of the project-specific `test`
+          target.
+        @throws RuntimeError Thrown if the project scope already exists with the
+          same name and was declared at a different location.
+        @return A newly created project scope or the previously created project
+          scope.
         """
-        raise NotImplementedError()
+        project = ProjectScope(
+            project_name,
+            project_languages,
+            project_all_target_name,
+            project_test_target_name
+        )
+
+        # Check if the project scope already exists
+        if project_name in self._project_scopes:
+            # If the previous project scope was declared at the same location,
+            #   return it instead of creating a new one or throwing an error.
+            prev_project = self._project_scopes[project_name]
+            if prev_project.origin == project.origin:
+                return prev_project
+
+            error_str = "Error: Cannot add a target with the name " + \
+                f"'{project_name}'."
+            error_str = "Note: A project scope with the name " + \
+                f"'{project_name}' already exists in the PyMake project."
+            error_str = "    The project scope was previously added at " + \
+                f"{prev_project.origin.file_path}:" + \
+                f"{prev_project.origin.line_number}."
+            error_str = "    The new project scope is being added at " + \
+                f"{project.origin.file_path}:" + \
+                f"{project.origin.line_number}."
+            raise RuntimeError(error_str)
+
+        # Add the project scope to the project.
+        self._project_scopes[project_name] = project
+        return project

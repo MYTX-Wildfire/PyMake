@@ -88,3 +88,27 @@ class TracedDict(Generic[Key, Value]):
         self._values_by_name[key] = value
         self._values_by_origin[value.origin] = value
         return True
+
+
+    def keys(self) -> Iterator[Key]:
+        """
+        Gets the keys in the dictionary.
+        """
+        for key in self._values_by_name.keys():
+            yield key
+
+
+    def values(self) -> Iterator[Value]:
+        """
+        Gets the values in the dictionary.
+        """
+        for value in self._values_by_name.values():
+            yield value
+
+
+    def origins(self) -> Iterator[CallerInfo]:
+        """
+        Gets the origins in the dictionary.
+        """
+        for origin in self._values_by_origin.keys():
+            yield origin

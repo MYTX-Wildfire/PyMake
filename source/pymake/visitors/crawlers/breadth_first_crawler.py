@@ -1,4 +1,4 @@
-from pymake.model.target_sets.target_set import ITargetSet
+from pymake.model.target_set import TargetSet
 from pymake.model.targets.target import Target
 from pymake.model.pymake_project import PyMakeProject
 from pymake.visitors.crawlers.project_crawler import IProjectCrawler
@@ -64,7 +64,7 @@ class BreadthFirstCrawler(IProjectCrawler):
         visit(project_visitor, project)
 
         # Process each project scope
-        target_sets: List[ITargetSet] = []
+        target_sets: List[TargetSet] = []
         for scope in project.project_scopes:
             scope_visitor = visitors.get_visitor_for_node(scope)
             visit(scope_visitor, scope)

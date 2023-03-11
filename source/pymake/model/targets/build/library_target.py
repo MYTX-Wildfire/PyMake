@@ -1,9 +1,9 @@
 from pymake.common.target_type import ETargetType
 from pymake.common.test_flags import ETestFlags
 from pymake.core.build_script import BuildScript
-from pymake.model.targets.target import Target
+from pymake.model.targets.build.build_target import BuildTarget
 
-class LibraryTarget(Target):
+class LibraryTarget(BuildTarget):
     """
     Represents a static or shared library target.
     """
