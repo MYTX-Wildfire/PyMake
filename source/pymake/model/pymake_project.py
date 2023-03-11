@@ -1,18 +1,80 @@
+from __future__ import annotations
 from pathlib import Path
 from pymake.common.cmake_version import ECMakeVersion
 from pymake.core.build_script import BuildScript
-from pymake.data.project_scope import ProjectScope
+from pymake.model.project_scope import ProjectScope
 from pymake.generators.cmake_generator import CMakeGenerator
 from pymake.tracing.caller_info import CallerInfo
 from pymake.tracing.caller_info_formatter import ICallerInfoFormatter
 from pymake.tracing.shortened_caller_info_formatter import ShortenedCallerInfoFormatter
 from pymake.tracing.traced_dict import TracedDict
-from typing import Optional
+from typing import Dict, Optional
 
 class PyMakeProject:
     """
     Stores all state information for a PyMake project.
     """
+    # PyMake projects that have been created.
+    # Each project is indexed by the location in external PyMake build scripts
+    #   that created the project.
+    _pymake_projects: Dict[CallerInfo, PyMakeProject] = {}
+
+    @staticmethod
+    def get_pymake_project_by_origin(
+        origin: CallerInfo | None,
+        cmake_version: ECMakeVersion,
+        source_dir: str | Path,
+        generated_dir: str | Path,
+        build_dir: str | Path,
+        install_dir: str | Path,
+        caller_info_formatter: Optional[ICallerInfoFormatter] = None) \
+            -> PyMakeProject:
+        """
+        Gets or creates the PyMake project for the target origin.
+        @param origin Location in external PyMake build scripts to get the
+          PyMake project for. If this is None, the closest external frame will
+          be used.
+        @param cmake_version The version of CMake to target when generating the
+          project.
+        @param source_dir The path to the folder containing all source files.
+          This path must be to the root of the source directory and may be an
+          absolute or relative path. If the path is a relative path, it will be
+          resolved relative to the caller's directory.
+        @param generated_dir The path to the folder where PyMake will generate
+          CMake files in. This may be an absolute or relative path. If the path
+          is a relative path, it will be resolved relative to the caller's
+          directory.
+        @param build_dir The path to the folder that CMake will use as its build
+          tree. This may be an absolute or relative path. If the path is a
+          relative path, it will be resolved relative to the caller's directory.
+        @param install_dir The path to the folder that CMake will use as its
+          install tree. This may be an absolute or relative path. If the path
+          is a relative path, it will be resolved relative to the caller's
+          directory.
+        @param caller_info_formatter The formatter to use when outputting caller
+          information. If this is None, a default formatter will be used.
+        @returns The PyMake project for the call site.
+        """
+        if not origin:
+            origin = CallerInfo.closest_external_frame()
+
+        # Check if a project has already been created for the origin.
+        if origin in PyMakeProject._pymake_projects:
+            return PyMakeProject._pymake_projects[origin]
+
+        # Create a new project for the origin.
+        project = PyMakeProject(
+            cmake_version,
+            source_dir,
+            generated_dir,
+            build_dir,
+            install_dir,
+            caller_info_formatter
+        )
+        PyMakeProject._pymake_projects[origin] = project
+        return project
+
+
     def __init__(self,
         cmake_version: ECMakeVersion,
         source_dir: str | Path,

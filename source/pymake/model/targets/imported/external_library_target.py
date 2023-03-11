@@ -2,10 +2,9 @@ from pathlib import Path
 from pymake.core.build_script import BuildScript
 from pymake.common.sanitizer_flags import ESanitizerFlags
 from pymake.common.target_type import ETargetType
-from pymake.common.test_flags import ETestFlags
-from pymake.data.target import ITarget
+from pymake.model.targets.imported.imported_target import ImportedTarget
 
-class ExternalLibrary(ITarget):
+class ExternalLibraryTarget(ImportedTarget):
     """
     Represents an external library that PyMake targets may link to.
     External libraries are represented in generated CMake code as imported
@@ -33,9 +32,7 @@ class ExternalLibrary(ITarget):
         """
         super().__init__(
             target_name,
-            ETargetType.IMPORTED,
-            # Imported targets should never be test targets
-            ETestFlags.NONE,
+            target_type,
             sanitizer_flags
         )
 

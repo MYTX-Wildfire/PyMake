@@ -1,10 +1,9 @@
-from pymake.common.test_flags import ETestFlags
 from pymake.core.build_script import BuildScript
-from pymake.data.executable_target import ExecutableTarget
+from pymake.model.targets.test.test_target import TestTarget
 
-class TestTarget(ExecutableTarget):
+class GTestTarget(TestTarget):
     """
-    Represents a test executable target.
+    Represents a GoogleTest test executable target.
     """
     def __init__(self,
         target_name: str,
@@ -24,12 +23,6 @@ class TestTarget(ExecutableTarget):
             sanitizer_flags
         )
 
-        if test_flags == ETestFlags.NONE:
-            raise RuntimeError(
-                f"Test target '{target_name}' must have at least one test " + \
-                "flag set"
-            )
-
 
     def _generate_test_declaration(self,
         build_script: BuildScript) -> None:
@@ -37,4 +30,6 @@ class TestTarget(ExecutableTarget):
         Generates the CMake code to add test target.
         @param build_script Build script to write the target to.
         """
-        raise NotImplementedError()
+        with build_script.generator.open_method_block("add_test") as b:
+            b.add_keyword_arguments("NAME", self._target_name)
+            b.add_keyword_arguments("COMMAND", self._target_name)

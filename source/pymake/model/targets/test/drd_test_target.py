@@ -1,10 +1,10 @@
 from pymake.core.build_script import BuildScript
-from pymake.data.executable_target import ExecutableTarget
-from pymake.data.valgrind_test_target import ValgrindTestTarget
+from pymake.model.targets.build.executable_target import ExecutableTarget
+from pymake.model.targets.test.valgrind_test_target import ValgrindTestTarget
 
-class MemcheckTestTarget(ValgrindTestTarget):
+class DrdTestTarget(ValgrindTestTarget):
     """
-    Represents a Valgrind memcheck test target.
+    Represents a Valgrind DRD test target.
     """
     def __init__(self,
         target_name: str,
@@ -36,11 +36,8 @@ class MemcheckTestTarget(ValgrindTestTarget):
             b.add_keyword_arguments(
                 "COMMAND",
                 "valgrind",
-                "--leak-check=full",
-                "--track-origins=yes",
+                "--tool=drd",
                 "--fair-sched=yes",
-                "--show-leak-kinds=definite,indirect,possible",
-                "--errors-for-leak-kinds=definite,indirect,possible",
                 "--error-exitcode=1",
                 # TODO: If the target is installed, get the path of the target
                 # from the install directory. If the target is not installed,

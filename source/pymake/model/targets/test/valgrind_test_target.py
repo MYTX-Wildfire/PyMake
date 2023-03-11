@@ -1,7 +1,7 @@
 from pymake.common.sanitizer_flags import ESanitizerFlags
 from pymake.core.build_script import BuildScript
-from pymake.data.executable_target import ExecutableTarget
-from pymake.data.test_target import TestTarget
+from pymake.model.targets.build.executable_target import ExecutableTarget
+from pymake.model.targets.test.test_target import TestTarget
 
 class ValgrindTestTarget(TestTarget):
     """

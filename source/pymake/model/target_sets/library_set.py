@@ -1,10 +1,10 @@
 from pymake.core.build_script import BuildScript
-from pymake.data.executable_target import ExecutableTarget
-from pymake.data.interface_target import InterfaceTarget
-from pymake.data.internal_library_set import InternalLibrarySet
-from pymake.data.shared_library_target import SharedLibraryTarget
-from pymake.data.static_library_target import StaticLibraryTarget
-from pymake.data.target_set import ITargetSet
+from pymake.model.targets.build.executable_target import ExecutableTarget
+from pymake.model.targets.interface_target import InterfaceTarget
+from pymake.model.target_sets.internal_library_set import InternalLibrarySet
+from pymake.model.targets.build.shared_library_target import SharedLibraryTarget
+from pymake.model.targets.build.static_library_target import StaticLibraryTarget
+from pymake.model.target_sets.target_set import ITargetSet
 from typing import Optional
 
 class LibrarySet(ITargetSet):

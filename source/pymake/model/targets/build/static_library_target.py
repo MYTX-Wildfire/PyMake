@@ -1,5 +1,5 @@
 from pymake.common.target_type import ETargetType
-from pymake.data.library_target import LibraryTarget
+from pymake.model.targets.build.library_target import LibraryTarget
 
 class StaticLibraryTarget(LibraryTarget):
     """

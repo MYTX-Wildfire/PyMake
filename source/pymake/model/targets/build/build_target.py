@@ -1,16 +1,13 @@
 from __future__ import annotations
-from abc import ABC, abstractmethod
 from pathlib import Path
 from pymake.common.scope import EScope
 from pymake.common.target_type import ETargetType
-from pymake.common.test_flags import ETestFlags
-from pymake.core.build_script import BuildScript
-from pymake.tracing.traced import ITraced
+from pymake.model.targets.target import Target
 from typing import Optional
 
-class ITarget(ABC, ITraced):
+class BuildTarget(Target):
     """
-    Represents a CMake target within a PyMake project.
+    Represents a target that must be built by CMake.
     """
     def __init__(self,
         target_name: str,
@@ -25,18 +22,12 @@ class ITarget(ABC, ITraced):
           what kind of target the test target is.
         @param sanitizer_flags The sanitizers enabled for the target.
         """
-        self._target_name = target_name
+        super().__init__(
+            target_name,
+            test_flags,
+            sanitizer_flags
+        )
         self._target_type = target_type
-        self._test_flags = test_flags
-        self._sanitizer_flags = sanitizer_flags
-
-
-    @property
-    def target_name(self) -> str:
-        """
-        Gets the name of the target.
-        """
-        return self._target_name
 
 
     @property
@@ -45,30 +36,6 @@ class ITarget(ABC, ITraced):
         Gets the type of the target.
         """
         return self._target_type
-
-
-    @property
-    def sanitizer_flags(self) -> int:
-        """
-        Gets the sanitizers enabled for the target.
-        """
-        return self._sanitizer_flags
-
-
-    @property
-    def test_flags(self) -> int:
-        """
-        Gets the test flags for the target.
-        """
-        return self._test_flags
-
-
-    @property
-    def is_test_target(self) -> bool:
-        """
-        Gets whether the target is a test target.
-        """
-        return self._test_flags != ETestFlags.NONE
 
 
     def add_include_directory(self,
@@ -121,29 +88,10 @@ class ITarget(ABC, ITraced):
 
     def link_to(self,
         scope: EScope,
-        target: ITarget) -> None:
+        target: Target) -> None:
         """
         Links the target to another target.
         @param scope The scope of the link.
         @param target The target to link to.
-        """
-        raise NotImplementedError()
-
-
-    def generate_target(self,
-        build_script: BuildScript) -> None:
-        """
-        Generates the CMake code for the target.
-        @param build_script Build script to write the target to.
-        """
-        raise NotImplementedError()
-
-
-    @abstractmethod
-    def _generate_declaration(self,
-        build_script: BuildScript) -> None:
-        """
-        Generates the CMake code for the declaration of the target.
-        @param build_script Build script to write the target to.
         """
         raise NotImplementedError()

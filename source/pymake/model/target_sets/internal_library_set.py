@@ -1,9 +1,9 @@
 from pymake.common.sanitizer_flags import ESanitizerFlags
 from pymake.common.scope import EScope
 from pymake.core.build_script import BuildScript
-from pymake.data.executable_target import ExecutableTarget
-from pymake.data.interface_target import InterfaceTarget
-from pymake.data.library_target import LibraryTarget
+from pymake.model.targets.build.executable_target import ExecutableTarget
+from pymake.model.targets.interface_target import InterfaceTarget
+from pymake.model.targets.build.library_target import LibraryTarget
 from pymake.tracing.traced_dict import TracedDict
 from typing import Callable, Dict, Generic, Optional, TypeVar
 

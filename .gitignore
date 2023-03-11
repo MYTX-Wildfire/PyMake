@@ -256,3 +256,7 @@ $RECYCLE.BIN/
 **/.pymake
 **/_build
 **/_out
+
+# Don't ignore folders with the name 'build' that are actually part of the project
+!source/pymake/model/targets/build
+!source/pymake/visitors/targets/build

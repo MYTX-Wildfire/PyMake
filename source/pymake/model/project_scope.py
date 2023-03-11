@@ -2,8 +2,8 @@ from pathlib import Path
 from pymake.common.project_language import EProjectLanguage
 from pymake.common.test_flags import ETestFlags
 from pymake.core.build_script import BuildScript
-from pymake.data.executable_target import ExecutableTarget
-from pymake.data.library_set import LibrarySet
+from pymake.model.targets.build.executable_target import ExecutableTarget
+from pymake.model.target_sets.library_set import LibrarySet
 from pymake.generators.cmake_generator import CMakeGenerator
 from pymake.tracing.traced import ITraced
 from pymake.tracing.traced_dict import TracedDict

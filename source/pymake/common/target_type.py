@@ -15,6 +15,3 @@ class ETargetType(Enum):
 
     ## Indicates that the target is an interface target.
     INTERFACE = "Interface"
-
-    ## Indicates that the target is an imported target.
-    IMPORTED = "Imported"

@@ -2,9 +2,9 @@ from pymake.common.sanitizer_flags import ESanitizerFlags
 from pymake.common.target_type import ETargetType
 from pymake.common.test_flags import ETestFlags
 from pymake.core.build_script import BuildScript
-from pymake.data.target import ITarget
+from pymake.model.targets.target import Target
 
-class InterfaceTarget(ITarget):
+class InterfaceTarget(Target):
     """
     Represents an interface target.
     """
