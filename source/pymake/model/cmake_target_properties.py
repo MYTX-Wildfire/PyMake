@@ -76,7 +76,7 @@ class CMakeTargetProperties:
         self._build_rpath_use_origin = Traced(False)
 
         ## Whether the target should be installed.
-        self._should_install = Traced(True)
+        self._should_install = Traced(False)
 
         ## The path to install the target to.
         # @invariant This may be an absolute or relative path. Relative paths
