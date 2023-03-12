@@ -1,10 +1,12 @@
+from __future__ import annotations
 from pathlib import Path
 from pymake.common.cmake_build_type import ECMakeBuildType
 from pymake.common.cmake_generator import ECMakeGenerator
 from pymake.model.cmake_build_config import CMakeBuildConfig
-from typing import Optional
+from pymake.tracing.traced import ITraced
+from typing import List, Optional
 
-class Preset:
+class Preset(ITraced):
     """
     Represents a set of build parameters that can be applied to a project.
     """
@@ -14,7 +16,10 @@ class Preset:
         Initializes the preset with default values.
         @param preset_name The name of the preset.
         """
+        super().__init__()
+
         self._preset_name = preset_name
+        self._base_presets: List[Preset] = []
 
         ## Build configuration that the preset maps to.
         self._build_config = CMakeBuildConfig()
@@ -193,6 +198,25 @@ class Preset:
 
 
     @property
+    def build_path(self) -> Optional[Path]:
+        """
+        Gets the build path for the preset.
+        """
+        return self._build_config.build_path
+
+
+    @build_path.setter
+    def build_path(self,
+        value: Optional[str | Path]) -> None:
+        """
+        Sets the build path for the preset.
+        @param value The path to build to. If this is a relative path, it will
+          be resolved relative to the caller's directory.
+        """
+        self._build_config.build_path = value
+
+
+    @property
     def install_path(self) -> Optional[Path]:
         """
         Gets the install path for the preset.
@@ -209,3 +233,64 @@ class Preset:
           be resolved relative to the caller's directory.
         """
         self._build_config.install_path = value
+
+
+    @property
+    def clean_build(self) -> bool:
+        """
+        Gets whether the build should be cleaned before building.
+        """
+        return self._build_config.clean_build
+
+
+    @clean_build.setter
+    def clean_build(self,
+        value: bool) -> None:
+        """
+        Sets whether the build should be cleaned before building.
+        """
+        self._build_config.clean_build = value
+
+
+    def get_full_build_config(self) -> CMakeBuildConfig:
+        """
+        Gets the full build configuration for this preset.
+        The returned build configuration object will contain the values from all
+          of this preset's base presets, plus the values from this preset.
+        """
+        config = CMakeBuildConfig()
+        for preset in self._base_presets:
+            config = config.apply(preset.get_full_build_config())
+        return config.apply(self._build_config)
+
+
+    def inherit_from(self, preset: Preset):
+        """
+        Adds the preset as a base preset of this preset.
+        @param preset Preset to inherit from.
+        """
+        self._base_presets.append(preset)
+
+
+    def set_cmake_var(self,
+        name: str,
+        value: Optional[str]):
+        """
+        Sets a CMake variable for the preset.
+        @param name Name of the CMake variable.
+        @param value Value of the CMake variable. If this is None, the variable
+          will be unset.
+        """
+        self._build_config.set_cmake_var(name, value)
+
+
+    def set_env_var(self,
+        name: str,
+        value: Optional[str]):
+        """
+        Sets an environment variable for the preset.
+        @param name Name of the environment variable.
+        @param value Value of the environment variable. If this is None, the
+          variable will be unset.
+        """
+        self._build_config.set_env_var(name, value)

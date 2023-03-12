@@ -27,6 +27,8 @@ class ProjectScope(ITraced):
         @param project_test_target_name Name of the project-specific `test`
           target.
         """
+        super().__init__()
+
         self._project_name = project_name
         if isinstance(project_languages, EProjectLanguage):
             project_languages = [project_languages]

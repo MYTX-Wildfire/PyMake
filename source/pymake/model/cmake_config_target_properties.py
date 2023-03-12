@@ -10,6 +10,8 @@ class CMakeConfigTargetProperties(ITraced):
         """
         Initializes the CMake config-specific target properties with default values.
         """
+        super().__init__()
+
         ## The name of the imported library for the current configuration.
         self._imported_library_name: Traced[Optional[str]] = Traced(None)
 

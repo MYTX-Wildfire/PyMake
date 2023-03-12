@@ -13,23 +13,14 @@ class BreadthFirstCrawler(IProjectCrawler):
       project node first, followed by all project scopes, followed by all
       target sets, and finally all targets.
     """
-    def __init__(self,
-        create_visitors_set: Callable[[PyMakeProject], IVisitorSet]) -> None:
-        """
-        Initializes the crawler.
-        @param create_visitors_set Functor that creates the visitor set to use
-          when crawling the project tree.
-        """
-        self._create_visitors_set = create_visitors_set
-
-
-    def crawl(self, project: PyMakeProject) -> None:
+    def crawl(self,
+        project: PyMakeProject,
+        visitor_set: IVisitorSet) -> None:
         """
         Crawls the project tree and invokes visitors on each node.
         @param project The project to crawl.
+        @param visitor_set The visitor set to use to generate build scripts.
         """
-        visitor_set = self._create_visitors_set(project)
-
         # Run the preprocessing phase
         self._crawl(
             visitor_set,
@@ -51,7 +42,7 @@ class BreadthFirstCrawler(IProjectCrawler):
     def _crawl(self,
         visitors: IVisitorSet,
         project: PyMakeProject,
-        visit: Callable[[IVisitor[Any, Any], Any], None]) -> None:
+        visit: Callable[[IVisitor[Any], Any], None]) -> None:
         """
         Crawls the project tree and invokes visitors on each node.
         @param visitors The visitor set to use when crawling the project tree.

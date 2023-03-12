@@ -2,10 +2,11 @@ from __future__ import annotations
 from pathlib import Path
 from pymake.common.cmake_version import ECMakeVersion
 from pymake.common.project_language import EProjectLanguage
+from pymake.model.preset import Preset
 from pymake.model.project_scope import ProjectScope
 from pymake.tracing.caller_info import CallerInfo
 from pymake.tracing.traced_dict import TracedDict
-from typing import Dict, Iterable
+from typing import Dict, List, Iterable
 
 class PyMakeProject:
     """
@@ -127,6 +128,12 @@ class PyMakeProject:
         # Collection of project scopes, indexed by project name.
         self._project_scopes: TracedDict[str, ProjectScope] = TracedDict()
 
+        # Collection of presets, indexed by preset name.
+        self._presets: TracedDict[str, Preset] = TracedDict()
+
+        # Preset(s) to use if no preset was specified on the command line.
+        self._default_presets: List[Preset] = []
+
 
     @property
     def cmake_version(self) -> ECMakeVersion:
@@ -180,6 +187,58 @@ class PyMakeProject:
         return [p for _, p in self._project_scopes]
 
 
+    @property
+    def presets(self) -> Iterable[Preset]:
+        """
+        The presets in the project.
+        """
+        return [p for _, p in self._presets]
+
+
+    @property
+    def default_presets(self) -> Iterable[Preset]:
+        """
+        The preset(s) to use if no preset was specified on the command line.
+        """
+        return self._default_presets
+
+
+    def add_preset(self, preset_name: str) -> Preset:
+        """
+        Adds a preset to the project.
+        @param preset_name The name of the preset.
+        @throws RuntimeError Thrown if the preset already exists with the same
+          name and was declared at a different location.
+        @return A newly created preset or the previously created preset.
+        """
+        preset = Preset(preset_name)
+
+        # Check if the preset already exists.
+        if preset_name in self._presets:
+            # If the preset already exists, check if it was declared at the
+            #   same location. If it was, return the existing preset and don't
+            #   throw an exception.
+            prev_preset = self._presets[preset_name]
+            if prev_preset.origin == preset.origin:
+                return prev_preset
+
+            error_str = "Error: Cannot add a preset with the name " + \
+                f"'{preset_name}'."
+            error_str = "Note: A preset with the name " + \
+                f"'{preset_name}' already exists in the PyMake project."
+            error_str = "    The preset was previously added at " + \
+                f"{prev_preset.origin.file_path}:" + \
+                f"{prev_preset.origin.line_number}."
+            error_str = "    The new preset is being added at " + \
+                f"{preset.origin.file_path}:" + \
+                f"{preset.origin.line_number}."
+            raise RuntimeError(error_str)
+
+        # Add the preset to the project.
+        self._presets[preset_name] = preset
+        return preset
+
+
     def add_project_scope(self,
         project_name: str,
         project_languages: EProjectLanguage | Iterable[EProjectLanguage],
@@ -229,3 +288,14 @@ class PyMakeProject:
         # Add the project scope to the project.
         self._project_scopes[project_name] = project
         return project
+
+
+    def set_default_presets(self, preset: Preset | Iterable[Preset]):
+        """
+        Sets the default presets for the project.
+        @param preset The default preset or presets.
+        """
+        if isinstance(preset, Preset):
+            self._default_presets = [preset]
+        else:
+            self._default_presets = list(preset)

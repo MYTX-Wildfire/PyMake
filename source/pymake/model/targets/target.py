@@ -18,6 +18,8 @@ class Target(ITraced):
           what kind of target the test target is.
         @param sanitizer_flags The sanitizers enabled for the target.
         """
+        super().__init__()
+
         self._target_name = target_name
         self._test_flags = test_flags
         self._sanitizer_flags = sanitizer_flags
@@ -41,7 +43,7 @@ class Target(ITraced):
 
 
     @property
-    def is_test_target(self) -> bool:
+    def is_test(self) -> bool:
         """
         Gets whether the target is a test target.
         """
@@ -54,6 +56,14 @@ class Target(ITraced):
         Gets the sanitizers enabled for the target.
         """
         return self._sanitizer_flags
+
+
+    @property
+    def is_sanitized(self) -> bool:
+        """
+        Gets whether the target is sanitized.
+        """
+        return self._sanitizer_flags != 0
 
 
     @property

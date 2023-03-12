@@ -1,6 +1,12 @@
 from pymake.model.pymake_project import PyMakeProject
+from pymake.model.project_scope import ProjectScope
+from pymake.model.target_set import TargetSet
+from pymake.model.targets.build.executable_target import ExecutableTarget
+from pymake.visitors.hierarchical.executable_target_visitor import ExecutableTargetVisitor
 from pymake.visitors.hierarchical.hierarchical_state import HierarchicalState
 from pymake.visitors.hierarchical.project_visitor import ProjectVisitor
+from pymake.visitors.hierarchical.project_scope_visitor import ProjectScopeVisitor
+from pymake.visitors.hierarchical.target_set_visitor import TargetSetVisitor
 from pymake.visitors.visitor import IVisitor
 from pymake.visitors.visitor_set import IVisitorSet
 from typing import TypeVar
@@ -27,9 +33,16 @@ class HierarchicalVisitorSet(IVisitorSet):
         @param node The node to get the visitor for.
         @return The visitor for the specified node.
         """
+        # The `type: ignore` lines are needed to stop PyRight from complaining
+        #   that the visitors are not compatible with `IVisitor[NodeType]`.
         if isinstance(node, PyMakeProject):
-            # pyright: reportGeneralTypeIssues=false
-            return ProjectVisitor(self._state)
+            return ProjectVisitor(self._state) # type: ignore
+        elif isinstance(node, ProjectScope):
+            return ProjectScopeVisitor(self._state) # type: ignore
+        elif isinstance(node, TargetSet):
+            return TargetSetVisitor(self._state) # type: ignore
+        elif isinstance(node, ExecutableTarget):
+            return ExecutableTargetVisitor(self._state) # type: ignore
         raise NotImplementedError()
 
 

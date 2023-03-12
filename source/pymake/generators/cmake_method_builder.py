@@ -1,5 +1,4 @@
 from __future__ import annotations
-from pathlib import Path
 from pymake.generators.text_generator import TextGenerator
 from pymake.tracing.caller_info_formatter import ICallerInfoFormatter
 from pymake.tracing.traced import Traced
@@ -28,30 +27,32 @@ class CMakeMethodBuilder:
         self._generator.indentation_level += 1
 
 
-    def add_arguments(self, *args: Any | Traced[Any]) -> None:
+    def add_arguments(self,
+        *args: Any | Traced[Any],
+        add_quotes: bool = False) -> None:
         """
         Adds keyword-less argument(s) to the method.
         @param args Argument(s) to add. If this is empty, this method will be
-          a no-op. Strings and paths will be automatically quoted; all other
-          types will be converted to strings and written directly.
+          a no-op.
+        @param add_quotes Whether to add quotes around the argument.
         """
         if not args:
             return
         self._arguments_added = True
 
         for arg in args:
-            self._write_arg(arg)
+            self._write_arg(arg, add_quotes)
 
 
     def add_keyword_arguments(self,
         keyword: str,
-        *args: Any | Traced[Any]) -> None:
+        *args: Any | Traced[Any],
+        add_quotes: bool = False) -> None:
         """
         Adds argument(s) under a method parameter keyword to the method.
         @param keyword Keyword to use.
-        @param args Argument(s) to add. Must not be empty. Strings and paths
-          will be automatically quoted; all other types will be converted to
-          strings and written directly.
+        @param args Argument(s) to add. Must not be empty.
+        @param add_quotes Whether to add quotes around the argument.
         @throws RuntimeError Thrown if `args` is empty.
         """
         if not args:
@@ -63,7 +64,7 @@ class CMakeMethodBuilder:
         self._generator.append_line(f"{keyword}")
         self._generator.increase_indentation_level()
         for arg in args:
-            self._write_arg(arg)
+            self._write_arg(arg, add_quotes)
         self._generator.decrease_indentation_level()
 
 
@@ -99,41 +100,43 @@ class CMakeMethodBuilder:
         self._generator.append_line(")\n")
 
 
-    def _write_arg(self, arg: Any | Traced[Any]) -> None:
+    def _write_arg(self,
+        arg: Any | Traced[Any],
+        add_quotes: bool) -> None:
         """
         Writes an argument to the generator.
-        @param arg Argument to write. Strings and paths will be automatically
-          quoted; all other types will be converted to strings and written
-          directly.
+        @param arg Argument to write.
+        @param add_quotes Whether to add quotes around the argument.
         """
         if isinstance(arg, Traced):
-            self._write_traced(arg)
+            self._write_traced(arg, add_quotes)
         else:
-            self._write_line(arg)
+            self._write_line(arg, add_quotes)
 
 
     def _write_traced(self,
-        traced: Traced[Any]) -> None:
+        traced: Traced[Any],
+        add_quotes: bool) -> None:
         """
         Adds a traced value to the method.
-        @param traced Traced value to add. Strings and paths will be
-          automatically quoted; all other types will be converted to strings and
-          written directly.
+        @param traced Traced value to add.
+        @param add_quotes Whether to add quotes around the argument.
         """
         self._generator.append_line(
             f"# {self._formatter.format(traced)}"
         )
-        self._write_line(traced.value)
+        self._write_line(traced.value, add_quotes)
 
 
-    def _write_line(self, value: Any) -> None:
+    def _write_line(self,
+        value: Any,
+        add_quotes: bool) -> None:
         """
         Writes a value to the generator.
-        @param value Value to write. Strings and paths will be automatically
-          quoted; all other types will be converted to strings and written
-          directly.
+        @param value Value to write.
+        @param add_quotes Whether to add quotes around the argument.
         """
-        if isinstance(value, (str, Path)):
+        if add_quotes:
             self._generator.append_line(f"\"{value}\"")
         else:
             self._generator.append_line(f"{value}")

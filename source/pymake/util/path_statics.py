@@ -1,10 +1,31 @@
 from pathlib import Path
+from pymake.tracing.caller_info import CallerInfo
 import os
 
 class PathStatics:
     """
     Defines various static helper functions for dealing with paths.
     """
+    @staticmethod
+    def resolve_by_caller_path(path: str | Path) -> Path:
+        """
+        Resolves the given path relative to the caller's path.
+        @param path The path to resolve. This may be an absolute or relative
+          path. If the path is relative, it will be resolved relative to the
+          caller's path.
+        @returns The resolved absolute path.
+        """
+        # Get the path to resolve relative paths against.
+        caller_info = CallerInfo.closest_external_frame()
+        caller_dir = caller_info.file_path.parent
+
+        # Resolve the path.
+        path = Path(path)
+        if path.is_absolute():
+            return path
+        return caller_dir / path
+
+
     @staticmethod
     def validate_file(
         file_path: str | Path,

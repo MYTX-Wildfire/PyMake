@@ -49,14 +49,14 @@ class ProjectScopeVisitor(IVisitor[ProjectScope]):
 
         # Generate the project's `all` target
         with generator.open_method_block("add_custom_target") as b:
-            b.add_arguments(node.project_all_target_name)
+            b.add_arguments(node.project_all_target_name, add_quotes=True)
             # Since the project's 'all' target doesn't build anything directly,
             #   add it to the `ALL` build target for completeness
             b.add_arguments("ALL")
 
         # Generate the project's `test` target
         with generator.open_method_block("add_custom_target") as b:
-            b.add_arguments(node.project_test_target_name)
+            b.add_arguments(node.project_test_target_name, add_quotes=True)
             # Since the project's 'test' target doesn't build anything directly,
             #   add it to the `ALL` build target for completeness
             b.add_arguments("ALL")
@@ -75,13 +75,13 @@ class ProjectScopeVisitor(IVisitor[ProjectScope]):
         fixture_target_name = self._state.get_test_fixture_target_name(node)
         fixture_name = self._state.get_test_fixture_name(node)
         with generator.open_method_block("add_test") as b:
-            b.add_arguments(fixture_target_name)
+            b.add_arguments(fixture_target_name, add_quotes=True)
             b.add_arguments('"${CMAKE_COMMAND}"')
             b.add_arguments('--build "${CMAKE_BINARY_DIR}"')
             b.add_arguments('--config $<CONFIG>')
             b.add_arguments(f"--target {node.project_test_target_name}")
         with generator.open_method_block("set_tests_properties") as b:
-            b.add_arguments(fixture_target_name)
+            b.add_arguments(fixture_target_name, add_quotes=True)
             b.add_arguments("PROPERTIES")
             b.add_keyword_arguments(
                 "FIXTURES_SETUP",

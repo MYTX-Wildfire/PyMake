@@ -41,6 +41,8 @@ class TargetSet(ITraced):
           in the set.
         @param common_target_name Name of the set's common interface target.
         """
+        super().__init__()
+
         self._set_name = set_name
         self._all_target_name = all_target_name
         self._test_target_name = test_target_name
@@ -58,6 +60,8 @@ class TargetSet(ITraced):
 
         ## All executable targets in the set.
         # Each target is indexed by its name.
+        # @warning This collection contains only non-test executable targets
+        #   that are built by the set.
         self._executable_targets: TracedDict[str, ExecutableTarget] = \
             TracedDict()
 

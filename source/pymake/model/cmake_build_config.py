@@ -4,7 +4,7 @@ from pymake.common.cmake_build_type import ECMakeBuildType
 from pymake.common.cmake_generator import ECMakeGenerator
 from pymake.tracing.caller_info import CallerInfo
 from pymake.util.path_statics import PathStatics
-from typing import Any, Callable, List, Optional
+from typing import Any, Callable, Dict, List, Optional, Set
 
 class CMakeBuildConfig:
     """
@@ -32,7 +32,9 @@ class CMakeBuildConfig:
         lambda x: x._compiler_launcher,
         lambda x: x._linker_launcher,
         lambda x: x._cxx_compiler,
-        lambda x: x._install_path
+        lambda x: x._build_path,
+        lambda x: x._install_path,
+        lambda x: x._clean_build
     ]
 
     ## List of setters for all properties in the config.
@@ -47,7 +49,9 @@ class CMakeBuildConfig:
         lambda x, value: setattr(x, "_compiler_launcher", value),
         lambda x, value: setattr(x, "_linker_launcher", value),
         lambda x, value: setattr(x, "_cxx_compiler", value),
-        lambda x, value: setattr(x, "_install_path", value)
+        lambda x, value: setattr(x, "_build_path", value),
+        lambda x, value: setattr(x, "_install_path", value),
+        lambda x, value: setattr(x, "_clean_build", value)
     ]
 
     def __init__(self):
@@ -82,34 +86,27 @@ class CMakeBuildConfig:
         # @invariant This will always be an absolute path.
         self._cxx_compiler: Optional[Path] = None
 
+        ## Path to the build directory.
+        # @invariant This will always be an absolute path.
+        self._build_path: Optional[Path] = None
+
         ## Path to install to.
         # @invariant This will always be an absolute path.
         self._install_path: Optional[Path] = None
 
+        ## Whether to run a clean build.
+        self._clean_build: bool = False
 
-    def apply(self,
-        other: CMakeBuildConfig) -> CMakeBuildConfig:
-        """
-        Applies the values from another build configuration to this one.
-        Values from the other build configuration will overwrite the values in
-          this build configuration.
-        @param other The build configuration to apply.
-        @return A new build configuration containing the result of applying the
-          other build configuration to this one.
-        """
-        config = CMakeBuildConfig()
+        ## CMake variables to set.
+        # This will not include variables that are represented by other
+        #   variables in this class, e.g. `CMAKE_BUILD_TYPE`.
+        self._cmake_vars: Dict[str, str] = {}
 
-        # Prioritize values from the other build configuration over values from
-        #   this one
-        for getter, setter in zip(
-            CMakeBuildConfig._getters, CMakeBuildConfig._setters):
-            value = getter(other)
-            if value:
-                setter(config, value)
-            else:
-                setter(config, getter(self))
+        ## Environment variables to set.
+        self._env_vars: Dict[str, str] = {}
 
-        return config
+        ## Target(s) to build.
+        self._targets: List[str] = []
 
 
     @property
@@ -317,6 +314,28 @@ class CMakeBuildConfig:
 
 
     @property
+    def build_path(self) -> Optional[Path]:
+        """
+        Gets the path to build in.
+        """
+        return self._build_path
+
+
+    @build_path.setter
+    def build_path(self,
+        value: Optional[str | Path]) -> None:
+        """
+        Sets the path to build in.
+        @param value The path to build in. If this is a relative path, it will be
+            resolved relative to the caller's directory.
+        """
+        if not value:
+            self._build_path = None
+            return
+        self._build_path = PathStatics.resolve_by_caller_path(value)
+
+
+    @property
     def install_path(self) -> Optional[Path]:
         """
         Gets the path to install to.
@@ -338,15 +357,58 @@ class CMakeBuildConfig:
         if isinstance(value, str):
             value = Path(value)
 
-        # Get the directory to resolve relative paths against.
-        caller_info = CallerInfo.closest_external_frame()
-        caller_dir = caller_info.file_path.parent
+        self._install_path = PathStatics.resolve_by_caller_path(value)
 
-        # Resolve the path.
-        if not value.is_absolute():
-            value = caller_dir / value
-        value = value.resolve()
-        self._install_path = value
+
+    @property
+    def clean_build(self) -> bool:
+        """
+        Gets whether to clean the build directory before building.
+        """
+        return self._clean_build
+
+
+    @clean_build.setter
+    def clean_build(self, value: bool) -> None:
+        """
+        Sets whether to clean the build directory before building.
+        """
+        self._clean_build = value
+
+
+    @property
+    def cmake_vars(self) -> Dict[str, str]:
+        """
+        Gets the CMake variables to set.
+        """
+        return self._cmake_vars
+
+
+    @property
+    def env_vars(self) -> Dict[str, str]:
+        """
+        Gets the environment variables to set.
+        """
+        return self._env_vars
+
+
+    @property
+    def targets(self) -> List[str]:
+        """
+        Gets the targets to build.
+        """
+        return self._targets
+
+
+    @targets.setter
+    def targets(self, value: str | List[str]) -> None:
+        """
+        Sets the targets to build.
+        @param value The target(s) to build.
+        """
+        if isinstance(value, str):
+            value = [value]
+        self._targets = value
 
 
     def __eq__(self, other: Any) -> bool:
@@ -395,6 +457,74 @@ class CMakeBuildConfig:
             f"linker_launcher={self.linker_launcher}, " \
             f"cxx_compiler={self.cxx_compiler}, " \
             f"install_path={self.install_path})"
+
+
+    def apply(self,
+        other: CMakeBuildConfig) -> CMakeBuildConfig:
+        """
+        Applies the values from another build configuration to this one.
+        Values from the other build configuration will overwrite the values in
+          this build configuration.
+        @param other The build configuration to apply.
+        @return A new build configuration containing the result of applying the
+          other build configuration to this one.
+        """
+        config = CMakeBuildConfig()
+
+        # Prioritize values from the other build configuration over values from
+        #   this one
+        for getter, setter in zip(
+            CMakeBuildConfig._getters, CMakeBuildConfig._setters):
+            value = getter(other)
+            if value:
+                setter(config, value)
+            else:
+                setter(config, getter(self))
+
+        # Merge collections into the new config
+        config._cmake_vars = {**self._cmake_vars, **other._cmake_vars}
+        config._env_vars = {**self._env_vars, **other._env_vars}
+
+        # Make sure that the merged targets list does not contain any duplicates
+        targets: Set[str] = set()
+        for target in self._targets + other._targets:
+            if target not in targets:
+                config._targets.append(target)
+            targets.add(target)
+
+        return config
+
+
+    def set_cmake_var(self,
+        name: str,
+        value: Optional[str]) -> None:
+        """
+        Sets a CMake variable.
+        @param name The name of the variable.
+        @param value The value of the variable. If this is None, the variable
+          will be unset.
+        """
+        if not value:
+            if name in self._cmake_vars:
+                del self._cmake_vars[name]
+        else:
+            self._cmake_vars[name] = value
+
+
+    def set_env_var(self,
+        name: str,
+        value: Optional[str]) -> None:
+        """
+        Sets an environment variable.
+        @param name The name of the variable.
+        @param value The value of the variable. If this is None, the variable
+          will be unset.
+        """
+        if not value:
+            if name in self._env_vars:
+                del self._env_vars[name]
+        else:
+            self._env_vars[name] = value
 
 
     def _validate_file(self,
