@@ -27,6 +27,7 @@ class CMake325(ICMake):
             cmake_cmd.append(preset.preset_name)
 
         # Invoke CMake
+        print("Running command: " + " ".join(cmake_cmd))
         return subprocess.run(
             cmake_cmd,
             cwd=project.generated_dir
@@ -51,6 +52,7 @@ class CMake325(ICMake):
             cmake_cmd.append(preset.preset_name)
 
         # Invoke CMake
+        print("Running command: " + " ".join(cmake_cmd))
         return subprocess.run(
             cmake_cmd,
             cwd=project.generated_dir

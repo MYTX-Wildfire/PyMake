@@ -47,7 +47,8 @@ pymake.set_default_presets(release_preset)
 # Set up targets
 target_set = project.create_target_set("HelloTargetSet")
 exe_target = target_set.add_executable("HelloWorld")
-exe_target.add_sources(EScope.PRIVATE, "main.cpp")
+exe_target.add_sources(EScope.PRIVATE, "source.cpp")
+exe_target.install()
 
 # Build the project
 pymake.build()

@@ -1,7 +1,7 @@
 from pymake.common.sanitizer_flags import ESanitizerFlags
 from pymake.common.target_type import ETargetType
 from pymake.common.test_flags import ETestFlags
-from pymake.model.targets.interface_target import InterfaceTarget
+from pymake.model.targets.build.interface_target import InterfaceTarget
 from pymake.model.targets.build.build_target import BuildTarget
 from pymake.model.targets.build.executable_target import ExecutableTarget
 from pymake.model.targets.build.library_target import LibraryTarget
@@ -46,9 +46,6 @@ class TargetSet(ITraced):
         self._set_name = set_name
         self._all_target_name = all_target_name
         self._test_target_name = test_target_name
-
-        ## Common target for the set.
-        self._common_target = InterfaceTarget(common_target_name)
 
         ## All targets in the set.
         # Each target is indexed by its name.
@@ -100,6 +97,10 @@ class TargetSet(ITraced):
         # Each target is indexed by its name.
         self._documentation_targets: TracedDict[str, DocumentationTarget] = \
             TracedDict()
+
+        ## Common target for the set.
+        self._common_target = InterfaceTarget(common_target_name)
+        self._targets[common_target_name] = self._common_target
 
 
     @property
@@ -400,30 +401,44 @@ class TargetSet(ITraced):
         if prev_target:
             return prev_target
 
+        # Keep track of whether the target should be linked to the target set's
+        #   common target
+        link_to_common = False
+
         # Add the target
         self._targets[new_target.target_name] = new_target
         if isinstance(new_target, ExecutableTarget):
             self._executable_targets[new_target.target_name] = new_target
             self._built_targets[new_target.target_name] = new_target
+            link_to_common = True
         if isinstance(new_target, TestTarget):
             self._test_targets[new_target.target_name] = new_target
             self._built_targets[new_target.target_name] = new_target
+            link_to_common = True
         if isinstance(new_target, TestWrapperTarget):
             self._test_targets[new_target.target_name] = new_target
         if isinstance(new_target, StaticLibraryTarget):
             self._library_targets[new_target.target_name] = new_target
             self._static_library_targets[new_target.target_name] = new_target
             self._built_targets[new_target.target_name] = new_target
+            link_to_common = True
         if isinstance(new_target, SharedLibraryTarget):
             self._library_targets[new_target.target_name] = new_target
             self._shared_library_targets[new_target.target_name] = new_target
             self._built_targets[new_target.target_name] = new_target
+            link_to_common = True
         if isinstance(new_target, ImportedTarget):
             self._imported_targets[new_target.target_name] = new_target
         if isinstance(new_target, DocumentationTarget):
             self._documentation_targets[new_target.target_name] = new_target
         if new_target.sanitizer_flags != ESanitizerFlags.NONE:
             self._sanitized_targets[new_target.target_name] = new_target
+
+        # Link the target to the target set's common target if necessary
+        if link_to_common:
+            new_target.properties.link_libraries.private.add(
+                self._common_target.target_name
+            )
 
         return new_target
 

@@ -124,7 +124,7 @@ class CMakeBuildConfig:
         Sets the CMake build type that the config maps to.
         """
         if isinstance(value, ECMakeBuildType):
-            value = value.value
+            self._cmake_build_type = value.value
         else:
             self._cmake_build_type = value
 
@@ -161,7 +161,7 @@ class CMakeBuildConfig:
         Sets the generator to use for CMake.
         """
         if isinstance(value, ECMakeGenerator):
-            value = value.value
+            self._generator = value.value
         else:
             self._generator = value
 

@@ -5,7 +5,7 @@ from pymake.model.cmake_config_target_properties import CMakeConfigTargetPropert
 from pymake.tracing.caller_info import CallerInfo
 from pymake.tracing.traced import Traced
 from pymake.tracing.traced_dict import TracedDict
-from typing import Iterable, List, Optional, Tuple
+from typing import Iterable, List, Optional, Set, Tuple
 
 class CMakeTargetProperties:
     """
@@ -75,6 +75,14 @@ class CMakeTargetProperties:
         ## Whether the binary's build rpath should use the $ORIGIN variable.
         self._build_rpath_use_origin = Traced(False)
 
+        ## Whether the target should be installed.
+        self._should_install = Traced(True)
+
+        ## The path to install the target to.
+        # @invariant This may be an absolute or relative path. Relative paths
+        #   will be resolved relative to the project's install prefix.
+        self._install_path: Traced[Optional[Path]] = Traced(None)
+
         ## Paths to add to the binary's install rpath.
         # Each path in this list may be a relative or absolute path.
         self._install_rpaths: List[Traced[Path]] = []
@@ -139,6 +147,14 @@ class CMakeTargetProperties:
         ## Sources to add to the target.
         # @invariant Each path in this set will be an absolute path.
         self._sources: ScopedSets[Path] = ScopedSets()
+
+
+    @property
+    def configs(self) -> Set[str]:
+        """
+        Gets the configuration options to use for the target.
+        """
+        return { c for c, _ in self._config_properties }
 
 
     @property
@@ -315,6 +331,22 @@ class CMakeTargetProperties:
         Gets the build rpaths to use for the target.
         """
         return self._build_rpaths
+
+
+    @property
+    def should_install(self) -> Traced[bool]:
+        """
+        Gets whether the target should be installed.
+        """
+        return self._should_install
+
+
+    @property
+    def install_path(self) -> Traced[Optional[Path]]:
+        """
+        Gets the install path to use for the target.
+        """
+        return self._install_path
 
 
     @property
@@ -579,3 +611,18 @@ class CMakeTargetProperties:
         @return The config-specific properties for the given build configuration.
         """
         return self._config_properties[config]
+
+
+    def install(self, install_dir: str | Path | None) -> None:
+        """
+        Installs the target.
+        @param install_dir The directory to install the target to. If this is a
+          relative path, it will be interpreted relative to the install prefix.
+          If this is none, CMake's default install directory for the target type
+          will be used.
+        """
+        if isinstance(install_dir, str):
+            install_dir = Path(install_dir)
+
+        self._should_install = Traced(True)
+        self._install_dir = Traced(install_dir)

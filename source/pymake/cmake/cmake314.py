@@ -90,6 +90,7 @@ class CMake314(ICMake):
         env_vars.update(os.environ)
 
         # Run the CMake command
+        print("Running command: " + " ".join(cmake_cmd))
         return subprocess.run(
             cmake_cmd,
             env=env_vars,
@@ -132,6 +133,7 @@ class CMake314(ICMake):
         env_vars.update(os.environ)
 
         # Run the CMake command
+        print("Running command: " + " ".join(cmake_cmd))
         return subprocess.run(
             cmake_cmd,
             env=env_vars,

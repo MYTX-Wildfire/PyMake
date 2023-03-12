@@ -42,3 +42,14 @@ class ExecutableTargetView:
             paths.append(PathStatics.resolve_by_caller_path(source))
 
         self._target.properties.sources.select_set(scope).add(*paths)
+
+
+    def install(self, install_path: str | Path | None = None) -> None:
+        """
+        Installs the target.
+        @param install_path The path to install the target to. If this is a
+          relative path, it will be interpreted relative to the install prefix.
+          If this is `None`, the target will be installed to CMake's default
+          install path for the target type.
+        """
+        self._target.properties.install(install_path)
