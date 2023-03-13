@@ -22,8 +22,6 @@ class PyMakeProject:
         cmake_version: ECMakeVersion,
         source_dir: str | Path,
         generated_dir: str | Path,
-        build_dir: str | Path,
-        install_dir: str | Path,
         origin: CallerInfo | None = None) -> PyMakeProject:
         """
         Gets or creates the PyMake project for the target origin.
@@ -35,13 +33,6 @@ class PyMakeProject:
           resolved relative to the caller's directory.
         @param generated_dir The path to the folder where PyMake will generate
           CMake files in. This may be an absolute or relative path. If the path
-          is a relative path, it will be resolved relative to the caller's
-          directory.
-        @param build_dir The path to the folder that CMake will use as its build
-          tree. This may be an absolute or relative path. If the path is a
-          relative path, it will be resolved relative to the caller's directory.
-        @param install_dir The path to the folder that CMake will use as its
-          install tree. This may be an absolute or relative path. If the path
           is a relative path, it will be resolved relative to the caller's
           directory.
         @param origin Location in external PyMake build scripts to get the
@@ -60,9 +51,7 @@ class PyMakeProject:
         project = PyMakeProject(
             cmake_version,
             source_dir,
-            generated_dir,
-            build_dir,
-            install_dir
+            generated_dir
         )
         PyMakeProject._pymake_projects[origin] = project
         return project
@@ -71,9 +60,7 @@ class PyMakeProject:
     def __init__(self,
         cmake_version: ECMakeVersion,
         source_dir: str | Path,
-        generated_dir: str | Path,
-        build_dir: str | Path,
-        install_dir: str | Path):
+        generated_dir: str | Path):
         """
         Initializes the project.
         @param cmake_version The version of CMake to target when generating the
@@ -103,27 +90,17 @@ class PyMakeProject:
             source_dir = Path(source_dir)
         if isinstance(generated_dir, str):
             generated_dir = Path(generated_dir)
-        if isinstance(build_dir, str):
-            build_dir = Path(build_dir)
-        if isinstance(install_dir, str):
-            install_dir = Path(install_dir)
 
         # Convert all input paths to absolute paths
         if not source_dir.is_absolute():
             source_dir = caller_dir / source_dir
         if not generated_dir.is_absolute():
             generated_dir = caller_dir / generated_dir
-        if not build_dir.is_absolute():
-            build_dir = caller_dir / build_dir
-        if not install_dir.is_absolute():
-            install_dir = caller_dir / install_dir
 
         # Store input parameters
         self._cmake_version = cmake_version
         self._source_dir = source_dir
         self._generated_dir = generated_dir
-        self._build_dir = build_dir
-        self._install_dir = install_dir
 
         # Collection of project scopes, indexed by project name.
         self._project_scopes: TracedDict[str, ProjectScope] = TracedDict()
@@ -159,24 +136,6 @@ class PyMakeProject:
         This is guaranteed to be an absolute path.
         """
         return self._generated_dir
-
-
-    @property
-    def build_dir(self) -> Path:
-        """
-        The path to the folder that CMake will use as its build tree.
-        This is guaranteed to be an absolute path.
-        """
-        return self._build_dir
-
-
-    @property
-    def install_dir(self) -> Path:
-        """
-        The path to the folder that CMake will use as its install tree.
-        This is guaranteed to be an absolute path.
-        """
-        return self._install_dir
 
 
     @property

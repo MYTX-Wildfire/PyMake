@@ -2,8 +2,10 @@ from pymake.model.pymake_project import PyMakeProject
 from pymake.model.project_scope import ProjectScope
 from pymake.model.target_set import TargetSet
 from pymake.model.targets.build.executable_target import ExecutableTarget
+from pymake.model.targets.build.library_target import LibraryTarget
 from pymake.model.targets.build.interface_target import InterfaceTarget
 from pymake.visitors.hierarchical.executable_target_visitor import ExecutableTargetVisitor
+from pymake.visitors.hierarchical.library_target_visitor import LibraryTargetVisitor
 from pymake.visitors.hierarchical.interface_target_visitor import InterfaceTargetVisitor
 from pymake.visitors.hierarchical.hierarchical_state import HierarchicalState
 from pymake.visitors.hierarchical.project_visitor import ProjectVisitor
@@ -45,6 +47,8 @@ class HierarchicalVisitorSet(IVisitorSet):
             return TargetSetVisitor(self._state) # type: ignore
         elif isinstance(node, ExecutableTarget):
             return ExecutableTargetVisitor(self._state) # type: ignore
+        elif isinstance(node, LibraryTarget):
+            return LibraryTargetVisitor(self._state) # type: ignore
         elif isinstance(node, InterfaceTarget):
             return InterfaceTargetVisitor(self._state) # type: ignore
         raise NotImplementedError()

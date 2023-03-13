@@ -31,7 +31,7 @@ class CMake314(ICMake):
         cmake_cmd = [
             "cmake3.14",
             "-S", str(project.generated_dir),
-            "-B", str(project.build_dir)
+            "-B", str(build_config.build_path)
         ]
 
         if build_config.cmake_build_type:
@@ -116,7 +116,7 @@ class CMake314(ICMake):
         # Build the CMake command to invoke
         cmake_cmd = [
             "cmake3.14",
-            "--build", str(project.build_dir)
+            "--build", str(build_config.build_path)
         ]
         if build_config.clean_build:
             cmake_cmd.append("--clean-first")

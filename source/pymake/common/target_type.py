@@ -5,13 +5,13 @@ class ETargetType(Enum):
     Enum for the various CMake target types.
     """
     ## Indicates that the target creates an executable binary.
-    EXECUTABLE = "Executable"
+    EXECUTABLE = "EXECUTABLE"
 
     ## Indicates that the target creates a static library.
-    STATIC = "Static"
+    STATIC = "STATIC"
 
     ## Indicates that the target creates a shared library.
-    SHARED = "Shared"
+    SHARED = "SHARED"
 
     ## Indicates that the target is an interface target.
-    INTERFACE = "Interface"
+    INTERFACE = "INTERFACE"

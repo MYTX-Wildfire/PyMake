@@ -92,11 +92,11 @@ class ITargetVisitor(IVisitor[TargetType], Generic[TargetType]):
 
         # Remove properties that are invalid for the target type
         if isinstance(target, InterfaceTarget):
-            del target_properties["CXX_STANDARD_REQUIRED"]
+            target_properties.pop("CXX_STANDARD_REQUIRED", None)
 
         # If a C++ standard isn't specified, don't mark it as required
-        if not properties.cxx_standard:
-            del target_properties["CXX_STANDARD_REQUIRED"]
+        if not properties.cxx_standard.value:
+            target_properties.pop("CXX_STANDARD_REQUIRED", None)
 
         self._set_properties(
             target,

@@ -1,21 +1,22 @@
+from __future__ import annotations
 from pathlib import Path
 from pymake.common.scope import EScope
 from pymake.model.project_scope import ProjectScope
 from pymake.model.pymake_project import PyMakeProject
 from pymake.model.target_set import TargetSet
-from pymake.model.targets.build.executable_target import ExecutableTarget
+from pymake.model.targets.build.build_target import BuildTarget
 from pymake.util.path_statics import PathStatics
 from typing import List
 
-class ExecutableTargetView:
+class BuildTargetView:
     """
-    Provides an interface for modifying an executable target.
+    Provides an interface for modifying a build target.
     """
     def __init__(self,
         project: PyMakeProject,
         project_scope: ProjectScope,
         target_set: TargetSet,
-        target: ExecutableTarget):
+        target: BuildTarget):
         """
         Initializes the target view.
         @param project The project that the target is part of.
@@ -41,7 +42,39 @@ class ExecutableTargetView:
         for source in sources:
             paths.append(PathStatics.resolve_by_caller_path(source))
 
-        self._target.properties.sources.select_set(scope).add(*paths)
+        for path in paths:
+            self._target.properties.sources.select_set(scope).add(path)
+
+
+    def add_include_directories(self,
+        scope: EScope,
+        *include_directories: str) -> None:
+        """
+        Adds include directories to the target.
+        @param include_directories The include directories to add.
+        """
+        # Convert all include directories to absolute paths.
+        paths: List[Path] = []
+        for include_directory in include_directories:
+            paths.append(PathStatics.resolve_by_caller_path(include_directory))
+
+        for path in paths:
+            self._target.properties.include_directories.select_set(scope).add(
+                path
+            )
+
+
+    def link_to(self,
+        scope: EScope,
+        *targets: BuildTargetView) -> None:
+        """
+        Links the target to other targets.
+        @param targets The targets to link to.
+        """
+        for target in targets:
+            self._target.properties.link_libraries.select_set(scope).add(
+                target._target.target_name
+            )
 
 
     def install(self, install_path: str | Path | None = None) -> None:

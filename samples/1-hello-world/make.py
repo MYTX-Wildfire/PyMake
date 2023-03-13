@@ -29,7 +29,6 @@ project = pymake.create_project_scope(
 
 # Set up presets
 base_preset = pymake.add_preset("base")
-base_preset.install_path = "_out"
 base_preset.generator = ECMakeGenerator.Ninja
 
 debug_preset = pymake.add_preset("debug", base_presets=base_preset)

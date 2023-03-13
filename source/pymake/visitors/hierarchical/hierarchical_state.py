@@ -246,15 +246,9 @@ class HierarchicalState:
         # Store the path within the generated build directory where
         #   the target's build file will be generated
         assert target.target_name not in self._target_build_paths
-        target_binary_path = project.build_dir
-        target_binary_path /= scope.project_name
-        target_binary_path /= target_set.set_name
-        # TODO: Get the target's file name using the target's
-        #   properties rather than assuming it's the same as the
-        #   target's name
-        target_binary_path /= target.target_name
-        self._target_build_paths[target.target_name] = \
-            target_binary_path
+        # TODO: Figure out how to get the path to the target's build directory
+        #   file path
+        self._target_build_paths[target.target_name] = Path(target.target_name)
 
         # Create the build script for the target
         target_build_script_path = project.generated_dir

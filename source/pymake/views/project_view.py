@@ -1,4 +1,6 @@
 import argparse
+from importlib import util
+from pathlib import Path
 from pymake.common.pymake_args import PyMakeArgs
 from pymake.cmake.cmake import ICMake
 from pymake.cmake.cmake314 import CMake314
@@ -8,6 +10,7 @@ from pymake.common.project_language import EProjectLanguage
 from pymake.model.preset import Preset
 from pymake.model.pymake_project import PyMakeProject
 from pymake.views.project_scope_view import ProjectScopeView
+from pymake.util.path_statics import PathStatics
 from pymake.visitors.crawlers.project_crawler import IProjectCrawler
 from pymake.visitors.crawlers.breadth_first_crawler import BreadthFirstCrawler
 from pymake.visitors.hierarchical.hierarchical_visitor_set \
@@ -54,6 +57,34 @@ class ProjectView:
         for base_preset in base_presets:
             preset.inherit_from(base_preset)
         return preset
+
+
+    def add_subdirectory(self, path: str):
+        """
+        Invokes a PyMake build script in a subdirectory.
+        @param path Path to the subdirectory from the caller's directory. This
+          should generally be a relative path.
+        @throws FileNotFoundError If the subdirectory does not contain a
+          'make.py' file.
+        """
+        subdir_path = Path(path)
+        if not subdir_path.is_absolute():
+            subdir_path = PathStatics.resolve_by_caller_path(subdir_path)
+
+        # Make sure the subdirectory has a make.py file
+        make_py_path = subdir_path / "make.py"
+        if not make_py_path.exists():
+            raise FileNotFoundError(
+                f"Error: The subdirectory '{subdir_path}' does not contain " +
+                "a 'make.py' file."
+            )
+
+        # Call the subdirectory's make.py file
+        spec = util.spec_from_file_location("make", make_py_path)
+        assert spec
+        assert spec.loader
+        module = util.module_from_spec(spec)
+        spec.loader.exec_module(module)
 
 
     def build(self,

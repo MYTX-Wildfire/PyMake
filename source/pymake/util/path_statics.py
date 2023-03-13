@@ -22,8 +22,8 @@ class PathStatics:
         # Resolve the path.
         path = Path(path)
         if path.is_absolute():
-            return path
-        return caller_dir / path
+            return path.resolve()
+        return (caller_dir / path).resolve()
 
 
     @staticmethod
