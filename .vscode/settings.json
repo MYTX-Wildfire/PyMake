@@ -11,7 +11,7 @@
 	},
 	"python.analysis.extraPaths": [
 		"source",
-		"samples/2-hello-static"
+		"samples/4-hello-gtest"
 	],
 	"python.analysis.typeCheckingMode": "strict",
 	"python.languageServer": "Pylance",

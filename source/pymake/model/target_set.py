@@ -7,6 +7,7 @@ from pymake.model.targets.build.executable_target import ExecutableTarget
 from pymake.model.targets.build.library_target import LibraryTarget
 from pymake.model.targets.build.shared_library_target import SharedLibraryTarget
 from pymake.model.targets.build.static_library_target import StaticLibraryTarget
+from pymake.model.targets.imported.imported_target import ImportedTarget
 from pymake.model.targets.docs.documentation_target import DocumentationTarget
 from pymake.model.targets.docs.doxygen_target import DoxygenTarget
 from pymake.model.targets.imported.imported_target import ImportedTarget
@@ -235,6 +236,26 @@ class TargetSet(ITraced):
         ))
 
 
+    def add_external_static_library(self,
+        target_name: str,
+        sanitizer_flags: int) -> ImportedTarget:
+        """
+        Adds an externally built static library target to the set.
+        @param target_name Name of the target.
+        @param sanitizer_flags Flags indicating which sanitizers are enabled
+          for the target.
+        @throws RuntimeError Thrown if a target with the same name already
+          exists and was added at a different location.
+        @returns The target that was added. If the target already exists and
+          was added at the same location, the existing target is returned.
+        """
+        return self._add_new_target(ImportedTarget(
+            target_name,
+            ETargetType.STATIC,
+            sanitizer_flags
+        ))
+
+
     def add_static_library(self,
         target_name: str,
         sanitizer_flags: int) -> StaticLibraryTarget:
@@ -407,30 +428,31 @@ class TargetSet(ITraced):
 
         # Add the target
         self._targets[new_target.target_name] = new_target
-        if isinstance(new_target, ExecutableTarget):
-            self._executable_targets[new_target.target_name] = new_target
-            self._built_targets[new_target.target_name] = new_target
-            link_to_common = True
         if isinstance(new_target, TestTarget):
             self._test_targets[new_target.target_name] = new_target
             self._built_targets[new_target.target_name] = new_target
             link_to_common = True
-        if isinstance(new_target, TestWrapperTarget):
+        elif isinstance(new_target, ExecutableTarget):
+            self._executable_targets[new_target.target_name] = new_target
+            self._built_targets[new_target.target_name] = new_target
+            link_to_common = True
+        elif isinstance(new_target, TestWrapperTarget):
             self._test_targets[new_target.target_name] = new_target
-        if isinstance(new_target, StaticLibraryTarget):
+        elif isinstance(new_target, StaticLibraryTarget):
             self._library_targets[new_target.target_name] = new_target
             self._static_library_targets[new_target.target_name] = new_target
             self._built_targets[new_target.target_name] = new_target
             link_to_common = True
-        if isinstance(new_target, SharedLibraryTarget):
+        elif isinstance(new_target, SharedLibraryTarget):
             self._library_targets[new_target.target_name] = new_target
             self._shared_library_targets[new_target.target_name] = new_target
             self._built_targets[new_target.target_name] = new_target
             link_to_common = True
-        if isinstance(new_target, ImportedTarget):
+        elif isinstance(new_target, ImportedTarget):
             self._imported_targets[new_target.target_name] = new_target
-        if isinstance(new_target, DocumentationTarget):
+        elif isinstance(new_target, DocumentationTarget):
             self._documentation_targets[new_target.target_name] = new_target
+
         if new_target.sanitizer_flags != ESanitizerFlags.NONE:
             self._sanitized_targets[new_target.target_name] = new_target
 

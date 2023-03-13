@@ -3,6 +3,7 @@ from pymake.model.project_scope import ProjectScope
 from pymake.model.pymake_project import PyMakeProject
 from pymake.model.target_set import TargetSet
 from pymake.views.build_target_view import BuildTargetView
+from pymake.views.imported_target_view import ImportedTargetView
 
 class TargetSetView:
     """
@@ -40,6 +41,53 @@ class TargetSetView:
             self._target_set,
             self._target_set.add_executable(
                 target_name,
+                sanitizer_flags
+            )
+        )
+
+
+    def add_external_static_library(self,
+        target_name: str,
+        sanitizer_flags: int = ESanitizerFlags.NONE) -> ImportedTargetView:
+        """
+        Adds an external static library target to the target set.
+        @param target_name The name of the target.
+        @param sanitizer_flags The sanitizers enabled for the target.
+        @throws RuntimeError Thrown if a target with the same name already
+          exists and was added at a different location.
+        @returns A view for the target.
+        """
+        return ImportedTargetView(
+            self._project,
+            self._project_scope,
+            self._target_set,
+            self._target_set.add_external_static_library(
+                target_name,
+                sanitizer_flags
+            )
+        )
+
+
+    def add_gtest_executable(self,
+        target_name: str,
+        test_flags: int,
+        sanitizer_flags: int = ESanitizerFlags.NONE) -> BuildTargetView:
+        """
+        Adds a GoogleTest test executable target to the target set.
+        @param target_name The name of the target.
+        @param test_flags The test flags for the target.
+        @param sanitizer_flags The sanitizers enabled for the target.
+        @throws RuntimeError Thrown if a target with the same name already
+          exists and was added at a different location.
+        @returns A view for the target.
+        """
+        return BuildTargetView(
+            self._project,
+            self._project_scope,
+            self._target_set,
+            self._target_set.add_gtest_executable(
+                target_name,
+                test_flags,
                 sanitizer_flags
             )
         )

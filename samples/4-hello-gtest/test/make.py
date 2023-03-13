@@ -1,10 +1,17 @@
-from foo.make import foo_target
-from make import project
+from foo.make import foo_target_set, foo_target
+from make import gtest_target, gtest_main_target
+from pymake import EScope, ETestFlags
 
-# Configure the test executable
-test_target = project.add_gtest_target("foo_tests")
-test_target.link_to_target(foo_target)
-test_target.add_sources("test.cpp")
-test_target.link_to_library("gtest", is_static=True)
-test_target.link_to_library("gtest_main", is_static=True)
+# Add the test executable as a target in the Foo target set
+test_target = foo_target_set.add_gtest_executable(
+    "foo_tests",
+    ETestFlags.UNIT
+)
+test_target.add_sources(EScope.PRIVATE, "test.cpp")
+test_target.link_to(
+    EScope.PRIVATE,
+    foo_target,
+    gtest_target,
+    gtest_main_target
+)
 test_target.install()

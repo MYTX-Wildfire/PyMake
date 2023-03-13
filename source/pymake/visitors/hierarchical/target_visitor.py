@@ -4,6 +4,7 @@ from pymake.generators.cmake_generator import CMakeGenerator
 from pymake.model.cmake_target_properties import CMakeTargetProperties
 from pymake.model.cmake_config_target_properties import CMakeConfigTargetProperties
 from pymake.model.targets.build.interface_target import InterfaceTarget
+from pymake.model.targets.imported.imported_target import ImportedTarget
 from pymake.model.targets.target import Target
 from pymake.visitors.visitor import IVisitor
 from pymake.tracing.traced import Traced
@@ -93,6 +94,11 @@ class ITargetVisitor(IVisitor[TargetType], Generic[TargetType]):
         # Remove properties that are invalid for the target type
         if isinstance(target, InterfaceTarget):
             target_properties.pop("CXX_STANDARD_REQUIRED", None)
+        if not isinstance(target, ImportedTarget):
+            target_properties.pop("IMPORTED", None)
+            target_properties.pop("IMPORTED_LIBNAME", None)
+            target_properties.pop("IMPORTED_IMPLIB_NAME", None)
+            target_properties.pop("IMPORTED_LOCATION", None)
 
         # If a C++ standard isn't specified, don't mark it as required
         if not properties.cxx_standard.value:
@@ -163,17 +169,27 @@ class ITargetVisitor(IVisitor[TargetType], Generic[TargetType]):
         )
 
         # Generate the install command if the target is to be installed
-        if properties.should_install:
+        if properties.should_install.value:
             with generator.open_method_block("install") as b:
-                b.add_keyword_arguments(
-                    "TARGETS",
-                    # Write the location of the `install()` call in the PyMake
-                    #   build scripts above the name of the target
-                    Traced(
-                        target.target_name,
-                        target.properties.should_install.origin
+                # Write the location of the `install()` call in the PyMake build
+                #   scripts above the name/location of the target
+                if isinstance(target, ImportedTarget):
+                    b.add_keyword_arguments(
+                        "FILES",
+                        Traced(
+                            target.properties.imported_location,
+                            target.properties.should_install.origin
+                        )
                     )
-                )
+                else:
+                    b.add_keyword_arguments(
+                        "TARGETS",
+                        Traced(
+                            target.target_name,
+                            target.properties.should_install.origin
+                        )
+                    )
+
                 if properties.install_path.value:
                     b.add_keyword_arguments(
                         "DESTINATION",

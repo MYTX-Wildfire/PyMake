@@ -1,23 +1,24 @@
 from __future__ import annotations
 from pathlib import Path
 from pymake.common.scope import EScope
+from pymake.common.target_type import ETargetType
 from pymake.model.project_scope import ProjectScope
 from pymake.model.pymake_project import PyMakeProject
 from pymake.model.target_set import TargetSet
-from pymake.model.targets.build.build_target import BuildTarget
-from pymake.views.imported_target_view import ImportedTargetView
+from pymake.model.targets.imported.imported_target import ImportedTarget
 from pymake.util.path_statics import PathStatics
+from pymake.util.platform_statics import PlatformStatics
 from typing import List
 
-class BuildTargetView:
+class ImportedTargetView:
     """
-    Provides an interface for modifying a build target.
+    Provides an interface for modifying an imported target.
     """
     def __init__(self,
         project: PyMakeProject,
         project_scope: ProjectScope,
         target_set: TargetSet,
-        target: BuildTarget):
+        target: ImportedTarget):
         """
         Initializes the target view.
         @param project The project that the target is part of.
@@ -39,27 +40,11 @@ class BuildTargetView:
         return self._target.target_name
 
 
-    def add_sources(self,
-        scope: EScope,
-        *sources: str) -> None:
-        """
-        Adds source files to the target.
-        @param sources The source files to add.
-        """
-        # Convert all sources to absolute paths.
-        paths: List[Path] = []
-        for source in sources:
-            paths.append(PathStatics.resolve_by_caller_path(source))
-
-        for path in paths:
-            self._target.properties.sources.select_set(scope).add(path)
-
-
     def add_include_directories(self,
-        scope: EScope,
         *include_directories: str) -> None:
         """
         Adds include directories to the target.
+        All include directories are added to the `INTERFACE` scope.
         @param include_directories The include directories to add.
         """
         # Convert all include directories to absolute paths.
@@ -67,31 +52,44 @@ class BuildTargetView:
         for include_directory in include_directories:
             paths.append(PathStatics.resolve_by_caller_path(include_directory))
 
+        interface_set = self._target.properties.include_directories.select_set(
+            EScope.INTERFACE
+        )
         for path in paths:
-            self._target.properties.include_directories.select_set(scope).add(
-                path
-            )
+            interface_set.add(path)
 
 
-    def link_to(self,
-        scope: EScope,
-        *targets: BuildTargetView | ImportedTargetView) -> None:
+    def set_location(self,
+        dir: str | Path,
+        name: str,
+        add_prefix_suffix: bool = True) -> None:
         """
-        Links the target to other targets.
-        @param targets The targets to link to.
+        Sets the location of the imported target.
+        @param dir The directory that the target is located in. This may be an
+          absolute or relative path. If the path is a relative path, it will
+          be interpreted relative to the caller's directory.
+        @param name Name of the library. This should not include the prefix or
+          file extension unless `add_prefix_suffix` is `False`.
+        @param add_prefix_suffix Whether to add the platform-specific prefix
+          and suffix to the library name.
         """
-        for target in targets:
-            self._target.properties.link_libraries.select_set(scope).add(
-                target.target_name
-            )
+        # Convert the path to an absolute path
+        lib_path = PathStatics.resolve_by_caller_path(dir)
+
+        # Update the library name if necessary
+        if add_prefix_suffix:
+            name = PlatformStatics.get_static_lib_name(name)
+
+        # This property is only valid on imported interface targets
+        if self._target.target_type == ETargetType.INTERFACE:
+            self._target.properties.imported_name = name
+        self._target.properties.imported_location = lib_path / name
 
 
-    def install(self, install_path: str | Path | None = None) -> None:
+    def install(self, install_path: str | Path) -> None:
         """
         Installs the target.
         @param install_path The path to install the target to. If this is a
           relative path, it will be interpreted relative to the install prefix.
-          If this is `None`, the target will be installed to CMake's default
-          install path for the target type.
         """
         self._target.properties.install(install_path)

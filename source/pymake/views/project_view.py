@@ -71,6 +71,12 @@ class ProjectView:
         if not subdir_path.is_absolute():
             subdir_path = PathStatics.resolve_by_caller_path(subdir_path)
 
+        # If the subdirectory doesn't exist, throw an error
+        if not subdir_path.exists():
+            raise FileNotFoundError(
+                f"Error: The subdirectory '{subdir_path}' does not exist."
+            )
+
         # Make sure the subdirectory has a make.py file
         make_py_path = subdir_path / "make.py"
         if not make_py_path.exists():
