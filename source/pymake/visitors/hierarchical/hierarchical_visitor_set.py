@@ -5,14 +5,22 @@ from pymake.model.targets.build.executable_target import ExecutableTarget
 from pymake.model.targets.build.library_target import LibraryTarget
 from pymake.model.targets.build.interface_target import InterfaceTarget
 from pymake.model.targets.imported.imported_target import ImportedTarget
+from pymake.model.targets.test.drd_test_target import DrdTestTarget
+from pymake.model.targets.test.helgrind_test_target import HelgrindTestTarget
+from pymake.model.targets.test.memcheck_test_target import MemcheckTestTarget
+from pymake.visitors.hierarchical.drd_target_visitor import DrdTargetVisitor
 from pymake.visitors.hierarchical.executable_target_visitor \
     import ExecutableTargetVisitor
-from pymake.visitors.hierarchical.library_target_visitor \
-    import LibraryTargetVisitor
+from pymake.visitors.hierarchical.helgrind_target_visitor \
+    import HelgrindTargetVisitor
 from pymake.visitors.hierarchical.imported_target_visitor \
     import ImportedTargetVisitor
 from pymake.visitors.hierarchical.interface_target_visitor \
     import InterfaceTargetVisitor
+from pymake.visitors.hierarchical.library_target_visitor \
+    import LibraryTargetVisitor
+from pymake.visitors.hierarchical.memcheck_target_visitor \
+    import MemcheckTargetVisitor
 from pymake.visitors.hierarchical.hierarchical_state import HierarchicalState
 from pymake.visitors.hierarchical.project_visitor import ProjectVisitor
 from pymake.visitors.hierarchical.project_scope_visitor \
@@ -52,6 +60,12 @@ class HierarchicalVisitorSet(IVisitorSet):
             return ProjectScopeVisitor(self._state) # type: ignore
         elif isinstance(node, TargetSet):
             return TargetSetVisitor(self._state) # type: ignore
+        elif isinstance(node, DrdTestTarget):
+            return DrdTargetVisitor(node, self._state) # type: ignore
+        elif isinstance(node, HelgrindTestTarget):
+            return HelgrindTargetVisitor(node, self._state) # type: ignore
+        elif isinstance(node, MemcheckTestTarget):
+            return MemcheckTargetVisitor(node, self._state) # type: ignore
         elif isinstance(node, ExecutableTarget):
             return ExecutableTargetVisitor(self._state) # type: ignore
         elif isinstance(node, LibraryTarget):

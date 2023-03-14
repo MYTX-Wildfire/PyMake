@@ -40,13 +40,6 @@ class ProjectScopeVisitor(IVisitor[ProjectScope]):
                 *[l.value for l in node.project_languages]
             )
 
-        # Enable CTest
-        # Note that this must be generated *after* the project() call
-        with generator.open_method_block("include") as b:
-            b.add_arguments("CTest")
-        with generator.open_method_block("enable_testing") as b:
-            pass
-
         # Generate the project's `all` target
         with generator.open_method_block("add_custom_target") as b:
             b.add_arguments(node.project_all_target_name, add_quotes=True)

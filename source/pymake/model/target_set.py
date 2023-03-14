@@ -491,13 +491,13 @@ class TargetSet(ITraced):
         if prev_target.origin != new_target.origin:
             error_str = "Error: Cannot add a target with the name " + \
                 f"'{new_target.target_name}' to the target set " + \
-                f"'{self._set_name}'."
-            error_str = "Note: A target with the name " + \
-                f"'{new_target.target_name}' already exists in the target set."
-            error_str = "    The target was previously added at " + \
+                f"'{self._set_name}'.\n"
+            error_str += "Note: A target with the name " + \
+                f"'{new_target.target_name}' already exists in the target set.\n"
+            error_str += "    The target was previously added at " + \
                 f"{prev_target.origin.file_path}:" + \
-                f"{prev_target.origin.line_number}."
-            error_str = "    The new target is being added at " + \
+                f"{prev_target.origin.line_number}.\n"
+            error_str += "    The new target is being added at " + \
                 f"{new_target.origin.file_path}:" + \
                 f"{new_target.origin.line_number}."
             raise RuntimeError(error_str)

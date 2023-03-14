@@ -1,4 +1,5 @@
 import argparse
+import inspect
 from importlib import util
 from pathlib import Path
 from pymake.common.pymake_args import PyMakeArgs
@@ -109,6 +110,18 @@ class ProjectView:
           `generate_first` is `True`.
         @returns The exit code of the build process.
         """
+        # If this is being called as a result of a non-top-level make.py, then
+        #   ignore the call
+        curr_frame = inspect.currentframe()
+        assert curr_frame
+
+        caller_frame = curr_frame.f_back
+        assert caller_frame
+
+        if "__name__" not in caller_frame.f_locals or \
+            caller_frame.f_locals["__name__"] != "__main__":
+            return 0
+
         if args:
             args = list(args)
         else:

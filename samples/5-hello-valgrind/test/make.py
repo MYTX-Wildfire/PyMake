@@ -1,15 +1,31 @@
-from foo.make import foo_target
-from make import project
+from foo.make import foo_target_set, foo_target
+from make import gtest_target, gtest_main_target
+from pymake import EScope, ETestFlags
 
-# Configure the test executable
-test_target = project.add_executable("foo_tests")
-test_target.link_to_target(foo_target)
-test_target.add_sources("test.cpp")
-test_target.link_to_library("gtest", is_static=True)
-test_target.link_to_library("gtest_main", is_static=True)
-test_target.mark_is_test_target(
-    add_valgrind_target=True,
-    add_helgrind_target=True,
-    add_drd_target=True
+# Add the gtest executable
+test_target = foo_target_set.add_gtest_executable(
+    "foo_tests",
+    ETestFlags.UNIT
+)
+test_target.add_sources(EScope.PRIVATE, "test.cpp")
+test_target.link_to(
+    EScope.PRIVATE,
+    foo_target,
+    gtest_target,
+    gtest_main_target
 )
 test_target.install()
+
+# Add the three Valgrind test targets
+drd_test_target = foo_target_set.add_drd_target(
+    "foo_drd",
+    test_target
+)
+helgrind_test_target = foo_target_set.add_helgrind_target(
+    "foo_helgrind",
+    test_target
+)
+memcheck_test_target = foo_target_set.add_memcheck_target(
+    "foo_memcheck",
+    test_target
+)

@@ -41,6 +41,9 @@ release_preset.cmake_build_type = ECMakeBuildType.Release
 release_preset.build_path = "_build/release"
 release_preset.install_path = "_out/release"
 
+test_preset = pymake.add_preset("test", base_presets=debug_preset)
+test_preset.targets = "test"
+
 pymake.set_default_presets(release_preset)
 
 # Add GoogleTest as an imported target

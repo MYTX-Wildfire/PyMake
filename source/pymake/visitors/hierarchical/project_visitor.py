@@ -36,6 +36,13 @@ class ProjectVisitor(IVisitor[PyMakeProject]):
         with generator.open_method_block("cmake_minimum_required") as b:
             b.add_keyword_arguments("VERSION", node.cmake_version.value)
 
+        # Enable CTest
+        # CMake requires that this is placed in the top-level CMakeLists.txt.
+        with generator.open_method_block("include") as b:
+            b.add_arguments("CTest")
+        with generator.open_method_block("enable_testing") as b:
+            pass
+
         # Generate add_subdirectory() calls for each project scope
         for scope in node.project_scopes:
             with generator.open_method_block("add_subdirectory") as b:

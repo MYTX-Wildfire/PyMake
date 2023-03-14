@@ -1,8 +1,7 @@
-from pymake.generators.build_script import BuildScript
 from pymake.model.targets.build.executable_target import ExecutableTarget
-from pymake.model.targets.test.test_target import TestTarget
+from pymake.model.targets.test.test_wrapper_target import TestWrapperTarget
 
-class ValgrindTestTarget(TestTarget):
+class ValgrindTestTarget(TestWrapperTarget):
     """
     Represents a Valgrind-based test target.
     """
@@ -21,17 +20,6 @@ class ValgrindTestTarget(TestTarget):
         super().__init__(
             target_name,
             test_flags,
-            target_executable.sanitizer_flags
+            target_executable.sanitizer_flags,
+            target_executable
         )
-        self._target_exe = target_executable
-
-
-    def _generate_declaration(self,
-        build_script: BuildScript) -> None:
-        """
-        Generates the CMake code for the declaration of the target.
-        @param build_script Build script to write the target to.
-        """
-        # Do nothing - Valgrind targets do not need to be declared since they
-        #   use an existing executable target
-        pass

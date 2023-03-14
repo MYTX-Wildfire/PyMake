@@ -112,13 +112,13 @@ class ProjectScope(ITraced):
 
             error_str = "Error: Cannot add a target set with the name " + \
                 f"'{set_name}' to the project scope " + \
-                f"'{self.project_name}'."
-            error_str = "Note: A target set with the name " + \
-                f"'{set_name}' already exists in the project scope."
-            error_str = "    The target set was previously added at " + \
+                f"'{self.project_name}'.\n"
+            error_str += "Note: A target set with the name " + \
+                f"'{set_name}' already exists in the project scope.\n"
+            error_str += "    The target set was previously added at " + \
                 f"{prev_set.origin.file_path}:" + \
-                f"{prev_set.origin.line_number}."
-            error_str = "    The new target set is being added at " + \
+                f"{prev_set.origin.line_number}.\n"
+            error_str += "    The new target set is being added at " + \
                 f"{target_set.origin.file_path}:" + \
                 f"{target_set.origin.line_number}."
             raise RuntimeError(error_str)

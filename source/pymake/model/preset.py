@@ -252,6 +252,23 @@ class Preset(ITraced):
         self._build_config.clean_build = value
 
 
+    @property
+    def targets(self) -> List[str]:
+        """
+        Gets the targets to build.
+        """
+        return self._build_config.targets
+
+
+    @targets.setter
+    def targets(self,
+        value: str | List[str]) -> None:
+        """
+        Sets the targets to build.
+        """
+        self._build_config.targets = value
+
+
     def get_full_build_config(self) -> CMakeBuildConfig:
         """
         Gets the full build configuration for this preset.

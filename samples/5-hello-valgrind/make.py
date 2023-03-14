@@ -1,48 +1,61 @@
 #!/usr/bin/env python3
 import argparse
-from pymake import CMake314, CMake325, ECMakeBuildType, ECMakeGenerator, \
+from pymake import PyMake, ECMakeBuildType, ECMakeGenerator, ECMakeVersion, \
     EProjectLanguage
 
 # Figure out whether the build should use CMake 3.14 or 3.25
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    "--cmake-version",
+    "--cmake",
     choices=["3.14", "3.25"],
-    default="3.25",
+    default="3.14",
     help="The version of CMake to use."
 )
 cli_args = parser.parse_known_args()[0]
 
-# Set up the CMake project
-if cli_args.cmake_version == "3.14":
-    cmake = CMake314()
+if cli_args.cmake == "3.14":
+    target_cmake_version = ECMakeVersion.V3_14
+elif cli_args.cmake == "3.25":
+    target_cmake_version = ECMakeVersion.V3_25
 else:
-    cmake = CMake325()
-project = cmake.add_project("HelloWorld", EProjectLanguage.Cpp)
+    raise RuntimeError(f"Unknown/unsupported CMake version: {cli_args.cmake}.")
+
+# Set up the PyMake project
+pymake = PyMake.create_project(target_cmake_version)
+project = pymake.create_project_scope(
+    "HelloValgrind",
+    EProjectLanguage.CPP
+)
 
 # Set up presets
-base_preset = cmake.add_preset("base")
-base_preset.binary_dir = "_build"
-base_preset.install_dir = "_out"
+base_preset = pymake.add_preset("base")
 base_preset.generator = ECMakeGenerator.Ninja
 
-debug_preset = cmake.add_preset("debug")
-debug_preset.inherit_from(base_preset)
+debug_preset = pymake.add_preset("debug", base_presets=base_preset)
 debug_preset.cmake_build_type = ECMakeBuildType.Debug
-debug_preset.install_dir = "_out/debug"
+debug_preset.build_path = "_build/debug"
+debug_preset.install_path = "_out/debug"
 
-release_preset = cmake.add_preset("release")
-release_preset.inherit_from(base_preset)
+release_preset = pymake.add_preset("release", base_presets=base_preset)
 release_preset.cmake_build_type = ECMakeBuildType.Release
-release_preset.install_dir = "_out/release"
+release_preset.build_path = "_build/release"
+release_preset.install_path = "_out/release"
 
-test_preset = cmake.add_preset("test")
-test_preset.inherit_from(release_preset)
+test_preset = pymake.add_preset("test", base_presets=debug_preset)
 test_preset.targets = "test"
 
-cmake.set_default_presets(release_preset)
+pymake.set_default_presets(release_preset)
+
+# Add GoogleTest as an imported target
+gtest_target_set = project.create_target_set("gtest_target_set")
+gtest_target = gtest_target_set.add_external_static_library("gtest")
+gtest_target.set_location("/usr/lib", "gtest")
+gtest_main_target = gtest_target_set.add_external_static_library("gtest_main")
+gtest_main_target.set_location("/usr/lib", "gtest_main")
 
 # Configure the project
-cmake.add_subdirectory("foo")
-cmake.add_subdirectory("test")
-cmake.build()
+pymake.add_subdirectory("foo")
+pymake.add_subdirectory("test")
+
+# Build the project
+pymake.build()

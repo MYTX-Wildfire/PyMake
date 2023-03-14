@@ -2,8 +2,10 @@ from pymake.common.sanitizer_flags import ESanitizerFlags
 from pymake.model.project_scope import ProjectScope
 from pymake.model.pymake_project import PyMakeProject
 from pymake.model.target_set import TargetSet
+from pymake.model.targets.build.executable_target import ExecutableTarget
 from pymake.views.build_target_view import BuildTargetView
 from pymake.views.imported_target_view import ImportedTargetView
+from pymake.views.valgrind_target_view import ValgrindTargetView
 
 class TargetSetView:
     """
@@ -68,6 +70,34 @@ class TargetSetView:
         )
 
 
+    def add_drd_target(self,
+        test_target_name: str,
+        wrapped_target: BuildTargetView) -> ValgrindTargetView:
+        """
+        Adds a DRD test executable target to the target set.
+        @param test_target_name The name of the test target that runs the
+          executable under Valgrind.
+        @param wrapped_target The executable target that is wrapped by Valgrind.
+        @throws RuntimeError Thrown if the wrapped target is not an executable
+          target.
+        @returns A view for the target.
+        """
+        if not isinstance(wrapped_target.target, ExecutableTarget):
+            raise RuntimeError(
+                "The wrapped target must be an executable target."
+            )
+
+        return ValgrindTargetView(
+            self._project,
+            self._project_scope,
+            self._target_set,
+            self._target_set.add_drd_target(
+                test_target_name,
+                wrapped_target.target
+            )
+        )
+
+
     def add_gtest_executable(self,
         target_name: str,
         test_flags: int,
@@ -89,6 +119,62 @@ class TargetSetView:
                 target_name,
                 test_flags,
                 sanitizer_flags
+            )
+        )
+
+
+    def add_helgrind_target(self,
+        test_target_name: str,
+        wrapped_target: BuildTargetView) -> ValgrindTargetView:
+        """
+        Adds a Helgrind test executable target to the target set.
+        @param test_target_name The name of the test target that runs the
+          executable under Valgrind.
+        @param wrapped_target The executable target that is wrapped by Valgrind.
+        @throws RuntimeError Thrown if the wrapped target is not an executable
+          target.
+        @returns A view for the target.
+        """
+        if not isinstance(wrapped_target.target, ExecutableTarget):
+            raise RuntimeError(
+                "The wrapped target must be an executable target."
+            )
+
+        return ValgrindTargetView(
+            self._project,
+            self._project_scope,
+            self._target_set,
+            self._target_set.add_helgrind_target(
+                test_target_name,
+                wrapped_target.target
+            )
+        )
+
+
+    def add_memcheck_target(self,
+        test_target_name: str,
+        wrapped_target: BuildTargetView) -> ValgrindTargetView:
+        """
+        Adds a Memcheck test executable target to the target set.
+        @param test_target_name The name of the test target that runs the
+          executable under Valgrind.
+        @param wrapped_target The executable target that is wrapped by Valgrind.
+        @throws RuntimeError Thrown if the wrapped target is not an executable
+          target.
+        @returns A view for the target.
+        """
+        if not isinstance(wrapped_target.target, ExecutableTarget):
+            raise RuntimeError(
+                "The wrapped target must be an executable target."
+            )
+
+        return ValgrindTargetView(
+            self._project,
+            self._project_scope,
+            self._target_set,
+            self._target_set.add_memcheck_target(
+                test_target_name,
+                wrapped_target.target
             )
         )
 

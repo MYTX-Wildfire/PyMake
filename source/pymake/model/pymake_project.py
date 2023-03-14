@@ -182,13 +182,13 @@ class PyMakeProject:
                 return prev_preset
 
             error_str = "Error: Cannot add a preset with the name " + \
-                f"'{preset_name}'."
-            error_str = "Note: A preset with the name " + \
-                f"'{preset_name}' already exists in the PyMake project."
-            error_str = "    The preset was previously added at " + \
+                f"'{preset_name}'.\n"
+            error_str += "Note: A preset with the name " + \
+                f"'{preset_name}' already exists in the PyMake project.\n"
+            error_str += "    The preset was previously added at " + \
                 f"{prev_preset.origin.file_path}:" + \
-                f"{prev_preset.origin.line_number}."
-            error_str = "    The new preset is being added at " + \
+                f"{prev_preset.origin.line_number}.\n"
+            error_str += "    The new preset is being added at " + \
                 f"{preset.origin.file_path}:" + \
                 f"{preset.origin.line_number}."
             raise RuntimeError(error_str)
@@ -233,13 +233,13 @@ class PyMakeProject:
                 return prev_project
 
             error_str = "Error: Cannot add a target with the name " + \
-                f"'{project_name}'."
-            error_str = "Note: A project scope with the name " + \
-                f"'{project_name}' already exists in the PyMake project."
-            error_str = "    The project scope was previously added at " + \
+                f"'{project_name}'.\n"
+            error_str += "Note: A project scope with the name " + \
+                f"'{project_name}' already exists in the PyMake project.\n"
+            error_str += "    The project scope was previously added at " + \
                 f"{prev_project.origin.file_path}:" + \
-                f"{prev_project.origin.line_number}."
-            error_str = "    The new project scope is being added at " + \
+                f"{prev_project.origin.line_number}.\n"
+            error_str += "    The new project scope is being added at " + \
                 f"{project.origin.file_path}:" + \
                 f"{project.origin.line_number}."
             raise RuntimeError(error_str)

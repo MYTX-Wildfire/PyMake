@@ -39,6 +39,14 @@ class BuildTargetView:
         return self._target.target_name
 
 
+    @property
+    def target(self) -> BuildTarget:
+        """
+        Gets the target this view is for.
+        """
+        return self._target
+
+
     def add_sources(self,
         scope: EScope,
         *sources: str) -> None:

@@ -108,6 +108,16 @@ class HierarchicalState:
         return self._target_build_paths[target]
 
 
+    def get_target_set_for_target(self, target: Target) -> TargetSet:
+        """
+        Gets the target set that owns the given target.
+        @param target Target to get the target set for.
+        @returns The target set that owns the given target.
+        """
+        assert target.target_name in self._target_parents
+        return self._target_parents[target.target_name]
+
+
     def get_test_fixture_target_name(self, project: ProjectScope) -> str:
         """
         Gets the target name used for the project's test fixture.
@@ -246,9 +256,19 @@ class HierarchicalState:
         # Store the path within the generated build directory where
         #   the target's build file will be generated
         assert target.target_name not in self._target_build_paths
-        # TODO: Figure out how to get the path to the target's build directory
-        #   file path
-        self._target_build_paths[target.target_name] = Path(target.target_name)
+
+        # Since code generation is handled independently of the build, the
+        #   selected preset(s)' build directory can't be embedded in the path.
+        #   Instead, use `${CMAKE_BINARY_DIR}` instead since the path will be
+        #   processed by CMake.
+        target_build_path = Path("${CMAKE_BINARY_DIR}")
+        target_build_path /= scope.project_name
+        target_build_path /= target_set.set_name
+        target_build_path /= target.target_name
+        # TODO: Use the target's output name if it's set. Also, add the platform
+        #   specific executable extension if the target is an executable.
+        target_build_path /= target.target_name
+        self._target_build_paths[target.target_name] = target_build_path
 
         # Create the build script for the target
         target_build_script_path = project.generated_dir
