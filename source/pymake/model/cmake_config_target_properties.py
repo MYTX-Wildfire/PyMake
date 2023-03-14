@@ -13,7 +13,7 @@ class CMakeConfigTargetProperties(ITraced):
         super().__init__()
 
         ## The name of the imported library for the current configuration.
-        self._imported_library_name: Traced[Optional[str]] = Traced(None)
+        self._imported_libname: Traced[Optional[str]] = Traced(None)
 
         ## The name of the implementation library for the current configuration.
         self._imported_implib_name: Traced[Optional[str]] = Traced(None)
@@ -24,19 +24,19 @@ class CMakeConfigTargetProperties(ITraced):
 
 
     @property
-    def imported_library_name(self) -> Traced[Optional[str]]:
+    def imported_libname(self) -> Traced[Optional[str]]:
         """
         Gets the name of the imported library for the current configuration.
         """
-        return self._imported_library_name
+        return self._imported_libname
 
 
-    @imported_library_name.setter
-    def imported_library_name(self, value: Optional[str]) -> None:
+    @imported_libname.setter
+    def imported_libname(self, value: Optional[str]) -> None:
         """
         Sets the name of the imported library for the current configuration.
         """
-        self._imported_library_name = Traced(value)
+        self._imported_libname = Traced(value)
 
 
     @property

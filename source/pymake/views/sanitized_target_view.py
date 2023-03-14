@@ -1,3 +1,4 @@
+from pathlib import Path
 from pymake.model.targets.build.sanitized_target import SanitizedTarget
 from pymake.model.project_scope import ProjectScope
 from pymake.model.pymake_project import PyMakeProject
@@ -39,3 +40,14 @@ class SanitizedTargetView:
         Gets the target this view is for.
         """
         return self._target
+
+
+    def install(self, install_path: str | Path | None = None) -> None:
+        """
+        Installs the target.
+        @param install_path The path to install the target to. If this is a
+          relative path, it will be interpreted relative to the install prefix.
+          If this is `None`, the target will be installed to CMake's default
+          install path for the target type.
+        """
+        self._target.properties.install(install_path)

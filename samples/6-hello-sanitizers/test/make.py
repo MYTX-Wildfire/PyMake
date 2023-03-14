@@ -22,3 +22,4 @@ test_asan_target = foo_target_set.add_sanitized_target(
     ESanitizerFlags.ADDRESS,
     test_target
 )
+test_asan_target.install()

@@ -3,6 +3,8 @@ from pymake.common.scope import EScope
 from pymake.common.target_type import ETargetType
 from pymake.core.scoped_sets import ScopedSets
 from pymake.generators.cmake_generator import CMakeGenerator
+from pymake.model.cmake_target_properties import CMakeTargetProperties
+from pymake.model.cmake_config_target_properties import CMakeConfigTargetProperties
 from pymake.model.targets.build.build_target import BuildTarget
 from pymake.model.targets.build.interface_target import InterfaceTarget
 from pymake.model.targets.build.sanitized_target import SanitizedTarget
@@ -10,6 +12,7 @@ from pymake.model.targets.imported.imported_target import ImportedTarget
 from pymake.tracing.traced import Traced
 from pymake.visitors.hierarchical.hierarchical_state import HierarchicalState
 from pymake.visitors.hierarchical.target_visitor import ITargetVisitor
+from typing import Optional, Tuple
 
 class SanitizedTargetVisitor(ITargetVisitor[SanitizedTarget]):
     """
@@ -72,6 +75,60 @@ class SanitizedTargetVisitor(ITargetVisitor[SanitizedTarget]):
                 )
         else:
             raise ValueError("Unsupported target type: {target.target_type}")
+
+
+    def _generate_target_properties(self,
+        target: SanitizedTarget,
+        properties: CMakeTargetProperties,
+        generator: CMakeGenerator):
+        """
+        Generates CMake code that sets each of the target's properties.
+        @param target The target to generate code for.
+        @param properties The properties to set.
+        @param generator The CMake generator to add code to.
+        """
+        super()._generate_target_properties(
+            target,
+            target.wrapped_target.properties,
+            generator
+        )
+
+
+    def _generate_target_config_properties(self,
+        target: SanitizedTarget,
+        config: str,
+        properties: CMakeConfigTargetProperties,
+        generator: CMakeGenerator):
+        """
+        Generates CMake code that sets config-specific target properties.
+        @param target The target to generate code for.
+        @param config The config to generate code for.
+        @param properties The properties to set.
+        @param generator The CMake generator to add code to.
+        """
+        super()._generate_target_config_properties(
+            target,
+            config,
+            target.wrapped_target.properties.get_config_properties(config),
+            generator
+        )
+
+
+    def _generate_compile_definitions(self,
+        target: SanitizedTarget,
+        defs: ScopedSets[Tuple[str, Optional[str]]],
+        generator: CMakeGenerator):
+        """
+        Generates the target compile definitions code for the target.
+        @param target The target to generate code for.
+        @param defs The definitions to add.
+        @param generator The CMake generator to add code to.
+        """
+        super()._generate_compile_definitions(
+            target,
+            target.wrapped_target.properties.compile_definitions,
+            generator
+        )
 
 
     def _generate_compile_options(self,
@@ -200,5 +257,27 @@ class SanitizedTargetVisitor(ITargetVisitor[SanitizedTarget]):
         super()._generate_sources(
             target,
             target.wrapped_target.properties.sources,
+            generator
+        )
+
+
+    def _generate_install(self,
+        target: SanitizedTarget,
+        is_imported: bool,
+        install_path: Traced[Optional[Path]],
+        generator: CMakeGenerator) -> None:
+        """
+        Generates CMake code that installs a target.
+        @param target The target to install.
+        @param is_imported Whether to use the imported location of the target
+          when installing.
+        @param install_path The path to install the target to. If this is none,
+          the default CMake install path for the target type will be used.
+        @param generator The CMake generator to add code to.
+        """
+        super()._generate_install(
+            target,
+            isinstance(target.wrapped_target, ImportedTarget),
+            target.properties.install_path,
             generator
         )

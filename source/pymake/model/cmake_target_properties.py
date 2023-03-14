@@ -94,7 +94,7 @@ class CMakeTargetProperties:
         self._imported = Traced(False)
 
         ## The name of the imported library.
-        self._imported_name: Traced[Optional[str]] = Traced(None)
+        self._imported_libname: Traced[Optional[str]] = Traced(None)
 
         ## The name of the imported implementation library.
         self._imported_implib_name: Traced[Optional[str]] = Traced(None)
@@ -390,19 +390,19 @@ class CMakeTargetProperties:
 
 
     @property
-    def imported_name(self) -> Traced[Optional[str]]:
+    def imported_libname(self) -> Traced[Optional[str]]:
         """
         Gets the name of the imported target.
         """
-        return self._imported_name
+        return self._imported_libname
 
 
-    @imported_name.setter
-    def imported_name(self, value: Optional[str]) -> None:
+    @imported_libname.setter
+    def imported_libname(self, value: Optional[str]) -> None:
         """
         Sets the name of the imported target.
         """
-        self._imported_name = Traced(value)
+        self._imported_libname = Traced(value)
 
 
     @property

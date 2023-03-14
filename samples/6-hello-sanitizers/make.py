@@ -23,7 +23,7 @@ else:
 # Set up the PyMake project
 pymake = PyMake.create_project(target_cmake_version)
 project = pymake.create_project_scope(
-    "HelloGTest",
+    "HelloSanitizers",
     EProjectLanguage.CPP
 )
 
@@ -63,13 +63,13 @@ gtest_asan_target = gtest_target_set.add_external_static_library(
     "gtest_asan",
     sanitizer_flags=ESanitizerFlags.ADDRESS
 )
-gtest_target.set_location("/usr/lib", "gtest")
+gtest_asan_target.set_location("/usr/lib", "gtest")
 
 gtest_asan_main_target = gtest_main_target_set.add_external_static_library(
     "gtest_asan_main",
     sanitizer_flags=ESanitizerFlags.ADDRESS
 )
-gtest_main_target.set_location("/usr/lib", "gtest_main")
+gtest_asan_main_target.set_location("/usr/lib", "gtest_main")
 
 # Configure the project
 pymake.add_subdirectory("foo")

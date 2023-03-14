@@ -82,7 +82,7 @@ class ImportedTargetView:
 
         # This property is only valid on imported interface targets
         if self._target.target_type == ETargetType.INTERFACE:
-            self._target.properties.imported_name = name
+            self._target.properties.imported_libname = name
         self._target.properties.imported_location = lib_path / name
 
 
