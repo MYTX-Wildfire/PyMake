@@ -36,6 +36,10 @@ class ProjectVisitor(IVisitor[PyMakeProject]):
         with generator.open_method_block("cmake_minimum_required") as b:
             b.add_keyword_arguments("VERSION", node.cmake_version.value)
 
+        # PyMake requires that all linked-to targets are PyMake targets
+        with generator.open_method_block("set") as b:
+            b.add_keyword_arguments("CMAKE_LINK_LIBRARIES_ONLY_TARGETS", "ON")
+
         # Enable CTest
         # CMake requires that this is placed in the top-level CMakeLists.txt.
         with generator.open_method_block("include") as b:

@@ -56,6 +56,17 @@
 			"justMyCode": true
 		},
 		{
+			"name": "[6] Hello Sanitizers",
+			"type": "python",
+			"request": "launch",
+			"program": "${workspaceFolder}/samples/6-hello-sanitizers/make.py",
+			"args": [
+				"debug"
+			],
+			"console": "integratedTerminal",
+			"justMyCode": true
+		},
+		{
 			"name": "Run unit tests",
 			"type": "python",
 			"request": "launch",

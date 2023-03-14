@@ -4,6 +4,7 @@ from pymake.model.target_set import TargetSet
 from pymake.model.targets.build.executable_target import ExecutableTarget
 from pymake.model.targets.build.library_target import LibraryTarget
 from pymake.model.targets.build.interface_target import InterfaceTarget
+from pymake.model.targets.build.sanitized_target import SanitizedTarget
 from pymake.model.targets.imported.imported_target import ImportedTarget
 from pymake.model.targets.test.drd_test_target import DrdTestTarget
 from pymake.model.targets.test.helgrind_test_target import HelgrindTestTarget
@@ -21,6 +22,8 @@ from pymake.visitors.hierarchical.library_target_visitor \
     import LibraryTargetVisitor
 from pymake.visitors.hierarchical.memcheck_target_visitor \
     import MemcheckTargetVisitor
+from pymake.visitors.hierarchical.sanitized_target_visitor \
+    import SanitizedTargetVisitor
 from pymake.visitors.hierarchical.hierarchical_state import HierarchicalState
 from pymake.visitors.hierarchical.project_visitor import ProjectVisitor
 from pymake.visitors.hierarchical.project_scope_visitor \
@@ -74,6 +77,8 @@ class HierarchicalVisitorSet(IVisitorSet):
             return InterfaceTargetVisitor(self._state) # type: ignore
         elif isinstance(node, ImportedTarget):
             return ImportedTargetVisitor(self._state) # type: ignore
+        elif isinstance(node, SanitizedTarget):
+            return SanitizedTargetVisitor(self._state) # type: ignore
         raise NotImplementedError()
 
 

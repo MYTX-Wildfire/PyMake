@@ -5,6 +5,7 @@ from pymake.model.target_set import TargetSet
 from pymake.model.targets.build.executable_target import ExecutableTarget
 from pymake.views.build_target_view import BuildTargetView
 from pymake.views.imported_target_view import ImportedTargetView
+from pymake.views.sanitized_target_view import SanitizedTargetView
 from pymake.views.valgrind_target_view import ValgrindTargetView
 
 class TargetSetView:
@@ -219,5 +220,33 @@ class TargetSetView:
             self._target_set.add_static_library(
                 target_name,
                 sanitizer_flags
+            )
+        )
+
+
+    def add_sanitized_target(self,
+        target_name: str,
+        sanitizer_flags: int,
+        original_target: BuildTargetView) -> SanitizedTargetView:
+        """
+        Clones the given target and adds it to the set.
+        @param target_name Name of the sanitized target being created.
+        @param sanitizer_flags Flags indicating which sanitizers are enabled
+          for the target. Must have at least one flag enabled.
+        @param original_target Target to clone. Should be a target with no
+          sanitizers enabled.
+        @throws RuntimeError Thrown if no sanitizer flags were set.
+        @throws RuntimeError Thrown if the wrapped target has sanitizers enabled.
+        @returns The target that was added. If the target already exists and
+          was added at the same location, the existing target is returned.
+        """
+        return SanitizedTargetView(
+            self._project,
+            self._project_scope,
+            self._target_set,
+            self._target_set.add_sanitized_target(
+                target_name,
+                sanitizer_flags,
+                original_target.target
             )
         )

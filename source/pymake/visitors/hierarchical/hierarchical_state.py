@@ -41,6 +41,9 @@ class HierarchicalState:
         #   and all targets within each target set.
         self._build_scripts: Dict[Any, BuildScript] = {}
 
+        ## Maps each target name to the target object.
+        self._targets: Dict[str, Target] = {}
+
         ## Maps project names to their build paths.
         # Each path will be an absolute path that is located within the
         #   project's build directory.
@@ -108,7 +111,17 @@ class HierarchicalState:
         return self._target_build_paths[target]
 
 
-    def get_target_set_for_target(self, target: Target) -> TargetSet:
+    def get_target_by_name(self, target_name: str) -> Target:
+        """
+        Gets the target with the given name.
+        @param target_name Name of the target to get.
+        @returns The target with the given name.
+        """
+        assert target_name in self._targets
+        return self._targets[target_name]
+
+
+    def get_target_set_by_target(self, target: Target) -> TargetSet:
         """
         Gets the target set that owns the given target.
         @param target Target to get the target set for.
@@ -286,3 +299,7 @@ class HierarchicalState:
         # Keep track of all test targets
         if target.is_test:
             self._test_targets.append(target)
+
+        # Each target name must be unique
+        assert target.target_name not in self._targets
+        self._targets[target.target_name] = target

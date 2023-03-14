@@ -5,6 +5,7 @@ from pymake.model.targets.build.interface_target import InterfaceTarget
 from pymake.model.targets.build.build_target import BuildTarget
 from pymake.model.targets.build.executable_target import ExecutableTarget
 from pymake.model.targets.build.library_target import LibraryTarget
+from pymake.model.targets.build.sanitized_target import SanitizedTarget
 from pymake.model.targets.build.shared_library_target import SharedLibraryTarget
 from pymake.model.targets.build.static_library_target import StaticLibraryTarget
 from pymake.model.targets.imported.imported_target import ImportedTarget
@@ -20,7 +21,7 @@ from pymake.model.targets.test.test_wrapper_target import TestWrapperTarget
 from pymake.model.targets.target import Target
 from pymake.tracing.traced import ITraced
 from pymake.tracing.traced_dict import TracedDict
-from typing import Iterable, Optional, TypeVar
+from typing import List, Iterable, Optional, TypeVar
 
 TargetType = TypeVar("TargetType", bound=Target)
 
@@ -60,31 +61,38 @@ class TargetSet(ITraced):
         # Each target is indexed by its name.
         # @warning This collection contains only non-test executable targets
         #   that are built by the set.
-        self._executable_targets: TracedDict[str, ExecutableTarget] = \
-            TracedDict()
+        self._executable_targets: \
+            TracedDict[str, ExecutableTarget | SanitizedTarget] = \
+                TracedDict()
 
         ## All library (shared or static) targets in the set.
         # Each target is indexed by its name.
         # @remarks This collection does not include imported library targets.
-        self._library_targets: TracedDict[str, LibraryTarget] = TracedDict()
+        self._library_targets: \
+            TracedDict[str, LibraryTarget | SanitizedTarget] = \
+                TracedDict()
 
         ## All static library targets in the set.
         # Each target is indexed by its name.
         # @remarks This collection does not include imported static library
         #   targets.
-        self._static_library_targets: TracedDict[str, StaticLibraryTarget] = \
-            TracedDict()
+        self._static_library_targets: \
+            TracedDict[str, StaticLibraryTarget | SanitizedTarget] = \
+                TracedDict()
 
         ## All shared library targets in the set.
         # Each target is indexed by its name.
         # @remarks This collection does not include imported shared library
         #   targets.
-        self._shared_library_targets: TracedDict[str, SharedLibraryTarget] = \
-            TracedDict()
+        self._shared_library_targets: \
+            TracedDict[str, SharedLibraryTarget | SanitizedTarget] = \
+                TracedDict()
 
         ## All imported targets in the set.
         # Each target is indexed by its name.
-        self._imported_targets: TracedDict[str, ImportedTarget] = TracedDict()
+        self._imported_targets: \
+            TracedDict[str, ImportedTarget | SanitizedTarget] = \
+                TracedDict()
 
         ## All sanitized targets in the set.
         # Each target is indexed by its name.
@@ -153,7 +161,7 @@ class TargetSet(ITraced):
 
 
     @property
-    def executable_targets(self) -> Iterable[ExecutableTarget]:
+    def executable_targets(self) -> Iterable[ExecutableTarget | SanitizedTarget]:
         """
         Gets all executable targets in the set.
         """
@@ -161,7 +169,7 @@ class TargetSet(ITraced):
 
 
     @property
-    def library_targets(self) -> Iterable[LibraryTarget]:
+    def library_targets(self) -> Iterable[LibraryTarget | SanitizedTarget]:
         """
         Gets all library targets in the set.
         """
@@ -169,7 +177,8 @@ class TargetSet(ITraced):
 
 
     @property
-    def static_library_targets(self) -> Iterable[StaticLibraryTarget]:
+    def static_library_targets(self) -> \
+        Iterable[StaticLibraryTarget | SanitizedTarget]:
         """
         Gets all static library targets in the set.
         """
@@ -177,7 +186,8 @@ class TargetSet(ITraced):
 
 
     @property
-    def shared_library_targets(self) -> Iterable[SharedLibraryTarget]:
+    def shared_library_targets(self) -> \
+        Iterable[SharedLibraryTarget | SanitizedTarget]:
         """
         Gets all shared library targets in the set.
         """
@@ -185,7 +195,7 @@ class TargetSet(ITraced):
 
 
     @property
-    def imported_targets(self) -> Iterable[ImportedTarget]:
+    def imported_targets(self) -> Iterable[ImportedTarget | SanitizedTarget]:
         """
         Gets all imported targets in the set.
         """
@@ -407,6 +417,67 @@ class TargetSet(ITraced):
         ))
 
 
+    def add_sanitized_target(self,
+        target_name: str,
+        sanitizer_flags: int,
+        original_target: BuildTarget) -> SanitizedTarget:
+        """
+        Clones the given target and adds it to the set.
+        @param target_name Name of the sanitized target being created.
+        @param sanitizer_flags Flags indicating which sanitizers are enabled
+          for the target. Must have at least one flag enabled.
+        @param original_target Target to clone. Should be a target with no
+          sanitizers enabled.
+        @throws RuntimeError Thrown if no sanitizer flags were set.
+        @throws RuntimeError Thrown if the wrapped target has sanitizers enabled.
+        @returns The target that was added. If the target already exists and
+          was added at the same location, the existing target is returned.
+        """
+        return self._add_new_target(SanitizedTarget(
+            target_name,
+            sanitizer_flags,
+            original_target
+        ))
+
+
+    def find_sanitized_target(self,
+        sanitizer_flags: int,
+        target_type: ETargetType) -> Target:
+        """
+        Finds a sanitized target with the given flags and type.
+        @warning Test targets are not considered.
+        @throws RuntimeError Thrown if no sanitized target was found or more
+          than one target in the set matches the given flags and type.
+        """
+        # Find all sanitized targets with the given flags
+        sanitized_targets: List[Target] = []
+        valid_target_types = (
+            BuildTarget,
+            ImportedTarget,
+            SanitizedTarget
+        )
+        for target in self._targets.values():
+            if isinstance(target, valid_target_types) and \
+                target.target_type == target_type and \
+                target.sanitizer_flags & sanitizer_flags:
+                sanitized_targets.append(target)
+
+        # Make sure exactly one target was found
+        # TODO: Improve the error messages in the thrown exceptions
+        if len(sanitized_targets) == 0:
+            raise RuntimeError(
+                "No sanitized target found with flags: " + \
+                str(sanitizer_flags)
+            )
+        elif len(sanitized_targets) > 1:
+            raise RuntimeError(
+                "Multiple sanitized targets found with flags: " + \
+                str(sanitizer_flags)
+            )
+
+        return sanitized_targets[0]
+
+
     def _add_new_target(self,
         new_target: TargetType) -> TargetType:
         """
@@ -452,8 +523,24 @@ class TargetSet(ITraced):
             self._imported_targets[new_target.target_name] = new_target
         elif isinstance(new_target, DocumentationTarget):
             self._documentation_targets[new_target.target_name] = new_target
+        elif isinstance(new_target, SanitizedTarget):
+            self._sanitized_targets[new_target.target_name] = new_target
+            self._built_targets[new_target.target_name] = new_target
 
-        if new_target.sanitizer_flags != ESanitizerFlags.NONE:
+            if new_target.target_type == ETargetType.EXECUTABLE:
+                self._executable_targets[new_target.target_name] = new_target
+            elif new_target.target_type == ETargetType.STATIC:
+                self._static_library_targets[new_target.target_name] = new_target
+            elif new_target.target_type == ETargetType.SHARED:
+                self._shared_library_targets[new_target.target_name] = new_target
+
+            if new_target.test_flags != ETestFlags.NONE:
+                self._test_targets[new_target.target_name] = new_target
+
+        # Handle targets that were explicitly set up with sanitizers instead
+        #   of using the `SanitizedTarget` class to wrap an existing target
+        if new_target.sanitizer_flags != ESanitizerFlags.NONE and \
+            not isinstance(new_target, SanitizedTarget):
             self._sanitized_targets[new_target.target_name] = new_target
 
         # Link the target to the target set's common target if necessary

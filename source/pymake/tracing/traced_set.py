@@ -1,5 +1,6 @@
 from __future__ import annotations
 from collections.abc import Iterator
+from pymake.tracing.caller_info import CallerInfo
 from pymake.tracing.traced import Traced
 from typing import Dict, Generic, Optional, TypeVar
 
@@ -55,16 +56,20 @@ class TracedSet(Generic[T]):
         return len(self._values)
 
 
-    def add(self, value: T) -> bool:
+    def add(self, value: T, origin: Optional[CallerInfo] = None) -> bool:
         """
         Adds a new value to the set.
         @param value Value to add to the set.
+        @param origin The origin of the value. If this is set to `None`, the
+          origin will be automatically captured.
         @returns True if the value was added, False if it was already in the set.
         """
         if value in self._values:
             return False
+        if origin is None:
+            origin = CallerInfo.closest_external_frame()
 
-        self._values[value] = Traced(value)
+        self._values[value] = Traced(value, origin)
         return True
 
 

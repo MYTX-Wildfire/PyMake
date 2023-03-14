@@ -2,7 +2,7 @@ from pymake.model.target_set import TargetSet
 from pymake.model.targets.target import Target
 from pymake.visitors.hierarchical.hierarchical_state import HierarchicalState
 from pymake.visitors.visitor import IVisitor
-from typing import List
+from typing import Iterable, List, Set
 
 class TargetSetVisitor(IVisitor[TargetSet]):
     """
@@ -38,30 +38,44 @@ class TargetSetVisitor(IVisitor[TargetSet]):
         #   that the targets should be added via `add_subdirectory()` calls
         targets: List[Target] = []
 
+        # Keep track of the names of all targets that have been added to avoid
+        #   adding the same target twice
+        target_names: Set[str] = set()
+
+        def add(target: Target | Iterable[Target]) -> None:
+            """
+            Adds the target to the targets list if it hasn't already been added.
+            """
+            if isinstance(target, Target):
+                target = [target]
+
+            for t in target:
+                if t.target_name not in target_names:
+                    targets.append(t)
+                    target_names.add(t.target_name)
+
         # Start with set's common target since other many other targets depend
         #   on it
-        targets.append(node.common_target)
+        add(node.common_target)
 
         # Add imported targets next since they're likely to not have
         #   dependencies within the target set
-        targets.extend(node.imported_targets)
+        add(node.imported_targets)
 
         # Add library targets before executable targets since executable
         #   targets may depend on library targets
-        targets.extend(node.library_targets)
+        add(node.library_targets)
 
         # Add non-sanitized, non-test executables next since they're likely to
         #   only depend on libraries in the set or imported targets
-        targets.extend(
-            [t for t in node.executable_targets if not t.is_sanitized]
-        )
+        add([t for t in node.executable_targets if not t.is_sanitized])
 
-        # Add sanitized targets next
-        targets.extend(node.sanitized_targets)
+        # Add any sanitized targets not already added
+        add(node.sanitized_targets)
 
         # Add test targets last since they're likely to depend on other
         #   targets in the set
-        targets.extend(node.test_targets)
+        add(node.test_targets)
 
         # Add each target
         for target in targets:

@@ -48,12 +48,48 @@ class CMakeGenerator:
         return self._tab_size
 
 
+    def close_if_block(self) -> None:
+        """
+        Closes an if block.
+        """
+        self.decrease_indentation_level()
+        self._text_generator.append_line("endif()")
+        self._text_generator.append_line()
+
+
     def generate(self) -> str:
         """
         Gets the contents of the generated CMake file.
         @returns The contents of the generated CMake file.
         """
         return self._text_generator.text
+
+
+    def decrease_indentation_level(self) -> None:
+        """
+        Decreases the indentation level by one.
+        """
+        self._text_generator.decrease_indentation_level()
+
+
+    def increase_indentation_level(self) -> None:
+        """
+        Increases the indentation level by one.
+        """
+        self._text_generator.increase_indentation_level()
+
+
+    def open_if_block(self, if_condition: str) -> None:
+        """
+        Opens an if block.
+        @param if_condition The condition to check.
+        """
+        self._text_generator.append_line(f"if({if_condition})")
+        # If blocks will generally end with an empty line since an empty line
+        #   is added after each method call. Add an empty line at the start of
+        #   the if block to make the generated CMake file more readable.
+        self._text_generator.append_line()
+        self.increase_indentation_level()
 
 
     def open_method_block(self, method_name: str) -> CMakeMethodBuilder:

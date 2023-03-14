@@ -20,6 +20,7 @@ class TextGenerator:
         else:
             self._indent = "\t"
 
+
     @property
     def at_start_of_line(self) -> bool:
         """
@@ -73,7 +74,7 @@ class TextGenerator:
         self._text += text
 
 
-    def append_line(self, text: str) -> None:
+    def append_line(self, text: str = "") -> None:
         """
         Adds text to the generator.
         This method will append a newline character to the added text.
